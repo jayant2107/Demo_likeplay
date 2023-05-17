@@ -1,14 +1,7 @@
-
-import './App.css';
-import CreateShotsModal from './Modals/CreateShotsModal';
-
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-   <CreateShotsModal/>
-    </div>
-  );
+  return <div className="App"></div>;
 }
 
 export default App;
