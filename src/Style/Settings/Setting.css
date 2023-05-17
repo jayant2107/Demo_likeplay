@@ -33,8 +33,6 @@
     padding-left: 6px;
 }
 
-
-
 .mainContainer {
     height: 90vh;
 }
@@ -46,7 +44,6 @@
     flex-direction: column;
     padding: 50px 0%;
     height: 100%;
-
 }
 
 .SetLeft>div div:not(:first-child) {
@@ -59,7 +56,6 @@
     padding: 3% 5%;
     border: none;
     font-weight: 600;
-
 }
 
 .ActiveState {
@@ -70,11 +66,36 @@
 
 .gradient {
     border-image-source: linear-gradient(268.55deg, #FF483C 0%, #FF2C5A 100%);
-
 }
 
 .left {
     border-top: 0;
     border-bottom: 0;
     border-right: 0;
+}
+
+.InnerResetPass {
+    width: 75%;
+}
+
+.ResetPass {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.PassChan {
+    width: 226px;
+    background: linear-gradient(268.55deg, #FF483C 0%, #FF2C5A 100%);
+    border: none;
+    height: 48px;
+    border-radius: 10px;
+    color: #fbfaf8;
+    font-size: 15px;
+}
+
+.InputMeth {
+    width: 440px;
+    border-radius: 10px;
+    height: 56px;
+    padding-left: 24px;
 }
