@@ -41,6 +41,7 @@ const FeedPage = () => {
         <div>2</div>
         <div>3</div>
       </div>
+      <h2>hello</h2>
     </UserPostCss>
   );
 };
