@@ -35,7 +35,7 @@ export default function Sidebar() {
                 </Slinkcontainer>
                 <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
                     <Slogo>
-                    <Admiring/>
+                    <Admiring color={colorsetting?primarycolor:secondarycolor}/>
                         
                     </Slogo>
                     <Slabel>
@@ -44,7 +44,7 @@ export default function Sidebar() {
                 </Slinkcontainer>
                 <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
                     <Slogo>
-                    <Admirers/>
+                    <Admirers color={colorsetting?primarycolor:secondarycolor}/>
                        
                     </Slogo>
                     <Slabel>
@@ -96,7 +96,7 @@ export default function Sidebar() {
                         <p>Subscription</p>
                     </Slabel>
                 </Slinkcontainer>
-                <Slinkcontainer>
+                <Slinkcontainer onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
                     <Slogo>
                     <FAQ/>
                         
@@ -105,7 +105,7 @@ export default function Sidebar() {
                         <p>FAQs</p>
                     </Slabel>
                 </Slinkcontainer>
-                <Slinkcontainer>
+                <Slinkcontainer onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
                     <Slogo>
                     <Testimonial/>
                         
