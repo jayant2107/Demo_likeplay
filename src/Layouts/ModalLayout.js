@@ -40,7 +40,7 @@ const StyledLayout = styled.div`
   box-shadow: rgba(0,0,0,0.5) 0px 1px 20px 0px;
   margin: auto;
   position: fixed;
-  top: 30%;
+  top: 50%;
   left: 50%;
   transform: translate(-50% , -50%);
 }
