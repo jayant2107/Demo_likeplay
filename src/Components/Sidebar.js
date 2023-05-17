@@ -107,7 +107,7 @@ export default function Sidebar() {
                 </Slinkcontainer>
                 <Slinkcontainer onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
                     <Slogo>
-                    <Testimonial/>
+                    <Testimonial color={colorsetting?primarycolor:secondarycolor}/>
                         
                     </Slogo>
                     <Slabel>
