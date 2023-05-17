@@ -9,7 +9,9 @@ import hashimg, {
   Videoplaybtn,
   vidoedemobg,
   LikePlaylogo,
+  hearticonPA,
 } from "../../Utils/images/Publichomeimg";
+// icon
 // video
 // import video from "../../Assets/Images/DAKU - INDERPAL MOGA - CHANI NATTAN - NEW PUNJABI SONG 2022 - LATEST PUNJABI SONG 2022 -.mp4";
 
@@ -88,14 +90,23 @@ export default function Publichome() {
   const Featurewrapper = styled.section`
     section {
       background: linear-gradient(268.55deg, #ffdbac 0%, #ffcebb 100%);
-      h1 {
-        text-align: center;
-        font-size: 3rem;
-        padding: 3rem;
+      .head {
+        display: flex;
+        justify-content: center;
+        h1 {
+          text-align: center;
+          font-size: 3rem;
+          padding: 3rem 0;
+        }
+        img {
+          position: relative;
+          top: -20px;
+          left: -20px;
+        }
       }
       .cards {
         display: flex;
-        flex-wrap: wrap-reverse;
+        flex-wrap: wrap;
         padding: 0 4rem 3rem;
         justify-content: space-around;
         gap: 1rem;
@@ -154,15 +165,27 @@ export default function Publichome() {
       background-repeat: no-repeat;
       height: 100vh;
       width: 100%;
-      .play-button-container {
-        position: absolute;
-        top: 36%;
-        margin-left: 45%;
-      }
+
       .video {
         height: 90%;
         display: flex;
         justify-content: center;
+        &::before {
+          content: url(${LikePlaylogo});
+          height: 20vh;
+          position: relative;
+          z-index: 1;
+          top: 15%;
+          left: 10%;
+        }
+        &::after {
+          content: url(${Videoplaybtn});
+          height: 20vh;
+          position: relative;
+          top: 40%;
+          left: -44%;
+          z-index: 3;
+        }
         img {
           width: 80%;
         }
@@ -194,7 +217,10 @@ export default function Publichome() {
       {/* -------------------------Our Features START-----------------------------  */}
       <Featurewrapper>
         <section>
-          <h1>Our Features</h1>
+          <div className="head">
+            <h1>Our Features</h1>
+            <img src={hearticonPA} alt="" />
+          </div>
           <div className="cards">
             {featuresData.map((ele) => {
               return (
@@ -219,14 +245,14 @@ export default function Publichome() {
 
       <WorkWrapper>
         <section>
-          <img src={LikePlaylogo} alt="" />
+          {/* <img src={LikePlaylogo} alt="" /> */}
           <div className="video">
             <img src={vidoedemobg} alt="" />
           </div>
 
-          <div className="play-button-container">
+          {/* <div className="play-button-container">
             <img src={Videoplaybtn} alt="Play" />
-          </div>
+          </div> */}
         </section>
       </WorkWrapper>
 
