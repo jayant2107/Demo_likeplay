@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { arrow, trash } from "../../Utils/IconsP";
+import ReferFriend from "./ReferFriend";
+import ResetPassword from "./ResetPassword";
+import UpgradeSubscription from "./UpgradeSubscription";
 const Settings = () => {
   return (
     <>
@@ -8,9 +11,9 @@ const Settings = () => {
         <div className="Header">
           <div className="Setting">Settings</div>
         </div>
-        <FlexCustom className="mainContainer">
+        <div className="mainContainer">
           <div className="SetLeft">
-            <div>
+            <div className="Setfir">
               <div>
                 <button className="NormalBtn">
                   <FlexCustom Content="space-between" Align="center">
@@ -66,18 +69,18 @@ const Settings = () => {
               </div>
             </div>
             <div>
-              <button className="Delete">
-                <div className="innerFlexBtn">
-                  <div>
-                    <img src={trash} alt="Something Wrong" />
-                  </div>
-                  <div className="deleteac">Delete Account</div>
+              <div className="innerFlexBtn">
+                <div>
+                  <img src={trash} alt="Something Wrong" />
                 </div>
-              </button>
+                <div className="deleteac">Delete Account</div>
+              </div>
             </div>
           </div>
-          <div className="SetRight">jkhjk</div>
-        </FlexCustom>
+          <div className="SetRight">
+            <UpgradeSubscription />
+          </div>
+        </div>
       </Wrapper>
     </>
   );
@@ -86,13 +89,17 @@ const Settings = () => {
 export default Settings;
 
 const Wrapper = styled.div`
-  font-family: "Roboto", sans-serif;
-  height: 100vh;
+  font-family: "Poppins", sans-serif;
   .Header {
     background-color: #f0f0f0;
     font-weight: 600;
     font-size: 18px;
     height: 10vh;
+  }
+  .Setfir {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
   .Header .Setting {
     height: 100%;
@@ -101,29 +108,24 @@ const Wrapper = styled.div`
     align-items: center;
     padding-left: 22px;
   }
-  .Delete {
-    width: 75%;
-    height: 3rem;
-    background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
-    border: none;
-    border-radius: 10px;
-    color: white;
-  }
   .mainContainer {
-    height: 90vh;
+    display: flex;
+    align-items: start;
+    padding: 2rem 0;
   }
   .SetLeft {
     width: 25%;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-around; */
     flex-direction: column;
-    padding: 50px 0%;
-    height: 100%;
+  }
+  .SetLeft > div:not(:first-child) {
+    margin-top: 26%;
   }
 
-  .SetLeft > div div:not(:first-child) {
-    margin-top: 5%;
-  }
+  /* .SetLeft > div div:not(:first-child) {
+    margin-top: 4%;
+  } */
   .NormalBtn {
     width: 80%;
     height: 58px;
@@ -141,6 +143,9 @@ const Wrapper = styled.div`
   .gradient {
     border-image-source: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
   }
+  .SetRight {
+    width: 65%;
+  }
 
   .left {
     border-top: 0;
@@ -152,9 +157,14 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 75%;
+    height: 3rem;
+    background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
+    border: none;
+    border-radius: 10px;
+    color: white;
   }
   .deleteac {
-    padding-bottom: 12px;
     padding-left: 6px;
   }
 `;
