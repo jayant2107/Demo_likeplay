@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import {sidebarimage} from '../Utils/Images';
@@ -9,6 +9,9 @@ import { Admirers, Admiring, FAQ, Home, Matches, Menu, Messages, Notification, S
 
 
 export default function Sidebar() {
+    const [colorsetting,setcolorsetting]=useState(false)
+    const primarycolor='#A8580F'
+    const secondarycolor='#7B7F91'
     return (
         <>
             <Sidebarwrapper>
@@ -21,16 +24,16 @@ export default function Sidebar() {
 
 
                 </Mainlogo>
-                <Slinkcontainer>
+                <Slinkcontainer onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)} >
                     <Slogo>
-                    <Home/>
+                    <Home color={colorsetting?primarycolor:secondarycolor}/>
                         
                     </Slogo>
                     <Slabel>
                         <p>Home</p>
                     </Slabel>
                 </Slinkcontainer>
-                <Slinkcontainer>
+                <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
                     <Slogo>
                     <Admiring/>
                         
@@ -39,7 +42,7 @@ export default function Sidebar() {
                         <p>Admiring</p>
                     </Slabel>
                 </Slinkcontainer>
-                <Slinkcontainer>
+                <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
                     <Slogo>
                     <Admirers/>
                        
@@ -48,7 +51,7 @@ export default function Sidebar() {
                         <p>Admirers</p>
                     </Slabel>
                 </Slinkcontainer>
-                <Slinkcontainer>
+                <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
                     <Slogo>
                     <Messages color='#7B7F91'/>
                         
@@ -57,7 +60,7 @@ export default function Sidebar() {
                         <p>Messages</p>
                     </Slabel>
                 </Slinkcontainer>
-                <Slinkcontainer>
+                <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
                     <Slogo>
                     <Notification/>
                       
@@ -66,7 +69,7 @@ export default function Sidebar() {
                         <p>Notification</p>
                     </Slabel>
                 </Slinkcontainer>
-                <Slinkcontainer>
+                <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
                     <Slogo>
                     <Matches/>
                        
@@ -75,7 +78,7 @@ export default function Sidebar() {
                         <p>Matches</p>
                     </Slabel>
                 </Slinkcontainer>
-                <Slinkcontainer>
+                <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
                     <Slogo>
                     <Setting/>
                        
@@ -84,7 +87,7 @@ export default function Sidebar() {
                         <p>Setting</p>
                     </Slabel>
                 </Slinkcontainer>
-                <Slinkcontainer>
+                <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
                     <Slogo>
                     <Subscription/>
                       
@@ -147,9 +150,11 @@ display:flex;
 align-items:center;
 gap:20px;
 padding:0px 80px;
+cursor: pointer;
 &:hover{
     p{
-        color:brown;
+        color:
+        #A8580F;
     }
 }
 
