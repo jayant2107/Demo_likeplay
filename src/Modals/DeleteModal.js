@@ -95,4 +95,8 @@ export const StyledDeleteModal = styled.div`
     line-height: 22px;
   }
 
+  button.cancel{
+    background-color: #F0F0F0;
+  }
+
 `;
