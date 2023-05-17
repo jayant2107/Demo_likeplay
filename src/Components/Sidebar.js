@@ -53,7 +53,7 @@ export default function Sidebar() {
                 </Slinkcontainer>
                 <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
                     <Slogo>
-                    <Messages color='#7B7F91'/>
+                    <Messages color={colorsetting?primarycolor:secondarycolor}/>
                         
                     </Slogo>
                     <Slabel>
@@ -62,7 +62,7 @@ export default function Sidebar() {
                 </Slinkcontainer>
                 <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
                     <Slogo>
-                    <Notification/>
+                    <Notification color={colorsetting?primarycolor:secondarycolor}/>
                       
                     </Slogo>
                     <Slabel>
@@ -71,7 +71,7 @@ export default function Sidebar() {
                 </Slinkcontainer>
                 <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
                     <Slogo>
-                    <Matches/>
+                    <Matches color={colorsetting?primarycolor:secondarycolor}/>
                        
                     </Slogo>
                     <Slabel>
@@ -80,7 +80,7 @@ export default function Sidebar() {
                 </Slinkcontainer>
                 <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
                     <Slogo>
-                    <Setting/>
+                    <Setting color={colorsetting?primarycolor:secondarycolor}/>
                        
                     </Slogo>
                     <Slabel>
@@ -89,7 +89,7 @@ export default function Sidebar() {
                 </Slinkcontainer>
                 <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
                     <Slogo>
-                    <Subscription/>
+                    <Subscription color={colorsetting?primarycolor:secondarycolor}/>
                       
                     </Slogo>
                     <Slabel>
@@ -98,7 +98,7 @@ export default function Sidebar() {
                 </Slinkcontainer>
                 <Slinkcontainer onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
                     <Slogo>
-                    <FAQ/>
+                    <FAQ color={colorsetting?primarycolor:secondarycolor}/>
                         
                     </Slogo>
                     <Slabel>
