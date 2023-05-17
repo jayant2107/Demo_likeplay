@@ -117,7 +117,5 @@ export const Testimonial=({})=>{
 <path d="M7 9.5H17" stroke="#7B7F91" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M7 14.5H14" stroke="#7B7F91" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
-
-
     )
 }
