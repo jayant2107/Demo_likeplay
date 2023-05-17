@@ -20,6 +20,18 @@ const MatchesCard2 = ({props}) => {
                     <button className='button1'> <img src={img1} alt="" className='img'/> Waive</button>
                 </div>
             </div>
+            <div className='Div4'>
+                <p className='about'>About</p>
+                <p className='About'> {props.About}</p>               
+            </div>
+            <div className='Div5'>
+                <p className="Images"> Images </p>
+                {props.Photos.map((Photo) =>(
+                     <img src={Photo} alt='' className='img1' />
+                ))
+
+                }
+            </div>
         </div>
     </MatchesCard2Style>
   )
@@ -34,5 +46,16 @@ const MatchesCard2Style = styled.div`
     padding: 0%;
     box-sizing: border-box;
     border: none;;
+}
+.Div5{
+width: 100%;
+
+}
+.img1{
+    padding: 1rem;
+}
+.Photo{
+    width: 100%;
+    height: 100%;
 }
 `;

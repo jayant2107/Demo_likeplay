@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
-import MatchesCard2 from './Components/MatchesCard2';
+import MatchesDetailPage from './Feautres/Matches/Matches_Detail _Page';
+
 
 function App() {
   return (
     <>
-    <MatchesCard2/>
+    <MatchesDetailPage/>
     </>
   );
 }
