@@ -35,7 +35,7 @@ const StyledLayout = styled.div`
 }
 
 .inner{
-  width: 74%;
+  width: 60%;
   background-color: white;
   box-shadow: rgba(0,0,0,0.5) 0px 1px 20px 0px;
   margin: auto;
