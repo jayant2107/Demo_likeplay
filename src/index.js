@@ -1,13 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+// import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import Publichome from "./Feautres/Home/Publichome";
+import FeedPage from "./Feautres/Home/FeedPage";
+import FeedAboutMe from "./Feautres/Home/FeedMyProfile";
+import FeedShots from "./Feautres/Home/FeedShots";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    {/* <Publichome /> */}
+    {/* <FeedPage/> */}
+    <FeedAboutMe/>
+    {/* <FeedShots/> */}
   </React.StrictMode>
 );
 
