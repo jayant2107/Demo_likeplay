@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Matches_Detail _Page = () => {
+const MatchesDetailPage = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const Matches_Detail _Page = () => {
   )
 }
 
-export default Matches_Detail _Page
+export default MatchesDetailPage
