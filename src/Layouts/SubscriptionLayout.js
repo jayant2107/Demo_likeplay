@@ -4,6 +4,12 @@
 // import Headersubcription from './Headersubcription'
 
 import { subitems } from "../Services/Subscriptionsjson";
+import styled from "styled-components";
+import tick from '../Assets/Icons/Vector.svg'
+import tick1 from '../Assets/Icons/Vector (1).svg'
+import tick2 from '../Assets/Icons/Vector (2).svg'
+import tick3 from '../Assets/Icons/Vector (3).svg'
+
 
 // const SubscriptionLayout = () => {
 //     return (
@@ -81,27 +87,51 @@ import { subitems } from "../Services/Subscriptionsjson";
 // }
 
 // `
-const data = [
-    { name: "Anom", age: 19, gender: "Male" },
-    { name: "Megha", age: 19, gender: "Female" },
-    { name: "Subham", age: 25, gender: "Male"},
-  ]
+
     
   function App() {
     return (
+        <StyledTable>
       <div className="App">
         <table>
           <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Gender</th>
+          <th></th>
+          <div className="wrap-head">
+            <th><div className="head">
+            <img src={tick} alt="" className="head-img"/>
+                <p>Basic</p>
+            </div></th>
+            <th>
+            <div className="head">
+            <img src={tick1} alt="" className="head-img"/>
+            <p>Standard</p>
+            </div></th>
+            <th><div className="head">
+            <img src={tick2} alt="" className="head-img"/>
+            <p>GOLD</p>
+            </div></th>
+            <th><div className="head">
+            <img src={tick3} alt="" className="head-img"/>
+            <p>PLATINUM</p>
+            </div></th>
+            </div>
           </tr>
-          {subitems.map((val, key) => {
+          {subitems.map((val) => {
             return (
-              <tr key={key}>
-                <td><img src={val.pic} /></td>
-                <td><img src={val.pic1}/></td>
-                <td><img src={val.pic2} /></td>
+              <tr key={val} >
+              <td className="imges-head"><div className="paragraph1"><p className="para1">{val.p}</p>
+              
+              </div></td>
+                <td className="imj"><img src={val.pic}/>
+                <img src={val.pic1} />
+                <img src={val.pic2} />
+                <img src={val.pic3} />
+                </td>
+                {/* <td><img src={val.pic2} /></td>
+                <td><img src={val.pic3} /></td>
+                <td><img src={val.pic} /></td> */}
+
+                {/* <td><div className="head1"><img src={val.pic} /></div></td> */}
                 <td><p>{val.p1}</p></td>
                 <td><p>{val.p2}</p></td>
                 <td><p>{val.p3}</p></td>
@@ -111,7 +141,36 @@ const data = [
           })}
         </table>
       </div>
+      </StyledTable>
     );
   }
     
   export default App;
+  const StyledTable = styled.div`
+  .paragraph1{
+    border-right: 2px solid red;
+    width: 100%;
+  }
+  .wrap-head {
+    display: flex;
+    gap: 20%;
+}
+.head{
+    border-bottom: 2px solid;
+}
+.para1{
+    width: 100%;
+}
+.imj{
+    display: flex;
+    justify-content: space-between;
+}
+p{
+    width: 92px;
+height: 26px;
+}
+img {
+    margin: auto;
+    margin-top: 20px;
+}
+  `
