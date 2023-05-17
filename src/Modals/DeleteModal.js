@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import StyledButton from "../Components/Button";
 
 export default function DeleteModal() {
   return (
@@ -8,16 +9,15 @@ export default function DeleteModal() {
           <div className="modal-container">
             <div className="modal-content">
               <div className="content-container">
-
                 {/* MODAL HEADING-SECTION STARTS */}
 
                 <div className="modal-head">
                   <div className="heading">Block User</div>
                 </div>
 
-                 {/* MODAL HEADING-SECTION ENDS */}
+                {/* MODAL HEADING-SECTION ENDS */}
 
-                  {/* MODAL PARA-SECTION STARTS  */}
+                {/* MODAL PARA-SECTION STARTS  */}
 
                 <div className="modal-para">
                   Are you sure you want to block user?
@@ -29,10 +29,17 @@ export default function DeleteModal() {
                 <div className="modal-buttons">
                   <div className="buttons-content">
                     <div className="cancel-btn">
-                      <button className="cancel">Cancel</button>
+                      <StyledButton text="#242424" bg="#f0f0f0">
+                        Cancel
+                      </StyledButton>
                     </div>
                     <div className="yes-btn">
-                      <button className="yes">Yes</button>
+                      <StyledButton
+                        text="white"
+                        bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
+                      >
+                        Yes
+                      </StyledButton>
                     </div>
                   </div>
                 </div>
@@ -75,17 +82,18 @@ export const StyledDeleteModal = styled.div`
   .content-container {
     padding: 12px;
   }
-/* MODAL HEADING-SECTION STARTS */
+  /* MODAL HEADING-SECTION STARTS */
 
   .heading {
     color: #242424;
     font-size: 26px;
     font-weight: 500;
+    text-align: center;
   }
 
-/* MODAL HEADING-SECTION ENDS */
+  /* MODAL HEADING-SECTION ENDS */
 
-/* MODAL PARA-SECTION STARTS  */
+  /* MODAL PARA-SECTION STARTS  */
 
   .modal-para {
     font-size: 16px;
@@ -113,26 +121,5 @@ export const StyledDeleteModal = styled.div`
     width: 50%;
   }
 
-  button.yes,
-  button.cancel {
-    width: 85%;
-    padding: 15px;
-    border: 1px solid transparent;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 22px;
-  }
-
-  button.cancel {
-    background-color: #f0f0f0;
-  }
-
-  button.yes {
-    background-image: linear-gradient(#ff483c 100%, #ff2c5a 100%);
-    color: white;
-  }
-
-    /* MODAL BUTTON-SECTION ENDS  */
-
+  /* MODAL BUTTON-SECTION ENDS  */
 `;
