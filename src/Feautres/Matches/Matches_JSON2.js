@@ -6,7 +6,8 @@ import img5 from "../../Assets/Images/Matches Image/Rectangle (5).png";
 
 
 
-const  data1 ={
+const  Details =[
+   {
    "Unique ID": "anna-smith-123",
    "Name": "Anna Smith",
    "Age": 35,
@@ -28,6 +29,6 @@ const  data1 ={
    "Age Range Preferred to Date": "25-40",
    "Tribe Preferred to Date": "Any",
    "Looking For": "A long-term relationship"
-}
+}]
 
-export default data1;
+export default Details;
