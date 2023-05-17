@@ -20,6 +20,21 @@ import category11 from "../../Assets/Icons/PubliccategoryPA11.svg";
 // import category12 from "../../Assets/Icons/PubliccategoryPA12.svg";
 import Videoplaybtn from "../../Assets/Icons/PublicvideoplaybtnPA.svg";
 import hearticonPA from "../../Assets/Icons/PublicheartPA.svg";
+import iphone1 from "../../Assets/Images/Publiciphone1PA.svg"
+import iphone2 from "../../Assets/Images/Publiciphone2PA.svg"
+import heartborder from "../../Assets/Images/PublicheartborderPA.svg"
+import likeglow from "../../Assets/Icons/PublicilikeplayglowlogoPA.svg"
+import iphonebg from "../../Assets/Images/PubliciphonebgPA.svg"
+
+import work1 from "../../Assets/Icons/Publicworklogo1PA.svg";
+import work2 from "../../Assets/Icons/Publicworklogo2PA.svg";
+import work3 from "../../Assets/Icons/Publicworklogo3PA.svg";
+import work4 from "../../Assets/Icons/Publicworklogo4PA.svg";
+import work5 from "../../Assets/Icons/Publicworklogo5PA.svg";
+import work6 from "../../Assets/Icons/Publicworklogo6PA.svg";
+import whylikeheart from "../../Assets/Icons/PublicsingleheartPA.svg"
+
+
 
 export default hashimg;
 export {
@@ -40,4 +55,16 @@ export {
   category9,
   category10,
   category11,
+  work1,
+  work2,
+  work3,
+  work4,
+  work5,
+  work6,
+  whylikeheart,
+  iphone1,
+  iphone2,
+  heartborder,
+  likeglow,
+  iphonebg
 };
