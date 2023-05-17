@@ -89,10 +89,11 @@ import tick3 from '../Assets/Icons/Vector (3).svg'
 // `
 
     
-  function App() {
+  function Subscriptions() {
     return (
         <StyledTable>
       <div className="App">
+
         <table>
           <tr>
           <th></th>
@@ -122,20 +123,24 @@ import tick3 from '../Assets/Icons/Vector (3).svg'
               <td className="imges-head"><div className="paragraph1"><p className="para1">{val.p}</p>
               
               </div></td>
+                <p className="para4">{val.p1}</p>
                 <td className="imj"><img src={val.pic}/>
                 <img src={val.pic1} />
+                <p className="para4">{val.p3}</p>
                 <img src={val.pic2} />
+                <p className="para4">{val.p4}</p>
                 <img src={val.pic3} />
+                <p className="para4">{val.p2}</p>
                 </td>
                 {/* <td><img src={val.pic2} /></td>
                 <td><img src={val.pic3} /></td>
                 <td><img src={val.pic} /></td> */}
 
                 {/* <td><div className="head1"><img src={val.pic} /></div></td> */}
-                <td><p>{val.p1}</p></td>
-                <td><p>{val.p2}</p></td>
+                {/* <td className="para-2"><p>{val.p1}</p></td>
+                <td ><p>{val.p2}</p></td>
                 <td><p>{val.p3}</p></td>
-                <td><p>{val.p4}</p></td>
+                <td><p>{val.p4}</p></td> */}
               </tr>
             )
           })}
@@ -145,7 +150,7 @@ import tick3 from '../Assets/Icons/Vector (3).svg'
     );
   }
     
-  export default App;
+  export default Subscriptions;
   const StyledTable = styled.div`
   .paragraph1{
     border-right: 2px solid red;
@@ -154,6 +159,8 @@ import tick3 from '../Assets/Icons/Vector (3).svg'
   .wrap-head {
     display: flex;
     gap: 20%;
+    justify-content: space-between;
+    margin-left: 8%;
 }
 .head{
     border-bottom: 2px solid;
@@ -162,15 +169,20 @@ import tick3 from '../Assets/Icons/Vector (3).svg'
     width: 100%;
 }
 .imj{
-    display: flex;
+    display: grid;
     justify-content: space-between;
+    grid-template-columns: repeat(5, 1fr);
+    width: 30rem;
 }
-p{
-    width: 92px;
-height: 26px;
+.imges-head{
+    width: 15%;
+    line-height: 25px;
 }
 img {
     margin: auto;
     margin-top: 20px;
+}
+.para4{
+    margin: auto;
 }
   `
