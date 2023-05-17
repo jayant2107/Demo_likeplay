@@ -8,12 +8,24 @@ export default function DeleteModal() {
           <div className="modal-container">
             <div className="modal-content">
               <div className="content-container">
+
+                {/* MODAL HEADING-SECTION STARTS */}
+
                 <div className="modal-head">
                   <div className="heading">Block User</div>
                 </div>
+
+                 {/* MODAL HEADING-SECTION ENDS */}
+
+                  {/* MODAL PARA-SECTION STARTS  */}
+
                 <div className="modal-para">
                   Are you sure you want to block user?
                 </div>
+
+                {/* MODAL PARA-SECTION ENDS  */}
+
+                {/* MODAL BUTTONS-SECTION STARTS  */}
                 <div className="modal-buttons">
                   <div className="buttons-content">
                     <div className="cancel-btn">
@@ -24,6 +36,7 @@ export default function DeleteModal() {
                     </div>
                   </div>
                 </div>
+                {/* MODAL BUTTONS-SECTION ENDS  */}
               </div>
             </div>
           </div>
@@ -62,6 +75,7 @@ export const StyledDeleteModal = styled.div`
   .content-container {
     padding: 12px;
   }
+/* MODAL HEADING-SECTION STARTS */
 
   .heading {
     color: #242424;
@@ -69,23 +83,38 @@ export const StyledDeleteModal = styled.div`
     font-weight: 500;
   }
 
+/* MODAL HEADING-SECTION ENDS */
+
+/* MODAL PARA-SECTION STARTS  */
+
   .modal-para {
     font-size: 16px;
     line-height: 24px;
     color: #7b7f91;
     width: 75%;
     margin: auto;
+    margin-top: 10px;
+  }
+
+  /* MODAL PARA-SECTION ENDS  */
+
+  /* MODAL BUTTON-SECTION STARTS  */
+
+  .modal-buttons {
+    margin-top: 20px;
   }
 
   .buttons-content {
     display: flex;
   }
 
-  .cancel-btn, .yes-btn {
+  .cancel-btn,
+  .yes-btn {
     width: 50%;
   }
 
-  button.yes, button.cancel{
+  button.yes,
+  button.cancel {
     width: 85%;
     padding: 15px;
     border: 1px solid transparent;
@@ -95,8 +124,15 @@ export const StyledDeleteModal = styled.div`
     line-height: 22px;
   }
 
-  button.cancel{
-    background-color: #F0F0F0;
+  button.cancel {
+    background-color: #f0f0f0;
   }
+
+  button.yes {
+    background-image: linear-gradient(#ff483c 100%, #ff2c5a 100%);
+    color: white;
+  }
+
+    /* MODAL BUTTON-SECTION ENDS  */
 
 `;
