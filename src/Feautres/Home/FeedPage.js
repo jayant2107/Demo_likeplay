@@ -5,8 +5,11 @@ import styled from "styled-components";
 import userProfileImg from "../../Assets/Images/userProfileFeed.png";
 import HeartTickImg from "../../Assets/Images/heartTickFeed.png";
 import ThreeDotsImg from "../../Assets/Images/OptionsDotsFeed.png";
-import UserPostImg from "../../Assets/Images/userPost.png";
-
+import UserPostImg from "../../Assets/Images/userPost.png"
+import DownArrowImg from '../../Assets/Images/downArrow.png'
+//IconsFunctions
+import { CommentFeedIcon, HeartFeedIcon, LikeFeedIcon, StarFeedIcon, TagFeedIcon } from "../../Utils/HomeIconsFun";
+ 
 const FeedPage = () => {
   return (
     <UserPostCss>
@@ -37,9 +40,30 @@ const FeedPage = () => {
         <img src={UserPostImg} alt="UserPostImg" />
       </div>
       <div className="commentLike">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
+        <div className="likeDiv">
+          <div>
+          <LikeFeedIcon />
+          <span>18</span>
+          </div>
+          <div>
+          <HeartFeedIcon/>
+          <span>18</span>
+          </div>
+          <div>
+          <StarFeedIcon/>
+          <span>18</span>
+          </div>
+        </div>
+        <div className="commentDiv">
+           <span><CommentFeedIcon/></span><span> 18 Comments</span>
+        </div>
+        <div className="commentDiv">
+          <span><TagFeedIcon/></span><span>5 tags</span><span className="arrow"><img src={DownArrowImg} alt='DownArror'/></span>
+        </div>
+      </div>
+      <div className="commentInput">
+        <input type='text' placeholder="Add a Comment...."/>
+        <button>Post</button>
       </div>
       <h2>hello</h2>
     </UserPostCss>
@@ -63,12 +87,13 @@ export const UserPostCss = styled.div`
   }
   .profileImg {
     border: 1px solid transparent;
-    border-radius: 2rem;
-    height: 3.7rem;
-    width: 100%;
-    img {
-      width: 100%;
-      height: 100%;
+    border-radius:2rem;
+    height : 3.7rem;
+    width :100%;
+    overflow : hidden;
+    img{
+        width : 100%;
+        height : 100%;
     }
   }
   .ProfileInfo {
@@ -116,14 +141,48 @@ export const UserPostCss = styled.div`
     }
   }
 
-  .commentLike {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-column-gap: 1rem;
+.commentLike{
+    display : grid;
+    grid-template-columns : 32% 32% 32%;
+    justify-content: space-between;
+    height : 4rem;
+    div{
+      background-color : #f7f7f7;
+      border-radius : 0.8rem;
   }
+}
 
-  .commentLike div {
-    background-color: #f7f7f7;
-    border-radius: 0.4rem;
+.likeDiv{
+  display : flex;
+  justify-content : space-around;
+  align-items : center;
+  div{
+    display : flex;
+    justify-content : space-around;
+    align-items : center;
   }
+}
+.commentDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span{
+    display: flex;
+    margin : 0 0.2rem;
+  }
+  .arrow{
+    margin : 0 0.8rem;
+  }
+}
+
+.commentInput{
+  position : relative;
+
+  input{
+    width : 100%;
+    height : auto;
+    font-size : 0.9rem;
+    border : 1px solid white;
+  }
+}
 `;
