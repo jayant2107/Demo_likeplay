@@ -1,11 +1,11 @@
 import React from "react";
-import "../../Style/Settings/Setting.css";
 import { Space, Input } from "antd";
+import styled from "styled-components";
 const ResetPassword = () => {
   const [passwordVisible, setPasswordVisible] = React.useState(false);
   return (
     <>
-      <div className="ResetPass">
+      <ResetPass>
         <div className="InnerResetPass">
           <div>
             <p> Enter Old Password</p>
@@ -37,13 +37,41 @@ const ResetPassword = () => {
               />
             </Space>
           </div>
-          <div>
+          <div className="btnPass">
             <button className="PassChan">Change New Pasword</button>
           </div>
         </div>
-      </div>
+      </ResetPass>
     </>
   );
 };
 
 export default ResetPassword;
+const ResetPass = styled.div`
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  .InnerResetPass {
+    width: 75%;
+  }
+  .InputMeth {
+    width: 440px;
+    border-radius: 10px;
+    height: 56px;
+    padding-left: 24px;
+  }
+  .PassChan {
+    width: 226px;
+    background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
+    border: none;
+    height: 48px;
+    border-radius: 10px;
+    color: #fbfaf8;
+    font-size: 15px;
+  }
+  .btnPass {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;

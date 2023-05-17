@@ -7,6 +7,8 @@ import {
   Routes,
 } from "react-router-dom";
 import Settings from "../Feautres/Settings/Settings";
+import Matches from "../Feautres/Matches/Matches";
+import MatchesDetailPage from "../Feautres/Matches/Matches_Detail _Page";
 let PublicRouter = ({ isAuth }) => {
   if (isAuth === true) {
     return <Navigate to="/Layout/Home" />;
@@ -43,7 +45,11 @@ const Routing = () => {
           <Route element={<PrivateRouter isAuth={prop} />}>
             {/* <Route path="/Layout" element={<Layout />}> */}
             {/* <Route path="/Layout/Home" element={<Home />} /> */}
-            {/* <Route path="/Layout/Matches" element={<Matches />} /> */}
+            <Route path="/Layout/Matches" element={<Matches />} />
+            <Route
+              path="/Layout/MatchesDetailPage"
+              element={<MatchesDetailPage />}
+            />
             {/* <Route path="/Layout/Admiring" element={<Admiring />} /> */}
             {/* <Route path="/Layout/Messages" element={<Messages />} /> */}
             {/* <Route path="/Layout/Notification" element={<Notification />} /> */}
