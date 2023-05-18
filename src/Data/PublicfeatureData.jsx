@@ -1,5 +1,24 @@
 // logo
-import { category1,category2,category3,category4,category5,category6,category7,category8,category9,category10,category11 } from "../Utils/images/Publichomeimg";
+import {
+  category1,
+  category2,
+  category3,
+  category4,
+  category5,
+  category6,
+  category7,
+  category8,
+  category9,
+  category10,
+  category11,
+  work1,
+  work2,
+  work3,
+  work4,
+  work5,
+  work6,
+  whylikeheart,
+} from "../Utils/images/Publichomeimg";
 const featuresData = [
   {
     logo: category1,
@@ -74,4 +93,88 @@ const featuresData = [
   },
 ];
 
+const workdata = [
+  {
+    logo: work1,
+    count: "1",
+    head: "Sign up for Free",
+    paragraph:
+      " Sign up for Free! Get the first 5 days free, after you sign up Take the first step to finding that special someone by starting on your profile.",
+  },
+  {
+    logo: work2,
+    count: "2",
+    head: "Build Your Profile",
+    paragraph:
+      " Share your photos, things about yourself, and your ideal partner.",
+  },
+  {
+    logo: work3,
+    count: "3",
+    head: "Get Introduced",
+    paragraph:
+      " 4 Get Introduced on the Floor and Pick the Mic. This showcases you to others outside your match.",
+  },
+  {
+    logo: work4,
+    count: "4",
+    head: "Get your Matches",
+    paragraph:
+      " Once you have completed your profile, get your Matches on your Match pages",
+  },
+  {
+    logo: work5,
+    count: "5",
+    head: "Start Chatting",
+    paragraph:
+      ' Admire your Matches & be Admired back by mutual matches & the communication "Chat/Audio/Video calling" opens up for you.',
+  },
+  {
+    logo: work6,
+    count: "6",
+    head: "Take the Floor; Pick the Mic",
+    paragraph:
+      " Let others know you have arrived, post your pictures on The Floor, Pick the Mic and say something to engage users.",
+  },
+];
+
+const whylikeplaydata = [
+  {
+    heartlogo: whylikeheart,
+    paragraph:
+      "Our LikePlay-LikePlay is the #1 (number One) dating platform in Nigeria.We are focused on you, your heart, and serving you with your love goals in mind. Our central purpose is that love is wellbeing, and we improve your well-being by helping you on the path to a solid relationship.",
+  },
+  {
+    heartlogo: whylikeheart,
+    paragraph:
+      "As a busy entrepreneur, or career oriented individual you deserve the best also out of love. ",
+  },
+  {
+    heartlogo: whylikeheart,
+    paragraph:
+      "For women, don't be shy, we want to see you be all you can be, fulfil your potential fall in love, enjoy a long lasting relationship and build a career too.",
+  },
+  {
+    heartlogo: whylikeheart,
+    paragraph:
+      "Bring out the best you, and make that connection through our platform. For every man who wondered if there are still ladies they can call a true friend and partner, look no further.",
+  },
+  {
+    heartlogo: whylikeheart,
+    paragraph:
+      "LikePlay-LikePlay.com is designed to make it easier for you to find what you are looking for.",
+  },
+  {
+    heartlogo: whylikeheart,
+    paragraph:
+      "We are not copy-cats, or present a cookie-cutter solution! We are intentionally building for you so that you can have a lot of fun, on the journey of love.",
+  },
+  {
+    heartlogo: whylikeheart,
+    paragraph:
+      "We plan on improving and fine-tuning to ensure we remain fresh. Our site has 100% verified users and your safety  and security is not a cliché.",
+  },
+];
 export default featuresData;
+
+export { workdata,whylikeplaydata };

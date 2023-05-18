@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import SubscriptionLayout from './SubscriptionLayout'
+import SubscriptionLayout from '../Layouts/SubscriptionLayout'
 
 const ModalLayout = () => {
   return (
@@ -35,12 +35,12 @@ const StyledLayout = styled.div`
 }
 
 .inner{
-  width: 74%;
+  width: 60%;
   background-color: white;
   box-shadow: rgba(0,0,0,0.5) 0px 1px 20px 0px;
   margin: auto;
   position: fixed;
-  top: 50%;
+  top:50%;
   left: 50%;
   transform: translate(-50% , -50%);
 }

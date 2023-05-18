@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import rectangle from "../../Assets/Images/Akshay/Rect.svg"
-import ModalLayout from '../../Layouts/ModalLayout'
+import ModalLayout from '../../Modals/ModalLayout'
 const Subscription = () => {
   return (
     <>
