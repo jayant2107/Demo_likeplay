@@ -1,12 +1,14 @@
-import React from 'react'
-import Subscriptions from '../src/Feautres/Subscription/Subscriptions'
+import React from 'react';
+import './App.css';
+import MatchesDetailPage from './Feautres/Matches/Matches_Detail _Page';
 
-const App = () => {
+
+function App() {
   return (
-    <div>
-        <Subscriptions/>
-    </div>
-  )
+    <>
+    <MatchesDetailPage/>
+    </>
+  );
 }
 
-export default App
+export default App;

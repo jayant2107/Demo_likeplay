@@ -1,11 +1,24 @@
 import React from 'react'
+import styled from 'styled-components';
+import MatchesCard2 from '../../Components/MatchesCard2';
+import Details from "./Matches_JSON2"
 
 const MatchesDetailPage = () => {
-  return (
-    <div>
+ console.log(Details)
+    return (
+    <MatchesDetailsStyle>
+      <div className='Card'>
+        { Details.map((value)=>(
+            <MatchesCard2 key={value.id} props={value}/>
+        ))}
+      </div>
       
-    </div>
+    </MatchesDetailsStyle>
   )
 }
 
-export default MatchesDetailPage
+export default MatchesDetailPage;
+
+const MatchesDetailsStyle = styled.div`
+
+`;

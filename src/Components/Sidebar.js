@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import {sidebarimage} from '../Utils/Images';
+import '../Style/global.css'
+
+import { Popover } from 'antd';
 import { Admirers, Admiring, FAQ, Home, Matches, Menu, Messages, Notification, Setting, Subscription, Testimonial } from '../Utils/Logo';
 
 
@@ -10,6 +13,20 @@ import { Admirers, Admiring, FAQ, Home, Matches, Menu, Messages, Notification, S
 
 export default function Sidebar() {
     const [colorsetting,setcolorsetting]=useState(false)
+    const [Admiringcolor,setAdmiringcolor]=useState(false)
+    const [Admirerscolor,setAdmirerscolor]=useState(false)
+    const [messagescolor,setmessagescolor]=useState(false)
+    const [Notificationcolor,setNotificationcolor]=useState(false)
+    const [Matchescolor,setMatchescolor]=useState(false)
+    const [Settingcolor,setSettingcolor]=useState(false)
+    const [Subscriptioncolor,setsubscriptioncolor]=useState(false)
+    const [FAQcolor,setFAQcolor]=useState(false)
+    const [Testimonialcolor,setTestimonialcolor]=useState(false)
+    const content=(<Morecontent>
+    <p>Verification</p>
+    <p>Refer to friends</p>
+    <p style={{color:'red'}}>Logout</p>
+    </Morecontent>)
     const primarycolor='#A8580F'
     const secondarycolor='#7B7F91'
     return (
@@ -33,81 +50,81 @@ export default function Sidebar() {
                         <p>Home</p>
                     </Slabel>
                 </Slinkcontainer>
-                <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
+                <Slinkcontainer  onMouseEnter={()=> setAdmiringcolor(true)} onMouseLeave={()=>setAdmiringcolor(false)}>
                     <Slogo>
-                    <Admiring color={colorsetting?primarycolor:secondarycolor}/>
+                    <Admiring color={Admiringcolor?primarycolor:secondarycolor}/>
                         
                     </Slogo>
                     <Slabel>
                         <p>Admiring</p>
                     </Slabel>
                 </Slinkcontainer>
-                <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
+                <Slinkcontainer  onMouseEnter={()=> setAdmirerscolor(true)} onMouseLeave={()=>setAdmirerscolor(false)}>
                     <Slogo>
-                    <Admirers color={colorsetting?primarycolor:secondarycolor}/>
+                    <Admirers color={Admirerscolor?primarycolor:secondarycolor}/>
                        
                     </Slogo>
                     <Slabel>
                         <p>Admirers</p>
                     </Slabel>
                 </Slinkcontainer>
-                <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
+                <Slinkcontainer  onMouseEnter={()=> setmessagescolor(true)} onMouseLeave={()=>setmessagescolor(false)}>
                     <Slogo>
-                    <Messages color={colorsetting?primarycolor:secondarycolor}/>
+                    <Messages color={messagescolor?primarycolor:secondarycolor}/>
                         
                     </Slogo>
                     <Slabel>
                         <p>Messages</p>
                     </Slabel>
                 </Slinkcontainer>
-                <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
+                <Slinkcontainer  onMouseEnter={()=> setNotificationcolor(true)} onMouseLeave={()=>setNotificationcolor(false)}>
                     <Slogo>
-                    <Notification color={colorsetting?primarycolor:secondarycolor}/>
+                    <Notification color={Notificationcolor?primarycolor:secondarycolor}/>
                       
                     </Slogo>
                     <Slabel>
                         <p>Notification</p>
                     </Slabel>
                 </Slinkcontainer>
-                <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
+                <Slinkcontainer  onMouseEnter={()=> setMatchescolor(true)} onMouseLeave={()=>setMatchescolor(false)}>
                     <Slogo>
-                    <Matches color={colorsetting?primarycolor:secondarycolor}/>
+                    <Matches color={Matchescolor?primarycolor:secondarycolor}/>
                        
                     </Slogo>
                     <Slabel>
                         <p>Matches</p>
                     </Slabel>
                 </Slinkcontainer>
-                <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
+                <Slinkcontainer  onMouseEnter={()=> setSettingcolor(true)} onMouseLeave={()=>setSettingcolor(false)}>
                     <Slogo>
-                    <Setting color={colorsetting?primarycolor:secondarycolor}/>
+                    <Setting color={Settingcolor?primarycolor:secondarycolor}/>
                        
                     </Slogo>
                     <Slabel>
                         <p>Setting</p>
                     </Slabel>
                 </Slinkcontainer>
-                <Slinkcontainer  onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
+                <Slinkcontainer  onMouseEnter={()=> setsubscriptioncolor(true)} onMouseLeave={()=>setsubscriptioncolor(false)}>
                     <Slogo>
-                    <Subscription color={colorsetting?primarycolor:secondarycolor}/>
+                    <Subscription color={Subscriptioncolor?primarycolor:secondarycolor}/>
                       
                     </Slogo>
                     <Slabel>
                         <p>Subscription</p>
                     </Slabel>
                 </Slinkcontainer>
-                <Slinkcontainer onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
+                <Slinkcontainer onMouseEnter={()=> setFAQcolor(true)} onMouseLeave={()=>setFAQcolor(false)}>
                     <Slogo>
-                    <FAQ color={colorsetting?primarycolor:secondarycolor}/>
+                    <FAQ color={FAQcolor?primarycolor:secondarycolor}/>
                         
                     </Slogo>
                     <Slabel>
                         <p>FAQs</p>
                     </Slabel>
                 </Slinkcontainer>
-                <Slinkcontainer onMouseEnter={()=> setcolorsetting(true)} onMouseLeave={()=>setcolorsetting(false)}>
+                <Slinkcontainer onMouseEnter={()=> setTestimonialcolor(true)} onMouseLeave={()=>setTestimonialcolor(false)}>
                     <Slogo>
-                    <Testimonial color={colorsetting?primarycolor:secondarycolor}/>
+                    <Testimonial color={Testimonialcolor?primarycolor:secondarycolor}/>
                         
                     </Slogo>
                     <Slabel>
@@ -118,19 +135,36 @@ export default function Sidebar() {
                     <Slogo>
                  <Menu color='black'/>
                     </Slogo>
-                    <Slabel>
-                        <p style={{color:'black'}}>Menu</p>
+                    <Popover content={content}  >
+
+                    <Slabel >
+                        <p style={{color:'black'}}>More</p>
                     </Slabel>
+                    </Popover>
                 </Slinkcontainer>
             </Sidebarwrapper>
 
         </>
     )
 }
+const Morecontent=styled.div`
+padding: 10px 25px;
+
+border: 1px solid #DDDDDD;
+border-radius:10px;
+color: #7B7F91;
+P{
+    padding:0px;
+    font-size:16px;
+    cursor: pointer;
+}
+
+
+`
 const Sidebarwrapper = styled.div `
 width:300px;
 height:100vh;
-position:fixed;
+// position:fixed;
 background-color:white;
 border-right:1px solid #E2E2E2
 `
@@ -158,12 +192,12 @@ cursor: pointer;
     }
 }
 
+
+
 `
 
 const Slogo = styled.div `
-&:hover{
-    color:"red"
-}
+
 `
 const Slabel = styled.div `
 p{
