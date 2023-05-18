@@ -12,6 +12,14 @@ import shotsimg from "../../Assets/Images/userPost.png";
 import shotsimg2 from "../../Assets/Images/userPost3.png";
 import shotsimg3 from "../../Assets/Images/userPost2.png";
 
+// tags  DataImages
+import tag1 from "../../Assets/Images/tagImg.png"
+import tag2 from "../../Assets/Images/tagImg2.png"
+import tag3 from "../../Assets/Images/tagImg3.png"
+import tag4 from "../../Assets/Images/tagImg4.png"
+import tag5 from "../../Assets/Images/tagImg5.png"
+
+
 export const Images = [img1, img2, img3, img4, img5];
 
 export const UsersData = [
@@ -74,3 +82,23 @@ export const ShotsData = [
     // Shots: shotsimg3,
   },
 ];
+
+export const TagesData = [
+  {
+    name : 'Julia Roberts',
+    img : tag1,
+  },
+  {
+    name : 'Natalie Portman',
+    img : tag2,
+  },{
+    name : 'Marilyn Monroe',
+    img : tag3,
+  },{
+    name : 'Sandra Bullock',
+    img : tag4,
+  },{
+    name : 'Meryl Streep',
+    img : tag5,
+  },
+]
