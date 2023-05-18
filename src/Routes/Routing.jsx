@@ -17,7 +17,7 @@ import Footercontent from "../Website/pages/Footercontent";
 import Layout from "../Layouts/Layout";
 let PublicRouter = ({ isAuth }) => {
   if (isAuth === true) {
-    return <Navigate to="/Layout/Home" />;
+    return <Navigate to="/Layout/FeedPage" replace />;
   }
   return <Outlet />;
 };
@@ -28,7 +28,7 @@ let PrivateRouter = ({ isAuth }) => {
   return <Outlet />;
 };
 const Routing = () => {
-  let prop = false;
+  let prop = true;
 
   return (
     <>

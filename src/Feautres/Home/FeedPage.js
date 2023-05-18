@@ -9,7 +9,7 @@ import UserPostCard from "./UserPostCard";
 
 const FeedPage = () => {
   return (
-    <>
+    <Feedpagewrapper>
       {UsersData.map((val, index) => {
         return (
           <>
@@ -17,9 +17,12 @@ const FeedPage = () => {
           </>
         );
       })}
-    </>
+    </Feedpagewrapper>
   );
 };
 
 export default FeedPage;
-
+const Feedpagewrapper=styled.div`
+border-right: 1px solid #e2e2e2;
+border-left:1px solid #e2e2e2;
+`

@@ -61,6 +61,7 @@ const Profilesection = styled.div`
     letter-spacing: 1px;
   }
 `;
+
 const Messagessection = styled.div`
   padding: 10px 20px;
   border-radius: 10px;
@@ -77,6 +78,7 @@ const Messagessection = styled.div`
     display: flex;
     align-items: center;
     gap: 15px;
+    padding: 5px;
   }
   p {
     font-size: 16px;
