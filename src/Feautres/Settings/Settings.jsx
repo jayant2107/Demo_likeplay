@@ -6,11 +6,20 @@ import ResetPassword from "./SettingComponents/ResetPassword";
 import UpgradeSubscription from "./SettingComponents/UpgradeSubscription";
 import BlockedUser from "./SettingComponents/BlockedUser";
 import CancelSubscription from "./SettingComponents/CancelSubscription";
-
+import { message, Space } from "antd";
 const Settings = () => {
   const [btn, setBtn] = useState("Reset");
+  const [messageApi, contextHolder] = message.useMessage();
+  const warning = () => {
+    messageApi.open({
+      type: "warning",
+      content: "Account has been delete",
+      duration: 1,
+    });
+  };
   return (
     <>
+      {contextHolder}
       <Wrapper>
         <div className="Header">
           <div className="Setting">Settings</div>
@@ -107,7 +116,9 @@ const Settings = () => {
                   <div>
                     <img src={trash} alt="Something Wrong" />
                   </div>
-                  <div className="deleteac">Delete Account</div>
+                  <div className="deleteac" onClick={warning}>
+                    Delete Account
+                  </div>
                 </div>
               </button>
             </div>
@@ -181,7 +192,7 @@ const Wrapper = styled.div`
     height: 85vh;
   }
   .SetLeft {
-    width: 25%;
+    width: 30%;
     display: flex;
     justify-content: space-between;
     flex-direction: column;

@@ -73,6 +73,7 @@ const ResetPass = styled.div`
     border-radius: 10px;
     color: #fbfaf8;
     font-size: 15px;
+    cursor: pointer;
   }
   .btnPass {
     margin-left: 6rem;

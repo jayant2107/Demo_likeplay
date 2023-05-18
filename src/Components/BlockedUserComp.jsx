@@ -6,12 +6,12 @@ const BlockedUserComp = ({ ele }) => {
     <>
       <FlexUpgrade Content="space-between" className="InerMargin">
         <FlexUpgrade align="center" className="SecondFlex">
-          <div>
-            <img src={ele.img} alt="Something Wrong" />
+          <div className="blockdiv">
+            <img src={ele.img} alt="Something Wrong" className="imgBlock" />
           </div>
           <div className="name">{ele.name}</div>
         </FlexUpgrade>
-        <div>
+        <div className="Unblockdiv">
           <button className="UnBlock">Unblock</button>
         </div>
       </FlexUpgrade>

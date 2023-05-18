@@ -18,7 +18,7 @@ import Layout from "../Layouts/Layout";
 import Notfound from "../Feautres/Notfound/Notfound";
 let PublicRouter = ({ isAuth }) => {
   if (isAuth === true) {
-    return <Navigate to="/Layout/FeedPage" />;
+    return <Navigate to="/Layout/FeedPage" replace />;
   }
   return <Outlet />;
 };
@@ -40,7 +40,7 @@ const Routing = () => {
             <Route path="/Registration" element={<Risgistation />} />
             <Route path="/Safety" element={<Footercontent />} />
             <Route path="/Nigeria" element={<country />} />
-            <Route path="*" element={<Notfound/>}/>
+            <Route path="*" element={<Notfound />} />
           </Route>
           <Route element={<PrivateRouter isAuth={prop} />}>
             <Route path="/Layout" element={<Layout />}>
