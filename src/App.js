@@ -1,14 +1,14 @@
-import React from "react";
 import "./App.css";
-// import MatchesDetailPage from "./Feautres/Matches/Matches_Detail _Page";
-import Country from "./Website/pages/country";
+// import Settings from "./Feautres/Settings/Settings";
+import React from "react";
+import Routing from "./Routes/Routing";
+
 function App() {
   return (
     <>
-      <Country />
-      {/* <MatchesDetailPage /> */}
+      {/* <Settings /> */}
+      <Routing />
     </>
   );
 }
-
 export default App;
