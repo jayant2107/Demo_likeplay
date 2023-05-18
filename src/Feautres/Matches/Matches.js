@@ -4,6 +4,8 @@ import MatchesCard from '../../Components/MatchesCard';
 import data from '../../Feautres/Matches/Matches_JSON'
 
 const Matches = () => {
+
+  
   return (
     <MatchesStyle>
          <div className='Tips'><p>Online dating Tips?</p> </div>
@@ -23,18 +25,17 @@ width: 100%;
 
 .Cards{
     position: relative;
-    width: 60%;
+    /* width: 60%; */
    
-    margin: auto;
+    /* margin: auto; */
     height: 100vh ;
     margin-top: 2rem;
     display:grid;
     grid-template-columns: auto auto auto auto;
 }
 .Tips {
-    width: 60%;
-   
-   margin: auto;
+    /* width: 60%; */
+   /* margin: auto; */
 font-size: 14px;
 text-align: right;
 text-decoration-line: underline;

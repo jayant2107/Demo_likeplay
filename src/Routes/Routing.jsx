@@ -11,6 +11,7 @@ import Matches from "../Feautres/Matches/Matches";
 import MatchesDetailPage from "../Feautres/Matches/Matches_Detail _Page";
 import FeedPage from "../Feautres/Home/FeedPage";
 import Publichome from "../Feautres/Home/Publichome";
+import { Layout } from "antd";
 let PublicRouter = ({ isAuth }) => {
   if (isAuth === true) {
     return <Navigate to="/Layout/Home" />;
@@ -45,7 +46,7 @@ const Routing = () => {
             {/* <Route path="/Cote" element={<Cote />} /> */}
           </Route>
           <Route element={<PrivateRouter isAuth={prop} />}>
-            {/* <Route path="/Layout" element={<Layout />}> */}
+            <Route path="/Layout" element={<Layout/>}>
             <Route path="/Layout/FeedPage" element={<FeedPage />} />
             <Route path="/Layout/Matches" element={<Matches />} />
             <Route
@@ -59,7 +60,7 @@ const Routing = () => {
             <Route path="/Layout/Settings" element={<Settings />} />
             {/* <Route path="/Layout/FAQs" element={<FAQs />} /> */}
             {/* <Route path="/Layout/Testimonal" element={<Testimonal />} /> */}
-            {/* </Route> */}
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

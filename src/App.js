@@ -1,11 +1,17 @@
 import React from 'react';
-import MatchesDetailPage from './Feautres/Matches/Matches_Detail _Page';
 
+// import Routing from './Routes/Routing';
+import Matches from './Feautres/Matches/Matches';
+// import MatchesDetailPage from './Feautres/Matches/Matches_Detail _Page';
+// import  CommentModal from "./Modals/CommentModal";
 
 function App() {
   return (
     <>
-    <MatchesDetailPage/>
+    {/* <Routing/> */}
+    <Matches/>
+    {/* <MatchesDetailPage/> */}
+    {/* <CommentModal/> */}
     </>
   );
 }
