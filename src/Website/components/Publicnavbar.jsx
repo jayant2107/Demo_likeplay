@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { LikePlaylogo } from "../../Utils/images/Publichomeimg";
+import { useNavigate } from "react-router-dom";
 const Navbar = styled.nav`
   .nav {
     /* position: fixed; */
@@ -59,6 +60,7 @@ const Navbar = styled.nav`
 `;
 
 export default function Publicnavbar() {
+  const navigate = useNavigate();
   return (
     <>
       <Navbar>
@@ -71,7 +73,7 @@ export default function Publicnavbar() {
               <li>How it Works</li>
               <li>Safety</li>
               <div className="btn_div">
-                <button className="btn1" >Login</button>
+                <button className="btn1">Login</button>
                 <button className="btn2">Join Now</button>
               </div>
             </ul>
