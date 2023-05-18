@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { arrow, trash } from "../../Utils/IconsP";
-import ReferFriend from "./ReferFriend";
-import ResetPassword from "./ResetPassword";
-import UpgradeSubscription from "./UpgradeSubscription";
+import ReferFriend from "./SettingComponents/ReferFriend";
+import ResetPassword from "./SettingComponents/ResetPassword";
+import UpgradeSubscription from "./SettingComponents/UpgradeSubscription";
+import BlockedUser from "./SettingComponents/BlockedUser";
+import CancelSubscription from "./SettingComponents/CancelSubscription";
+
 const Settings = () => {
+  const [btn, setBtn] = useState("Reset");
   return (
     <>
       <Wrapper>
@@ -15,7 +19,12 @@ const Settings = () => {
           <div className="SetLeft">
             <div className="Setfir">
               <div>
-                <button className="NormalBtn">
+                <button
+                  className={
+                    btn === "Reset" ? "gradient ActiveState left" : "NormalBtn"
+                  }
+                  onClick={() => setBtn("Reset")}
+                >
                   <FlexCustom Content="space-between" Align="center">
                     <div>Reset Password</div>
                     <div>
@@ -25,7 +34,12 @@ const Settings = () => {
                 </button>
               </div>
               <div>
-                <button className="NormalBtn">
+                <button
+                  className={
+                    btn === "Refer" ? "gradient ActiveState left" : "NormalBtn"
+                  }
+                  onClick={() => setBtn("Refer")}
+                >
                   <FlexCustom Content="space-between" Align="center">
                     <div>Refer Friends</div>
                     <div>
@@ -35,7 +49,14 @@ const Settings = () => {
                 </button>
               </div>
               <div>
-                <button className="NormalBtn">
+                <button
+                  className={
+                    btn === "Upgrade"
+                      ? "gradient ActiveState left"
+                      : "NormalBtn"
+                  }
+                  onClick={() => setBtn("Upgrade")}
+                >
                   <FlexCustom Content="space-between" Align="center">
                     <div className="Upgrade">
                       Upgrade my
@@ -48,7 +69,14 @@ const Settings = () => {
                 </button>
               </div>
               <div>
-                <button className="NormalBtn">
+                <button
+                  className={
+                    btn === "Blocked"
+                      ? "gradient ActiveState left"
+                      : "NormalBtn"
+                  }
+                  onClick={() => setBtn("Blocked")}
+                >
                   <FlexCustom Content="space-between" Align="center">
                     <div>Blocked Users</div>
                     <div>
@@ -58,7 +86,12 @@ const Settings = () => {
                 </button>
               </div>
               <div>
-                <button className="NormalBtn">
+                <button
+                  className={
+                    btn === "Cancel" ? "gradient ActiveState left" : "NormalBtn"
+                  }
+                  onClick={() => setBtn("Cancel")}
+                >
                   <FlexCustom Content="space-between" Align="center">
                     <div>Cancel Subscription</div>
                     <div>
@@ -69,16 +102,28 @@ const Settings = () => {
               </div>
             </div>
             <div>
-              <div className="innerFlexBtn">
-                <div>
-                  <img src={trash} alt="Something Wrong" />
+              <button className="deltebtn">
+                <div className="innerFlexBtn">
+                  <div>
+                    <img src={trash} alt="Something Wrong" />
+                  </div>
+                  <div className="deleteac">Delete Account</div>
                 </div>
-                <div className="deleteac">Delete Account</div>
-              </div>
+              </button>
             </div>
           </div>
           <div className="SetRight">
-            <UpgradeSubscription />
+            {btn === "Refer" ? (
+              <ReferFriend />
+            ) : btn === "Reset" ? (
+              <ResetPassword />
+            ) : btn === "Upgrade" ? (
+              <UpgradeSubscription />
+            ) : btn === "Blocked" ? (
+              <BlockedUser />
+            ) : (
+              <CancelSubscription />
+            )}
           </div>
         </div>
       </Wrapper>
@@ -90,16 +135,27 @@ export default Settings;
 
 const Wrapper = styled.div`
   font-family: "Poppins", sans-serif;
+  height: 100vh;
   .Header {
     background-color: #f0f0f0;
     font-weight: 600;
     font-size: 18px;
     height: 10vh;
   }
+  .deltebtn {
+    width: 85%;
+    height: 3rem;
+    background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
+    border: none;
+    border-radius: 10px;
+    color: white;
+  }
   .Setfir {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+  }
+  .Setfir > div:not(:first-child) {
+    margin-top: 5%;
   }
   .Header .Setting {
     height: 100%;
@@ -112,15 +168,16 @@ const Wrapper = styled.div`
     display: flex;
     align-items: start;
     padding: 2rem 0;
+    height: 85vh;
   }
   .SetLeft {
     width: 25%;
     display: flex;
-    /* justify-content: space-around; */
+    justify-content: space-between;
     flex-direction: column;
+    height: 100%;
   }
   .SetLeft > div:not(:first-child) {
-    margin-top: 26%;
   }
 
   /* .SetLeft > div div:not(:first-child) {
@@ -138,6 +195,11 @@ const Wrapper = styled.div`
     border: 10px solid;
     border-image-slice: 1;
     border-width: 5px;
+    width: 80%;
+    height: 58px;
+    padding: 3% 5%;
+    font-weight: 600;
+    background: pink;
   }
 
   .gradient {
@@ -157,15 +219,6 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 75%;
-    height: 3rem;
-    background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
-    border: none;
-    border-radius: 10px;
-    color: white;
-  }
-  .deleteac {
-    padding-left: 6px;
   }
 `;
 const FlexCustom = styled.div`
