@@ -1,13 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 import logo1 from "../Assets/Images/Matches Image/logo1 (1).png"
 import logo2 from "../Assets/Images/Matches Image/logo1 (2).png"
+import CommentModal  from '../Modals/CommentModal';
 
 
 const MatchesCard = ({props}) => {
+ 
+    const [showDiv, setShowDiv] = useState(false);
+
+    const handleOpenDiv = () => {
+      setShowDiv(true);
+    };
+  
+    const handleClose = () => {
+      setShowDiv(false);
+    };
   return (
     <MatchesCardStyle>
-     <div className="MainDiv" >
+        {showDiv && <CommentModal props={props} show={showDiv} close={handleClose} />}
+     <div className="MainDiv" onClick={handleOpenDiv} >
        
        <img src={props.Image} alt='' className="img"/>
        {
