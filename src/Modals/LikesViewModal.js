@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { likesView } from "../Utils/images/Modalsimg";
+import { likesView2, likesView3 } from "../Utils/images/Modalsimg";
+import { exit } from "../Utils/icons-folder/Modalsicons";
 
 export default function LikesViewModal() {
   const [likedData, setLikedData] = useState([]);
@@ -10,16 +12,14 @@ export default function LikesViewModal() {
   }, []);
 
   return (
-   
     <>
-     {likedData.map((likes)=>{
-    console.log("like",likes.name)
-      
-})}
       <StyledLikesModal>
         <div className="modal">
           <div className="modal-container">
             <div className="modal-content">
+            <div className="delete-icon">
+                <img src={exit} alt="exit" id="exit" />
+              </div>
               <div className="content-container">
                 {/******* MODAL HEADER-SECTION STARTS ********/}
 
@@ -42,12 +42,20 @@ export default function LikesViewModal() {
 
                 <div className="modal-hero-section">
                   <div className="hero-content">
-                    <div className="liked-people">
-                      <div className="pic">
-                        <img src={likesView} alt="likes"></img>
-                      </div>
-                      <div className="name">Julia Roberts</div>
-                    </div>
+                    {likedData.map((likes) => {
+                      return (
+                        <>
+                          <div className="like-content">
+                            <div className="liked-people">
+                              <div className="pic">
+                                <img src={likes.photo} alt="likes"></img>
+                              </div>
+                              <div className="name">{likes.name}</div>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -87,6 +95,21 @@ export const StyledLikesModal = styled.div`
     transform: translate(-50%, -50%);
   }
 
+  .delete-icon {
+    width: 24px;
+    height: 24px;
+    color: green;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    cursor: pointer;
+    position: absolute;
+    top: -25px;
+    right: 0px;
+  }
+
   .content-container {
     padding: 12px;
   }
@@ -111,19 +134,18 @@ export const StyledLikesModal = styled.div`
 
   /******* MODAL HERO-SECTION STARTS ********/
 
-  .hero-content {
-    display: flex;
-    justify-content: flex-start;
-  }
-
   .liked-people {
     display: flex;
-    width: 40%;
+    width: 42%;
     justify-content: space-evenly;
+    margin-bottom: 10px;
   }
 
   .name {
     margin: auto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
   }
 
   /******** MODAL HERO-SECTION ENDS ********/
@@ -135,11 +157,11 @@ export const Liked = [
     name: "Julia Roberts",
   },
   {
-    photo: likesView,
+    photo: likesView2,
     name: "Natalie Portman",
   },
   {
-    photo: likesView,
+    photo: likesView3,
     name: "Marilyn Monroe",
   },
 ];

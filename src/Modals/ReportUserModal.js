@@ -1,33 +1,60 @@
+import React from "react";
 import styled from "styled-components";
 import StyledButton from "../Components/Button";
 import { exit } from "../Utils/icons-folder/Modalsicons";
 
-export default function DeleteModal() {
+
+export default function ReportUserModal() {
   return (
     <>
-      <StyledDeleteModal>
+      <StyledReportModal>
         <div className="modal">
           <div className="modal-container">
             <div className="modal-content">
-            <div className="delete-icon">
+              <div className="delete-icon">
                 <img src={exit} alt="exit" id="exit" />
               </div>
               <div className="content-container">
                 {/* MODAL HEADING-SECTION STARTS */}
-
                 <div className="modal-head">
                   <div className="heading">Report User</div>
+                  <div className="para">
+                    Kindly Select why you want to report this user
+                  </div>
                 </div>
 
                 {/* MODAL HEADING-SECTION ENDS */}
 
-                {/* MODAL PARA-SECTION STARTS  */}
+                {/* MODAL HERO-SECTION STARTS */}
 
-                <div className="modal-para">
-                  Are you sure you want to block user?
+                <div className="modal-hero-section">
+                  <div className="complaints-section">
+                    <div className="complaint">
+                      <div className="complaint-content">
+                        Bullying or harassment
+                      </div>
+                    </div>
+                    <div className="complaint">
+                      <div className="complaint-content">Scam or fraud</div>
+                    </div>
+                    <div className="complaint">
+                      <div className="complaint-content">
+                        Nudity or sexual activity
+                      </div>
+                    </div>
+                    <div className="complaint">
+                      <div className="complaint-content">False information</div>
+                    </div>
+                  </div>
+                  <div className="other-reason">
+                    <div className="reason-head"></div>
+                    <div className="reason-input">
+                      <input type="text" placeholder="Type something..." />
+                    </div>
+                  </div>
                 </div>
 
-                {/* MODAL PARA-SECTION ENDS  */}
+                {/* MODAL HERO-SECTION STARTS */}
 
                 {/* MODAL BUTTONS-SECTION STARTS  */}
                 <div className="modal-buttons">
@@ -52,12 +79,12 @@ export default function DeleteModal() {
             </div>
           </div>
         </div>
-      </StyledDeleteModal>
+      </StyledReportModal>
     </>
   );
 }
 
-export const StyledDeleteModal = styled.div`
+export const StyledReportModal = styled.div`
   .modal-container {
     width: 100%;
     height: 100vh;
@@ -99,7 +126,7 @@ export const StyledDeleteModal = styled.div`
   }
 
   .content-container {
-    padding: 12px;
+    padding: 15px;
   }
   /* MODAL HEADING-SECTION STARTS */
 
@@ -107,23 +134,61 @@ export const StyledDeleteModal = styled.div`
     color: #242424;
     font-size: 26px;
     font-weight: 500;
+    line-height: 20px;
     text-align: center;
   }
 
-  /* MODAL HEADING-SECTION ENDS */
+  /* MODAL PARA-SECTION STARTS */
 
-  /* MODAL PARA-SECTION STARTS  */
-
-  .modal-para {
-    font-size: 16px;
-    line-height: 24px;
+  .para {
     color: #7b7f91;
-    width: 75%;
-    margin: auto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
     margin-top: 10px;
   }
 
-  /* MODAL PARA-SECTION ENDS  */
+  /*MODAL PARA-SECTION ENDS*/
+
+  /* MODAL HEADING-SECTION ENDS */
+
+  /* MODAL HERO-SECTION STARTS */
+
+  .modal-hero-section {
+    margin-top: 20px;
+  }
+
+  .complaints-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .complaint {
+    padding: 15px;
+    background-color: #f0f0f0;
+    font-size: 12px;
+    margin-bottom: 10px;
+    font-weight: 400;
+    line-height: 18px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    padding-top: 15px;
+    padding-bottom: 30px;
+
+  }
+
+  /* MODAL HERO-SECTION ENDS */
 
   /* MODAL BUTTON-SECTION STARTS  */
 
