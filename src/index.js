@@ -13,8 +13,8 @@ root.render(
   <React.StrictMode>
     {/* <App /> */}
     {/* <Publichome /> */}
-    {/* <FeedPage/> */}
-    <FeedAboutMe/>
+    <FeedPage/>
+    {/* <FeedAboutMe/> */}
     {/* <FeedShots/> */}
   </React.StrictMode>
 );

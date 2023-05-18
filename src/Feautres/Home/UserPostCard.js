@@ -15,8 +15,20 @@ import {
   TagFeedIcon,
 } from "../../Utils/HomeIconsFun";
 
+import { Popover } from "antd";
+
 const UserPostCard = ({ val }) => {
-  const [comment, setComment] = useState(false);
+  // const [comment, setComment] = useState(false);
+
+  const content = (
+    <div>
+    <div>Edit</div>
+    <div>Block</div>
+    <div>Delete</div>
+    <div>Report</div>
+    <div>Hide Shot</div>
+    </div>
+    )
 
   return (
     <UserPostCardCss>
@@ -34,7 +46,9 @@ const UserPostCard = ({ val }) => {
             <img src={HeartTickImg} alt="HeartTickImg" />
           </div>
           <div>
+            <Popover content={content} placement='bottomRight' trigger='click'>
             <img src={ThreeDotsImg} alt="HeartTickImg" />
+            </Popover>
           </div>
         </div>
       </div>
@@ -230,5 +244,8 @@ export const UserPostCardCss = styled.div`
     cursor: pointer;
     font-weight: 500;
     font-size: 1rem;
+  }
+  .divPop{
+    color :red;
   }
 `;
