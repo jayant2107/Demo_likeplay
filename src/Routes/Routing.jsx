@@ -29,7 +29,7 @@ let PrivateRouter = ({ isAuth }) => {
   return <Outlet />;
 };
 const Routing = () => {
-  let prop = false;
+  let prop = true;
 
   return (
     <>
@@ -46,6 +46,7 @@ const Routing = () => {
             <Route path="/Layout" element={<Layout />}>
               <Route path="/Layout/FeedPage" element={<FeedPage />} />
               <Route path="/Layout/Matches" element={<Matches />} />
+              <Route path="/Layout/MatchesDetail" element={<MatchesDetailPage />} />
               <Route
                 path="/Layout/MatchesDetailPage"
                 element={<MatchesDetailPage />}
