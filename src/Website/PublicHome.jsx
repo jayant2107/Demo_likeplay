@@ -139,7 +139,7 @@ export default function Publichome() {
         margin-bottom: 5px;
         padding: 0.5rem 0.8rem;
         border-radius: 5px;
-        &:nth-child(12n + 2),
+        &:nth-child(2),
         &:nth-child(12n + 4),
         &:nth-child(12n + 6),
         &:nth-child(12n + 8),
