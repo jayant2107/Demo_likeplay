@@ -12,11 +12,7 @@ import MatchesDetailPage from "../Feautres/Matches/Matches_Detail _Page";
 import FeedPage from "../Feautres/Home/FeedPage";
 import Risgistation from "../Auth/Risgistation";
 import Publichome from "../Website/PublicHome";
-import Antisextrafficking from "../Website/pages/Antisextrafficking";
-import Safety from "../Website/pages/Safety";
-import Support from "../Website/pages/Support";
-import WomensRights from "../Website/pages/WomensRights";
-import country from "../Website/pages/country";
+
 import Footercontent from "../Website/pages/Footercontent";
 import Layout from "../Layouts/Layout";
 let PublicRouter = ({ isAuth }) => {
@@ -41,25 +37,24 @@ const Routing = () => {
           <Route element={<PublicRouter isAuth={prop} />}>
             <Route path="/" element={<Publichome />} />
             <Route path="/Registration" element={<Risgistation />} />
-            <Route path="/Safety" element={<Footercontent/>} />
-            <Route path="/Nigeria" element={<country/>} />
-           
+            <Route path="/Safety" element={<Footercontent />} />
+            <Route path="/Nigeria" element={<country />} />
           </Route>
           <Route element={<PrivateRouter isAuth={prop} />}>
-            <Route path="/Layout" element={<Layout/>}>
-            <Route path="/Layout/FeedPage" element={<FeedPage />} />
-            <Route path="/Layout/Matches" element={<Matches />} />
-            <Route
-              path="/Layout/MatchesDetailPage"
-              element={<MatchesDetailPage />}
-            />
-            {/* <Route path="/Layout/Admiring" element={<Admiring />} /> */}
-            {/* <Route path="/Layout/Messages" element={<Messages />} /> */}
-            {/* <Route path="/Layout/Notification" element={<Notification />} /> */}
-            {/* <Route path="/Layout/Subscription" element={<Subscription />} /> */}
-            <Route path="/Layout/Settings" element={<Settings />} />
-            {/* <Route path="/Layout/FAQs" element={<FAQs />} /> */}
-            {/* <Route path="/Layout/Testimonal" element={<Testimonal />} /> */}
+            <Route path="/Layout" element={<Layout />}>
+              <Route path="/Layout/FeedPage" element={<FeedPage />} />
+              <Route path="/Layout/Matches" element={<Matches />} />
+              <Route
+                path="/Layout/MatchesDetailPage"
+                element={<MatchesDetailPage />}
+              />
+              {/* <Route path="/Layout/Admiring" element={<Admiring />} /> */}
+              {/* <Route path="/Layout/Messages" element={<Messages />} /> */}
+              {/* <Route path="/Layout/Notification" element={<Notification />} /> */}
+              {/* <Route path="/Layout/Subscription" element={<Subscription />} /> */}
+              <Route path="/Layout/Settings" element={<Settings />} />
+              {/* <Route path="/Layout/FAQs" element={<FAQs />} /> */}
+              {/* <Route path="/Layout/Testimonal" element={<Testimonal />} /> */}
             </Route>
           </Route>
         </Routes>
