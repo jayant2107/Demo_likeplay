@@ -32,6 +32,10 @@ import contory3 from "../../Assets/Images/Publiccontory3.svg";
 import contory4 from "../../Assets/Images/Publiccontory4.svg";
 import contory5 from "../../Assets/Images/Publiccontory5.svg";
 
+// contory big img
+
+import publicNigeriaPA from "../../Assets/Images/PublicNigeriaPA.svg";
+
 import work1 from "../../Assets/Icons/Publicworklogo1PA.svg";
 import work2 from "../../Assets/Icons/Publicworklogo2PA.svg";
 import work3 from "../../Assets/Icons/Publicworklogo3PA.svg";
@@ -100,4 +104,5 @@ export {
   contory3,
   contory4,
   contory5,
+  publicNigeriaPA,
 };
