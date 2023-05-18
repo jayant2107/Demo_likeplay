@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { UserBlock } from "../../../Utils/SettingImgaes/SettingP";
+import BlockedUserComp from "../../../Components/BlockedUserComp";
 
 const BlockUser = [
   {
@@ -30,17 +31,7 @@ const BlockedUser = () => {
           {BlockUser.map((ele) => {
             return (
               <>
-                <FlexUpgrade content="space-between" className="InerMargin">
-                  <FlexUpgrade align="center" className="SecondFlex">
-                    <div>
-                      <img src={ele.img} alt="Something Wrong" />
-                    </div>
-                    <div className="name">{ele.name}</div>
-                  </FlexUpgrade>
-                  <div>
-                    <button className="UnBlock">Unblock</button>
-                  </div>
-                </FlexUpgrade>
+                <BlockedUserComp ele={ele} />
               </>
             );
           })}

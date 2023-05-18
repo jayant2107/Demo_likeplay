@@ -15,9 +15,10 @@ import Publichome from "../Website/PublicHome";
 
 import Footercontent from "../Website/pages/Footercontent";
 import Layout from "../Layouts/Layout";
+import Notfound from "../Feautres/Notfound/Notfound";
 let PublicRouter = ({ isAuth }) => {
   if (isAuth === true) {
-    return <Navigate to="/Layout/Home" />;
+    return <Navigate to="/Layout/FeedPage" />;
   }
   return <Outlet />;
 };
@@ -28,7 +29,7 @@ let PrivateRouter = ({ isAuth }) => {
   return <Outlet />;
 };
 const Routing = () => {
-  let prop = false;
+  let prop = true;
 
   return (
     <>
@@ -39,6 +40,7 @@ const Routing = () => {
             <Route path="/Registration" element={<Risgistation />} />
             <Route path="/Safety" element={<Footercontent />} />
             <Route path="/Nigeria" element={<country />} />
+            <Route path="*" element={<Notfound/>}/>
           </Route>
           <Route element={<PrivateRouter isAuth={prop} />}>
             <Route path="/Layout" element={<Layout />}>
