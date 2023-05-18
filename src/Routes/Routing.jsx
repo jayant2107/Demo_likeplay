@@ -7,6 +7,10 @@ import {
   Routes,
 } from "react-router-dom";
 import Settings from "../Feautres/Settings/Settings";
+import Matches from "../Feautres/Matches/Matches";
+import MatchesDetailPage from "../Feautres/Matches/Matches_Detail _Page";
+import FeedPage from "../Feautres/Home/FeedPage";
+import Publichome from "../Feautres/Home/Publichome";
 let PublicRouter = ({ isAuth }) => {
   if (isAuth === true) {
     return <Navigate to="/Layout/Home" />;
@@ -27,7 +31,7 @@ const Routing = () => {
       <BrowserRouter>
         <Routes>
           <Route element={<PublicRouter isAuth={prop} />}>
-            {/* <Route path="/" element={<PublicHome />} /> */}
+            <Route path="/" element={<Publichome />} />
             {/* <Route path="/About" element={<AboutUs />} /> */}
             {/* <Route path="/Feautres" element={<Feautres />} /> */}
             {/* <Route path="/Safety" element={<Safety />} /> */}
@@ -42,13 +46,17 @@ const Routing = () => {
           </Route>
           <Route element={<PrivateRouter isAuth={prop} />}>
             {/* <Route path="/Layout" element={<Layout />}> */}
-            {/* <Route path="/Layout/Home" element={<Home />} /> */}
-            {/* <Route path="/Layout/Matches" element={<Matches />} /> */}
+            <Route path="/Layout/FeedPage" element={<FeedPage />} />
+            <Route path="/Layout/Matches" element={<Matches />} />
+            <Route
+              path="/Layout/MatchesDetailPage"
+              element={<MatchesDetailPage />}
+            />
             {/* <Route path="/Layout/Admiring" element={<Admiring />} /> */}
             {/* <Route path="/Layout/Messages" element={<Messages />} /> */}
             {/* <Route path="/Layout/Notification" element={<Notification />} /> */}
             {/* <Route path="/Layout/Subscription" element={<Subscription />} /> */}
-            {/* <Route path="/Layout/Settings" element={<Settings />} /> */}
+            <Route path="/Layout/Settings" element={<Settings />} />
             {/* <Route path="/Layout/FAQs" element={<FAQs />} /> */}
             {/* <Route path="/Layout/Testimonal" element={<Testimonal />} /> */}
             {/* </Route> */}
