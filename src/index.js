@@ -12,11 +12,9 @@ import FeedShots from "./Feautres/Home/FeedShots";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-
-   <Layout/>
+    <Layout />
     <App />
-    <FeedAboutMe/>
-
+    <FeedAboutMe />
   </React.StrictMode>
 );
 
