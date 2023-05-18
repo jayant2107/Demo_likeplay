@@ -11,9 +11,10 @@ import Matches from "../Feautres/Matches/Matches";
 import MatchesDetailPage from "../Feautres/Matches/Matches_Detail _Page";
 import FeedPage from "../Feautres/Home/FeedPage";
 import Publichome from "../Feautres/Home/Publichome";
+import Layout from "../Layouts/Layout";
 let PublicRouter = ({ isAuth }) => {
   if (isAuth === true) {
-    return <Navigate to="/Layout/Home" />;
+    return <Navigate to="/Layout/FeedPage" replace />;
   }
   return <Outlet />;
 };
@@ -24,7 +25,7 @@ let PrivateRouter = ({ isAuth }) => {
   return <Outlet />;
 };
 const Routing = () => {
-  let prop = false;
+  let prop = true;
 
   return (
     <>
@@ -45,21 +46,21 @@ const Routing = () => {
             {/* <Route path="/Cote" element={<Cote />} /> */}
           </Route>
           <Route element={<PrivateRouter isAuth={prop} />}>
-            {/* <Route path="/Layout" element={<Layout />}> */}
+            <Route path="/Layout" element={<Layout />}>
             <Route path="/Layout/FeedPage" element={<FeedPage />} />
             <Route path="/Layout/Matches" element={<Matches />} />
             <Route
               path="/Layout/MatchesDetailPage"
               element={<MatchesDetailPage />}
             />
-            {/* <Route path="/Layout/Admiring" element={<Admiring />} /> */}
-            {/* <Route path="/Layout/Messages" element={<Messages />} /> */}
-            {/* <Route path="/Layout/Notification" element={<Notification />} /> */}
-            {/* <Route path="/Layout/Subscription" element={<Subscription />} /> */}
+            {/* <Route path="/Layout/Admiring" element={<Admiring/>} />  */}
+            {/* <Route path="/Layout/Messages" element={<Messages />} />
+            <Route path="/Layout/Notification" element={<Notification />} />
+            <Route path="/Layout/Subscription" element={<Subscription />} /> */}
             <Route path="/Layout/Settings" element={<Settings />} />
-            {/* <Route path="/Layout/FAQs" element={<FAQs />} /> */}
-            {/* <Route path="/Layout/Testimonal" element={<Testimonal />} /> */}
-            {/* </Route> */}
+           {/* <Route path="/Layout/FAQs" element={<FAQs />} /> 
+            <Route path="/Layout/Testimonal" element={<Testimonal />} />  */}
+             </Route>
           </Route>
         </Routes>
       </BrowserRouter>

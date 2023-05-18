@@ -109,6 +109,7 @@ margin:10px 0px;
     display:flex;
     align-items:center;
     gap:15px;
+    padding:5px;
 
 }
 p{
