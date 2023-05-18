@@ -10,7 +10,13 @@ import Settings from "../Feautres/Settings/Settings";
 import Matches from "../Feautres/Matches/Matches";
 import MatchesDetailPage from "../Feautres/Matches/Matches_Detail _Page";
 import FeedPage from "../Feautres/Home/FeedPage";
-import Publichome from "../Feautres/Home/Publichome";
+import Risgistation from "../Auth/Risgistation";
+import Publichome from "../Website/PublicHome";
+import Antisextrafficking from "../Website/pages/Antisextrafficking";
+import Safety from "../Website/pages/Safety";
+import Support from "../Website/pages/Support";
+import WomensRights from "../Website/pages/WomensRights";
+import country from "../Website/pages/country";
 let PublicRouter = ({ isAuth }) => {
   if (isAuth === true) {
     return <Navigate to="/Layout/Home" />;
@@ -32,17 +38,15 @@ const Routing = () => {
         <Routes>
           <Route element={<PublicRouter isAuth={prop} />}>
             <Route path="/" element={<Publichome />} />
+            <Route path="/Registration" element={<Risgistation />} />
             {/* <Route path="/About" element={<AboutUs />} /> */}
             {/* <Route path="/Feautres" element={<Feautres />} /> */}
-            {/* <Route path="/Safety" element={<Safety />} /> */}
-            {/* <Route path="/Support" element={<Support />} /> */}
-            {/* <Route path="/AntiSex" element={<AntiSexTrafficking />} /> */}
-            {/* <Route path="/WomenRights" element={<WomenRights />} /> */}
-            {/* <Route path="/Nigeria" element={<Nigeria />} /> */}
-            {/* <Route path="/Congo" element={<Congo />} /> */}
-            {/* <Route path="/Ghana" element={<Ghana />} /> */}
-            {/* <Route path="/SouthAfrica" element={<SouthAfrica />} /> */}
-            {/* <Route path="/Cote" element={<Cote />} /> */}
+            <Route path="/Safety" element={<Safety/>} />
+            <Route path="/Support" element={<Support/>} />
+            <Route path="/AntiSex" element={<Antisextrafficking/>} />
+            <Route path="/WomenRights" element={<WomensRights/>} />
+            <Route path="/Nigeria" element={<country/>} />
+           
           </Route>
           <Route element={<PrivateRouter isAuth={prop} />}>
             {/* <Route path="/Layout" element={<Layout />}> */}

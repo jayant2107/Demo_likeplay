@@ -1,0 +1,8 @@
+
+const Nigeriadata = [
+    {
+        logo: "",
+        paragraph: ""
+    },
+
+];

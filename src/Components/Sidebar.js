@@ -185,18 +185,20 @@ const Morecontent = styled.div`
     padding: 0px;
     font-size: 16px;
     cursor: pointer;
-  }
-`;
-const Sidebarwrapper = styled.div`
-  width: 300px;
-  height: 100vh;
-  // position:fixed;
-  background-color: white;
-  border-right: 1px solid #e2e2e2;
-`;
-const Mainlogo = styled.div`
+}
+
+
+`
+const Sidebarwrapper = styled.div `
+width:300px;
+height:100vh;
+// position:fixed;
+background-color:white;
+border-right:1px solid #E2E2E2;
+`
+const Mainlogo = styled.div `
 display:flex;
-align-items:center
+align-items:center;
 width:100%;
 justify-content:center;
 padding:20px;

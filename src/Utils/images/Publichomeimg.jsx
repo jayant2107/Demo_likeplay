@@ -25,6 +25,12 @@ import iphone2 from "../../Assets/Images/Publiciphone2PA.svg";
 import heartborder from "../../Assets/Images/PublicheartborderPA.svg";
 import likeglow from "../../Assets/Icons/PublicilikeplayglowlogoPA.svg";
 import iphonebg from "../../Assets/Images/PubliciphonebgPA.svg";
+// contory images
+import contory1 from "../../Assets/Images/Publiccountry1.svg";
+import contory2 from "../../Assets/Images/Publiccontory2.svg";
+import contory3 from "../../Assets/Images/Publiccontory3.svg";
+import contory4 from "../../Assets/Images/Publiccontory4.svg";
+import contory5 from "../../Assets/Images/Publiccontory5.svg";
 
 import work1 from "../../Assets/Icons/Publicworklogo1PA.svg";
 import work2 from "../../Assets/Icons/Publicworklogo2PA.svg";
@@ -89,5 +95,9 @@ export {
   live,
   thegurdian,
   punch,
-
+  contory1,
+  contory2,
+  contory3,
+  contory4,
+  contory5,
 };
