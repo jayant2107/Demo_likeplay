@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import FeedAboutMe from './FeedAboutMe'
+import FeedShots from './FeedShots';
 
 const FeedMyProfile = () => {
     const [active,setActive] = useState('aboutme');
@@ -16,7 +17,7 @@ const FeedMyProfile = () => {
         </div>
         
         {
-            active === 'shorts' ? '' : <FeedAboutMe/> 
+            active === 'shorts' ? <FeedShots/> : <FeedAboutMe/> 
         }
     </FeedMyProfileCss>
   )
