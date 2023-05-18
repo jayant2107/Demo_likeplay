@@ -94,7 +94,7 @@ color: #7B7F91;
 
 }
 .dot{
-    /* color:#7B7F91; */
+    
     border: 1px solid #7B7F91 ;
     border-radius: 5rem;
     background: #7B7F91;
