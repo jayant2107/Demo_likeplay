@@ -78,7 +78,7 @@ const Settings = () => {
             </div>
           </div>
           <div className="SetRight">
-            <UpgradeSubscription />
+            <ResetPassword />
           </div>
         </div>
       </Wrapper>
