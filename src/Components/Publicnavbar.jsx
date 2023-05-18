@@ -1,12 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { LikePlaylogo } from "../Utils/images/Publichomeimg";
+
 const Navbar = styled.nav`
-  @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
   .nav {
-    /* position: fixed; */
     width: 100%;
-    /* top: 0; */
     display: flex;
     align-items: center;
     color: white;
