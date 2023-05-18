@@ -31,24 +31,8 @@ import hashimg, {
   contory4,
   contory5,
 } from "../Utils/images/Publichomeimg";
-// icon
-// video
-// import video from "../../Assets/Images/DAKU - INDERPAL MOGA - CHANI NATTAN - NEW PUNJABI SONG 2022 - LATEST PUNJABI SONG 2022 -.mp4";
 
 export default function Publichome() {
-  // video Logic
-  // const videoRef = useRef();
-  // const [isPlaying, setIsPlaying] = useState(false);
-
-  // const handleVideoClick = () => {
-  //   if (videoRef.current.paused) {
-  //     videoRef.current.play();
-  //     setIsPlaying(true);
-  //   } else {
-  //     videoRef.current.pause();
-  //     setIsPlaying(false);
-  //   }
-  // };
   // -----------------------MainWrapper CSS START-------------------------------
 
   // -----------------------MainWrapper CSS END-------------------------------
@@ -139,7 +123,7 @@ export default function Publichome() {
         margin-bottom: 5px;
         padding: 0.5rem 0.8rem;
         border-radius: 5px;
-        &:nth-child(2),
+        &:nth-child(2n + 2),
         &:nth-child(12n + 4),
         &:nth-child(12n + 6),
         &:nth-child(12n + 8),

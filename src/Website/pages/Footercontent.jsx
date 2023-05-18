@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Antisextrafficking() {
+export default function Footercontent() {
   return (
     <div>
       
