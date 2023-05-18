@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { likesView } from "../Utils/images/Modalsimg";
 
 export default function LikesViewModal() {
+  const [likedData, setLikedData] = useState([]);
+
+  useEffect(() => {
+    setLikedData(Liked);
+  }, []);
+
   return (
+   
     <>
+     {likedData.map((likes)=>{
+    console.log("like",likes.name)
+      
+})}
       <StyledLikesModal>
         <div className="modal">
           <div className="modal-container">
@@ -29,12 +41,14 @@ export default function LikesViewModal() {
                 {/******* MODAL HERO-SECTION STARTS ********/}
 
                 <div className="modal-hero-section">
-                    <div className="hero-content">
-                        <div className="liked-people">
-                            <div className="pic"></div>
-                            <div className="name"></div>
-                        </div>
+                  <div className="hero-content">
+                    <div className="liked-people">
+                      <div className="pic">
+                        <img src={likesView} alt="likes"></img>
+                      </div>
+                      <div className="name">Julia Roberts</div>
                     </div>
+                  </div>
                 </div>
 
                 {/******** MODAL HERO-SECTION ENDS ********/}
@@ -100,7 +114,32 @@ export const StyledLikesModal = styled.div`
   .hero-content {
     display: flex;
     justify-content: flex-start;
-}
+  }
+
+  .liked-people {
+    display: flex;
+    width: 40%;
+    justify-content: space-evenly;
+  }
+
+  .name {
+    margin: auto;
+  }
 
   /******** MODAL HERO-SECTION ENDS ********/
 `;
+
+export const Liked = [
+  {
+    photo: likesView,
+    name: "Julia Roberts",
+  },
+  {
+    photo: likesView,
+    name: "Natalie Portman",
+  },
+  {
+    photo: likesView,
+    name: "Marilyn Monroe",
+  },
+];
