@@ -17,6 +17,8 @@ import Safety from "../Website/pages/Safety";
 import Support from "../Website/pages/Support";
 import WomensRights from "../Website/pages/WomensRights";
 import country from "../Website/pages/country";
+import Footercontent from "../Website/pages/Footercontent";
+import Layout from "../Layouts/Layout";
 let PublicRouter = ({ isAuth }) => {
   if (isAuth === true) {
     return <Navigate to="/Layout/Home" />;
@@ -39,17 +41,12 @@ const Routing = () => {
           <Route element={<PublicRouter isAuth={prop} />}>
             <Route path="/" element={<Publichome />} />
             <Route path="/Registration" element={<Risgistation />} />
-            {/* <Route path="/About" element={<AboutUs />} /> */}
-            {/* <Route path="/Feautres" element={<Feautres />} /> */}
-            <Route path="/Safety" element={<Safety/>} />
-            <Route path="/Support" element={<Support/>} />
-            <Route path="/AntiSex" element={<Antisextrafficking/>} />
-            <Route path="/WomenRights" element={<WomensRights/>} />
+            <Route path="/Safety" element={<Footercontent/>} />
             <Route path="/Nigeria" element={<country/>} />
            
           </Route>
           <Route element={<PrivateRouter isAuth={prop} />}>
-            {/* <Route path="/Layout" element={<Layout />}> */}
+            <Route path="/Layout" element={<Layout/>}>
             <Route path="/Layout/FeedPage" element={<FeedPage />} />
             <Route path="/Layout/Matches" element={<Matches />} />
             <Route
@@ -63,7 +60,7 @@ const Routing = () => {
             <Route path="/Layout/Settings" element={<Settings />} />
             {/* <Route path="/Layout/FAQs" element={<FAQs />} /> */}
             {/* <Route path="/Layout/Testimonal" element={<Testimonal />} /> */}
-            {/* </Route> */}
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

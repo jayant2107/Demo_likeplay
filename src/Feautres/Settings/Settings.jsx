@@ -102,12 +102,14 @@ const Settings = () => {
               </div>
             </div>
             <div>
-              <div className="innerFlexBtn">
-                <div>
-                  <img src={trash} alt="Something Wrong" />
+              <button className="deltebtn">
+                <div className="innerFlexBtn">
+                  <div>
+                    <img src={trash} alt="Something Wrong" />
+                  </div>
+                  <div className="deleteac">Delete Account</div>
                 </div>
-                <div className="deleteac">Delete Account</div>
-              </div>
+              </button>
             </div>
           </div>
           <div className="SetRight">
@@ -139,6 +141,14 @@ const Wrapper = styled.div`
     font-weight: 600;
     font-size: 18px;
     height: 10vh;
+  }
+  .deltebtn {
+    width: 85%;
+    height: 3rem;
+    background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
+    border: none;
+    border-radius: 10px;
+    color: white;
   }
   .Setfir {
     display: flex;
@@ -209,15 +219,6 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 75%;
-    height: 3rem;
-    background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
-    border: none;
-    border-radius: 10px;
-    color: white;
-  }
-  .deleteac {
-    padding-left: 6px;
   }
 `;
 const FlexCustom = styled.div`

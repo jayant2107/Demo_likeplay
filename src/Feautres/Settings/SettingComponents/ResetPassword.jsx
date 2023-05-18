@@ -59,7 +59,7 @@ const ResetPass = styled.div`
     font-size: 12px;
   }
   .InputMeth {
-    width: 440px;
+    width: 446px;
     border-radius: 10px;
     height: 56px;
     padding-left: 24px;
