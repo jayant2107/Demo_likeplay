@@ -1,10 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { LikePlaylogo } from "../Utils/images/Publichomeimg";
-<<<<<<< HEAD
-
-=======
->>>>>>> 7906c10df625651f704511b32e146932b3a013a5
 const Navbar = styled.nav`
   @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
   .nav {

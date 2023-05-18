@@ -166,11 +166,11 @@ width:300px;
 height:100vh;
 // position:fixed;
 background-color:white;
-border-right:1px solid #E2E2E2
+border-right:1px solid #E2E2E2;
 `
 const Mainlogo = styled.div `
 display:flex;
-align-items:center
+align-items:center;
 width:100%;
 justify-content:center;
 padding:20px;
