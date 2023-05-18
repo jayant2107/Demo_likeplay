@@ -10,7 +10,7 @@ import Settings from "../Feautres/Settings/Settings";
 import Matches from "../Feautres/Matches/Matches";
 import MatchesDetailPage from "../Feautres/Matches/Matches_Detail _Page";
 import FeedPage from "../Feautres/Home/FeedPage";
-import Risgistation from "../Auth/Risgistation";
+import Registration from "../Auth/Registration";
 import Publichome from "../Website/PublicHome";
 
 import Footercontent from "../Website/pages/Footercontent";
@@ -28,7 +28,7 @@ let PrivateRouter = ({ isAuth }) => {
   return <Outlet />;
 };
 const Routing = () => {
-  let prop = true;
+  let prop = false;
 
   return (
     <>
@@ -36,7 +36,7 @@ const Routing = () => {
         <Routes>
           <Route element={<PublicRouter isAuth={prop} />}>
             <Route path="/" element={<Publichome />} />
-            <Route path="/Registration" element={<Risgistation />} />
+            <Route path="/Registration" element={< Registration />} />
             <Route path="/Safety" element={<Footercontent />} />
             <Route path="/Nigeria" element={<country />} />
           </Route>
