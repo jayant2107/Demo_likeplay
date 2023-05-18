@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import SubscriptionLayout from '../Layouts/SubscriptionLayout'
+import GridType from '../Layouts/GridLayout'
 
 const ModalLayout = () => {
   return (
@@ -9,7 +10,8 @@ const ModalLayout = () => {
     <div className="outer">
         <div className="inner">
         <div className='inner-subscription'>
-        <SubscriptionLayout/>
+        {/* <SubscriptionLayout/> */}
+        <GridType/>
         </div>
          
         </div>

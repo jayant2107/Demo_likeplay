@@ -97,7 +97,7 @@ import tick3 from '../Assets/Icons/Vector (3).svg'
     width: 100%;
 }
 .imj{
-    display: flex;
+    display: grid;
     line-height: 20px;
     grid-template-columns: 25% 25% 25% 25% ;
     justify-content: space-between;
@@ -108,13 +108,11 @@ import tick3 from '../Assets/Icons/Vector (3).svg'
     line-height: 25px;
 }
 img {
-    /* margin: auto; */
-    /* width: -webkit-fill-available; */
-    width: 4%;
+    margin: auto;
 }
-/* .para4{
+.para4{
     margin: auto;
     width: 20%;
-} */
+}
 
   `
