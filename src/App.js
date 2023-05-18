@@ -1,19 +1,14 @@
-import React from 'react';
-
-// import Routing from './Routes/Routing';
-import Matches from './Feautres/Matches/Matches';
-// import MatchesDetailPage from './Feautres/Matches/Matches_Detail _Page';
-// import  CommentModal from "./Modals/CommentModal";
+import "./App.css";
+// import Settings from "./Feautres/Settings/Settings";
+import React from "react";
+import Routing from "./Routes/Routing";
 
 function App() {
   return (
     <>
-    {/* <Routing/> */}
-    <Matches/>
-    {/* <MatchesDetailPage/> */}
-    {/* <CommentModal/> */}
+      {/* <Settings /> */}
+      <Routing />
     </>
   );
 }
-
 export default App;
