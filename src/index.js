@@ -8,13 +8,15 @@ import Layout from "./Layouts/Layout";
 import FeedPage from "./Feautres/Home/FeedPage";
 import FeedAboutMe from "./Feautres/Home/FeedMyProfile";
 import FeedShots from "./Feautres/Home/FeedShots";
+import Subscription from "./Feautres/Subscription/Subscriptions";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Layout />
+    {/* <Layout />
     <App />
-    <FeedAboutMe />
+    <FeedAboutMe /> */}
+    <Subscription/>
   </React.StrictMode>
 );
 

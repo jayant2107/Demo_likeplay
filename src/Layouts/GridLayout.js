@@ -1,6 +1,15 @@
-import Check from "../Assets/Images/Akshay/Fill 4.svg";
+import vector from '../Assets/Icons/diamondAk (1).svg'
+import vector1 from '../Assets/Icons/VectorAk.svg';
+import vector2 from '../Assets/Icons/VectorAk1.svg';
+import vector3 from '../Assets/Icons/VectorAk2.svg';
 import styled from "styled-components";   
+import { subitems } from "../Services/Subscriptionsjson";
 const GridType = () =>{
+const buttonss = [ "1 Month - 1,500", "1 month - 2,200", "1 month - 3,000", "1 month - 5,000"]
+const buttonss1 = [ "1 month - 2,200", "1 month - 3,000", "1 month - 5,000", "1 Month - 1,500"]
+const buttonss2 = [ "1 month - 3,000", "1 month - 5,000", "1 Month - 1,500", "1 month - 2,200"]
+const buttonss3 = [ "1 month - 5,000", "1 Month - 1,500", "1 month - 2,200", "1 month - 3,000"]
+
     return(
     <>
 
@@ -9,45 +18,116 @@ const GridType = () =>{
         <div className="HeaderFlex">
           <div className="firstdiv"></div>
           <Flex Direction="column">
-            <div>
-              <img src={Check} alt="Something WRong" />
+            <div className="head1">
+              <img src={vector} alt="Something WRong"  className="diamond1"/>
             </div>
-            <div className="Size">Size</div>
+            <div className="Size"><h4>Basic</h4></div>
+            {/* <div className="Button"><h2 className="BUY-1">Buy</h2></div> */}
           </Flex>
           <Flex Direction="column">
-            <div>
-              <img src={Check} alt="Something WRong" />
+            <div className="head1">
+              <img src={vector1} alt="Something WRong"  className="diamond2"/>
             </div>
-            <div className="Size">Size</div>
+            <div className="Size"><h4>Standard</h4></div>
+            {/* <div className="Button"><h2 className="BUY-1">Buy</h2></div> */}
           </Flex>
           <Flex Direction="column">
-            <div>
-              <img src={Check} alt="Something WRong" />
+            <div className="head1">
+              <img src={vector2} alt="Something WRong" className="diamond3" />
             </div>
-            <div className="Size">Size</div>
+            <div className="Size"><h4>GOLD</h4></div>
+            {/* <div className="Button"><h2 className="BUY-1">Buy</h2></div> */}
           </Flex>
           <Flex Direction="column">
-            <div>
-              <img src={Check} alt="Something WRong" />
+            <div className="head1">
+              <img src={vector3} alt="Something WRong" className="diamond4"/>
             </div>
-            <div className="Size">Size</div>
+            <div className="Size"><h4>PLATINUM</h4></div>
+            {/* <div className="Button"><h2 className="BUY-1">Buy</h2></div> */}
           </Flex>
         </div>
-        <div className="flex">
-          <div>Complimentary: 5 Free Days upon Sign-Up</div>
+        {subitems.map((e)=>{
+            return(
+                <>
+        <div className="flex"  >
+
+          <div className='par153'><p>{e.p}</p> </div>
           <div>
-            <img src={Check} alt="" />
+            <img src={e.pic} alt="" />
+            <p className="para0">{e.p1}</p>
           </div>
           <div>
-            <img src={Check} alt="" />
+            <img src={e.pic1} alt="" />
+            <p className="para01">{e.p2}</p>
           </div>
           <div>
-            <img src={Check} alt="" />
+            <img src={e.pic2} alt="" />
+            <p className="para03">{e.p3}</p>
           </div>
           <div>
-            <img src={Check} alt="" />
+            <img src={e.pic3} alt="" />
+            <p className="para04">{e.p4}</p>
           </div>
         </div>
+                </>
+            )
+        })}
+        <div className="Options_but">
+        <div className="btn">
+            <select className='btn-1'>
+               {
+                buttonss.map((e)=>{
+                    return(
+                        <>
+                        <option>{e}</option>
+                        </>
+                    )
+                })
+               }
+            </select>
+               </div>
+            <select className='btn-1'>
+               {
+                buttonss1.map((e)=>{
+                    return(
+                        <>
+                        <option>{e}</option>
+                        </>
+                    )
+                })
+               }
+            </select>
+            <select className='btn-1'>
+               {
+                buttonss2.map((e)=>{
+                    return(
+                        <>
+                        <option>{e}</option>
+                        </>
+                    )
+                })
+               }
+            </select>
+            <select className='btn-1'>
+               {
+                buttonss3.map((e)=>{
+                    return(
+                        <>
+                        <option>{e}</option>
+                        </>
+                    )
+                })
+               }
+            </select>
+            </div>
+        <div className="Button1">
+        <div className="Button"><h2 className="BUY-1">Buy</h2></div>
+        <div className="Button"><h2 className="BUY-1">Buy</h2></div>
+        <div className="Button"><h2 className="BUY-1">Buy</h2></div>
+        <div className="Button"><h2 className="BUY-1">Buy</h2></div>
+        </div>
+     
+      
       </Wrapper>
     
       </>
@@ -77,14 +157,84 @@ const Wrapper = styled.div`
     justify-content: center; */
     text-align: center;
   }
+
+  .Size{
+    border-bottom: 2px solid #E2E2E2;
+  }
+  .Button{
+    width: 10%;
+    background: linear-gradient(268.55deg, #FF483C 0%, #FF2C5A 100%);
+border-radius: 10px;
+width: 160px;
+margin: auto;
+height: 48px;
+  }
+  .Button1{
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-direction: row;
+align-items: center;
+padding: 20px 1rem;
+margin-left: 20%;
+  }
+  .BUY-1 {
+    color: white;
+    text-align: center;
+    margin-top: 8px;
+}
+
   .HeaderFlex {
     display: flex;
     align-items: center;
   }
   .HeaderFlex > div {
-    width: 25%;
+    width: 20%;
     align-items: center;
   }
+  .Options_but {
+    display: grid;
+    grid-template-columns: 10% 10% 10% 10%;
+    gap: 11%;
+    width: 100%;
+    margin-left: 25%;
+    color: #7B7F91;
+    margin-top: -30px;
+    /* font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+display: flex;
+align-items: center;
+letter-spacing: 0.05em;
+color: #7B7F91; */
+}
+.btn-1{
+    border: none;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+display: flex;
+align-items: center;
+letter-spacing: 0.05em;
+background-color: whitesmoke;
+}
+.par153{
+    border-right: 2px solid #E2E2E2;
+    width: 20%;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+display: flex;
+align-items: center;
+
+color: #242424;
+}
 `;
 
 const Flex = styled.div`
