@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Refer } from "../../Utils/SettingImgaes/SettingP";
-import { copy, insta, linkdin, twitter, whatsapp } from "../../Utils/IconsP";
+import { Refer } from "../../../Utils/SettingImgaes/SettingP";
+import { copy, insta, linkdin, twitter, whatsapp } from "../../../Utils/IconsP";
 const ReferFriend = () => {
   return (
     <>

@@ -1,6 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { Check, diamond } from "../../Utils/IconsP";
+import { Check, diamond } from "../../../Utils/IconsP";
+import {
+  ButtonUpdate,
+  FlexUpgrade,
+  Plan,
+  UpdateBtn,
+  Upgrade,
+} from "./UpgradeSubscription";
 let upgradeArr = [
   {
     header: "Complimentary: 5 Free Days upon Sign-Up",
@@ -13,11 +20,26 @@ let upgradeArr = [
   },
   {
     header: "Audio Voice-Note Messages",
+    content: true,
+    subheader: "10 MATCHES",
+  },
+  {
+    header: "Audio Voice-Note Messages",
     content: false,
     subheader: "10 MATCHES",
   },
+  {
+    header: "Audio Voice-Note Messages",
+    content: true,
+    subheader: "10 MATCHES",
+  },
+  {
+    header: "Audio Voice-Note Messages",
+    content: false,
+    subheader: "Nil",
+  },
 ];
-const UpgradeSubscription = () => {
+const CancelSubscription = () => {
   return (
     <>
       <Plan>Plan details</Plan>
@@ -58,69 +80,11 @@ const UpgradeSubscription = () => {
       </Upgrade>
       <UpdateBtn>
         <ButtonUpdate background="linear-gradient(268.55deg, #FF483C 0%, #FF2C5A 100%)">
-          Update Subscription
+          Cancel Subscription
         </ButtonUpdate>
       </UpdateBtn>
     </>
   );
 };
 
-export default UpgradeSubscription;
-const Plan = styled.div`
-  font-size: 18px;
-  font-weight: 600;
-`;
-const Upgrade = styled.div`
-  width: 100%;
-  font-family: "Poppins", sans-serif;
-  background: #f0f0f0;
-  padding: 2%;
-  margin-top: 2%;
-  .Standard {
-    font-size: 18px;
-    margin-left: 5%;
-    font-weight: 600;
-  }
-  .subheader {
-    color: #7b7f91;
-    font-size: 12px;
-  }
-
-  .check {
-    width: 15%;
-    text-align: center;
-  }
-  .Dollar {
-    color: red;
-    float: right;
-  }
-
-  .ClearD {
-    clear: right;
-  }
-  .Comp {
-    width: 25%;
-    font-size: 12px;
-  }
-`;
-const UpdateBtn = styled.div`
-  text-align: center;
-  margin-top: 2rem;
-`;
-
-const FlexUpgrade = styled.div`
-  display: flex;
-  align-items: ${({ align }) => align || "none"};
-  justify-content: ${({ Content }) => Content || "none"};
-  flex-direction: ${({ Direction }) => Direction || "none"};
-  margin-top: 12px;
-`;
-const ButtonUpdate = styled.button`
-  background: ${({ background }) => background || "none"};
-  width: 28%;
-  height: 48px;
-  border-radius: 10px;
-  border: none;
-  color: white;
-  font-size: 18px;
-`;
+export default CancelSubscription;

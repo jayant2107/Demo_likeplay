@@ -50,7 +50,7 @@ export default ResetPassword;
 const ResetPass = styled.div`
   width: 100%;
   font-family: "Poppins", sans-serif;
-  
+
   .InnerResetPass > div:not(:first-child) {
     margin-top: 1.5rem;
   }
