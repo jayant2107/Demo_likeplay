@@ -5,6 +5,9 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Publichome from "./Feautres/Home/Publichome";
 import Layout from "./Layouts/Layout";
+import FeedPage from "./Feautres/Home/FeedPage";
+import FeedAboutMe from "./Feautres/Home/FeedMyProfile";
+import FeedShots from "./Feautres/Home/FeedShots";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -12,6 +15,8 @@ root.render(
 
    <Layout/>
     <App />
+    <FeedAboutMe/>
+
   </React.StrictMode>
 );
 
