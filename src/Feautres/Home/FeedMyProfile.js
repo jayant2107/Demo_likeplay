@@ -28,6 +28,7 @@ export default FeedMyProfile
 export const FeedMyProfileCss = styled.div`
 height: auto;
 padding: 1rem;
+font-family: 'Poppins', sans-serif;
 
 .navDiv{
     height : 3rem;
