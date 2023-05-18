@@ -17,8 +17,14 @@ import hashimg, {
   iphone2,
   heartborder,
   likeglow,
-  iphonebg,
   whylikeheart,
+  techpoint,
+  thisday,
+  thesun,
+  thetimes,
+  live,
+  thegurdian,
+  punch,
 } from "../../Utils/images/Publichomeimg";
 // icon
 // video
@@ -52,7 +58,7 @@ export default function Publichome() {
       section {
         position: relative;
         top: 23%;
-        width: 40%;
+        /* width: 40%; */
         margin-left: 11%;
         h3 {
           letter-spacing: 3px;
@@ -118,13 +124,14 @@ export default function Publichome() {
         flex-wrap: wrap;
         padding: 0 4rem 3rem;
         justify-content: space-around;
-        gap: 1rem;
+        gap: 10px;
         margin-top: 1rem;
       }
       .card {
         background-color: white;
         text-align: center;
-        width: 15%;
+        width: 180px;
+        margin-bottom: 5px;
         padding: 0.5rem 0.8rem;
         border-radius: 5px;
         &:nth-child(12n + 2),
@@ -226,12 +233,11 @@ export default function Publichome() {
         flex-wrap: wrap;
         padding: 0 4rem 3rem;
         justify-content: space-around;
-        gap: 1rem;
         margin-top: 1rem;
         .card {
           background-color: #ffc0cb63;
           text-align: left;
-          width: 15%;
+          width: 180px;
           padding: 0.5rem 0.8rem;
           border-radius: 5px;
           line-height: 1.3rem;
@@ -458,6 +464,29 @@ export default function Publichome() {
 
   /* -------------------------MISSION VISSION END-----------------------------  */
 
+  /* -------------------------Countries we Host START-----------------------------  */
+
+  /* -------------------------Countries we Host END-----------------------------  */
+
+  /* -------------------------As featured In CSS START-----------------------------  */
+  const Featured = styled.section`
+    section {
+      padding: 4rem;
+      h1 {
+        font-family: Poppins;
+        font-size: 2rem;
+        text-align: center;
+      }
+      .feature_imgs {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+    }
+  `;
+
+  /* -------------------------As featured In CSS END-----------------------------  */
+
   return (
     <>
       {/* -----------------------MainWrapper START------------------------------- */}
@@ -501,7 +530,7 @@ export default function Publichome() {
               );
             })}
           </div>
-        </section>
+        </section>~
       </Featurewrapper>
 
       {/* -------------------------Our Features END-----------------------------  */}
@@ -643,6 +672,28 @@ export default function Publichome() {
         </section>
       </Missionwrapper>
       {/* -------------------------MISSION VISSION END-----------------------------  */}
+
+      {/* -------------------------Countries we Host START-----------------------------  */}
+
+      {/* -------------------------Countries we Host END-----------------------------  */}
+
+      {/* -------------------------As featured In START-----------------------------  */}
+      <Featured>
+        <section>
+          <h1>As featured In</h1>
+          <div className="feature_imgs">
+            <img src={techpoint} alt="" />
+            <img src={thisday} alt="" />
+            <img src={thesun} alt="" />
+            <img src={thetimes} alt="" />
+            <img src={live} alt="" />
+            <img src={thegurdian} alt="" />
+            <img src={punch} alt="" />
+          </div>
+        </section>
+      </Featured>
+
+      {/* -------------------------As featured In END-----------------------------  */}
     </>
   );
 }
