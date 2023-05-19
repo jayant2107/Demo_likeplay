@@ -16,11 +16,13 @@ const MatchesCard = ({ props }) => {
   };
   return (
     <MatchesCardStyle>
+      <div className="MainCard">
       {showDiv && (
         <CommentModal props={props} show={showDiv} close={handleClose} />
       )}
       <div className="MainDiv" onClick={handleOpenDiv}>
-        <img src={props.Image} alt="" className="imgClass" />
+        <div className="ImgDiv">  
+        <img src={props.Image} alt="" className="imgClass" /> </div>
         {props.Type && (
           <div className="type">
             <p>{props.Type}</p>
@@ -42,7 +44,7 @@ const MatchesCard = ({ props }) => {
         <button className="Button2">
           <img src={logo2} alt="" />
         </button>
-      </div>
+      </div></div>
     </MatchesCardStyle>
   );
 };
@@ -50,13 +52,17 @@ const MatchesCard = ({ props }) => {
 export default MatchesCard;
 
 const MatchesCardStyle = styled.div`
+  
   width: 145px;
-  height: 300px;
+  height: 165px;
   * {
     border: none;
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
+  }
+  .MainCard{
+
   }
 
   .type {
@@ -71,7 +77,6 @@ const MatchesCardStyle = styled.div`
   .type p {
     font-size: 12px;
     text-align: center;
-
     color: #ffffff;
   }
   .MainDiv {
@@ -133,10 +138,13 @@ const MatchesCardStyle = styled.div`
     justify-content: space-between;
     margin-top: 0.5rem;
   }
-  .imgClass{
-max-height: 145px;
-max-width: 145px;
-min-height: 10px;
-min-width: 10px;
+  .ImgDiv{
+    max-height: 145px;
+    max-width: 145px;
   }
+  .imgClass{
+ width: 100%;
+ height: 100%;
+  }
+  
 `;
