@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
+import DeleteModal from "../../Modals/DeleteModal";
+import BlockData from "../../Modals/ModalData/BlockData";
+import DeleteData from "../../Modals/ModalData/DeleteShotData";
+import HideData from "../../Modals/ModalData/HideShotData";
 import { Popover } from "antd";
 // images
 import HeartTickImg from "../../Assets/Images/heartTickFeed.png";
 import ThreeDotsImg from "../../Assets/Images/OptionsDotsFeed.png";
 import DownArrowImg from "../../Assets/Images/downArrow.png";
-
+import ReportUserModal from "../../Modals/ReportUserModal";
 //IconsFunctions
 import {
   CommentFeedIcon,
@@ -16,22 +19,84 @@ import {
   TagFeedIcon,
 } from "../../Utils/HomeIconsFun";
 
-
 // FakeData
 import { TagesData } from "./DataPage";
 
-const UserPostCard = ({ val , like,star,heart , changeIcon}) => {
+const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const [comment, setComment] = useState(false);
- 
+  const [showModal, setShowModal] = useState(false);
+  const [showHideModal, setShowHideModal] = useState(false);
+  const [showBlockModal, setshowBlockModal] = useState(false);
+  const [reportUserModal, setReportUserModal] = useState(false);
+
+  const closeModal = () => {
+    if (showBlockModal === true) {
+      setshowBlockModal(false);
+    } else if (showModal === true) {
+      setShowModal(false);
+    } else if (showHideModal === true) {
+      setShowHideModal(false);
+    }
+  };
+
+  const closeReportModal = () => {
+    setReportUserModal(false);
+  };
 
   const content = (
     <PopContentCss>
       <div className="popContent">
         <div className="popbtn">Edit</div>
-        <div className="popbtn">Block</div>
-        <div className="popbtn">Delete</div>
-        <div className="popbtn">Report</div>
-        <div className="popbtn">Hide Shot</div>
+        <div
+          className="popbtn"
+          onClick={() => {
+            setshowBlockModal(true);
+            setShowModal(false);
+            setShowHideModal(false);
+          }}
+        >
+          Block
+        </div>
+        {showBlockModal && (
+          <DeleteModal prop={BlockData} closeModal={closeModal} />
+        )}
+        <div
+          className="popbtn"
+          onClick={() => {
+            setShowModal(true);
+            setShowHideModal(false);
+            setshowBlockModal(false);
+          }}
+        >
+          Delete
+        </div>
+        {showModal && <DeleteModal prop={DeleteData} closeModal={closeModal} />}
+
+        <div
+          className="popbtn"
+          onClick={() => {
+            setReportUserModal(true);
+          }}
+        >
+          Report
+        </div>
+        {reportUserModal && (
+          <ReportUserModal closeReportModal={closeReportModal} />
+        )}
+
+        <div
+          className="popbtn"
+          onClick={() => {
+            setShowModal(false);
+            setShowHideModal(true);
+            setshowBlockModal(false);
+          }}
+        >
+          Hide Shot
+        </div>
+        {showHideModal && (
+          <DeleteModal prop={HideData} closeModal={closeModal} />
+        )}
       </div>
     </PopContentCss>
   );
@@ -103,22 +168,27 @@ const UserPostCard = ({ val , like,star,heart , changeIcon}) => {
       <div className="commentLikeBtn">
         {/* LIKE BUTTON */}
         <div className="likeDiv">
-          <div onClick={()=>changeIcon('like')}>
-            <LikeFeedIcon val={like}/>
-            <span >18</span>
-          </div>
-          <div onClick={()=>changeIcon('heart')}>
-            <HeartFeedIcon  val={heart}/>
+          <div onClick={() => changeIcon("like")}>
+            <LikeFeedIcon val={like} />
             <span>18</span>
           </div>
-          <div onClick={()=>changeIcon('star')} >
-            <StarFeedIcon  val={star}/>
+          <div onClick={() => changeIcon("heart")}>
+            <HeartFeedIcon val={heart} />
+            <span>18</span>
+          </div>
+          <div onClick={() => changeIcon("star")}>
+            <StarFeedIcon val={star} />
             <span>18</span>
           </div>
         </div>
 
         {/* COMMENT BUTTON2 */}
-        <div className="commentDiv" onClick={()=>{setComment(!comment)}}>
+        <div
+          className="commentDiv"
+          onClick={() => {
+            setComment(!comment);
+          }}
+        >
           <span>
             <CommentFeedIcon />
           </span>
@@ -137,7 +207,7 @@ const UserPostCard = ({ val , like,star,heart , changeIcon}) => {
               overlayStyle={{
                 border: "1px solid #E2E2E2",
                 backgroundColor: "white",
-                borderRadius: "0.5rem", 
+                borderRadius: "0.5rem",
               }}
               content={tagContent}
               placement="top"
@@ -150,13 +220,23 @@ const UserPostCard = ({ val , like,star,heart , changeIcon}) => {
       </div>
 
       {/* COMMENT SECTION */}
-      {
-        comment &&
-      <div className="commentInput">
-        <input className="input" type="text" placeholder="Add a Comment...." />
-        <button className="inputButton" onClick={()=>{setComment(!comment)}}>Post</button>
-      </div>
-      }
+      {comment && (
+        <div className="commentInput">
+          <input
+            className="input"
+            type="text"
+            placeholder="Add a Comment...."
+          />
+          <button
+            className="inputButton"
+            onClick={() => {
+              setComment(!comment);
+            }}
+          >
+            Post
+          </button>
+        </div>
+      )}
     </UserPostCardCss>
   );
 };
@@ -167,9 +247,8 @@ export const UserPostCardCss = styled.div`
   height: auto;
   padding: 1rem;
   border-bottom: 1px solid #e2e2e2;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 
- 
   .userProfile {
     display: grid;
     grid-template-columns: 60px auto 90px;
@@ -295,39 +374,38 @@ export const UserPostCardCss = styled.div`
 `;
 
 const PopContentCss = styled.div`
-font-family: 'Poppins', sans-serif;
-.popContent{
-  color : #7B7F91;
-}
-.popbtn{
-  font-size : 1rem;
-  padding : 0.3rem 0;
-  margin :  0 0.5rem;
-  cursor : pointer;
-}
-.popbtn:hover{
-  color : black;
-}
-.popFlex{
-  display : flex;
-  align-items : center;
-  margin : 0.2rem 0;
-  span{
-    margin : 0 0.3rem;
-    font-size : 0.8rem;
+  font-family: "Poppins", sans-serif;
+  .popContent {
+    color: #7b7f91;
   }
-}
-.imgSpan{
-  border-radius : 6rem;
-  width : 36px;
-  height : 36px;
-  overflow : hidden;
-  
-  img{
-    width : 100%;
-    height : 100%;
-    object-fit : cover;
+  .popbtn {
+    font-size: 1rem;
+    padding: 0.3rem 0;
+    margin: 0 0.5rem;
+    cursor: pointer;
   }
-}
-.
+  .popbtn:hover {
+    color: black;
+  }
+  .popFlex {
+    display: flex;
+    align-items: center;
+    margin: 0.2rem 0;
+    span {
+      margin: 0 0.3rem;
+      font-size: 0.8rem;
+    }
+  }
+  .imgSpan {
+    border-radius: 6rem;
+    width: 36px;
+    height: 36px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 `;

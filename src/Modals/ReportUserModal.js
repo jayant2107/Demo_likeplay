@@ -1,19 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import StyledButton from "../Components/Button";
-import { exit } from "../Utils/icons-folder/Modalsicons";
+import { useEffect } from "react";
 
-
-export default function ReportUserModal() {
+export default function ReportUserModal({ closeReportModal }) {
+  useEffect(() => {
+    document.body.style.overflowY = "hidden";
+    return () => {
+      document.body.style.overflowY = "scroll";
+    };
+  }, []);
   return (
     <>
       <StyledReportModal>
         <div className="modal">
           <div className="modal-container">
             <div className="modal-content">
-              <div className="delete-icon">
-                <img src={exit} alt="exit" id="exit" />
-              </div>
               <div className="content-container">
                 {/* MODAL HEADING-SECTION STARTS */}
                 <div className="modal-head">
@@ -59,12 +61,12 @@ export default function ReportUserModal() {
                 {/* MODAL BUTTONS-SECTION STARTS  */}
                 <div className="modal-buttons">
                   <div className="buttons-content">
-                    <div className="cancel-btn">
+                    <div className="cancel-btn" onClick={closeReportModal}>
                       <StyledButton text="#242424" bg="#f0f0f0">
                         Cancel
                       </StyledButton>
                     </div>
-                    <div className="yes-btn">
+                    <div className="yes-btn" onClick={closeReportModal}>
                       <StyledButton
                         text="white"
                         bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
@@ -108,21 +110,6 @@ export const StyledReportModal = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-
-  .delete-icon {
-    width: 24px;
-    height: 24px;
-    color: green;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 600;
-    cursor: pointer;
-    position: absolute;
-    top: -25px;
-    right: 0px;
   }
 
   .content-container {
@@ -185,7 +172,6 @@ export const StyledReportModal = styled.div`
     line-height: 18px;
     padding-top: 15px;
     padding-bottom: 30px;
-
   }
 
   /* MODAL HERO-SECTION ENDS */

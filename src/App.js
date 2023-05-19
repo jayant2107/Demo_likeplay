@@ -1,14 +1,12 @@
 import React from 'react';
 import './App.css';
-import Routing from "./Routes/Routing"
-// import MatchesDetailPage from './Feautres/Matches/Matches_Detail _Page';
+// import DatingDetailModal from './Modals/DatingDetailModal';
 
 
 function App() {
   return (
     <>
-    <Routing/>
-    {/* <MatchesDetailPage/> */}
+    {/* <DatingDetailModal/> */}
     </>
   );
 }
