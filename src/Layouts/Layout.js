@@ -31,22 +31,22 @@ const Layoutdesign = styled.div `
 display:flex;
 width:100%;
 .left-sidebar{
-  width:22%;
+  width:20%;
  position:fixed;
  border-right: 1px solid #e2e2e2;
 
 }
 .center-content{
-  width:56%;
+  width:60%;
   position: absolute;
-  left: 22%;
+  left: 20%;
 }
  
 }
 .right-sidebar{
-  width:22%;
+  width:20%;
   position:fixed;
-  left:78%;
+  left:80%;
   min-height:100vh;
   border-left: 1px solid #e2e2e2;
 

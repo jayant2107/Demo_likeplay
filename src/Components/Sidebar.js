@@ -134,9 +134,9 @@ export default function Sidebar() {
             onClick={() => Navigate("/Layout/Matches")}
           >
             <Slogo>
-              <Matches color={Matchescolor ? primarycolor : secondarycolor} />
+              <Matches color={Matchescolor || active =='/Layout/Matches' ? primarycolor : secondarycolor} />
             </Slogo>
-            <Slabel>
+            <Slabel active={active==="/Layout/Matches"}>
               <p>Matches</p>
             </Slabel>
           </div>

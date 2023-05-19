@@ -2,6 +2,7 @@ import React from "react";
 import ResHeaderComponent from "./RegistrationPage/ResHeader";
 import { Logimg } from "../Utils/RegistrationImg/Registrationflie";
 import { LoginBg } from "../Utils/RegistrationImg/Registrationflie";
+import { Formik, Form, Field } from 'formik';
 
 import {
   RisgistionBgImg,
@@ -13,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+
   return (
     <>
       <RisgistionBgImg height="100vh" imgUrl={LoginBg}>
@@ -23,6 +25,15 @@ const LoginPage = () => {
               <img src={Logimg} className="rig_img_log" alt="empty" />
               <h1>The #Dating Site in Nigeria</h1>
             </div>
+            <Formik
+            initialValues={{
+              email:'',
+              password:''
+            }}
+            onSubmit={handleSubmit}
+            >
+
+            </Formik>
             <FromStyleDiv>
               <div className="registation_form">
                 <h2 className="loginHeading">Login</h2>
