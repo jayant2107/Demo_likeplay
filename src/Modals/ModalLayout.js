@@ -1,20 +1,23 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import GridType from '../Layouts/GridLayout'
 import exit from '../Assets/Icons/exitAk.svg'
+import { SubscriptionLayoutModal } from '../Feautres/Subscription/SubscriptionLayoutModal'
 const ModalLayout = () => {
   const [modal, setModal] = useState(false);
   return (
     <>
 
     <StyledLayout>
-    <div className='con'>
-      <br></br>
-      <button setModal={setModal}/>
-      {modal===true&&(
-        <ModalLayout setModal={setModal}/>
-         )}
+    <div className="App">
+    <br/>
+
+   {modal===true&&(
+    <ModalLayout setModal = {setModal}/>
+   )}
+  
     </div>
+   
     <div className="outer">
    
         <div className="inner">
@@ -45,17 +48,18 @@ const StyledLayout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* height: 100vh; */
+  padding: 2%;
 }
 
 .inner{
   width: 60%;
-  height: 100vh;
+  /* height: 100vh; */
   background-color: white;
   box-shadow: rgba(0,0,0,0.5) 0px 1px 20px 0px;
   margin: auto;
   position: relative;
-  top:55%;
+  top:40%;
   /* height: 50vh; */
   overflow: visible;
   font-size: small;

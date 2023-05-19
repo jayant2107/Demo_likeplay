@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import rectangle from "../../Assets/Images/Akshay/Rect.svg"
 import ModalLayout from '../../Modals/ModalLayout'
+import { SubscriptionFooter } from './SubscriptionFooter'
 const Subscription = () => {
   return (
     <>
@@ -13,6 +14,8 @@ const Subscription = () => {
           <ModalLayout/>
         </div>
       </StyledSubcription>
+    <SubscriptionFooter/>
+
     </>
   )
 }
@@ -20,7 +23,7 @@ const Subscription = () => {
 export default Subscription
 const StyledSubcription = styled.div`
 .background-image{
-background: #000000;
+/* background: #000000; */
 width: 100%;
 height: 100vh;
 }

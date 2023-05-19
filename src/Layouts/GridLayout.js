@@ -51,7 +51,7 @@ const buttonss3 = [ "1 month - 5,000", "1 Month - 1,500", "1 month - 2,200", "1 
                 <>
         <div className="flex"  >
 
-          <div className='par153'><p>{e.p}</p> </div>
+          <div className='par153'>{e.p} </div>
           <div>
             <img src={e.pic} alt="" />
             <p className="para0">{e.p1}</p>
@@ -72,8 +72,8 @@ const buttonss3 = [ "1 month - 5,000", "1 Month - 1,500", "1 month - 2,200", "1 
                 </>
             )
         })}
-        <div className="Options_but">
         <div className="btn">
+        <div className="Options_but">
             <select className='btn-1'>
                {
                 buttonss.map((e)=>{
@@ -85,7 +85,6 @@ const buttonss3 = [ "1 month - 5,000", "1 Month - 1,500", "1 month - 2,200", "1 
                 })
                }
             </select>
-               </div>
             <select className='btn-1'>
                {
                 buttonss1.map((e)=>{
@@ -120,6 +119,7 @@ const buttonss3 = [ "1 month - 5,000", "1 Month - 1,500", "1 month - 2,200", "1 
                }
             </select>
             </div>
+               </div>
         <div className="Button1">
         <div className="Button"><h2 className="BUY-1">Buy</h2></div>
         <div className="Button"><h2 className="BUY-1">Buy</h2></div>
@@ -129,7 +129,6 @@ const buttonss3 = [ "1 month - 5,000", "1 Month - 1,500", "1 month - 2,200", "1 
      
       
       </Wrapper>
-    
       </>
       );
 }
@@ -194,21 +193,13 @@ margin-left: 20%;
   }
   .Options_but {
     display: grid;
-    grid-template-columns: 10% 10% 10% 10%;
-    gap: 11%;
-    width: 100%;
-    margin-left: 25%;
+    grid-template-columns: 15% 15% 15% 15%;
+    gap: 19%;
+    /* width: 65%; */
+    margin-left: 22%;
     color: #7B7F91;
     margin-top: -30px;
-    /* font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 21px;
-display: flex;
-align-items: center;
-letter-spacing: 0.05em;
-color: #7B7F91; */
+ 
 }
 .btn-1{
     border: none;
@@ -216,10 +207,9 @@ color: #7B7F91; */
 font-style: normal;
 font-weight: 400;
 font-size: 14px;
-line-height: 21px;
+margin-top: 15px;
 display: flex;
-align-items: center;
-letter-spacing: 0.05em;
+width: fit-content;
 background-color: whitesmoke;
 }
 .par153{
@@ -229,11 +219,25 @@ background-color: whitesmoke;
 font-style: normal;
 font-weight: 400;
 font-size: 12px;
-line-height: 18px;
 display: flex;
 align-items: center;
-
 color: #242424;
+}
+.btn {
+    display: flex;
+    gap: 9%;
+}
+.para0{
+  margin-top: -8px;
+}
+.para01{
+  margin-top: -8px;
+}
+.para02{
+  margin-top: -8px;
+}
+.para03{
+  margin-top: -8px;
 }
 `;
 
