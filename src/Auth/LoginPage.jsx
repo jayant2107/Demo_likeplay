@@ -21,7 +21,7 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const LoginFun = () => {
-    dispatch(ValidUser("token"));
+    // dispatch(ValidUser("token"));
   };
   return (
     <>
