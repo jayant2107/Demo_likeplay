@@ -17,34 +17,36 @@ const MatchesCard = ({ props }) => {
   return (
     <MatchesCardStyle>
       <div className="MainCard">
-      {showDiv && (
-        <CommentModal props={props} show={showDiv} close={handleClose} />
-      )}
-      <div className="MainDiv" onClick={handleOpenDiv}>
-        <div className="ImgDiv">  
-        <img src={props.Image} alt="" className="imgClass" /> </div>
-        {props.Type && (
-          <div className="type">
-            <p>{props.Type}</p>
-          </div>
+        {showDiv && (
+          <CommentModal props={props} show={showDiv} close={handleClose} />
         )}
-        <p className="Name">{props.Name}</p>
-        <div className="Div1">
-          <p className="common">{props.Age}</p>
-          <span className="dot"></span>
-          <p className="common">{props.City} </p>
-          <span className="dot"></span>
-          <p className="common">{props.Country}</p>
+        <div className="MainDiv" onClick={handleOpenDiv}>
+          <div className="ImgDiv">
+            <img className="imgClass" src={props.Image} alt="" />{" "}
+          </div>
+          {props.Type && (
+            <div className="type">
+              <p>{props.Type}</p>
+            </div>
+          )}
+          <p className="Name">{props.Name}</p>
+          <div className="Div1">
+            <p className="common">{props.Age}</p>
+            <span className="dot"></span>
+            <p className="common">{props.City} </p>
+            <span className="dot"></span>
+            <p className="common">{props.Country}</p>
+          </div>
+        </div>
+        <div className="MainDiv2">
+          <button className="Button1">
+            <img src={logo1} alt="" />
+          </button>
+          <button className="Button2">
+            <img src={logo2} alt="" />
+          </button>
         </div>
       </div>
-      <div className="MainDiv2">
-        <button className="Button1">
-          <img src={logo1} alt="" />
-        </button>
-        <button className="Button2">
-          <img src={logo2} alt="" />
-        </button>
-      </div></div>
     </MatchesCardStyle>
   );
 };
@@ -52,17 +54,17 @@ const MatchesCard = ({ props }) => {
 export default MatchesCard;
 
 const MatchesCardStyle = styled.div`
-  
-  width: 145px;
-  height: 165px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin:0 0 40px 0;
   * {
     border: none;
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
-  }
-  .MainCard{
-
   }
 
   .type {
@@ -138,13 +140,13 @@ const MatchesCardStyle = styled.div`
     justify-content: space-between;
     margin-top: 0.5rem;
   }
-  .ImgDiv{
-    max-height: 145px;
-    max-width: 145px;
+  .ImgDiv {
+    width: 100%;
+    height: 100%;
+
+    .imgClass {
+      width: 145px;
+      height: 145px;
+    }
   }
-  .imgClass{
- width: 100%;
- height: 100%;
-  }
-  
 `;

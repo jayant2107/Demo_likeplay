@@ -152,7 +152,7 @@ export default function Sidebar() {
             <Slogo>
               <Setting
                 color={
-                  Settingcolor || active == "/Layout/Settings"
+                  Settingcolor || active === "/Layout/Settings"
                     ? primarycolor
                     : secondarycolor
                 }

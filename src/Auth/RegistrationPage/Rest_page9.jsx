@@ -1,18 +1,27 @@
 import React from 'react'
 import ResHeaderComponent from './ResHeader'
-import {Artboard9} from '../../Utils/RegistrationImg/Registrationflie'
-import { RisgistionBgImg, FromStyleDiv, ProgessStyleDiv, ProgessStyleDivline, ProgessStyleDivfilline, ButtonStyle, RisgistationPage1 } from './style'
-import { SelectOptionStyle } from './style'
+import { Artboard6 } from '../../Utils/RegistrationImg/Registrationflie'
 
-const ResgistPage9 = ({Next, Back}) => {
-    let percentage = "26%";
+import { RisgistionBgImg, FromStyleDiv, ProgessStyleDiv, ProgessStyleDivline, ProgessStyleDivfilline, ButtonStyle, RisgistationPage1 } from './style'
+
+const data = [
+    { p: "Have you been involved in taking hard drugs?" },
+    { p: "Have you been involved in crimaial activity?" },
+    { p: "Have you been involved in taking hard drugs?" },
+    { p: "Have you been involved in crimaial activity?" },
+    { p: "Have you been involved in taking hard drugs.have you been involved in taking hard drugs?" },
+    { p: "Have you been involved in crimaial activity?" },
+    { p: "Have you been involved in crimaial activity?" },
+]
+const ResgistPage9 = ({ Next, Back }) => {
+    let percentage = "64%";
     return (<>
-        <RisgistionBgImg  imgUrl={Artboard9}>
+        <RisgistionBgImg imgUrl={Artboard6}>
             <ResHeaderComponent />
             <RisgistationPage1>
                 <div className='Risgistation_content2'>
-            
-                    <FromStyleDiv>
+
+                    <FromStyleDiv width="37rem">
                         <ProgessStyleDiv>
                             <p><b>{percentage}</b> Complete</p>
                             <ProgessStyleDivline>
@@ -22,32 +31,32 @@ const ResgistPage9 = ({Next, Back}) => {
                         </ProgessStyleDiv>
                         <div className='registation_form'>
                             <div className='Welcome'>
-                                <h3><b>Wellcome!</b></h3>
-                                <p><span>Step 2/6</span></p>
+                                <h4><b>Verifiaction</b><span>*</span></h4>
                             </div>
-                            <lable>Status<span>*</span></lable>
-                            <SelectOptionStyle><option>Select Status</option></SelectOptionStyle>
-                            <br></br>
-                            <div className='body_heigth'>
-                                <div>
-                                    <lable>Body Type<span>*</span></lable>
-                                    <SelectOptionStyle width="12rem"><option>Select Body Type</option></SelectOptionStyle>
-                                </div>
-                                <div>
-                                    <lable>Height<span>*</span></lable>
-                                    <SelectOptionStyle width="12rem"><option>Select Height</option></SelectOptionStyle>
-                                </div>
-                            </div>
-                            <lable>Education<span>*</span></lable>
-                            <SelectOptionStyle><option>Select Education</option></SelectOptionStyle>
-                            <br></br>
-                            <lable>Empoyment<span>*</span></lable>
-                            <SelectOptionStyle><option>Select Employment</option></SelectOptionStyle>
-                            <br></br>
+                            {
+                                data.map((el) => {
+                                    return (<>
+                                        <div className='verificationdiv'>
+                                            <div><p className='paarapag9'>{el.p}<span>*</span></p></div>
+                                            <div className='checkboxs'>
+                                                <p className='checkoxIn' ><input className='checkboxsN' type='checkbox' /><b>No</b></p>
+                                                <p className='checkoxIn' ><input className="checkboxsN" type='checkbox' /><b>Yes</b></p>
+                                            </div>
+                                        </div>
+
+                                    </>)
+                                })
+                            }
+
                             <div className='btn'>
-                                <ButtonStyle  onClick={()=>{Back()}} bgcolour="#e5e5e5" color= "black"> Back </ButtonStyle>
-                                <ButtonStyle  onClick={()=>{Next()}}> Next </ButtonStyle>
+                                <div className='btn9'>
+                                    <textarea type='textarea' placeholder='Add Additional detials.....' className='textarea9' />
+                                    {/* <ButtonStyle onClick={() => { Back() }} bgcolour="#e5e5e5" color="black"> Back </ButtonStyle> */}
+                                    <ButtonStyle onClick={() => { Next() }} height="3rem" padding="0"> Next </ButtonStyle>
+                                </div>
+
                             </div>
+
 
                         </div>
                     </FromStyleDiv>
@@ -61,7 +70,8 @@ const ResgistPage9 = ({Next, Back}) => {
 
     </>)
 }
-export default ResgistPage9;
+
+export default ResgistPage9
 
 
 
