@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import { Popover } from "antd";
@@ -21,8 +21,6 @@ import {
 import { TagesData } from "./DataPage";
 
 const UserPostCard = ({ val , like,star,heart , changeIcon}) => {
-  const [comment, setComment] = useState(false);
- 
 
   const content = (
     <PopContentCss>
@@ -118,7 +116,7 @@ const UserPostCard = ({ val , like,star,heart , changeIcon}) => {
         </div>
 
         {/* COMMENT BUTTON2 */}
-        <div className="commentDiv" onClick={()=>{setComment(!comment)}}>
+        <div className="commentDiv">
           <span>
             <CommentFeedIcon />
           </span>
@@ -149,14 +147,6 @@ const UserPostCard = ({ val , like,star,heart , changeIcon}) => {
         </div>
       </div>
 
-      {/* COMMENT SECTION */}
-      {
-        comment &&
-      <div className="commentInput">
-        <input className="input" type="text" placeholder="Add a Comment...." />
-        <button className="inputButton" onClick={()=>{setComment(!comment)}}>Post</button>
-      </div>
-      }
     </UserPostCardCss>
   );
 };
@@ -229,6 +219,7 @@ export const UserPostCardCss = styled.div`
     img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
 
