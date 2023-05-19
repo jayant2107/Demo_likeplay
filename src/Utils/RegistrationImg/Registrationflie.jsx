@@ -7,10 +7,16 @@ import Artboard6 from "../../Assets/Registration/Artboard6.png"
 import Artboard7 from "../../Assets/Registration/Artboard8.png"
 import Artboard8 from "../../Assets/Registration/Artboard8.png"
 import Artboard9 from "../../Assets/Registration/Artboard9.png"
+import Artboard10 from "../../Assets/Registration/Artboard10.png"
+import Artboard11 from "../../Assets/Registration/Artboard11.png"
+import Artboard12 from "../../Assets/Registration/Artboard12.png"
+import Artboard13 from "../../Assets/Registration/Artboard13.png"
+import Artboard14Completefrom from "../../Assets/Registration/Artboard13.png"
 import img1_7    from '../../Assets/Registration/Art7.png'
 import img2_7    from '../../Assets/Registration/Arti7.png'
 import img3_7    from '../../Assets/Registration/Group7.png'
 import LoginBg   from "../../Assets/Registration/LoginBg.png"
+import forgotbg from "../../Assets/Registration/fogotpassword.png"
 
 //------------Icon---------//
 
@@ -23,6 +29,10 @@ import photo      from  '../../Assets/Registration/RestisationIcon/photo.png'
 
 
 export default Artboard1;
-export {Artboard2, Artboard3, Artboard4, Artboard5, Artboard6, Artboard7, Artboard8, Artboard9,img1_7, img2_7, img3_7,LoginBg,
+export {Artboard2, Artboard3, Artboard4, Artboard5, Artboard6, Artboard7, Artboard8,
+         Artboard9,Artboard10, Artboard11, Artboard12, Artboard13,Artboard14Completefrom, 
+        img1_7, img2_7, img3_7,LoginBg,
+        forgotbg,
+//   ---------icon-------------//
         Logimg, heartIcon, facebook, email, pass, photo,
 }
