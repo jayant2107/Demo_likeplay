@@ -6,7 +6,7 @@ import { RisgistionBgImg, FromStyleDiv, ProgessStyleDiv, ProgessStyleDivline, Pr
 const ResgistPage2 = ({Next, Back}) => {
   let percentage = "16%";
   return (<>
-    <RisgistionBgImg imgUrl={Artboard2}>
+    <RisgistionBgImg height="100vh" imgUrl={Artboard2}>
       <ResHeaderComponent />
       <RisgistationPage1>
         <div className='Risgistation_content2'>

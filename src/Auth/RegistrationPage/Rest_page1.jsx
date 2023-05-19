@@ -51,6 +51,10 @@ const ResgistPage1  = ({Next}) => {
               <Form>
 
             <div className='registation_form'>
+            <div className='Welcome'>
+                <h3><b>Registartion</b></h3>
+               
+              </div>
               <lable>Username<span>*</span></lable>
               <Field  name='username' type="text" className='resgistation_input' placeholder='Username' component={Inputfield}/>
               <br></br>

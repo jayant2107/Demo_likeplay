@@ -42,7 +42,7 @@ width:100%;
   left: 20%;
 }
  
-}
+
 .right-sidebar{
   width:20%;
   position:fixed;
