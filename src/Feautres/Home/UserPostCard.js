@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import { Popover } from "antd";
@@ -27,16 +27,6 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const changeModal = () => {
     setComment(!comment);
   };
-
-  useEffect(()=>{
-    window.addEventListener('click',function(){
-      document.body.style.overflow = 'hidden';
-    });
-    return ()=> document.body.style.overflow = 'unset';
-    
-  },[comment]);
-
-  
 
   const content = (
     <PopContentCss>
