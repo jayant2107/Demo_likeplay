@@ -20,7 +20,7 @@ const MatchesCard = ({ props }) => {
         <CommentModal props={props} show={showDiv} close={handleClose} />
       )}
       <div className="MainDiv" onClick={handleOpenDiv}>
-        <img src={props.Image} alt="" className="img" />
+        <img src={props.Image} alt="" className="imgClass" />
         {props.Type && (
           <div className="type">
             <p>{props.Type}</p>
@@ -132,5 +132,11 @@ const MatchesCardStyle = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 0.5rem;
+  }
+  .imgClass{
+max-height: 145px;
+max-width: 145px;
+min-height: 10px;
+min-width: 10px;
   }
 `;
