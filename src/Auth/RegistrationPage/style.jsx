@@ -1,18 +1,18 @@
-
 import styled from "styled-components"
-
 
 //--------backgournd_img----------------------------------//
 
 export const RisgistionBgImg = styled.div`
-background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),url(${(props) => props.imgUrl});
+background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${(props) => props.imgUrl});
  width: ${(props) => props.width || "100%"};
  height: ${(props) => props.height || ""};
  background-size: ${(props) => props.bSize || "100% 100%"};
  background-position: ${(props) => props.bPosition || "100% 100%"};
  background-attachment: ${(props) => props.bAttachment || "fixed"};
  background-color:${(props) => props.bgcolour || "rgba(2, 2, 2, 0.8"};
- 
+
+
+
  //--------backgournd_img----------------------------------//
  
 `
@@ -22,11 +22,12 @@ export const FromStyleDiv = styled.div`
   width: ${(props) => props.width || "29rem"};
   margin:${(props) => props.margin || ""};
   lable {
-    color: #626060;
-    font-weight: 800;
-    font-family: monospace;
-    font-size: 14px;
+    font-weight: 700;
     margin-top: 1rem;
+    font-size: 11px;
+    color: rgb(74, 72, 72);
+    font-family: system-ui;
+
 }
 
 
@@ -60,10 +61,9 @@ export const ProgessStyleDivfilline = styled.div`
 // ----------------Button------------------------//
 export const ButtonStyle = styled.button`
     border-radius: 0.5rem;
-    background-color: ${(props) => props.bgcolour || "#ff3f45"};
     border:${(props) => props.border || "none"};
     color:${(props) => props.color || "white"};
-    /* background-image: linear-gradient(to right, rgb(242 109 133), rgb(255, 70, 63)); */
+    background-image: linear-gradient(${(props)=> props.bgcolour||"to right, rgb(242 109 133), rgb(255, 70, 63)"});
     width:${(props) => props.width || "8rem"};
     height:${(props) => props.height || ""};
     padding: ${(props) => props.padding || "1rem"};
@@ -72,18 +72,62 @@ export const ButtonStyle = styled.button`
 ;
 // ----------------Button------------------------//
 `
-
+// ----------------Select Button------------------------//
 export const SelectOptionStyle = styled.select`
     width:${(props) => props.width || "26rem"};
     height:${(props) => props.height || "3rem"};
-    margin: ${(props) => props.margin || "1rem 0"};
+    margin: ${(props) => props.margin || "0rem 0px 1rem 0px"};
     padding-left: ${(props) => props.paddingLeft || "1rem"};
     outline: none;
     font-size: 1rem;
     color: #878784;
+    border-radius: 10px;
+ // ----------------Select Button------------------------//
 
 `
+ // ----------------Choice Button------------------------//
+export const ChoiceDiv = styled.div`
+    width:${(props) => props.width || "26rem"};
+    height:${(props) => props.height || "3rem"};
+    margin: ${(props) => props.margin || "0rem 0px 0rem 0px"};
+    padding-left: ${(props) => props.paddingLeft|| "11px"};
+    font-size: 1rem;
+    color: #878784;
+    border-radius: 10px;
+    border:1px #878784 solid ;
+    text-align: left;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    :hover{
+        background-color: #a8580f;
+        color: white;
+    }
 
+// ----------------Choice Button------------------------//
+    
+`
+
+export const ChoiceBtn = styled.div`
+    padding: 6px 16px;
+    color: rgb(104, 102, 102);
+    background-color: ${(props) => props.bgcolour || "rgb(217, 208, 208);"};
+    border-radius: 15px;
+    margin-right: 17px;
+    margin-bottom: 15px;
+    font-size: smaller;
+    cursor: pointer;
+    &:hover{
+        background: rgb(122, 121, 121);
+        color: rgb(33, 32, 32);
+        :active{
+            background-color: #a8580f;
+            color: white;
+        }
+    }
+  
+    
+`
 
 /// --------------------Pages---------------------------------------------------------//
 export const RisgistationPage1 = styled.div`
@@ -110,8 +154,10 @@ input.resgistation_input {
     width: 99%;
     height: 3rem;
     padding-left: 1rem;
-    margin: 1rem 0;
+    margin: 0rem 0px 1rem 0px;
     outline: none;
+    border-radius:10px;
+    border: 1px #e2e2e2 solid;
 
 }
 
@@ -130,7 +176,8 @@ input.resgistation_input {
     text-align: center;
 }
 .btn {
-    text-align: center;
+   text-align: center;
+
 }
 /* -------------?loginpage---------? */
 h2.loginHeading {
@@ -139,6 +186,7 @@ h2.loginHeading {
 p.fogotpassword {
     float: right;
     color: #ff3f45; 
+    cursor: pointer;
 }
 
 //----------------------------------------Ris-page2------------------------------//
@@ -263,5 +311,69 @@ button.btn_buttom {
     display: flex;
     font-size: small;
 }
+
+/* /------------Regis page9---------- */
+.verificationdiv {
+    display: flex;
+    margin: auto;
+    border: 1px solid rgb(199, 199, 199);
+    padding: 5px;
+    border-radius: 6px;
+    justify-content: space-around;
+    margin: 1rem 0;
+
+}
+p.paarapag9 {
+    width: 21rem;
+    color: #424141;
+    font-family: fangsong;
+    font-weight: 500;
+   
+}
+.checkboxs {
+    display: flex;
+}
+input.checkboxsN {
+    height: 21px;
+    width: 26px;
+    margin-right: 4px;
+    background-color: #8b8888;
+}
+p.checkoxIn {
+    display: flex;
+    margin-right: 18px;
+    
+}
+.btn9 {
+    display: flex;
+}
+textarea.textarea9 {
+    width: 25rem;
+    height: 6rem;
+    border: 1px solid rgb(199, 199, 199);
+    padding: 5px;
+    border-radius: 6px;
+    color: #b5b1b1;
+    outline: none;
+}
+
+////-res Page10------------------
+
+.btnchosediv {
+    display: flex;
+}
+.lable {
+    font-weight: 800;
+    margin-top: 1rem ;
+    font-size: small;
+    color: #4a4848;
+}
+
+.text10 p {
+    margin: 1rem 0;
+    font-family: math;
+
+}
+
 
 `

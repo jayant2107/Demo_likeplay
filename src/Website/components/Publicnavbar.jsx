@@ -73,9 +73,7 @@ export default function Publicnavbar() {
               <li>How it Works</li>
               <li>Safety</li>
               <div className="btn_div">
-                <button className="btn1" onClick={() => navigate("/login")}>
-                  Login
-                </button>
+                <button className="btn1" onClick={()=>navigate("/login")}>Login</button>
                 <button className="btn2">Join Now</button>
               </div>
             </ul>

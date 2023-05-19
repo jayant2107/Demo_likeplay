@@ -25,6 +25,10 @@ const ResgistPage1  = ({Next}) => {
               </ProgessStyleDivline>
             </ProgessStyleDiv>
             <div className='registation_form'>
+            <div className='Welcome'>
+                <h3><b>Registartion</b></h3>
+               
+              </div>
               <lable>Username<span>*</span></lable>
               <input type="text" className='resgistation_input' placeholder='Username' />
               <br></br>

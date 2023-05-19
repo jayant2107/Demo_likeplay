@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import ResHeaderComponent from "./RegistrationPage/ResHeader";
 import { Logimg } from "../Utils/RegistrationImg/Registrationflie";
 import { LoginBg } from "../Utils/RegistrationImg/Registrationflie";
+import ForgetPage from "./ForgetPage";
 
 import {
   RisgistionBgImg,
@@ -12,9 +13,13 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const [forgot,setForgot] = useState(false)
+  const OpenFogot =()=>setForgot(true)
+  const CloseFogot =()=>setForgot(false)
   const navigate = useNavigate();
   return (
     <>
+    { forgot ? <ForgetPage/>:
       <RisgistionBgImg height="100vh" imgUrl={LoginBg}>
         <ResHeaderComponent />
         <RisgistationPage1>
@@ -39,7 +44,7 @@ const LoginPage = () => {
                   className="resgistation_input"
                   placeholder="Password"
                 />
-                <p className="fogotpassword">Forgot Password</p>
+                <p className="fogotpassword" onClick={OpenFogot}>Forgot Password</p>
                 <br></br>
                 <br></br>
                 <div className="btn">
@@ -47,7 +52,7 @@ const LoginPage = () => {
                     {" "}
                     Login{" "}
                   </ButtonStyle>
-                  <p>
+                  <p style={{cursor:"pointer"}}>
                     Don't have a account{" "}
                     <span onClick={() => navigate("/Registration")}>
                       Register
@@ -58,7 +63,7 @@ const LoginPage = () => {
             </FromStyleDiv>
           </div>
         </RisgistationPage1>
-      </RisgistionBgImg>
+      </RisgistionBgImg>}
     </>
   );
 };

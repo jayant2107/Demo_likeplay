@@ -7,7 +7,7 @@ import { SelectOptionStyle } from './style'
 const ResgistPage3 = ({Next, Back}) => {
     let percentage = "26%";
     return (<>
-        <RisgistionBgImg  imgUrl={Artboard3}>
+        <RisgistionBgImg height="100vh"  imgUrl={Artboard3}>
             <ResHeaderComponent />
             <RisgistationPage1>
                 <div className='Risgistation_content2'>
