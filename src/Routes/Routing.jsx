@@ -15,10 +15,10 @@ import Footercontent from "../Website/pages/Footercontent";
 import Layout from "../Layouts/Layout";
 import Country from "../Website/pages/Country";
 import Notfound from "../Feautres/Notfound/Notfound";
-
 import Registration from "../Auth/Registration";
 import LoginPage from "../Auth/LoginPage";
 import Subscription from "../Feautres/Subscription/Subscriptions";
+
 let PublicRouter = ({ isAuth }) => {
   if (isAuth === true) {
     return <Navigate to="/Layout/FeedPage" replace />;
@@ -41,10 +41,9 @@ const Routing = () => {
           <Route element={<PublicRouter isAuth={prop} />}>
             <Route path="/" element={<Publichome />} />
             <Route path="/Registration" element={<Registration />} />
-            <Route path="/Login" element={<LoginPage/>} />
+            <Route path="/Login" element={<LoginPage />} />
             <Route path="/Safety" element={<Footercontent />} />
             <Route path="/Nigeria" element={<Country />} />
-            <Route path="*" element={<Notfound />} />
           </Route>
           <Route element={<PrivateRouter isAuth={prop} />}>
             <Route path="/Layout" element={<Layout />}>
