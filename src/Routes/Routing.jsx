@@ -32,7 +32,7 @@ let PrivateRouter = ({ isAuth }) => {
   return <Outlet />;
 };
 const Routing = () => {
-  let prop = true;
+  let prop = false;
 
   return (
     <>
@@ -41,7 +41,7 @@ const Routing = () => {
           <Route element={<PublicRouter isAuth={prop} />}>
             <Route path="/" element={<Publichome />} />
             <Route path="/Registration" element={<Registration />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="/Login" element={<LoginPage/>} />
             <Route path="/Safety" element={<Footercontent />} />
             <Route path="/Nigeria" element={<Country />} />
             <Route path="*" element={<Notfound />} />
