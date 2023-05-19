@@ -14,9 +14,12 @@ import Publichome from "../Website/PublicHome";
 
 import Footercontent from "../Website/pages/Footercontent";
 import Layout from "../Layouts/Layout";
+
+import Notfound from "../Feautres/Notfound/Notfound";
+
 import Registration from "../Auth/Registration";
 import LoginPage from "../Auth/LoginPage";
-import Country from "../Website/pages/Country";
+import Country from "../Website/pages/country";
 let PublicRouter = ({ isAuth }) => {
   if (isAuth === true) {
     return <Navigate to="/Layout/FeedPage" replace />;
@@ -39,7 +42,7 @@ const Routing = () => {
           <Route element={<PublicRouter isAuth={prop} />}>
             <Route path="/" element={<Publichome />} />
             <Route path="/Registration" element={<Registration />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="/Login" element={<LoginPage/>} />
             <Route path="/Safety" element={<Footercontent />} />
             <Route path="/Nigeria" element={<Country/>}/>
           </Route>

@@ -6,11 +6,20 @@ import ResetPassword from "./SettingComponents/ResetPassword";
 import UpgradeSubscription from "./SettingComponents/UpgradeSubscription";
 import BlockedUser from "./SettingComponents/BlockedUser";
 import CancelSubscription from "./SettingComponents/CancelSubscription";
-
+import { message, Space } from "antd";
 const Settings = () => {
   const [btn, setBtn] = useState("Reset");
+  const [messageApi, contextHolder] = message.useMessage();
+  const warning = () => {
+    messageApi.open({
+      type: "warning",
+      content: "Account has been delete",
+      duration: 1,
+    });
+  };
   return (
     <>
+      {contextHolder}
       <Wrapper>
         <div className="Header">
           <div className="Setting">Settings</div>
@@ -101,7 +110,7 @@ const Settings = () => {
                 </button>
               </div>
             </div>
-            <div>
+            <div className="DivDele" onClick={warning}>
               <button className="deltebtn">
                 <div className="innerFlexBtn">
                   <div>
@@ -136,6 +145,12 @@ export default Settings;
 const Wrapper = styled.div`
   font-family: "Poppins", sans-serif;
   height: 100vh;
+  .deleteac {
+    margin-left: 0.5rem;
+  }
+  .DivDele {
+    width: 80%;
+  }
   .Header {
     background-color: #f0f0f0;
     font-weight: 600;
@@ -143,19 +158,23 @@ const Wrapper = styled.div`
     height: 10vh;
   }
   .deltebtn {
-    width: 85%;
+    width: 100%;
     height: 3rem;
     background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
     border: none;
     border-radius: 10px;
     color: white;
+    cursor: pointer;
   }
   .Setfir {
     display: flex;
     flex-direction: column;
   }
   .Setfir > div:not(:first-child) {
-    margin-top: 5%;
+    margin-top: 7%;
+  }
+  .Setfir > div button {
+    cursor: pointer;
   }
   .Header .Setting {
     height: 100%;
@@ -167,15 +186,16 @@ const Wrapper = styled.div`
   .mainContainer {
     display: flex;
     align-items: start;
-    padding: 2rem 0;
+    padding: 2rem 0rem;
     height: 85vh;
   }
   .SetLeft {
-    width: 25%;
+    width: 30%;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     height: 100%;
+    padding: 0rem 1px;
   }
   .SetLeft > div:not(:first-child) {
   }
