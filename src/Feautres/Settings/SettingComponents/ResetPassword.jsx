@@ -7,11 +7,11 @@ const ResetPassword = () => {
     <>
       <ResetPass>
         <div className="InnerResetPass">
-          <div>
+          <div className="oldPass">
             <p> Enter Old Password</p>
             <Input placeholder="Enter" className="InputMeth" />
           </div>
-          <div>
+          <div className="oldPass">
             <p>Enter New Password</p>
             <Space direction="vertical">
               <Input.Password
@@ -24,7 +24,7 @@ const ResetPassword = () => {
               />
             </Space>
           </div>
-          <div>
+          <div className="oldPass">
             <p>Confirm New Password</p>
             <Space direction="vertical">
               <Input.Password
@@ -38,7 +38,9 @@ const ResetPassword = () => {
             </Space>
           </div>
           <div className="btnPass">
-            <button className="PassChan">Change New Pasword</button>
+            <div className="ChangePass">
+              <button className="PassChan">Change New Pasword</button>
+            </div>
           </div>
         </div>
       </ResetPass>
@@ -55,25 +57,54 @@ const ResetPass = styled.div`
     margin-top: 1.5rem;
   }
 
-  p {
-    font-size: 12px;
+  .oldPass p {
+    font-size: 15px;
+    font-weight: 500;
+    color: #242424;
   }
   .InputMeth {
-    width: 446px;
+    width: 400px;
     border-radius: 10px;
     height: 56px;
     padding-left: 24px;
   }
-  .PassChan {
+  .ChangePass {
     width: 226px;
+    height: 48px;
+  }
+  .PassChan {
     background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
     border: none;
-    height: 48px;
+    width: 100%;
+    height: 100%;
     border-radius: 10px;
     color: #fbfaf8;
     font-size: 15px;
+    cursor: pointer;
   }
   .btnPass {
-    margin-left: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (max-width: 1026px) {
+    .InputMeth {
+      width: 330px;
+    }
+  }
+  @media (max-width: 853px) {
+    .InputMeth {
+      width: 280px;
+    }
+  }
+  @media (max-width: 711px) {
+    .InputMeth {
+      width: 230px;
+    }
+  }
+  @media (max-width: 593px) {
+    .InputMeth {
+      width: 190px;
+    }
   }
 `;

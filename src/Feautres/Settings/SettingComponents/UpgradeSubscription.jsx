@@ -1,44 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import { Check, diamond } from "../../../Utils/IconsP";
-let upgradeArr = [
-  {
-    header: "Complimentary: 5 Free Days upon Sign-Up",
-    content: true,
-  },
-  {
-    header: "Unlimited Post on Take the FLOOR",
-    content: false,
-    subheader: "3 PHOTO",
-  },
-  {
-    header: "Audio Voice-Note Messages",
-    content: true,
-    subheader: "10 MATCHES",
-  },
-  {
-    header: "Audio Voice-Note Messages",
-    content: false,
-    subheader: "10 MATCHES",
-  },
-  {
-    header: "Audio Voice-Note Messages",
-    content: true,
-    subheader: "10 MATCHES",
-  },
-  {
-    header: "Audio Voice-Note Messages",
-    content: false,
-    subheader: "Nil",
-  },
-];
+import UpgradeComp from "../../../Components/UpgradeComp";
+import { upgradeArr } from "../../../Data/SettingData";
+
 const UpgradeSubscription = () => {
   return (
     <>
       <Plan>Plan details</Plan>
       <Upgrade>
         <div className="innerUpgrade">
-          <FlexUpgrade Content="space-between">
+          <FlexUpgrade Content="space-between" padding="2% 0%">
             <FlexUpgrade>
               <div>
                 <img src={diamond} alt="Something Wrong" />
@@ -53,19 +25,10 @@ const UpgradeSubscription = () => {
             </div>
           </FlexUpgrade>
           <hr />
-          {upgradeArr.map((ele) => {
+          {upgradeArr && upgradeArr.map((ele) => {
             return (
               <>
-                <FlexUpgrade Content="space-between">
-                  <div className="Comp">{ele.header}</div>
-                  <div className="check">
-                    {ele.content ? (
-                      <img src={Check} alt="Something Wrong" />
-                    ) : (
-                      <span className="subheader">{ele.subheader}</span>
-                    )}
-                  </div>
-                </FlexUpgrade>
+                <UpgradeComp ele={ele} />
               </>
             );
           })}
@@ -102,8 +65,10 @@ export const Upgrade = styled.div`
   }
 
   .check {
-    width: 15%;
-    text-align: center;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .Dollar {
     color: red;
@@ -112,15 +77,18 @@ export const Upgrade = styled.div`
 
   .ClearD {
     clear: right;
+    font-size: 14px;
+    color: gray;
+    text-align: center;
   }
   .Comp {
-    width: 25%;
+    width: 50%;
     font-size: 12px;
   }
 `;
 export const UpdateBtn = styled.div`
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 2%;
 `;
 
 export const FlexUpgrade = styled.div`
@@ -128,14 +96,15 @@ export const FlexUpgrade = styled.div`
   align-items: ${({ align }) => align || "none"};
   justify-content: ${({ Content }) => Content || "none"};
   flex-direction: ${({ Direction }) => Direction || "none"};
-  margin-top: 12px;
+  margin-top: ${({ margin }) => margin || "none"};
+  padding: ${({ padding }) => padding || "none"};
 `;
 export const ButtonUpdate = styled.button`
   background: ${({ background }) => background || "none"};
-  width: 35%;
+  width: 50%;
   height: 48px;
   border-radius: 10px;
   border: none;
   color: white;
-  font-size: 18px;
+  font-size: 16px;
 `;

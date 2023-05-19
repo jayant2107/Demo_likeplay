@@ -4,7 +4,7 @@ import { upload } from "../Utils/images/Modalsimg";
 import { exit } from "../Utils/icons-folder/Modalsicons";
 import StyledButton from "../Components/Button";
 
-export default function CreateShotsModal() {
+export default function CreateShotsModal({next}) {
   return (
     <>
       <StyledCreateShortModal>
@@ -73,7 +73,7 @@ export default function CreateShotsModal() {
                 <div className="modal-button">
                   <div className="buttons-content">
                     <div className="submit-btn">
-                      <StyledButton
+                      <StyledButton onClick={()=>{next()}}
                         text="white"
                         bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
                       >

@@ -134,9 +134,9 @@ export default function Sidebar() {
             onClick={() => Navigate("/Layout/Matches")}
           >
             <Slogo>
-              <Matches color={Matchescolor ? primarycolor : secondarycolor} />
+              <Matches color={Matchescolor || active =='/Layout/Matches' ? primarycolor : secondarycolor} />
             </Slogo>
-            <Slabel>
+            <Slabel active={active==="/Layout/Matches"}>
               <p>Matches</p>
             </Slabel>
           </div>
@@ -152,7 +152,7 @@ export default function Sidebar() {
             <Slogo>
               <Setting
                 color={
-                  Settingcolor || active == "/Layout/Settings"
+                  Settingcolor || active === "/Layout/Settings"
                     ? primarycolor
                     : secondarycolor
                 }
@@ -239,6 +239,11 @@ const Sidebarwrapper = styled.div`
   height: 100vh;
   // position:fixed;
   background-color: white;
+  overflow:scroll;
+  &::-webkit-scrollbar{
+    display:none;
+  }
+  
 `;
 const Mainlogo = styled.div`
   display: flex;
