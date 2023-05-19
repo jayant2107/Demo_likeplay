@@ -22,11 +22,11 @@ const ResgistPage6 = ({Next, Back}) => {
                         </ProgessStyleDiv>
                         <div className='registation_form'>
                             <div className='Welcome'>
-                                <h3><b>Wellcome!</b></h3>
+                                <h3><b>Welcome!</b></h3>
                                 <p><span>Step /6</span></p>
                             </div>
                             <lable>About me<span>*</span></lable>
-                            <input type="textarea" className='textarea' placeholder='Type something......'></input>
+                            <textarea type="textarea" className='textareaa' placeholder='Type something......'></textarea>
                             <div className='btn'>
                                 <ButtonStyle  onClick={()=>{Back()}} bgcolour="#e5e5e5" color= "black"> Back </ButtonStyle>
                                 <ButtonStyle  onClick={()=>{Next()}}> Next </ButtonStyle>

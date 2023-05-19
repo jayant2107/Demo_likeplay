@@ -25,7 +25,7 @@ const ResgistPage5 = ({Next, Back}) => {
                         </ProgessStyleDiv>
                         <div className='registation_form'>
                             <div className='Welcome'>
-                                <h3><b>Wellcome!</b></h3>
+                                <h3><b>Welcome!</b></h3>
                                 <p><span>Step 4/6</span></p>
                             </div>
                             <lable>Age Range preferred to date<span>*</span></lable>

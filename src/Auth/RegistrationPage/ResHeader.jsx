@@ -3,11 +3,13 @@ import styled from 'styled-components'
 import { Logimg } from '../../Utils/RegistrationImg/Registrationflie'
 
 const ResHeader = styled.div`
-    color: white;
+       color: white;
+    align-items: center;
     display: flex;
     justify-content: space-around;
-    background-color: rgb(0,0,0,0.3);
-    padding: 1.3rem 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 1rem 0px;
+
 
     .imgLogheader img {
     width: 4rem;
