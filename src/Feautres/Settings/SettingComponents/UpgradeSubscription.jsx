@@ -25,7 +25,7 @@ const UpgradeSubscription = () => {
             </div>
           </FlexUpgrade>
           <hr />
-          {upgradeArr.map((ele) => {
+          {upgradeArr && upgradeArr.map((ele) => {
             return (
               <>
                 <UpgradeComp ele={ele} />
@@ -66,7 +66,9 @@ export const Upgrade = styled.div`
 
   .check {
     width: 30%;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .Dollar {
     color: red;
@@ -77,6 +79,7 @@ export const Upgrade = styled.div`
     clear: right;
     font-size: 14px;
     color: gray;
+    text-align: center;
   }
   .Comp {
     width: 50%;

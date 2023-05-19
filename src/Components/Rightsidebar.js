@@ -38,7 +38,7 @@ export default function Rightsidebar() {
 }
 const Rightsidebarwrapper = styled.div`
   padding: 10px;
-  width: 300px;
+  
 `;
 const Profilesection = styled.div`
   padding: 10px 20px;

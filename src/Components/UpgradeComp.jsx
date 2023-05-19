@@ -5,7 +5,7 @@ import { Check } from "../Utils/IconsP";
 const UpgradeComp = ({ ele }) => {
   return (
     <>
-      <FlexUpgrade Content="space-between" margin="4px">
+      <FlexUpgrade Content="space-between" margin="6px">
         <div className="Comp">{ele.header}</div>
         <div className="check">
           {ele.content ? (

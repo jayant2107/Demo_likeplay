@@ -11,14 +11,14 @@ import Matches from "../Feautres/Matches/Matches";
 import MatchesDetailPage from "../Feautres/Matches/Matches_Detail _Page";
 import FeedPage from "../Feautres/Home/FeedPage";
 import Publichome from "../Website/PublicHome";
-
 import Footercontent from "../Website/pages/Footercontent";
 import Layout from "../Layouts/Layout";
-
+import Country from "../Website/pages/Country";
 import Notfound from "../Feautres/Notfound/Notfound";
-
 import Registration from "../Auth/Registration";
 import LoginPage from "../Auth/LoginPage";
+import Subscription from "../Feautres/Subscription/Subscriptions";
+
 let PublicRouter = ({ isAuth }) => {
   if (isAuth === true) {
     return <Navigate to="/Layout/FeedPage" replace />;
@@ -32,7 +32,7 @@ let PrivateRouter = ({ isAuth }) => {
   return <Outlet />;
 };
 const Routing = () => {
-  let prop = false;
+  let prop = true;
 
   return (
     <>
@@ -41,10 +41,9 @@ const Routing = () => {
           <Route element={<PublicRouter isAuth={prop} />}>
             <Route path="/" element={<Publichome />} />
             <Route path="/Registration" element={<Registration />} />
-            <Route path="/Login" element={<LoginPage/>} />
+            <Route path="/Login" element={<LoginPage />} />
             <Route path="/Safety" element={<Footercontent />} />
-            <Route path="/Nigeria" element={<country />} />
-            <Route path="*" element={<Notfound />} />
+            <Route path="/Nigeria" element={<Country />} />
           </Route>
           <Route element={<PrivateRouter isAuth={prop} />}>
             <Route path="/Layout" element={<Layout />}>
@@ -61,7 +60,7 @@ const Routing = () => {
               {/* <Route path="/Layout/Admiring" element={<Admiring />} /> */}
               {/* <Route path="/Layout/Messages" element={<Messages />} /> */}
               {/* <Route path="/Layout/Notification" element={<Notification />} /> */}
-              {/* <Route path="/Layout/Subscription" element={<Subscription />} /> */}
+              <Route path="/Layout/Subscription" element={<Subscription />} />
               <Route path="/Layout/Settings" element={<Settings />} />
               {/* <Route path="/Layout/FAQs" element={<FAQs />} /> */}
               {/* <Route path="/Layout/Testimonal" element={<Testimonal />} /> */}
