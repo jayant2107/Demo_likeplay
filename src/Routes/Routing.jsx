@@ -13,11 +13,11 @@ import FeedPage from "../Feautres/Home/FeedPage";
 import Publichome from "../Website/PublicHome";
 import Footercontent from "../Website/pages/Footercontent";
 import Layout from "../Layouts/Layout";
-import Country from "../Website/pages/Country";
 import Notfound from "../Feautres/Notfound/Notfound";
 import Registration from "../Auth/Registration";
 import LoginPage from "../Auth/LoginPage";
 import Subscription from "../Feautres/Subscription/Subscriptions";
+import Country from "../Website/pages/country";
 
 let PublicRouter = ({ isAuth }) => {
   if (isAuth === true) {
@@ -32,7 +32,7 @@ let PrivateRouter = ({ isAuth }) => {
   return <Outlet />;
 };
 const Routing = () => {
-  let prop = true;
+  let prop = false;
 
   return (
     <>
