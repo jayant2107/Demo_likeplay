@@ -15,17 +15,18 @@ const CommentModal = ({ show, close, props }) => {
               <div className="modal-content">
               <div className="ExitButton">  <img src={exit} alt="" className="Exit" onClick={close}/> </div>
                 <div className="content-container">
-                  <div className="MainDiv" onClick={()=>navigate('/Layout/MatchesDetail',{ state: { about: props.about}})}>
-                    <div className="Left">
-                      <img src={props.Image} alt="" className="img112" />
+                  <div className="MainDiv" >
+                    <div className="Left" >
+                      
+                      <img src={props.Image} alt="" className="img112" onClick={()=>navigate('/Layout/MatchesDetail',{ state: { about: props.about}})} />
                     </div>
                     <div className="Right">
-                      <p className="Name" >{props.Name}</p>
+                      <p className="Name" ><span onClick={()=>navigate('/Layout/MatchesDetail',{ state: { about: props.about}})}>{props.Name }</span></p>
                       <p className="Common">
                         {" "}
                         {props.Age} <span className="dot"></span> {props.City}{" "}
                         <span className="dot" /> {props.Country}
-                      </p>
+                      </p> 
 
                       <p className="Comment">
                         Comments <span className="Common1"> ( Optional )</span>
@@ -73,7 +74,11 @@ text-align: end;
   }
   .Name{
     margin-top: 5px;
+    &:hover{
+      cursor: pointer;
+    }
   }
+  
 
   .modal-content {
     width: 585px;
@@ -133,6 +138,9 @@ text-align: end;
     background: white;
     border: none;
     object-fit: contain;
+    &:hover {
+      cursor: pointer;
+    }
   }
   .Common {
     font-family: "Poppins", sans-serif;
