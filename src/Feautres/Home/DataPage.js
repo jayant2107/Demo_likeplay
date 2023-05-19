@@ -1,4 +1,5 @@
-
+import men from "../../Assets/Images/men.png"
+import men2 from "../../Assets/Images/men2.png"
 // Images
 import img1 from "../../Assets/Images/img2.png";
 import img2 from "../../Assets/Images/img5.png";
@@ -20,6 +21,7 @@ import tag4 from "../../Assets/Images/tagImg4.png"
 import tag5 from "../../Assets/Images/tagImg5.png"
 
 
+
 export const Images = [img1, img2, img3, img4, img5];
 
 export const UsersData = [
@@ -32,17 +34,17 @@ export const UsersData = [
     Shots: shotsimg,
   },
   {
-    ProfileImg: userimg,
-    UserName: "Logon Lerman",
-    Date: "13 January at 5:00PM",
+    ProfileImg: men2,
+    UserName: "Christian Bale",
+    Date: "16 January at 12:00PM",
     Caption:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     Shots: shotsimg2,
   },
   {
-    ProfileImg: userimg,
-    UserName: "Logon Lerman",
-    Date: "13 January at 5:00PM",
+    ProfileImg: men,
+    UserName: "Robert Jr",
+    Date: "23 January at 9:00PM",
     Caption:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley.",
     Shots: shotsimg3,
@@ -101,4 +103,33 @@ export const TagesData = [
     name : 'Meryl Streep',
     img : tag5,
   },
+]
+
+
+export const commentofpeople = [
+  {
+    UserName : 'Marilyn Monroe',
+    img : men,
+    Caption:
+      " is simply dummy text of the printing and typesetting a galley.",
+  },
+  {
+    UserName : 'Sandra Bullock',
+    img : men2,
+    Caption:
+      "Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,",
+  },
+  {
+    UserName : 'Marilyn Monroe',
+    img : img5,
+    Caption:
+      "Lorem Ipsum is sian unknown printer took a galley.he industrys standard dummy text ever",
+  },
+  {
+    UserName : 'Sandra Bullock',
+    img : img3,
+    Caption:
+      "ustrys standard dummy text ever since the 1500s,",
+  },
+  
 ]
