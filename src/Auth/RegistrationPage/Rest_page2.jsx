@@ -32,7 +32,7 @@ const ResgistPage2 = ({Next, Back}) => {
               <lable>Gender<span>*</span></lable>
               <div className='gender_btn'>
                 <ButtonStyle  width="11rem" border="1px black solid" bgcolour="white" color="black"> Male </ButtonStyle>
-                <ButtonStyle width="11rem" margin="1rem"bgcolour="#A8580F"> Female </ButtonStyle>
+                <ButtonStyle width="11rem" margin="1rem" bgcolour="#A8580F"> Female </ButtonStyle>
               </div>
               <lable>Interested In<span>*</span></lable>
               <input type="text" className='resgistation_input' placeholder='willmith1234221' />

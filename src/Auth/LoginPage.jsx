@@ -3,6 +3,7 @@ import ResHeaderComponent from "./RegistrationPage/ResHeader";
 import { Logimg } from "../Utils/RegistrationImg/Registrationflie";
 import { LoginBg } from "../Utils/RegistrationImg/Registrationflie";
 import ForgetPage from "./ForgetPage";
+import {  Input } from "antd";
 
 import {
   RisgistionBgImg,
@@ -13,9 +14,11 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const [passwordVisible, setPasswordVisible] = React.useState(false);
+
   const [forgot,setForgot] = useState(false)
   const OpenFogot =()=>setForgot(true)
-  const CloseFogot =()=>setForgot(false)
+  // const CloseFogot =()=>setForgot(false)
   const navigate = useNavigate();
   return (
     <>
@@ -23,8 +26,8 @@ const LoginPage = () => {
       <RisgistionBgImg height="100vh" imgUrl={LoginBg}>
         <ResHeaderComponent />
         <RisgistationPage1>
-          <div className="Risgistation_content">
-            <div className="risgistation_img_log">
+          <div className="Risgistation_contentlogin">
+            <div className="risgistation_img_log_login">
               <img src={Logimg} className="rig_img_log" alt="empty" />
               <h1>The #Dating Site in Nigeria</h1>
             </div>
@@ -39,25 +42,32 @@ const LoginPage = () => {
                 />
                 <br></br>
                 <lable>Password</lable>
-                <input
-                  type="Password"
-                  className="resgistation_input"
-                  placeholder="Password"
-                />
+                <Input.Password
+                placeholder="input password"
+                className="InputMethpassword"
+                visibilityToggle={{
+                  visible: passwordVisible,
+                  onVisibleChange: setPasswordVisible,
+                }}
+              />
+                      <div className='bottomtext'>
                 <p className="fogotpassword" onClick={OpenFogot}>Forgot Password</p>
                 <br></br>
                 <br></br>
+                </div>
                 <div className="btn">
                   <ButtonStyle width="27rem" margin="1rem 0">
                     {" "}
                     Login{" "}
                   </ButtonStyle>
+                  <div className='bottomtext'>
                   <p style={{cursor:"pointer"}}>
                     Don't have a account{" "}
                     <span onClick={() => navigate("/Registration")}>
                       Register
                     </span>
                   </p>
+                </div>
                 </div>
               </div>
             </FromStyleDiv>

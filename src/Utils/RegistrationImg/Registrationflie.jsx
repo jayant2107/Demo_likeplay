@@ -4,7 +4,7 @@ import Artboard3 from "../../Assets/Registration/Artboard3.png"
 import Artboard4 from "../../Assets/Registration/Artboard4.png"
 import Artboard5 from "../../Assets/Registration/Artboard5.png"
 import Artboard6 from "../../Assets/Registration/Artboard6.png"
-import Artboard7 from "../../Assets/Registration/Artboard8.png"
+import Artboard7 from "../../Assets/Registration/Artboard7.png"
 import Artboard8 from "../../Assets/Registration/Artboard8.png"
 import Artboard9 from "../../Assets/Registration/Artboard9.png"
 import Artboard10 from "../../Assets/Registration/Artboard10.png"
@@ -12,6 +12,7 @@ import Artboard11 from "../../Assets/Registration/Artboard11.png"
 import Artboard12 from "../../Assets/Registration/Artboard12.png"
 import Artboard13 from "../../Assets/Registration/Artboard13.png"
 import Artboard14Completefrom from "../../Assets/Registration/Artboard13.png"
+import AartboardDitals from "../../Assets/Registration/ArtboardDetials.png"
 import img1_7    from '../../Assets/Registration/Art7.png'
 import img2_7    from '../../Assets/Registration/Arti7.png'
 import img3_7    from '../../Assets/Registration/Group7.png'
@@ -26,13 +27,14 @@ import facebook  from '../../Assets/Registration/RestisationIcon/Groupfackbook.p
 import email     from '../../Assets/Registration/RestisationIcon/GroupEmail.png'
 import pass      from '../../Assets/Registration/RestisationIcon/Grouppass.png'
 import photo      from  '../../Assets/Registration/RestisationIcon/photo.png'
+import Edit      from '../../Assets/Registration/RestisationIcon/edit.png'
 
 
 export default Artboard1;
 export {Artboard2, Artboard3, Artboard4, Artboard5, Artboard6, Artboard7, Artboard8,
-         Artboard9,Artboard10, Artboard11, Artboard12, Artboard13,Artboard14Completefrom, 
+         Artboard9,Artboard10, Artboard11, Artboard12, Artboard13,Artboard14Completefrom, AartboardDitals,
         img1_7, img2_7, img3_7,LoginBg,
         forgotbg,
-//   ---------icon-------------//
-        Logimg, heartIcon, facebook, email, pass, photo,
+//   -----------icon-------------//
+        Logimg, heartIcon, facebook, email, pass, photo,Edit
 }

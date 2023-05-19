@@ -22,11 +22,14 @@ export const FromStyleDiv = styled.div`
   width: ${(props) => props.width || "29rem"};
   margin:${(props) => props.margin || ""};
   lable {
-    font-weight: 700;
-    margin-top: 1rem;
-    font-size: 11px;
-    color: rgb(74, 72, 72);
-    font-family: system-ui;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    /* identical to box height, or 167% */
+    letter-spacing: 0.05em;
+    color: #242424;
 
 }
 
@@ -63,7 +66,7 @@ export const ButtonStyle = styled.button`
     border-radius: 0.5rem;
     border:${(props) => props.border || "none"};
     color:${(props) => props.color || "white"};
-    background-image: linear-gradient(${(props)=> props.bgcolour||"to right, rgb(242 109 133), rgb(255, 70, 63)"});
+    background: linear-gradient(${(props) => props.bgcolour || "268.55deg, #FF483C 0%, #FF2C5A 100%"});
     width:${(props) => props.width || "8rem"};
     height:${(props) => props.height || ""};
     padding: ${(props) => props.padding || "1rem"};
@@ -85,12 +88,12 @@ export const SelectOptionStyle = styled.select`
  // ----------------Select Button------------------------//
 
 `
- // ----------------Choice Button------------------------//
+// ----------------Choice Button------------------------//
 export const ChoiceDiv = styled.div`
     width:${(props) => props.width || "26rem"};
     height:${(props) => props.height || "3rem"};
     margin: ${(props) => props.margin || "0rem 0px 0rem 0px"};
-    padding-left: ${(props) => props.paddingLeft|| "11px"};
+    padding-left: ${(props) => props.paddingLeft || "11px"};
     font-size: 1rem;
     color: #878784;
     border-radius: 10px;
@@ -146,6 +149,22 @@ export const RisgistationPage1 = styled.div`
     margin-top: 5rem;
 
 }
+/*------------------------ login -------*/
+.Risgistation_contentlogin{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 1rem;
+    color: white;
+    margin-top: 10rem;
+
+}
+.risgistation_img_log_login{
+     margin-top:70px ;
+     text-align: center;
+}
+
 
 img.rig_img_log {
     width: 12rem;
@@ -159,6 +178,15 @@ input.resgistation_input {
     border-radius:10px;
     border: 1px #e2e2e2 solid;
 
+}
+.InputMethpassword{
+    width: 99%;
+    height: 3rem;
+    padding-left: 1rem;
+    margin: 0rem 0px 1rem 0px;
+    outline: none;
+    border-radius:10px;
+    border: 1px #e2e2e2 solid;
 }
 
 
@@ -174,6 +202,7 @@ input.resgistation_input {
 
 .risgistation_img_log {
     text-align: center;
+
 }
 .btn {
    text-align: center;
@@ -200,14 +229,28 @@ p.fogotpassword {
     justify-content: right;
 }
 .Welcome {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 39px;
+    letter-spacing: 0.05em;
+    margin: 10px 0;
+    color: #242424;
     display: flex;
     justify-content: space-between;
-    font-size: 20px;
-    margin-bottom: 1rem;
 }
 .gender_btn {
     text-align: center;
 }
+.bottomtext {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+}
+
 
 /* -------Ris_page 3-------------------- */
 .body_heigth {
@@ -371,8 +414,13 @@ textarea.textarea9 {
 
 .text10 p {
     margin: 1rem 0;
-    font-family: math;
-
+    /* font-family: math; */
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.05em;
 }
 
 

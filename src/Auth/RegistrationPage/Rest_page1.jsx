@@ -42,8 +42,10 @@ const ResgistPage1  = ({Next}) => {
               <input type="text" className='resgistation_input' placeholder='willmith1234221' />
               <div className='btn'>
                 <ButtonStyle onClick={()=>{Next()}}> Next </ButtonStyle>
-                <p><span>Trems and Conitions</span></p>
-                <p>How it works <span>www.likeplaylikeplay.comm</span></p>  
+                <div className='bottomtext'>
+                  <p><span>Trems and Conitions</span></p>
+                  <p>How it works <span>www.likeplaylikeplay.comm</span></p>  
+                </div>
               </div>
 
             </div>
