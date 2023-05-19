@@ -1,9 +1,10 @@
 import React from "react";
 
-export default function country() {
+
+export default function Country() {
   return (
     <>
-      <head>
+     <head>
         <h1>Countries</h1>
         <h2>LikePlay-LikePlay</h2>
         <div className="top-img">
@@ -29,7 +30,8 @@ export default function country() {
           <img src="" alt="" />
         </div>
         <p>j</p>
-      </head>
+      </head> 
+      
     </>
   );
 }
