@@ -239,6 +239,11 @@ const Sidebarwrapper = styled.div`
   height: 100vh;
   // position:fixed;
   background-color: white;
+  overflow:scroll;
+  &::-webkit-scrollbar{
+    display:none;
+  }
+  
 `;
 const Mainlogo = styled.div`
   display: flex;
