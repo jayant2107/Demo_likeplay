@@ -239,6 +239,7 @@ const Sidebarwrapper = styled.div`
   height: 100vh;
   // position:fixed;
   background-color: white;
+ 
 `;
 const Mainlogo = styled.div`
   display: flex;
