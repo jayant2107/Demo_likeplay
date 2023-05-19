@@ -1,9 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import styled from "styled-components";
 import Publicnavbar from "../Website/components/Publicnavbar";
+import Publicfooter from "../Website/components/Publicfooter";
 import featuresData, {
   workdata,
   whylikeplaydata,
+  homecontory,
 } from "../Data/PublicfeatureData.jsx";
 // images
 import hashimg, {
@@ -25,18 +29,17 @@ import hashimg, {
   live,
   thegurdian,
   punch,
-  contory1,
-  contory2,
-  contory3,
-  contory4,
-  contory5,
 } from "../Utils/images/Publichomeimg";
 
 export default function Publichome() {
   // -----------------------MainWrapper CSS START-------------------------------
 
   // -----------------------MainWrapper CSS END-------------------------------
-
+  const navigate = useNavigate();
+  const Country = (name) => {
+    console.log(name);
+    navigate("/Nigeria", { state: { id: name } });
+  };
   const MainWrapper = styled.main`
     main {
       background: url(${Homecouple});
@@ -477,34 +480,9 @@ export default function Publichome() {
           justify-content: center;
           align-items: center;
           color: white;
-          background-color: red;
+          /* background-color: red; */
           width: 200px;
           height: 200px;
-        }
-        .card1 {
-          background: url(${contory1});
-          background-position: center;
-          background-repeat: no-repeat;
-        }
-        .card2 {
-          background: url(${contory2});
-          background-position: center;
-          background-repeat: no-repeat;
-        }
-        .card3 {
-          background: url(${contory3});
-          background-position: center;
-          background-repeat: no-repeat;
-        }
-        .card4 {
-          background: url(${contory4});
-          background-position: center;
-          background-repeat: no-repeat;
-        }
-        .card5 {
-          background: url(${contory5});
-          background-position: center;
-          background-repeat: no-repeat;
         }
       }
     }
@@ -726,21 +704,23 @@ export default function Publichome() {
             <h1>Countries we Host</h1>
           </div>
           <div className="bottom">
-            <div className="card card1">
-              <h4>Nigera</h4>
-            </div>
-            <div className="card card2">
-              <h4>Congo</h4>
-            </div>
-            <div className="card card3">
-              <h4>Ghana</h4>
-            </div>
-            <div className="card card4">
-              <h4>South Africa</h4>
-            </div>
-            <div className="card card5">
-              <h4>Côte d'Ivoire</h4>
-            </div>
+            {homecontory.map((ele) => {
+              return (
+                <>
+                  <div
+                    onClick={() => Country(ele.conturyimageheading)}
+                    className="card"
+                    style={{
+                      backgroundImage: `url(${ele.background})`,
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  >
+                    <h1>{ele.conturyimageheading}</h1>
+                  </div>
+                </>
+              );
+            })}
           </div>
         </section>
       </Countries>
@@ -762,8 +742,11 @@ export default function Publichome() {
           </div>
         </section>
       </Featured>
-
       {/* -------------------------As featured In END-----------------------------  */}
+
+      {/* -------------------------Public footer start-----------------------------  */}
+      <Publicfooter />
+      {/* -------------------------Public footer END-----------------------------  */}
     </>
   );
 }

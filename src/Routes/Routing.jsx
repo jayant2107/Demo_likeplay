@@ -16,6 +16,7 @@ import Footercontent from "../Website/pages/Footercontent";
 import Layout from "../Layouts/Layout";
 import Registration from "../Auth/Registration";
 import LoginPage from "../Auth/LoginPage";
+import Country from "../Website/pages/Country";
 let PublicRouter = ({ isAuth }) => {
   if (isAuth === true) {
     return <Navigate to="/Layout/FeedPage" replace />;
@@ -29,7 +30,7 @@ let PrivateRouter = ({ isAuth }) => {
   return <Outlet />;
 };
 const Routing = () => {
-  let prop = true;
+  let prop = false;
 
   return (
     <>
@@ -40,13 +41,16 @@ const Routing = () => {
             <Route path="/Registration" element={<Registration />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/Safety" element={<Footercontent />} />
-            <Route path="/Nigeria" element={<country />} />
+            <Route path="/Nigeria" element={<Country/>}/>
           </Route>
           <Route element={<PrivateRouter isAuth={prop} />}>
             <Route path="/Layout" element={<Layout />}>
               <Route path="/Layout/FeedPage" element={<FeedPage />} />
               <Route path="/Layout/Matches" element={<Matches />} />
-              <Route path="/Layout/MatchesDetail" element={<MatchesDetailPage />} />
+              <Route
+                path="/Layout/MatchesDetail"
+                element={<MatchesDetailPage />}
+              />
               <Route
                 path="/Layout/MatchesDetailPage"
                 element={<MatchesDetailPage />}
