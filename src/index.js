@@ -12,6 +12,7 @@ import Subscription from "./Feautres/Subscription/Subscriptions";
 // import reportWebVitals from "./reportWebVitals";
 import Routing from "./Routes/Routing";
 import "./App.css";
+import MainModal from "./Feautres/Subscription/MainModal";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,8 +21,9 @@ root.render(
     <App />
     <FeedAboutMe /> */}
     <Subscription/>
+    {/* <MainModal/> */}
   
-    <Routing />
+    {/* <Routing /> */}
   </React.StrictMode>
 );
 

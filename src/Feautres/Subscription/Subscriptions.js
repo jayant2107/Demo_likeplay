@@ -7,14 +7,14 @@ const Subscription = () => {
   return (
     <>
       <StyledSubcription>
-        <div className='Wraper'>
+        
           <div className='images'>
-            <img src={rectangle} alt="" className='background-image' />
+            <img src={rectangle} alt=""  className='backgrnd'/>
           </div>
           <ModalLayout/>
-        </div>
+      
       </StyledSubcription>
-    <SubscriptionFooter/>
+    {/* <SubscriptionFooter/> */}
 
     </>
   )
@@ -22,10 +22,14 @@ const Subscription = () => {
 
 export default Subscription
 const StyledSubcription = styled.div`
-.background-image{
-/* background: #000000; */
-width: 100%;
-height: 100vh;
+.images{
+  height: 100vh;
+  filter: brightness(100%);
+  object-fit: contain;
+}
+.backgrnd{
+  width: 100%;
+
 }
 `
 

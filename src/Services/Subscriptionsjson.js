@@ -93,9 +93,5 @@ export const subitems = [
        p2:"2/DAY",
        p3:"3/DAY",
        p4:"5/DAY",
-    },
-    {
-        p: "Select Subscription",
-        
     }
 ]
