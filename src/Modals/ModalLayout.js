@@ -10,14 +10,14 @@ const ModalLayout = () => {
     <>
 
     <StyledLayout>
-    <div className="App">
+    {/* <div className="App">
     <br/>
 
    {modal===true&&(
     <ModalLayout setModal = {setModal}/>
    )}
   
-    </div>
+    </div> */}
    
     <div className="outer">
    
