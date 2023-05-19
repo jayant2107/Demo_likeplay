@@ -94,10 +94,10 @@ const MatchesCard2Style = styled.div`
 width:100%;
 height:100%;
 .Main{
-    width: 90%;
-    margin: auto;
-    position: relative;
-    top: 3rem;
+    /* width: 90%; */
+    /* margin: auto; */
+    /* position: relative; */
+    /* top: 3rem; */
 
 }
 *{
@@ -109,7 +109,7 @@ height:100%;
 .Name{
     font-family: 'Poppins', sans-serif;
 font-style: normal;
-font-weight: 800;
+font-weight: 400;
 font-size: 18px;
 line-height: 27px;
 align-items: center;
@@ -119,7 +119,7 @@ color: #242424;
 .Common{
     font-family: 'Poppins', sans-serif;
 font-style: normal;
-font-weight: 800;
+font-weight: 400;
 font-size: 12px;
 line-height: 18px;
 color: #7B7F91;
@@ -169,7 +169,7 @@ margin-left: 1rem;
 .about{
     font-family: 'Poppins', sans-serif;
 font-style: normal;
-font-weight: 1000;
+font-weight: 500;
 font-size: 16px;
 line-height: 20px;
 letter-spacing: 0.05em;
@@ -179,7 +179,7 @@ color: #242424;
 max-width:100%;
 font-family: 'Poppins', sans-serif;
 font-style: normal;
-font-weight: 800;
+font-weight: 400;
 font-size: 16px;
 line-height: 24px;
 align-items: center;
@@ -189,7 +189,7 @@ color: #7B7F91;
 .Images{
     font-family: 'Poppins', sans-serif;
 font-style: normal;
-font-weight: 800;
+font-weight: 500;
 font-size: 14px;
 line-height: 20px;
 letter-spacing: 0.05em;
@@ -228,7 +228,7 @@ margin-top: 0.5rem;
 .Tag{
     font-family: 'Poppins', sans-serif;
 font-style: normal;
-font-weight: 800;
+font-weight: 500;
 font-size: 14px;
 line-height: 20px;
 letter-spacing: 0.05em;
@@ -239,7 +239,7 @@ margin-top: 0.5rem;
 .Tag1{
     font-family: 'Poppins', sans-serif;
 font-style: normal;
-font-weight: 800;
+font-weight: 400;
 font-size: 16px;
 line-height: 24px;
 display: flex;

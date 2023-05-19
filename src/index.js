@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 // import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+<<<<<<< HEAD
 // import Publichome from "./Feautres/Home/Publichome";
 // import Layout from "./Layouts/Layout";
 // import FeedPage from "./Feautres/Home/FeedPage";
@@ -25,6 +26,21 @@ root.render(
   
     {/* <Routing /> */}
   </React.StrictMode>
+=======
+import "./App.css";
+import App from "./App";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import store, { persistor } from "./Store/Store";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
+  </Provider>
+>>>>>>> e96bc740feaaa64ba4a2ab699bf56a10b428f609
 );
 
 reportWebVitals();
