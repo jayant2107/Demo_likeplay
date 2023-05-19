@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
-import MatchesDetailPage from './Feautres/Matches/Matches_Detail _Page';
+import Routing from "./Routes/Routing"
+// import MatchesDetailPage from './Feautres/Matches/Matches_Detail _Page';
 
 
 function App() {
   return (
     <>
-    <MatchesDetailPage/>
+    <Routing/>
+    {/* <MatchesDetailPage/> */}
     </>
   );
 }
