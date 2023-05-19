@@ -21,7 +21,7 @@ import ResgistPage15 from './RegistrationPage/Rest_page15';
 
 const Registration = () => {
     const [count, setCount] = React.useState(1);
-    const Nextpage = () => (count === 14)?setCount(13):setCount(count + 1)
+    const Nextpage = () => (count === 15)?setCount(13):setCount(count + 1)
     const Backpage = () => (count === 0)?setCount(1):setCount(count - 1)
 
 
@@ -39,8 +39,8 @@ const Registration = () => {
         {count === 11 && <ResgistPage11 Next={Nextpage} Back={Backpage} />} 
         {count === 12 && <ResgistPage12 Next={Nextpage} Back={Backpage} />} 
         {count === 13 && <ResgistPage13 Next={Nextpage} Back={Backpage} />} 
-        {count === 15 && <ResgistPage15 Next={Nextpage} Back={Backpage} />} 
         {count === 14 && <ResgistPage14 Next={Nextpage} Back={Backpage} />} 
+        {count === 15 && <ResgistPage15 Next={Nextpage} Back={Backpage} />} 
 
     </>)
 }

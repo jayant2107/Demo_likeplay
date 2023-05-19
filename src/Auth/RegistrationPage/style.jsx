@@ -271,14 +271,15 @@ p.fogotpassword {
     margin: 0;
 }
 /* -------Ris_page 6-------------------- */
-input.textarea {
+.textareaa{
     width: 26rem;
     height: 15rem;
-    text-align: center;
+    text-align: left;
     outline: none;
     border-radius: 1rem;
     border: 1px #e2e2e2 solid;
     margin: 1rem 0;
+    padding: 10px;
 }
 /* ------------Regis Page 7----------- */
 .imgUpload {

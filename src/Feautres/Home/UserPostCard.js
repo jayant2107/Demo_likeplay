@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import { Popover } from "antd";
 // images
 import HeartTickImg from "../../Assets/Images/heartTickFeed.png";
 import ThreeDotsImg from "../../Assets/Images/OptionsDotsFeed.png";
@@ -15,8 +16,42 @@ import {
   TagFeedIcon,
 } from "../../Utils/HomeIconsFun";
 
-const UserPostCard = ({ val }) => {
+
+// FakeData
+import { TagesData } from "./DataPage";
+
+const UserPostCard = ({ val , like,star,heart , changeIcon}) => {
   const [comment, setComment] = useState(false);
+ 
+
+  const content = (
+    <PopContentCss>
+      <div className="popContent">
+        <div className="popbtn">Edit</div>
+        <div className="popbtn">Block</div>
+        <div className="popbtn">Delete</div>
+        <div className="popbtn">Report</div>
+        <div className="popbtn">Hide Shot</div>
+      </div>
+    </PopContentCss>
+  );
+
+  const tagContent = (
+    <PopContentCss>
+      <div className="popContent">
+        {TagesData.map((val, index) => {
+          return (
+            <div key={index} className="popFlex popbtn">
+              <span className="imgSpan">
+                <img src={val.img} alt="userImg" />
+              </span>
+              <span>{val.name}</span>
+            </div>
+          );
+        })}
+      </div>
+    </PopContentCss>
+  );
 
   return (
     <UserPostCardCss>
@@ -34,7 +69,19 @@ const UserPostCard = ({ val }) => {
             <img src={HeartTickImg} alt="HeartTickImg" />
           </div>
           <div>
-            <img src={ThreeDotsImg} alt="HeartTickImg" />
+            <Popover
+              arrow={false}
+              overlayStyle={{
+                border: "1px solid #E2E2E2",
+                backgroundColor: "white",
+                borderRadius: "0.5rem",
+              }}
+              content={content}
+              placement="bottomRight"
+              trigger="click"
+            >
+              <img src={ThreeDotsImg} alt="HeartTickImg" />
+            </Popover>
           </div>
         </div>
       </div>
@@ -56,22 +103,22 @@ const UserPostCard = ({ val }) => {
       <div className="commentLikeBtn">
         {/* LIKE BUTTON */}
         <div className="likeDiv">
-          <div>
-            <LikeFeedIcon />
+          <div onClick={()=>changeIcon('like')}>
+            <LikeFeedIcon val={like}/>
+            <span >18</span>
+          </div>
+          <div onClick={()=>changeIcon('heart')}>
+            <HeartFeedIcon  val={heart}/>
             <span>18</span>
           </div>
-          <div>
-            <HeartFeedIcon />
-            <span>18</span>
-          </div>
-          <div>
-            <StarFeedIcon />
+          <div onClick={()=>changeIcon('star')} >
+            <StarFeedIcon  val={star}/>
             <span>18</span>
           </div>
         </div>
 
         {/* COMMENT BUTTON2 */}
-        <div className="commentDiv">
+        <div className="commentDiv" onClick={()=>{setComment(!comment)}}>
           <span>
             <CommentFeedIcon />
           </span>
@@ -85,16 +132,31 @@ const UserPostCard = ({ val }) => {
           </span>
           <span>5 tags</span>
           <span className="arrow">
-            <img src={DownArrowImg} alt="DownArror" />
+            <Popover
+              arrow={false}
+              overlayStyle={{
+                border: "1px solid #E2E2E2",
+                backgroundColor: "white",
+                borderRadius: "0.5rem", 
+              }}
+              content={tagContent}
+              placement="top"
+              trigger="click"
+            >
+              <img src={DownArrowImg} alt="DownArror" />
+            </Popover>
           </span>
         </div>
       </div>
 
       {/* COMMENT SECTION */}
+      {
+        comment &&
       <div className="commentInput">
         <input className="input" type="text" placeholder="Add a Comment...." />
-        <button className="inputButton">Post</button>
+        <button className="inputButton" onClick={()=>{setComment(!comment)}}>Post</button>
       </div>
+      }
     </UserPostCardCss>
   );
 };
@@ -102,15 +164,15 @@ const UserPostCard = ({ val }) => {
 export default UserPostCard;
 
 export const UserPostCardCss = styled.div`
-  //   width: 50%;
-  //   margin: auto;
   height: auto;
   padding: 1rem;
   border-bottom: 1px solid #e2e2e2;
+  font-family: 'Poppins', sans-serif;
 
+ 
   .userProfile {
     display: grid;
-    grid-template-columns: 60px auto 110px;
+    grid-template-columns: 60px auto 90px;
     height: 3.8rem;
     width: 100%;
   }
@@ -145,7 +207,7 @@ export const UserPostCardCss = styled.div`
   .profileOptions {
     display: Flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
   }
   .heart {
     background-color: #f7f7f7;
@@ -174,13 +236,12 @@ export const UserPostCardCss = styled.div`
     display: grid;
     grid-template-columns: 32% 32% 32%;
     justify-content: space-between;
-    height: 4rem;
+    height: 3.5rem;
     div {
       background-color: #f7f7f7;
       border-radius: 0.8rem;
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: #7b7f91;
-      // #c5c7ce
     }
   }
 
@@ -207,7 +268,7 @@ export const UserPostCardCss = styled.div`
       margin-left: 0.4rem;
     }
     .arrow {
-      margin-left: 1.5rem;
+      margin-left: 2rem;
     }
   }
 
@@ -231,4 +292,42 @@ export const UserPostCardCss = styled.div`
     font-weight: 500;
     font-size: 1rem;
   }
+`;
+
+const PopContentCss = styled.div`
+font-family: 'Poppins', sans-serif;
+.popContent{
+  color : #7B7F91;
+}
+.popbtn{
+  font-size : 1rem;
+  padding : 0.3rem 0;
+  margin :  0 0.5rem;
+  cursor : pointer;
+}
+.popbtn:hover{
+  color : black;
+}
+.popFlex{
+  display : flex;
+  align-items : center;
+  margin : 0.2rem 0;
+  span{
+    margin : 0 0.3rem;
+    font-size : 0.8rem;
+  }
+}
+.imgSpan{
+  border-radius : 6rem;
+  width : 36px;
+  height : 36px;
+  overflow : hidden;
+  
+  img{
+    width : 100%;
+    height : 100%;
+    object-fit : cover;
+  }
+}
+.
 `;

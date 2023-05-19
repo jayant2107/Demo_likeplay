@@ -167,6 +167,7 @@ const FeedAboutMe = () => {
 export default FeedAboutMe;
 
 const FeedAboutMeCss = styled.div`
+font-family: 'Poppins', sans-serif;
   p {
     font-weight: 600;
     font-size: 14px;

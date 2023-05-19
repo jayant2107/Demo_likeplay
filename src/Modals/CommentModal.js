@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import exit from "../Assets/Images/Matches Image/exit.png"
 
 const CommentModal = ({ show, close, props }) => {
   const navigate = useNavigate();
@@ -7,9 +8,12 @@ const CommentModal = ({ show, close, props }) => {
     <>
       <div show={show} onHide={close}>
         <CommentModalStyle>
+    
           <div className="modal">
             <div className="modal-container">
+           
               <div className="modal-content">
+              <div className="ExitButton">  <img src={exit} alt="" className="Exit" onClick={close}/> </div>
                 <div className="content-container">
                   <div className="MainDiv">
                     <div className="Left">
@@ -55,6 +59,17 @@ export const CommentModalStyle = styled.div`
     bottom: 0;
     right: 0;
     z-index: 2;
+  }
+  .ExitButton{
+text-align: end;
+  }
+  .Exit{
+    position: relative;
+    top: -1.8rem;
+    right: -1rem;
+    width: 24px;
+    height: 24px;
+    
   }
 
   .modal-content {

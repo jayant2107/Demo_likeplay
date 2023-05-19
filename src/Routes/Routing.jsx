@@ -14,6 +14,9 @@ import Publichome from "../Website/PublicHome";
 
 import Footercontent from "../Website/pages/Footercontent";
 import Layout from "../Layouts/Layout";
+
+import Notfound from "../Feautres/Notfound/Notfound";
+
 import Registration from "../Auth/Registration";
 import LoginPage from "../Auth/LoginPage";
 let PublicRouter = ({ isAuth }) => {
@@ -41,12 +44,16 @@ const Routing = () => {
             <Route path="/Login" element={<LoginPage/>} />
             <Route path="/Safety" element={<Footercontent />} />
             <Route path="/Nigeria" element={<country />} />
+            <Route path="*" element={<Notfound />} />
           </Route>
           <Route element={<PrivateRouter isAuth={prop} />}>
             <Route path="/Layout" element={<Layout />}>
               <Route path="/Layout/FeedPage" element={<FeedPage />} />
               <Route path="/Layout/Matches" element={<Matches />} />
-              <Route path="/Layout/MatchesDetail" element={<MatchesDetailPage />} />
+              <Route
+                path="/Layout/MatchesDetail"
+                element={<MatchesDetailPage />}
+              />
               <Route
                 path="/Layout/MatchesDetailPage"
                 element={<MatchesDetailPage />}
