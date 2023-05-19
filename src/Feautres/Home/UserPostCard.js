@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import { Popover } from "antd";
@@ -19,8 +19,13 @@ import {
 
 // FakeData
 import { TagesData } from "./DataPage";
+import FeedCommentView from "./FeedCommentView";
 
 const UserPostCard = ({ val , like,star,heart , changeIcon}) => {
+  const [comment, setComment] = useState(false);
+  const changeModal=()=>{
+    setComment(!comment);
+  }
 
   const content = (
     <PopContentCss>
@@ -52,6 +57,7 @@ const UserPostCard = ({ val , like,star,heart , changeIcon}) => {
   );
 
   return (
+    <>
     <UserPostCardCss>
       {/* USER PROFILE SECTION  */}
       <div className="userProfile">
@@ -116,7 +122,7 @@ const UserPostCard = ({ val , like,star,heart , changeIcon}) => {
         </div>
 
         {/* COMMENT BUTTON2 */}
-        <div className="commentDiv">
+        <div className="commentDiv" onClick={changeModal}>
           <span>
             <CommentFeedIcon />
           </span>
@@ -147,7 +153,17 @@ const UserPostCard = ({ val , like,star,heart , changeIcon}) => {
         </div>
       </div>
 
+      {/* COMMENT SECTION */}
+      {/* {
+        comment &&
+      <div className="commentInput">
+        <input className="input" type="text" placeholder="Add a Comment...." />
+        <button className="inputButton" onClick={()=>{setComment(!comment)}}>Post</button>
+      </div>
+      } */}
     </UserPostCardCss>
+  {comment && <FeedCommentView commentOn={comment} changeModal={changeModal}/>}
+  </>
   );
 };
 
@@ -219,7 +235,7 @@ export const UserPostCardCss = styled.div`
     img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit : cover;
     }
   }
 

@@ -20,5 +20,9 @@ const MatchesDetailPage = () => {
 export default MatchesDetailPage;
 
 const MatchesDetailsStyle = styled.div`
-
+width: 100%;
+.Card{
+  /* width: 60%; */
+ /* margin: auto; */
+}
 `;
