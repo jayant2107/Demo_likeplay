@@ -10,9 +10,15 @@ import {
   RisgistationPage1,
 } from "../Auth/RegistrationPage/style";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { ValidUser } from "../Redux/SliceOfRedux/LoginSlice";
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const LoginFun = () => {
+    dispatch(ValidUser("token"));
+  };
   return (
     <>
       <RisgistionBgImg height="100vh" imgUrl={LoginBg}>
@@ -43,9 +49,8 @@ const LoginPage = () => {
                 <br></br>
                 <br></br>
                 <div className="btn">
-                  <ButtonStyle width="27rem" margin="1rem 0">
-                    {" "}
-                    Login{" "}
+                  <ButtonStyle width="27rem" margin="1rem 0" onClick={LoginFun}>
+                    Login
                   </ButtonStyle>
                   <p>
                     Don't have a account{" "}

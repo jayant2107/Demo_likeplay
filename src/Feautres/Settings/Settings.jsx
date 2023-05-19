@@ -110,15 +110,13 @@ const Settings = () => {
                 </button>
               </div>
             </div>
-            <div className="DivDele">
+            <div className="DivDele" onClick={warning}>
               <button className="deltebtn">
                 <div className="innerFlexBtn">
                   <div>
                     <img src={trash} alt="Something Wrong" />
                   </div>
-                  <div className="deleteac" onClick={warning}>
-                    Delete Account
-                  </div>
+                  <div className="deleteac">Delete Account</div>
                 </div>
               </button>
             </div>
@@ -197,7 +195,7 @@ const Wrapper = styled.div`
     justify-content: space-between;
     flex-direction: column;
     height: 100%;
-    padding: 0rem 0.2rem;
+    padding: 0rem 1px;
   }
   .SetLeft > div:not(:first-child) {
   }
