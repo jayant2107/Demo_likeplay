@@ -49,7 +49,7 @@ const ResgistPage7 = ({ Next, Back }) => {
                         </ProgessStyleDiv>
                         <div className='registation_form'>
                             <div className='Welcome'>
-                                <h3><b>Wellcome!</b></h3>
+                                <h3><b>Welcome!</b></h3>
                                 <p><span>Step 6/6</span></p>
                             </div>
 

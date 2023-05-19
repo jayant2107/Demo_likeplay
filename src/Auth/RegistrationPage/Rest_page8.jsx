@@ -48,15 +48,7 @@ const ResgistPage8 = ({ Next, Back }) => {
    
    
 }
-
-
-
-
-
-
 return (<>
-  {modal === "facebook" &&<CreateShotsModals next = {Next} />}
-  {modal === "email" &&<CreateShotsModals next = {Next} />}
   {modal === "photo" &&<CreateShotsModals next = {Next} />}
   {modal === "pass" &&<CreateShotsModals next = {Next} />}
     <RisgistionBgImg height="100vh" imgUrl={Artboard8}>
@@ -80,6 +72,7 @@ return (<>
                             {
                                 data.map((el) => {
                                     return (<>
+                                    
                                         <div className='cartReg'>
                                             <div className='cartIcon'>
                                                 <img className='cartIconimg' src={el.icon} alt='' />

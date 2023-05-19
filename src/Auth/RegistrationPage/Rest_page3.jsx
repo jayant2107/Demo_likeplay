@@ -25,7 +25,7 @@ const ResgistPage3 = ({Next, Back}) => {
                         </ProgessStyleDiv>
                         <div className='registation_form'>
                             <div className='Welcome'>
-                                <h3><b>Wellcome!</b></h3>
+                                <h3><b>Welcome!</b></h3>
                                 <p><span>Step 2/6</span></p>
                             </div>
                             <lable>Status<span>*</span></lable>

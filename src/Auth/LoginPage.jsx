@@ -4,6 +4,7 @@ import { Logimg } from "../Utils/RegistrationImg/Registrationflie";
 import { LoginBg } from "../Utils/RegistrationImg/Registrationflie";
 import { Formik, Form, Field } from "formik";
 import ForgetPage from "./ForgetPage";
+import {  Input } from "antd";
 
 import {
   RisgistionBgImg,
@@ -18,9 +19,12 @@ import { useDispatch } from "react-redux";
 import { ValidUser } from "../Redux/SliceOfRedux/LoginSlice";
 
 const LoginPage = () => {
-  const [forgot, setForgot] = useState(false);
-  const OpenFogot = () => setForgot(true);
-  const CloseFogot = () => setForgot(false);
+  const [passwordVisible, setPasswordVisible] = React.useState(false);
+
+  const [forgot,setForgot] = useState(false)
+  const OpenFogot =()=>setForgot(true)
+  const CloseFogot =()=>setForgot(false)
+  // const CloseFogot =()=>setForgot(false)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
