@@ -31,13 +31,14 @@ const CancelSubscription = () => {
             </div>
           </FlexUpgrade>
           <hr />
-          {upgradeArr.map((ele) => {
-            return (
-              <>
-                <Cancelsub ele={ele} />
-              </>
-            );
-          })}
+          {upgradeArr &&
+            upgradeArr.map((ele) => {
+              return (
+                <>
+                  <Cancelsub ele={ele} />
+                </>
+              );
+            })}
         </div>
       </Upgrade>
       <UpdateBtn>

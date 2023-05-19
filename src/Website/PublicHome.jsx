@@ -31,6 +31,7 @@ import hashimg, {
   contory4,
   contory5,
 } from "../Utils/images/Publichomeimg";
+import { homecontory } from "../Data/contorydata";
 
 export default function Publichome() {
   // -----------------------MainWrapper CSS START-------------------------------
@@ -472,6 +473,7 @@ export default function Publichome() {
         justify-content: center;
         margin-top: 10px;
         gap: 1rem;
+        cursor: pointer;
         .card {
           display: flex;
           justify-content: center;
@@ -726,7 +728,7 @@ export default function Publichome() {
             <h1>Countries we Host</h1>
           </div>
           <div className="bottom">
-            <div className="card card1">
+          <div className="card card1">
               <h4>Nigera</h4>
             </div>
             <div className="card card2">
