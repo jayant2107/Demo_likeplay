@@ -32,7 +32,7 @@ let PrivateRouter = ({ isAuth }) => {
   return <Outlet />;
 };
 const Routing = () => {
-  let prop = true;
+  let prop = false;
 
   return (
     <>
