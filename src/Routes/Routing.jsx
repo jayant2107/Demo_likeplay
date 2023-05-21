@@ -17,7 +17,7 @@ import Notfound from "../Feautres/Notfound/Notfound";
 import Registration from "../Auth/Registration";
 import LoginPage from "../Auth/LoginPage";
 import Subscription from "../Feautres/Subscription/Subscriptions";
-import Country from "../Website/pages/country";
+import Country from "../Website/pages/Country";
 
 let PublicRouter = ({ isAuth }) => {
   if (isAuth === true) {
