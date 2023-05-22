@@ -1,24 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Modal } from "antd";
@@ -46,13 +25,17 @@ import {
 import { TagesData } from "./DataPage";
 import FeedCommentView from "./FeedCommentView";
 
-const UserPostCard = ({ val, like, star, heart, changeIcon, changeModal }) => {
+const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const [comment, setComment] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showHideModal, setShowHideModal] = useState(false);
   const [showBlockModal, setshowBlockModal] = useState(false);
   const [reportUserModal, setReportUserModal] = useState(false);
   const [likeModal, setLikeModal] = useState(false);
+
+  const changeModal=()=>{
+    setComment(!comment);
+  }
 
   const closeModal = () => {
     if (showBlockModal === true) {
@@ -63,6 +46,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon, changeModal }) => {
       setShowHideModal(false);
     }
   };
+
 
   const closeReportModal = () => {
     setReportUserModal(false);
@@ -273,12 +257,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon, changeModal }) => {
 
           {/* TAG BUTTON3 */}
           <div className="commentDiv">
-            <span>
-              <TagFeedIcon />
-            </span>
-            <span>5 tags</span>
-            <span className="arrow">
-              <Popover
+          <Popover
                 arrow={false}
                 overlayStyle={{
                   border: "1px solid #E2E2E2",
@@ -289,9 +268,12 @@ const UserPostCard = ({ val, like, star, heart, changeIcon, changeModal }) => {
                 placement="top"
                 trigger="click"
               >
-                <img src={DownArrowImg} alt="DownArror" />
-              </Popover>
+            <span>
+              <TagFeedIcon />
             </span>
+            <span>5 tags</span>
+                <img className="arrow" src={DownArrowImg} alt="DownArror" />
+              </Popover>
           </div>
         </div>
 
@@ -343,7 +325,7 @@ export const UserPostCardCss = styled.div`
   .userName {
     color: #252525;
     font-weight: 500;
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
   .postDate {
     color: #7b7f91;
@@ -418,6 +400,7 @@ export const UserPostCardCss = styled.div`
     span {
       display: flex;
       margin-left: 0.4rem;
+      align-items: center;
     }
     .arrow {
       margin-left: 2rem;

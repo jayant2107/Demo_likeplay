@@ -25,6 +25,7 @@ import Admirers from "../Feautres/Admirers/Admirers";
 import FeedMyProfile from "../Feautres/Home/FeedMyProfile";
 import Admiring from "../Feautres/Admiring/Admiring";
 import Testimonial from "../Feautres/Testimonial/Testimonial";
+import ChatScreen from "../Feautres/Messages/ChatScreen";
 
 const Routing = () => {
   const value = useSelector((e) => e.LoginSlice.data);
@@ -70,7 +71,7 @@ const Routing = () => {
               <Route path="/Layout/Admirers" element={<Admirers />} />
 
               <Route path="/Layout/Admiring" element={<Admiring />} />
-              {/* <Route path="/Layout/Messages" element={<Messages />} /> */}
+              <Route path="/Layout/Messages" element={<ChatScreen />} />
               <Route path="/Layout/Notification" element={<Notification />} />
               <Route path="/Layout/Subscription" element={<Subscription />} />
               <Route path="/Layout/Settings" element={<Settings />} />
