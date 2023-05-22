@@ -4,15 +4,7 @@ import { Artboard6 } from '../../Utils/RegistrationImg/Registrationflie'
 
 import { RisgistionBgImg, FromStyleDiv, ProgessStyleDiv, ProgessStyleDivline, ProgessStyleDivfilline, ButtonStyle, RisgistationPage1 } from './style'
 
-const data = [
-    { p: "Have you been involved in taking hard drugs?" },
-    { p: "Have you been involved in crimaial activity?" },
-    { p: "Have you been involved in taking hard drugs?" },
-    { p: "Have you been involved in crimaial activity?" },
-    { p: "Have you been involved in taking hard drugs.have you been involved in taking hard drugs?" },
-    { p: "Have you been involved in crimaial activity?" },
-    { p: "Have you been involved in crimaial activity?" },
-]
+
 const ResgistPage9 = ({ Next, Back }) => {
     let percentage = "64%";
     return (<>
@@ -21,7 +13,7 @@ const ResgistPage9 = ({ Next, Back }) => {
             <RisgistationPage1>
                 <div className='Risgistation_content2'>
 
-                    <FromStyleDiv width="37rem">
+                    <FromStyleDiv  width="37rem">
                         <ProgessStyleDiv>
                             <p><b>{percentage}</b> Complete</p>
                             <ProgessStyleDivline>

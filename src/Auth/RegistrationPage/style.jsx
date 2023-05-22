@@ -71,6 +71,7 @@ export const ButtonStyle = styled.button`
     height:${(props) => props.height || ""};
     padding: ${(props) => props.padding || "1rem"};
     margin: ${(props) => props.margin || "1rem"};
+    
 
 ;
 // ----------------Button------------------------//
