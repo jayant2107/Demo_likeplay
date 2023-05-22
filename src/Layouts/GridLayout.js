@@ -153,7 +153,7 @@ const Wrapper = styled.div`
     top: 0px;
     height: 102vh;
     border: 1px solid #E2E2E2;
-    left: 21%;
+    left: 22%;
     width: 1.5px;
   }
   .hr2 {
