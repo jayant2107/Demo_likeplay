@@ -19,6 +19,7 @@ import {
   Testimonial,
 } from "../Utils/Logo";
 import { useNavigate } from "react-router-dom";
+import ModalLayout from "../Modals/ModalLayout";
 
 export default function Sidebar() {
   const [colorsetting, setcolorsetting] = useState(false);
@@ -31,6 +32,7 @@ export default function Sidebar() {
   const [Subscriptioncolor, setsubscriptioncolor] = useState(false);
   const [FAQcolor, setFAQcolor] = useState(false);
   const [Testimonialcolor, setTestimonialcolor] = useState(false);
+  const [SubscriptionModal, setsubscriptionModal] = useState(false);
   const content = (
     <Morecontent>
       <p>Verification</p>
@@ -45,6 +47,12 @@ export default function Sidebar() {
   const Navigate = useNavigate();
   return (
     <>
+      {SubscriptionModal && (
+        <ModalLayout
+          open={SubscriptionModal}
+          handleClose={() => setsubscriptionModal(false)}
+        />
+      )}
       <Sidebarwrapper>
         <Mainlogo>
           <img src={sidebarimage} alt="" style={{ color: "red" }} />
@@ -100,9 +108,18 @@ export default function Sidebar() {
           onMouseEnter={() => setAdmiringcolor(true)}
           onMouseLeave={() => setAdmiringcolor(false)}
         >
-          <div className="content-list"   onClick={() => Navigate("/Layout/Admiring")}>
+          <div
+            className="content-list"
+            onClick={() => Navigate("/Layout/Admiring")}
+          >
             <Slogo>
-              <Admiring color={Admiringcolor || active == "/Layout/Admiring" ? primarycolor : secondarycolor} />
+              <Admiring
+                color={
+                  Admiringcolor || active == "/Layout/Admiring"
+                    ? primarycolor
+                    : secondarycolor
+                }
+              />
             </Slogo>
             <Slabel active={active === "/Layout/Admiring"}>
               <p>Admiring</p>
@@ -176,18 +193,18 @@ export default function Sidebar() {
         >
           <div
             className="content-list"
-            onClick={() => Navigate("/Layout/Subscription")}
+            onClick={() => setsubscriptionModal(true)}
           >
             <Slogo>
               <Subscription
                 color={
-                  Subscriptioncolor || active === "/Layout/Subscription"
+                  SubscriptionModal || active === "/Layout/Subscription"
                     ? primarycolor
                     : secondarycolor
                 }
               />
             </Slogo>
-            <Slabel active={active === "/Layout/Subscription"}>
+            <Slabel active={SubscriptionModal}>
               <p>Subscription</p>
             </Slabel>
           </div>
