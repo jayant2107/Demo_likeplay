@@ -9,6 +9,7 @@ import {
   category7,
   category8,
   category9,
+  videocall,
   category10,
   category11,
   work1,
@@ -17,6 +18,11 @@ import {
   work4,
   work5,
   work6,
+  contory1,
+  contory2,
+  contory3,
+  contory4,
+  contory5,
   whylikeheart,
 } from "../Utils/images/Publichomeimg";
 const featuresData = [
@@ -74,19 +80,19 @@ const featuresData = [
       "Enjoy a FREE Standard subscription when you introduce 5 friends who use your referral code and sign up. The more, the merrier.",
   },
   {
-    logo: category10,
+    logo: videocall,
     heading: "Video call",
     paragraph:
       "Get a higher level subscription to enable video-calling with your matches, and add another layer of fun.",
   },
   {
-    logo: category11,
+    logo: category10,
     heading: "Voice Notes",
     paragraph:
       "Get our Gold Premium package and add audio voice to allow you leave love messages to the one you admire once they Admire back.",
   },
   {
-    logo: category1,
+    logo: category11,
     heading: "Africawide",
     paragraph:
       "Our platform is on other African countries. please sign up and complete your profile, to enjoy love with brothers and sisters in other African countries",
@@ -175,6 +181,29 @@ const whylikeplaydata = [
       "We plan on improving and fine-tuning to ensure we remain fresh. Our site has 100% verified users and your safety  and security is not a cliché.",
   },
 ];
+
+const homecontory = [
+  {
+    background: contory1,
+    conturyimageheading: "Nigeria",
+  },
+  {
+    background: contory2,
+    conturyimageheading: "Congo",
+  },
+  {
+    background: contory3,
+    conturyimageheading: "Ghana",
+  },
+  {
+    background: contory4,
+    conturyimageheading: "South Africa",
+  },
+  {
+    background: contory5,
+    conturyimageheading: "Côte d'Ivoire",
+  },
+];
 export default featuresData;
 
-export { workdata,whylikeplaydata };
+export { workdata, whylikeplaydata, homecontory };

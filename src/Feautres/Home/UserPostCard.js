@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-
+import DeleteModal from "../../Modals/DeleteModal";
+import BlockData from "../../Modals/ModalData/BlockData";
+import DeleteData from "../../Modals/ModalData/DeleteShotData";
+import HideData from "../../Modals/ModalData/HideShotData";
 import { Popover } from "antd";
 // images
 import HeartTickImg from "../../Assets/Images/heartTickFeed.png";
 import ThreeDotsImg from "../../Assets/Images/OptionsDotsFeed.png";
 import DownArrowImg from "../../Assets/Images/downArrow.png";
-
+import ReportUserModal from "../../Modals/ReportUserModal";
 //IconsFunctions
 import {
   CommentFeedIcon,
@@ -16,22 +19,85 @@ import {
   TagFeedIcon,
 } from "../../Utils/HomeIconsFun";
 
-
 // FakeData
 import { TagesData } from "./DataPage";
+import FeedCommentView from "./FeedCommentView";
 
-const UserPostCard = ({ val , like,star,heart , changeIcon}) => {
+const UserPostCard = ({ val, like, star, heart, changeIcon,changeModal }) => {
   const [comment, setComment] = useState(false);
- 
+  const [showModal, setShowModal] = useState(false);
+  const [showHideModal, setShowHideModal] = useState(false);
+  const [showBlockModal, setshowBlockModal] = useState(false);
+  const [reportUserModal, setReportUserModal] = useState(false);
+
+  const closeModal = () => {
+    if (showBlockModal === true) {
+      setshowBlockModal(false);
+    } else if (showModal === true) {
+      setShowModal(false);
+    } else if (showHideModal === true) {
+      setShowHideModal(false);
+    }
+  };
+
+  const closeReportModal = () => {
+    setReportUserModal(false);
+  };
 
   const content = (
     <PopContentCss>
       <div className="popContent">
         <div className="popbtn">Edit</div>
-        <div className="popbtn">Block</div>
-        <div className="popbtn">Delete</div>
-        <div className="popbtn">Report</div>
-        <div className="popbtn">Hide Shot</div>
+        <div
+          className="popbtn"
+          onClick={() => {
+            setshowBlockModal(true);
+            setShowModal(false);
+            setShowHideModal(false);
+          }}
+        >
+          Block
+        </div>
+        {showBlockModal && (
+          <DeleteModal prop={BlockData} closeModal={closeModal} />
+        )}
+        <div
+          className="popbtn"
+          onClick={() => {
+            setShowModal(true);
+            setShowHideModal(false);
+            setshowBlockModal(false);
+          }}
+        >
+          Delete
+        </div>
+        {showModal && <DeleteModal prop={DeleteData} closeModal={closeModal} />}
+
+        <div
+          className="popbtn"
+          onClick={() => {
+            setReportUserModal(true);
+          }}
+        >
+          Report
+        </div>
+        {reportUserModal && (
+          <ReportUserModal closeReportModal={closeReportModal} />
+        )}
+
+        <div
+          className="popbtn"
+          onClick={() => {
+            setShowModal(false);
+            setShowHideModal(true);
+            setshowBlockModal(false);
+          }}
+        >
+          Hide Shot
+        </div>
+        {showHideModal && (
+          <DeleteModal prop={HideData} closeModal={closeModal} />
+        )}
       </div>
     </PopContentCss>
   );
@@ -54,110 +120,112 @@ const UserPostCard = ({ val , like,star,heart , changeIcon}) => {
   );
 
   return (
-    <UserPostCardCss>
-      {/* USER PROFILE SECTION  */}
-      <div className="userProfile">
-        <div className="profileImg">
-          <img className="" src={val.ProfileImg} alt="userProfileImg" />
-        </div>
-        <div className="ProfileInfo">
-          <div className="userName">{val.UserName}</div>
-          <div className="postDate">{val.Date}</div>
-        </div>
-        <div className="profileOptions">
-          <div className="heart">
-            <img src={HeartTickImg} alt="HeartTickImg" />
+    <>
+      <UserPostCardCss>
+        {/* USER PROFILE SECTION  */}
+        <div className="userProfile">
+          <div className="profileImg">
+            <img className="" src={val.ProfileImg} alt="userProfileImg" />
           </div>
-          <div>
-            <Popover
-              arrow={false}
-              overlayStyle={{
-                border: "1px solid #E2E2E2",
-                backgroundColor: "white",
-                borderRadius: "0.5rem",
-              }}
-              content={content}
-              placement="bottomRight"
-              trigger="click"
-            >
-              <img src={ThreeDotsImg} alt="HeartTickImg" />
-            </Popover>
+          <div className="ProfileInfo">
+            <div className="userName">{val.UserName}</div>
+            <div className="postDate">{val.Date}</div>
+          </div>
+          <div className="profileOptions">
+            <div className="heart">
+              <img src={HeartTickImg} alt="HeartTickImg" />
+            </div>
+            <div>
+              <Popover
+                arrow={false}
+                overlayStyle={{
+                  border: "1px solid #E2E2E2",
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "0.5rem",
+                }}
+                content={content}
+                placement="bottomRight"
+                trigger="click"
+              >
+                <img src={ThreeDotsImg} alt="HeartTickImg" />
+              </Popover>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* USER Caption */}
-      {val.Caption && (
-        <div className="userCaption">
-          <span>{val.Caption}</span>
+        {/* USER Caption */}
+        {val.Caption && (
+          <div className="userCaption">
+            <span>{val.Caption}</span>
+          </div>
+        )}
+
+        {/* USER SHOTS / POSTS */}
+        {val.Shots && (
+          <div className="userPostImg">
+            <img src={val.Shots} alt="UserPostImg" />
+          </div>
+        )}
+
+        <div className="commentLikeBtn">
+          {/* LIKE BUTTON */}
+          <div className="likeDiv">
+            <div onClick={() => changeIcon("like")}>
+              <LikeFeedIcon val={like} />
+              <span>18</span>
+            </div>
+            <div onClick={() => changeIcon("heart")}>
+              <HeartFeedIcon val={heart} />
+              <span>18</span>
+            </div>
+            <div onClick={() => changeIcon("star")}>
+              <StarFeedIcon val={star} />
+              <span>18</span>
+            </div>
+          </div>
+
+          {/* COMMENT BUTTON2 */}
+          <div className="commentDiv" onClick={changeModal}>
+            <span>
+              <CommentFeedIcon />
+            </span>
+            <span> 18 Comments</span>
+          </div>
+
+          {/* TAG BUTTON3 */}
+          <div className="commentDiv">
+            <span>
+              <TagFeedIcon />
+            </span>
+            <span>5 tags</span>
+            <span className="arrow">
+              <Popover
+                arrow={false}
+                overlayStyle={{
+                  border: "1px solid #E2E2E2",
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "0.5rem",
+                }}
+                content={tagContent}
+                placement="top"
+                trigger="click"
+              >
+                <img src={DownArrowImg} alt="DownArror" />
+              </Popover>
+            </span>
+          </div>
         </div>
+  
+      {comment && (
+        <FeedCommentView
+          commentOn={comment}
+          changeModal={changeModal}
+          val={val}
+        />
       )}
-
-      {/* USER SHOTS / POSTS */}
-      {val.Shots && (
-        <div className="userPostImg">
-          <img src={val.Shots} alt="UserPostImg" />
-        </div>
-      )}
-
-      <div className="commentLikeBtn">
-        {/* LIKE BUTTON */}
-        <div className="likeDiv">
-          <div onClick={()=>changeIcon('like')}>
-            <LikeFeedIcon val={like}/>
-            <span >18</span>
-          </div>
-          <div onClick={()=>changeIcon('heart')}>
-            <HeartFeedIcon  val={heart}/>
-            <span>18</span>
-          </div>
-          <div onClick={()=>changeIcon('star')} >
-            <StarFeedIcon  val={star}/>
-            <span>18</span>
-          </div>
-        </div>
-
-        {/* COMMENT BUTTON2 */}
-        <div className="commentDiv" onClick={()=>{setComment(!comment)}}>
-          <span>
-            <CommentFeedIcon />
-          </span>
-          <span> 18 Comments</span>
-        </div>
-
-        {/* TAG BUTTON3 */}
-        <div className="commentDiv">
-          <span>
-            <TagFeedIcon />
-          </span>
-          <span>5 tags</span>
-          <span className="arrow">
-            <Popover
-              arrow={false}
-              overlayStyle={{
-                border: "1px solid #E2E2E2",
-                backgroundColor: "white",
-                borderRadius: "0.5rem", 
-              }}
-              content={tagContent}
-              placement="top"
-              trigger="click"
-            >
-              <img src={DownArrowImg} alt="DownArror" />
-            </Popover>
-          </span>
-        </div>
-      </div>
-
-      {/* COMMENT SECTION */}
-      {
-        comment &&
-      <div className="commentInput">
-        <input className="input" type="text" placeholder="Add a Comment...." />
-        <button className="inputButton" onClick={()=>{setComment(!comment)}}>Post</button>
-      </div>
-      }
+    
     </UserPostCardCss>
+    </>
   );
 };
 
@@ -167,9 +235,9 @@ export const UserPostCardCss = styled.div`
   height: auto;
   padding: 1rem;
   border-bottom: 1px solid #e2e2e2;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
 
- 
   .userProfile {
     display: grid;
     grid-template-columns: 60px auto 90px;
@@ -229,18 +297,22 @@ export const UserPostCardCss = styled.div`
     img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
 
   .commentLikeBtn {
     display: grid;
-    grid-template-columns: 32% 32% 32%;
+    grid-template-columns: 40% 30% 25%; 
     justify-content: space-between;
-    height: 3.5rem;
+    height: 3.2rem;
     div {
       background-color: #f7f7f7;
       border-radius: 0.8rem;
-      font-size: 1rem;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: 0.05em;
       color: #7b7f91;
     }
   }
@@ -253,6 +325,7 @@ export const UserPostCardCss = styled.div`
       display: flex;
       justify-content: space-around;
       align-items: center;
+      cursor: pointer;
       span {
         margin-left: 0.4rem;
       }
@@ -263,6 +336,7 @@ export const UserPostCardCss = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     span {
       display: flex;
       margin-left: 0.4rem;
@@ -271,31 +345,11 @@ export const UserPostCardCss = styled.div`
       margin-left: 2rem;
     }
   }
-
-  .commentInput {
-    display: grid;
-    grid-template-columns: auto 71px;
-    margin: 1rem 0;
-  }
-  .input {
-    height: 2rem;
-    font-size: 0.9rem;
-    border: 1px solid white;
-    font-size: 1rem;
-  }
-  .inputButton {
-    height: 36px;
-    width: 70px;
-    border: 1px solid white;
-    background-color: white;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 1rem;
-  }
 `;
 
 const PopContentCss = styled.div`
 font-family: 'Poppins', sans-serif;
+background-color : #FFFFFF;
 .popContent{
   color : #7B7F91;
 }
@@ -316,18 +370,35 @@ font-family: 'Poppins', sans-serif;
     margin : 0 0.3rem;
     font-size : 0.8rem;
   }
-}
-.imgSpan{
-  border-radius : 6rem;
-  width : 36px;
-  height : 36px;
-  overflow : hidden;
-  
-  img{
-    width : 100%;
-    height : 100%;
-    object-fit : cover;
+  .popbtn {
+    font-size: 1rem;
+    padding: 0.3rem 0;
+    margin: 0 0.5rem;
+    cursor: pointer;
+  }
+  .popbtn:hover {
+    color: black;
+  }
+  .popFlex {
+    display: flex;
+    align-items: center;
+    margin: 0.2rem 0;
+    span {
+      margin: 0 0.3rem;
+      font-size: 0.8rem;
+    }
+  }
+  .imgSpan {
+    border-radius: 6rem;
+    width: 36px;
+    height: 36px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }
-.
 `;

@@ -141,7 +141,7 @@ background: linear-gradient(268.55deg, #FF483C 0%, #FF2C5A 100%);
 border-radius: 5px;
 font-family: 'Poppins', sans-serif;
 font-style: normal;
-font-weight: 800;
+font-weight: 400;
 font-size: 13px;
 line-height: 20px;
 color: #FFFFFF;
@@ -153,7 +153,7 @@ background: #F2F2F2;
 border-radius: 5px;
 font-family: 'Poppins', sans-serif;
 font-style: normal;
-font-weight: 800;
+font-weight: 400;
 font-size: 13px;
 line-height: 20px;
 align-items: center;
@@ -200,8 +200,18 @@ margin-top: 2rem;
 }
 .Div5{
 width: 100%;
-display: flex;
-justify-content: space-between;
+/* display: flex;
+justify-content: space-between; */
+display: grid;
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 480px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
 
 }
 .Div6{
@@ -271,6 +281,111 @@ width: 100%;
 width: 50%;
 }
 .space{
-    margin-top: 5rem;
+    margin-top: 1rem;
 }
+@media (max-width: 1000px) { 
+    .Main{
+        margin-left:3rem;
+    }
+    .Name{
+        font-size:15px;
+    }
+    .Common{
+        font-size:10px;
+    }
+   .img1{
+        width:95px;
+        height:136px;
+    }
+    .tag{
+        font-size:13px;
+    }
+    .Tag1{
+        font-size:13px;
+}
+.about{
+    font-size:13px;
+}
+.Images{
+    font-size:13px;
+    padding-left:2rem;
+}
+.About1{
+    font-size:13px;
+    line-height:26px;
+}
+}
+    padding-bottom:3rem;
+
+@media (max-width: 800px) { 
+    .Main{
+        margin-left:2rem;
+    }
+    .Name{
+        font-size:14px;
+    }
+    .Common{
+        font-size:9px;
+    }
+   .img1{
+        width:100px;
+        height:135px;
+        object-fit: contain;
+    }
+    .tag{
+        font-size:12px;
+    }
+    .Tag1{
+        font-size:12px;
+    }
+    .about{
+        font-size:12px;
+    }
+    .Images{
+        font-size:12px;
+        padding-left:2rem;
+    }
+    .About1{
+        font-size:12px;
+        line-height:22px;
+    }
+
+}
+@media (max-width: 600px) { 
+    .Main{
+        margin-left:1rem;
+    }
+    .Name{
+        font-size:12px;
+    }
+    .Common{
+        font-size:7px;
+    }
+   .img1{
+    width: 50px;
+    height: 50px;
+        object-fit: contain;
+        
+    }
+    .tag{
+        font-size:10px;
+    }
+    .Tag1{
+        font-size:10px;
+    }
+    .about{
+        font-size:10px;
+    }
+    .Images{
+        font-size:10px;
+        padding-left:1rem;
+    }
+    .About1{
+        font-size:10px;
+        line-height:18px;
+    }
+
+}
+
+
 `;

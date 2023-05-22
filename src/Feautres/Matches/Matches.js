@@ -30,7 +30,7 @@ const Matches = () => {
 export default Matches;
 
 const MatchesStyle = styled.div`
-  width: 100%;
+    width: 100%;
   height: 100%;
   .Main {
     width: 100%;
@@ -46,7 +46,15 @@ const MatchesStyle = styled.div`
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 480px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
     gap: 14px;
     padding: 20px 8px;
   }

@@ -2,19 +2,8 @@ import React from 'react'
 import ResHeaderComponent from './ResHeader'
 import {Artboard2} from '../../Utils/RegistrationImg/Registrationflie'
 import { RisgistionBgImg, FromStyleDiv, ProgessStyleDiv, ProgessStyleDivline, ProgessStyleDivfilline, ButtonStyle, RisgistationPage1 } from './style'
-const chage = ["black","red","with","green","yellow"];
+
 const ResgistPage2 = ({Next, Back}) => {
-  
-  const [swit, setSwit] = React.useState(0)
-  const [switi, setSwiti] = React.useState(swit)
-  function Switched() {
-    setSwiti(chage[swit])
-    if (chage.length-1 === swit) {
-      setSwit(1)
-    } else {
-      setSwit(swit + 1)
-    }
-  }
   let percentage = "16%";
   return (<>
     <RisgistionBgImg imgUrl={Artboard2}>
@@ -42,8 +31,8 @@ const ResgistPage2 = ({Next, Back}) => {
               <br></br>
               <lable>Gender<span>*</span></lable>
               <div className='gender_btn'>
-                <ButtonStyle onClick={Switched}  width="11rem" border="1px black solid" bgcolour={switi} color="black"> Male </ButtonStyle>
-                <ButtonStyle  onClick={Switched}  width="11rem" margin="1rem" bgcolour="#A8580F"> Female </ButtonStyle>
+                <ButtonStyle  width="11rem" border="1px black solid" bgcolour="white" color="black"> Male </ButtonStyle>
+                <ButtonStyle width="11rem" margin="1rem" bgcolour="#A8580F"> Female </ButtonStyle>
               </div>
               <lable>Interested In<span>*</span></lable>
               <input type="text" className='resgistation_input' placeholder='willmith1234221' />
@@ -62,12 +51,4 @@ const ResgistPage2 = ({Next, Back}) => {
 
     </RisgistionBgImg>
 
-
-  </>)
-}
-
-export default ResgistPage2
-
-
-
-
+export default ResgistPage2;

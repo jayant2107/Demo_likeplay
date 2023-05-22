@@ -1,6 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { SecondUser, UserBlock } from "../../../Utils/SettingImgaes/SettingP";
+import {
+  SecondUser,
+  SixUser,
+  ThirdUser,
+  UserBlock,
+  fifthUser,
+  fourthUser,
+} from "../../../Utils/SettingImgaes/SettingP";
 import BlockedUserComp from "../../../Components/BlockedUserComp";
 
 const BlockUser = [
@@ -13,19 +20,19 @@ const BlockUser = [
     name: "Jasmeen",
   },
   {
-    img: UserBlock,
+    img: ThirdUser,
     name: "Simrela",
   },
   {
-    img: SecondUser,
+    img: fourthUser,
     name: "Julia",
   },
   {
-    img: UserBlock,
+    img: fifthUser,
     name: "Sneha",
   },
   {
-    img: SecondUser,
+    img: SixUser,
     name: "Simrela",
   },
   {
@@ -40,13 +47,14 @@ const BlockedUser = () => {
       <Blocked>Blocked Users</Blocked>
       <WrapperBlock>
         <div>
-          {BlockUser.map((ele) => {
-            return (
-              <>
-                <BlockedUserComp ele={ele} />
-              </>
-            );
-          })}
+          {BlockUser &&
+            BlockUser.map((ele) => {
+              return (
+                <>
+                  <BlockedUserComp ele={ele} />
+                </>
+              );
+            })}
         </div>
       </WrapperBlock>
     </>
