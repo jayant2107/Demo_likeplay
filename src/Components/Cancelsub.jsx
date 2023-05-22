@@ -5,7 +5,7 @@ import { Check } from "../Utils/IconsP";
 const Cancelsub = ({ ele }) => {
   return (
     <>
-      <FlexUpgrade Content="space-between">
+      <FlexUpgrade Content="space-between" margin="4px">
         <div className="Comp">{ele.header}</div>
         <div className="check">
           {ele.content ? (
