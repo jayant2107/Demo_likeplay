@@ -9,12 +9,15 @@ const Subscription = () => {
       <StyledSubcription>
         
           <div className='images'>
-            <img src={rectangle} alt=""  className='backgrnd'/>
+            <img src={rectangle} alt=""  className='backgrnd' />
           </div>
           <ModalLayout/>
       
-      </StyledSubcription>
     {/* <SubscriptionFooter/> */}
+    <div className='footersub'>
+           <SubscriptionFooter/>
+           </div>
+      </StyledSubcription>
 
     </>
   )
@@ -29,6 +32,7 @@ const StyledSubcription = styled.div`
 }
 .backgrnd{
   width: 100%;
+/* height: 140vh; */
 
 }
 `

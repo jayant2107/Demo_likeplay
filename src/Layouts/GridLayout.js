@@ -1,4 +1,4 @@
-import vector from '../Assets/Icons/diamondAk (1).svg'
+import vector from '../Assets/Images/BlackAk.png'
 import vector1 from '../Assets/Icons/VectorAk.svg';
 import vector2 from '../Assets/Icons/VectorAk1.svg';
 import vector3 from '../Assets/Icons/VectorAk2.svg';
@@ -168,13 +168,16 @@ const Wrapper = styled.div`
 .hr5{
   width: 88%;
 }
+.para159{
+  width: 95%;
+}
 .wrae{
   margin-top: 20px;
 }
 .Select-subscription {
     z-index: 100;
     position: absolute;
-    top: 38rem;
+    top: 37rem;
 }
 .checkimg{
   display: flex;
@@ -258,7 +261,7 @@ margin-left: 21%;
     background: #FFFFFF;
     border: 1px solid #E2E2E2;
     border-radius: 10px;
-    width: 100px;
+    width: 135px;
     height: 44px;
 }
 .par153{

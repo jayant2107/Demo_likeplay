@@ -2,3 +2,9 @@
     padding: 0px !important;
     border-radius: 10px;
 }
+
+.anticon.anticon-close.ant-modal-close-icon {
+    margin-top: -60px;
+    color: white;
+    font-size: x-large;
+}
