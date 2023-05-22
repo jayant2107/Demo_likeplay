@@ -4,6 +4,8 @@ import styled from "styled-components";
 //FakeData
 import { UsersData } from "./DataPage";
 import UserPostCard from "./UserPostCard";
+import { Addbtn, Info } from "../../Utils/Logo";
+import { Artboard } from "../../Utils/icons-folder/Modalsicons";
 
 const FeedPage = () => {
   const [like, setLike] = useState(false);
@@ -19,7 +21,38 @@ const FeedPage = () => {
       : setStar(!star);
   };
   return (
+    <>
+    <Searchbar>
+      <div className="header-wrapper">
+      <div className="search-bar">
+        
+          <img
+          src={Artboard} 
+          alt=''
+          />
+       
+
+<input
+placeholder="Take the Floor,Show-off"
+>
+</input>
+</div>
+<div>
+<Addbtn/>
+
+</div>
+<div>
+  <Info/>
+
+</div>
+
+      </div>
+   
+
+    </Searchbar>
+
     <Feedpagewrapper>
+      
       {UsersData.map((val, index) => {
         return (
           <>
@@ -35,6 +68,8 @@ const FeedPage = () => {
         );
       })}
     </Feedpagewrapper>
+    </>
+  
   );
 };
 
@@ -43,3 +78,40 @@ const Feedpagewrapper = styled.div`
   border-right: 1px solid #e2e2e2;
   border-left: 1px solid #e2e2e2;
 `;
+const Searchbar=styled.div`
+padding:20px 0px;
+.header-wrapper{
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+}
+.search-bar{
+  width:80%;
+  display:flex;
+  background:rgba(168, 88, 15, 0.06)
+
+  border-radius:15px;
+  
+  img{
+    background:rgba(168, 88, 15, 0.06);
+    padding:0px 10px;
+    border-radius:15px 0px 0px 15px;
+
+  }
+  input{
+    height:56px;
+    width:100%;
+    background:rgba(168, 88, 15, 0.06);
+    border:none;
+    border-radius:0px 15px 15px 0px;
+   
+    padding:0px 10px;
+    &:focus{
+      outline:none;
+    }
+  }
+
+}
+
+`
+
