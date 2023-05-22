@@ -186,8 +186,8 @@ const Wrapper = styled.div`
   .mainContainer {
     display: flex;
     align-items: start;
-    padding: 2rem 0rem;
-    height: 85vh;
+    padding: 1rem 0rem;
+    height: 89vh;
   }
   .SetLeft {
     width: 30%;
@@ -195,7 +195,7 @@ const Wrapper = styled.div`
     justify-content: space-between;
     flex-direction: column;
     height: 100%;
-    padding: 0rem 1px;
+    padding: 0rem 0.3px;
   }
   .SetLeft > div:not(:first-child) {
   }

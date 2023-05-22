@@ -10,7 +10,6 @@ import {
 } from "../../Utils/images/Publichomeimg";
 export default function Publicfooter() {
   const Footer = styled.footer`
-    @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
     section {
       background-color: #242424;
       font-family: Poppins;
@@ -47,6 +46,7 @@ export default function Publicfooter() {
       .list5 {
         display: flex;
         flex-direction: column;
+        margin-top: -2rem;
         gap: 4rem;
         img {
           margin: 2px;
@@ -54,7 +54,7 @@ export default function Publicfooter() {
         }
         .copyright {
           position: relative;
-          bottom: -30px;
+          bottom: -50px;
           h5 {
             &:nth-of-type(2) {
               color: gray;
