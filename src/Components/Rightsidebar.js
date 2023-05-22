@@ -13,7 +13,7 @@ export default function Rightsidebar() {
     console.log(`switch to ${checked}`);
   };
   useEffect(() => {
-    if (location.pathname === "/Layout/Myprofile") {
+    if (location.pathname === "/Layout/MyProfile") {
       setPath(false);
     } else {
       setPath(true);
@@ -21,7 +21,7 @@ export default function Rightsidebar() {
   }, [location]);
   return (
     <Rightsidebarwrapper>
-      <Profilesection>
+      {path?<> <Profilesection>
         <div>
           <p className="My_profile">My Profile</p>
           <div
@@ -50,8 +50,9 @@ export default function Rightsidebar() {
             <p>Julia Roberts</p>
           </div>
         </div>
-      </Messagessection>
-      <Userinfo>
+      </Messagessection></>:
+      <>
+       <Userinfo>
         <div>
           <div className="user-details">
             <p className="left-section">Member Since</p>
@@ -75,6 +76,9 @@ export default function Rightsidebar() {
         <p>introduce on the floor</p>
         <Switch defaultChecked onChange={onChange} />
       </Introduce>
+      </>}
+     
+     
     </Rightsidebarwrapper>
   );
 }
