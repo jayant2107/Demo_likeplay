@@ -96,6 +96,9 @@ import live from "../../Assets/Icons/PubliclivePA.svg";
 import thegurdian from "../../Assets/Icons/PublicthegurdianPA.svg";
 import punch from "../../Assets/Icons/PublicpunchPA.svg";
 
+//footer and navbar content background image
+import footerbg from "../../Assets/Images/PublicfooterbgPA.svg"
+
 export default hashimg;
 export {
   LikePlaylogo,
@@ -188,5 +191,6 @@ export {
   cotepart1img3,
   cotepart1img4,
   cotepart1img5,
+  footerbg
 
 };

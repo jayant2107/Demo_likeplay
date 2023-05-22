@@ -50,7 +50,7 @@ const ResetPassword = () => {
 
 export default ResetPassword;
 const ResetPass = styled.div`
-  width: 100%;
+  width: 95%;
   font-family: "Poppins", sans-serif;
 
   .InnerResetPass > div:not(:first-child) {
@@ -63,7 +63,8 @@ const ResetPass = styled.div`
     color: #242424;
   }
   .InputMeth {
-    width: 400px;
+    width: 440px;
+    height: 56px;
     border-radius: 10px;
     height: 56px;
     padding-left: 24px;
@@ -83,6 +84,7 @@ const ResetPass = styled.div`
     cursor: pointer;
   }
   .btnPass {
+    width: 70%;
     display: flex;
     align-items: center;
     justify-content: center;

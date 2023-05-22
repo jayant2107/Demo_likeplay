@@ -41,7 +41,7 @@ export default function Sidebar() {
   const primarycolor = "#A8580F";
   const secondarycolor = "#7B7F91";
   const active = window.location.pathname;
-  console.log(active, "active");
+
   const Navigate = useNavigate();
   return (
     <>
@@ -49,6 +49,7 @@ export default function Sidebar() {
         <Mainlogo>
           <img src={sidebarimage} alt="" style={{ color: "red" }} />
         </Mainlogo>
+
         <Slinkcontainer
           onMouseEnter={() => setcolorsetting(true)}
           onMouseLeave={() => setcolorsetting(false)}
@@ -71,6 +72,30 @@ export default function Sidebar() {
             </Slabel>
           </div>
         </Slinkcontainer>
+
+        <Slinkcontainer
+          onMouseEnter={() => setMatchescolor(true)}
+          onMouseLeave={() => setMatchescolor(false)}
+        >
+          <div
+            className="content-list"
+            onClick={() => Navigate("/Layout/Matches")}
+          >
+            <Slogo>
+              <Matches
+                color={
+                  Matchescolor || active == "/Layout/Matches"
+                    ? primarycolor
+                    : secondarycolor
+                }
+              />
+            </Slogo>
+            <Slabel active={active === "/Layout/Matches"}>
+              <p>Matches</p>
+            </Slabel>
+          </div>
+        </Slinkcontainer>
+
         <Slinkcontainer
           onMouseEnter={() => setAdmiringcolor(true)}
           onMouseLeave={() => setAdmiringcolor(false)}
@@ -84,19 +109,30 @@ export default function Sidebar() {
             </Slabel>
           </div>
         </Slinkcontainer>
+
         <Slinkcontainer
           onMouseEnter={() => setAdmirerscolor(true)}
           onMouseLeave={() => setAdmirerscolor(false)}
         >
-          <div className="content-list">
+          <div
+            className="content-list"
+            onClick={() => Navigate("/Layout/Admirers")}
+          >
             <Slogo>
-              <Admirers color={Admirerscolor ? primarycolor : secondarycolor} />
+              <Admirers
+                color={
+                  Admirerscolor || active == "/Layout/Admirers"
+                    ? primarycolor
+                    : secondarycolor
+                }
+              />
             </Slogo>
-            <Slabel>
+            <Slabel active={active === "/Layout/Admirers"}>
               <p>Admirers</p>
             </Slabel>
           </div>
         </Slinkcontainer>
+
         <Slinkcontainer
           onMouseEnter={() => setmessagescolor(true)}
           onMouseLeave={() => setmessagescolor(false)}
@@ -110,37 +146,53 @@ export default function Sidebar() {
             </Slabel>
           </div>
         </Slinkcontainer>
+
         <Slinkcontainer
           onMouseEnter={() => setNotificationcolor(true)}
           onMouseLeave={() => setNotificationcolor(false)}
         >
-          <div className="content-list">
+          <div
+            className="content-list"
+            onClick={() => Navigate("/Layout/Notification")}
+          >
             <Slogo>
               <Notification
-                color={Notificationcolor ? primarycolor : secondarycolor}
+                color={
+                  Notificationcolor || active == "/Layout/Notification"
+                    ? primarycolor
+                    : secondarycolor
+                }
               />
             </Slogo>
-            <Slabel>
+            <Slabel active={active === "/Layout/Notification"}>
               <p>Notification</p>
             </Slabel>
           </div>
         </Slinkcontainer>
+
         <Slinkcontainer
-          onMouseEnter={() => setMatchescolor(true)}
-          onMouseLeave={() => setMatchescolor(false)}
+          onMouseEnter={() => setsubscriptioncolor(true)}
+          onMouseLeave={() => setsubscriptioncolor(false)}
         >
           <div
             className="content-list"
-            onClick={() => Navigate("/Layout/Matches")}
+            onClick={() => Navigate("/Layout/Subscription")}
           >
             <Slogo>
-              <Matches color={Matchescolor || active =='/Layout/Matches' ? primarycolor : secondarycolor} />
+              <Subscription
+                color={
+                  Subscriptioncolor || active === "/Layout/Subscription"
+                    ? primarycolor
+                    : secondarycolor
+                }
+              />
             </Slogo>
-            <Slabel active={active==="/Layout/Matches"}>
-              <p>Matches</p>
+            <Slabel active={active === "/Layout/Subscription"}>
+              <p>Subscription</p>
             </Slabel>
           </div>
         </Slinkcontainer>
+
         <Slinkcontainer
           onMouseEnter={() => setSettingcolor(true)}
           onMouseLeave={() => setSettingcolor(false)}
@@ -163,34 +215,30 @@ export default function Sidebar() {
             </Slabel>
           </div>
         </Slinkcontainer>
-        <Slinkcontainer
-          onMouseEnter={() => setsubscriptioncolor(true)}
-          onMouseLeave={() => setsubscriptioncolor(false)}
-        >
-          <div className="content-list">
-            <Slogo>
-              <Subscription
-                color={Subscriptioncolor ? primarycolor : secondarycolor}
-              />
-            </Slogo>
-            <Slabel>
-              <p>Subscription</p>
-            </Slabel>
-          </div>
-        </Slinkcontainer>
+
         <Slinkcontainer
           onMouseEnter={() => setFAQcolor(true)}
           onMouseLeave={() => setFAQcolor(false)}
         >
-          <div className="content-list">
+          <div
+            className="content-list"
+            onClick={() => Navigate("/Layout/FAQs")}
+          >
             <Slogo>
-              <FAQ color={FAQcolor ? primarycolor : secondarycolor} />
+              <FAQ
+                color={
+                  FAQcolor || active === "/Layout/FAQs"
+                    ? primarycolor
+                    : secondarycolor
+                }
+              />
             </Slogo>
-            <Slabel>
+            <Slabel active={active === "/Layout/FAQs"}>
               <p>FAQs</p>
             </Slabel>
           </div>
         </Slinkcontainer>
+
         <Slinkcontainer
           onMouseEnter={() => setTestimonialcolor(true)}
           onMouseLeave={() => setTestimonialcolor(false)}
@@ -239,11 +287,10 @@ const Sidebarwrapper = styled.div`
   height: 100vh;
   // position:fixed;
   background-color: white;
-  overflow:scroll;
-  &::-webkit-scrollbar{
-    display:none;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
   }
-  
 `;
 const Mainlogo = styled.div`
   display: flex;

@@ -17,14 +17,15 @@ import Notfound from "../Feautres/Notfound/Notfound";
 import Registration from "../Auth/Registration";
 import LoginPage from "../Auth/LoginPage";
 import Subscription from "../Feautres/Subscription/Subscriptions";
-import Country from "../Website/pages/country";
 import { useSelector } from "react-redux";
-
-
+import Country from "../Website/pages/Country";
+import Notification from "../Feautres/Notifications/Notification";
+import FAQ from "../Feautres/FAQs/FAQ";
+import Admirers from "../Feautres/Admirers/Admirers";
+import FeedMyProfile from "../Feautres/Home/FeedMyProfile";
 
 const Routing = () => {
-  let prop = false
-  const value= useSelector((e)=>e.LoginSlice.data)
+  const value = useSelector((e) => e.LoginSlice.data);
   let PublicRouter = ({ isAuth }) => {
     if (isAuth === true) {
       return <Navigate to="/Layout/FeedPage" replace />;
@@ -37,9 +38,9 @@ const Routing = () => {
     }
     return <Outlet />;
   };
-  console.log(value,"vvv")
-  let prop = value;
 
+  console.log(value, "vvv");
+  let prop = value;
   return (
     <>
       <BrowserRouter>
@@ -54,6 +55,7 @@ const Routing = () => {
           <Route element={<PrivateRouter isAuth={prop} />}>
             <Route path="/Layout" element={<Layout />}>
               <Route path="/Layout/FeedPage" element={<FeedPage />} />
+              <Route path="/Layout/MyProfile" element={<FeedMyProfile />} />
               <Route path="/Layout/Matches" element={<Matches />} />
               <Route
                 path="/Layout/MatchesDetail"
@@ -63,12 +65,15 @@ const Routing = () => {
                 path="/Layout/MatchesDetailPage"
                 element={<MatchesDetailPage />}
               />
+              <Route path="/Layout/Admirers" element={<Admirers />} />
+
               {/* <Route path="/Layout/Admiring" element={<Admiring />} /> */}
               {/* <Route path="/Layout/Messages" element={<Messages />} /> */}
-              {/* <Route path="/Layout/Notification" element={<Notification />} /> */}
+              <Route path="/Layout/Notification" element={<Notification />} />
               <Route path="/Layout/Subscription" element={<Subscription />} />
               <Route path="/Layout/Settings" element={<Settings />} />
-              {/* <Route path="/Layout/FAQs" element={<FAQs />} /> */}
+              <Route path="/Layout/FAQs" element={<FAQ />} />
+              {/* <Route path="/Layout/Testimonal" element={<Testimonal />} /> */}
               {/* <Route path="/Layout/Testimonal" element={<Testimonal />} /> */}
             </Route>
           </Route>

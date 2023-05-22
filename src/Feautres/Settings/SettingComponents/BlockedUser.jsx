@@ -39,6 +39,14 @@ const BlockUser = [
     img: UserBlock,
     name: "Kriti",
   },
+  {
+    img: SixUser,
+    name: "Simrela",
+  },
+  {
+    img: ThirdUser,
+    name: "Simrela",
+  },
 ];
 
 const BlockedUser = () => {
@@ -46,16 +54,14 @@ const BlockedUser = () => {
     <>
       <Blocked>Blocked Users</Blocked>
       <WrapperBlock>
-        <div>
-          {BlockUser &&
-            BlockUser.map((ele) => {
-              return (
-                <>
-                  <BlockedUserComp ele={ele} />
-                </>
-              );
-            })}
-        </div>
+        {BlockUser &&
+          BlockUser.map((ele) => {
+            return (
+              <>
+                <BlockedUserComp ele={ele} />
+              </>
+            );
+          })}
       </WrapperBlock>
     </>
   );
@@ -69,8 +75,11 @@ const Blocked = styled.div`
   font-size: 16px;
 `;
 const WrapperBlock = styled.div`
-  width: 100%;
-  padding: 1% 2%;
+  width: 95%;
+  padding: 2%;
+  margin-top: 1rem;
+  height: 60vh;
+  overflow-y: scroll;
   background: #f0f0f0;
   .Unblockdiv {
     display: flex;
@@ -100,8 +109,7 @@ const WrapperBlock = styled.div`
   .name {
     margin-left: 0.5rem;
   }
-
-  .InerMargin {
+  .InerMargin:not(:first-child) {
     margin-top: 0.5rem;
   }
 `;

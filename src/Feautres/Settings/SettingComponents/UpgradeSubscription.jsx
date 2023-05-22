@@ -25,13 +25,14 @@ const UpgradeSubscription = () => {
             </div>
           </FlexUpgrade>
           <hr />
-          {upgradeArr && upgradeArr.map((ele) => {
-            return (
-              <>
-                <UpgradeComp ele={ele} />
-              </>
-            );
-          })}
+          {upgradeArr &&
+            upgradeArr.map((ele) => {
+              return (
+                <>
+                  <UpgradeComp ele={ele} />
+                </>
+              );
+            })}
         </div>
       </Upgrade>
       <UpdateBtn>
@@ -49,7 +50,7 @@ export const Plan = styled.div`
   font-weight: 600;
 `;
 export const Upgrade = styled.div`
-  width: 100%;
+  width: 95%;
   font-family: "Poppins", sans-serif;
   background: #f0f0f0;
   padding: 2%;
@@ -88,7 +89,7 @@ export const Upgrade = styled.div`
 `;
 export const UpdateBtn = styled.div`
   text-align: center;
-  margin-top: 2%;
+  padding-top: 2rem;
 `;
 
 export const FlexUpgrade = styled.div`
@@ -101,7 +102,7 @@ export const FlexUpgrade = styled.div`
 `;
 export const ButtonUpdate = styled.button`
   background: ${({ background }) => background || "none"};
-  width: 50%;
+  width: 226px;
   height: 48px;
   border-radius: 10px;
   border: none;
