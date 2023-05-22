@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import StyledButton from "../Components/Button";
 import { add } from "../Utils/images/Modalsimg";
-import { exit } from "../Utils/icons-folder/Modalsicons";
 
 export default function GovtIDVerifyModal() {
   return (
@@ -11,9 +10,7 @@ export default function GovtIDVerifyModal() {
         <div className="modal">
           <div className="modal-container">
             <div className="modal-content">
-              <div className="delete-icon">
-                <img src={exit} alt="exit" id="exit" />
-              </div>
+             
               <div className="content-container">
                 {/******* MODAL HEADER-SECTION STARTS ********/}
 
