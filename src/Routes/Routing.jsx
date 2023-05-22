@@ -17,22 +17,26 @@ import Notfound from "../Feautres/Notfound/Notfound";
 import Registration from "../Auth/Registration";
 import LoginPage from "../Auth/LoginPage";
 import Subscription from "../Feautres/Subscription/Subscriptions";
-import Country from "../Website/pages/country";
+import { useSelector } from "react-redux";
+import Country from "../Website/pages/Country";
 
-let PublicRouter = ({ isAuth }) => {
-  if (isAuth === true) {
-    return <Navigate to="/Layout/FeedPage" replace />;
-  }
-  return <Outlet />;
-};
-let PrivateRouter = ({ isAuth }) => {
-  if (isAuth === false) {
-    return <Navigate to="/" />;
-  }
-  return <Outlet />;
-};
 const Routing = () => {
-  let prop = true;
+
+  const value= useSelector((e)=>e.LoginSlice.data)
+  let PublicRouter = ({ isAuth }) => {
+    if (isAuth === true) {
+      return <Navigate to="/Layout/FeedPage" replace />;
+    }
+    return <Outlet />;
+  };
+  let PrivateRouter = ({ isAuth }) => {
+    if (isAuth === false) {
+      return <Navigate to="/" />;
+    }
+    return <Outlet />;
+  };
+  console.log(value,"vvv")
+  let prop = value;
 
   return (
     <>

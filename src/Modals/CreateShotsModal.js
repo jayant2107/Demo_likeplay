@@ -11,6 +11,9 @@ export default function CreateShotsModal({next}) {
         <div className="modal">
           <div className="modal-container">
             <div className="modal-content">
+            <div className="delete-icon">
+                <img src={exit} alt="exit" id="exit" />
+              </div>
               <div className="content-container">
                 {/********* MODAL UPLOAD IMAGE-SECTION STARTS ********/}
 
@@ -114,6 +117,21 @@ export const StyledCreateShortModal = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  .delete-icon {
+    width: 24px;
+    height: 24px;
+    color: green;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    cursor: pointer;
+    position: absolute;
+    top: -25px;
+    right: 0px;
   }
 
   .content-container {
@@ -224,7 +242,7 @@ export const StyledCreateShortModal = styled.div`
   }
 
   .submit-btn {
-    width: 50%;
+    width: 31%;
     display: flex;
     justify-content: end;
   }
