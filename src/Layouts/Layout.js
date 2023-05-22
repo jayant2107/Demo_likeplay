@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../Components/Sidebar";
 import Rightsidebar from "../Components/Rightsidebar";
 import styled from "styled-components";
@@ -8,20 +8,35 @@ import { Outlet, useLocation } from "react-router-dom";
 
 export default function Layout() {
   const location = useLocation();
-  const path =location?.pathname !== (("/Layout/Settings") || ( "Layout/FeedPage"))
-  console.log(path,"path")
+  const [rightnav,setrightnav]=useState()
+  
+
+useEffect(()=>{
+  if(location?.pathname==="/Layout/Settings" || location?.pathname==='/Layout/Subscriptions'){
+    setrightnav(true)
+
+  }
+  else{
+    setrightnav(false)
+  }
+
+  
+
+},[location])
+console.log(rightnav,"rrr")
+
 
 
   return (
     <>
-      <Layoutdesign isRightNav={location?.pathname !== "/Layout/Settings" } >
+      <Layoutdesign isRightNav={!rightnav} >
         <div className="left-sidebar">
           <Sidebar />
         </div>
         <div className="center-content" >
           <Outlet></Outlet>
         </div>
-        {location?.pathname !== "/Layout/Settings"&& (
+        {!rightnav && (
           <div className="right-sidebar">
             <Rightsidebar />
           </div>

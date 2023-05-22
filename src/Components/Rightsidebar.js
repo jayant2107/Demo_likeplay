@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { userprofile } from "../Utils/Images";
 import { AiOutlineRight } from "react-icons/ai";
+import { Switch } from "antd";
+import { useLocation } from "react-router-dom";
 
 export default function Rightsidebar() {
+  const location=useLocation()
+  const [path,setPath]=useState(true)
+  console.log(location.pathname,"p")
+  const onChange = (checked) => {
+    console.log(`switch to ${checked}`);
+  };
+  useEffect(()=>{
+    if(location.pathname==='/Layout/Myprofile')
+    {
+      setPath(false)
+
+    }
+    else{
+      setPath(true)
+    }
+  },[location])
   return (
     <Rightsidebarwrapper>
       <Profilesection>
@@ -33,12 +51,36 @@ export default function Rightsidebar() {
           </div>
         </div>
       </Messagessection>
+      <Userinfo>
+        <div>
+          <div className="user-details">
+            <p className="left-section">Member Since</p>
+            <p className="right-section"> Jan 7, 2023 </p>
+          </div>
+          <div className="user-details">
+            <p className="left-section">Lost Active</p>
+            <p className="right-section"> Jan 30,2023 </p>
+          </div>
+          <div className="user-details">
+            <p className="left-section">Location</p>
+            <p className="right-section"> Nigeria, Abuj </p>
+          </div>
+          <div className="user-details">
+            <p className="left-section">Verification</p>
+            <p className="right-section"> Verified </p>
+          </div>
+        </div>
+      </Userinfo>
+      <Introduce>
+        <p>introduce on the floor</p>
+        <Switch defaultChecked onChange={onChange} />
+
+      </Introduce>
     </Rightsidebarwrapper>
   );
 }
 const Rightsidebarwrapper = styled.div`
   padding: 10px;
-  
 `;
 const Profilesection = styled.div`
   padding: 10px 20px;
@@ -86,3 +128,34 @@ const Messagessection = styled.div`
     letter-spacing: 1px;
   }
 `;
+const Userinfo = styled.div`
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  .user-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    .left-section {
+      color: #7b7f91;
+      font-size: 12px;
+    }
+    .right-section {
+      color: #242424;
+      font-size: 12px;
+    }
+  }
+`;
+const Introduce=styled.div`
+padding:10px;
+margin:20px 0px;
+border: 1px solid #e2e2e2;
+border-radius: 10px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+p{
+  color:#242424;
+  letter-spacing:1px;
+}
+
+`
