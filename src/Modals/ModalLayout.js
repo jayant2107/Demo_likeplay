@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import GridType from '../Layouts/GridLayout'
 import exit from '../Assets/Icons/exitAk.svg'
-import { SubscriptionLayoutModal } from '../Feautres/Subscription/SubscriptionLayoutModal'
 import { SubscriptionFooter } from '../Feautres/Subscription/SubscriptionFooter'
 const ModalLayout = () => {
   const [modal, setModal] = useState(false);
@@ -10,7 +9,7 @@ const ModalLayout = () => {
     <>
 
     <StyledLayout>
-    {/* <div className="App">
+    {/* <div className="App1">
     <br/>
 
    {modal===true&&(
@@ -22,7 +21,9 @@ const ModalLayout = () => {
     <div className="outer">
    
         <div className="inner">
-        <div className='delete-icon' ><img src={exit} alt="" onClick={()=>setModal()}/></div>
+        <div className='delete-icon' >
+        <img src={exit} alt="" onClick={()=>setModal()}/>
+        </div>
         <div className='inner-subscription'>
         <GridType/>
         </div>
@@ -58,16 +59,16 @@ const StyledLayout = styled.div`
 }
 
 .inner{
-  width: 70%;
-  height: 100vh;
+  width: 85%;
+  /* height: 100vh; */
   background-color: white;
   box-shadow: rgba(0,0,0,0.5) 0px 1px 20px 0px;
   margin: auto;
   position: absolute;
-  top:40%;
+  top:52%;
   border-radius: 10px;
   border: 1px solid #E2E2E2;
-  left: 47%;
+  left: 53%;
   transform: translate(-50% , -50%);
 }
 .delete-icon{

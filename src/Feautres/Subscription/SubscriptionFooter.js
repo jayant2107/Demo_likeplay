@@ -26,9 +26,9 @@ const Footer = styled.div`
     color: white;
     background: rgba(0, 0, 0, 0.4);
     padding: 1rem 4rem;
-    margin-top: 58%;
-    margin-left: -30px;
-    margin-right: -28px;
+    margin-top: 32%;
+    margin-left: -19px;
+    margin-right: -19px;
 }
 
 `
