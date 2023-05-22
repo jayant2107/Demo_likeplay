@@ -41,7 +41,7 @@ export default function Sidebar() {
   const primarycolor = "#A8580F";
   const secondarycolor = "#7B7F91";
   const active = window.location.pathname;
-  console.log(active, "active");
+  
   const Navigate = useNavigate();
   return (
     <>
@@ -167,10 +167,10 @@ export default function Sidebar() {
           onMouseEnter={() => setsubscriptioncolor(true)}
           onMouseLeave={() => setsubscriptioncolor(false)}
         >
-          <div className="content-list">
+          <div className="content-list" onClick={()=>Navigate("/Layout/Subscription")}>
             <Slogo>
               <Subscription
-                color={Subscriptioncolor ? primarycolor : secondarycolor}
+                color={Subscriptioncolor || active==='/Layout/Subscription' ? primarycolor : secondarycolor}
               />
             </Slogo>
             <Slabel>
