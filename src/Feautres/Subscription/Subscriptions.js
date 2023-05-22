@@ -9,12 +9,15 @@ const Subscription = () => {
       <StyledSubcription>
         
           <div className='images'>
-            <img src={rectangle} alt=""  className='backgrnd'/>
+            <img src={rectangle} alt=""  className='backgrnd' />
           </div>
           <ModalLayout/>
       
-      </StyledSubcription>
     {/* <SubscriptionFooter/> */}
+    <div className='footersub'>
+           <SubscriptionFooter/>
+           </div>
+      </StyledSubcription>
 
     </>
   )
@@ -23,12 +26,13 @@ const Subscription = () => {
 export default Subscription
 const StyledSubcription = styled.div`
 .images{
-  height: 100vh;
+  /* height: 100vh; */
   filter: brightness(100%);
-  object-fit: contain;
+  /* object-fit: contain; */
 }
 .backgrnd{
   width: 100%;
+/* height: 140vh; */
 
 }
 `
