@@ -57,6 +57,16 @@ const footercontentdata = [
       "Currently, we are not able to accept European-issued American Express or Diner’s Club cards. Please use a Visa, Mastercard, Discover, GooglePlay.",
     ],
   },
+  {
+    page: "Press & Media",
+    heading: "LikePlay-LikePlay",
+    paragraph: [
+      "Security Protection Enabled: For your security and protection,  some customers have noticed when they use an incognito browser or a VPN that deletes browser history you will be required to verify ownership with each login attempt. ",
+      "We recommend using 2FA by using Google Authenticator. This will trigger a verification code that you can easily retrieve from Google Authenticator on each login and will secure the account.",
+      "LikePlay-LikePlay is  available on the AppStore and on GooglePlay!",
+      "Currently, we are not able to accept European-issued American Express or Diner’s Club cards. Please use a Visa, Mastercard, Discover, GooglePlay.",
+    ],
+  },
 
   {
     page: "Anti-sex trafficking",

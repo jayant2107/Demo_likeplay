@@ -154,11 +154,20 @@ export default function Sidebar() {
           onMouseEnter={() => setmessagescolor(true)}
           onMouseLeave={() => setmessagescolor(false)}
         >
-          <div className="content-list">
+          <div
+            className="content-list"
+            onClick={() => Navigate("/Layout/Messages")}
+          >
             <Slogo>
-              <Messages color={messagescolor ? primarycolor : secondarycolor} />
+              <Messages
+                color={
+                  messagescolor || active == "/Layout/Messages"
+                    ? primarycolor
+                    : secondarycolor
+                }
+              />
             </Slogo>
-            <Slabel>
+            <Slabel active={active === "/Layout/Messages"}>
               <p>Messages</p>
             </Slabel>
           </div>
@@ -271,6 +280,7 @@ export default function Sidebar() {
             </Slabel>
           </div>
         </Slinkcontainer>
+
         <Slinkcontainer>
           <Popover className="more-popover" content={content}>
             <div className="content-list">

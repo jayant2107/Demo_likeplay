@@ -4,6 +4,8 @@ import Homecouple from "../../Assets/Images/homecouplePA.png";
 import Publicvideobg from "../../Assets/Images/Publicvideobg.svg";
 import hashimg from "../../Assets/Images/hash.svg";
 import vidoedemobg from "../../Assets/Images/PublicvideoDemobg.svg";
+import footerheart from "../../Assets/Icons/PublicFooterHeartPA.svg";
+
 
 // logo
 import category1 from "../../Assets/Icons/PubliccategoryPA1.svg";
@@ -101,6 +103,7 @@ import footerbg from "../../Assets/Images/PublicfooterbgPA.svg"
 
 export default hashimg;
 export {
+  footerheart,
   LikePlaylogo,
   Homecouple,
   Publicvideobg,
