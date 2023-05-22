@@ -8,14 +8,20 @@ export default function DatingDetailModal() {
         <div className="modal">
           <div className="modal-container">
             <div className="modal-content">
-              <div className="content-container">
+              <div className="head">
+              <img src={likep} alt="likep" id="likep" />
+                <h5>Online Dating Tips:- Dating Safety Tips</h5>
+              </div>
+              <p>We want to make sure you stay safe during your online
+                        dating experience with Seeking. Keep these tips in mind
+                        when you are talking/texting with someone or setting up
+                        a Meet & Greet.</p>
+              {/* <div className="content-container">
                 {/* MODAL LIST-SECTION STARTS */}
 
-                <div className="list-section">
+                {/* <div className="list-section">
                   <div className="list-content">
-                    <div className="like-pic">
                       <img src={likep} alt="likep" id="likep" />
-                    </div>
                     <div className="line">
                       <div className="head">
                         Online Dating Tips:- Dating Safety Tips
@@ -29,9 +35,9 @@ export default function DatingDetailModal() {
                     </div>
                   </div>
                 </div>
-
+ */}
                 {/* MODAL LIST-SECTION ENDS */}
-              </div>
+              {/* </div> */}
             </div>
           </div>
         </div>
@@ -54,7 +60,7 @@ export const StyledDatingDetails = styled.div`
   }
 
   .modal-content {
-    width: 97%;
+    width: 100%;
     border: 1px solid transparent;
     border-radius: 12px;
     background-color: white;
@@ -63,7 +69,14 @@ export const StyledDatingDetails = styled.div`
     position: fixed;
     top: 12%;
     left: 50%;
+    padding: 1rem 0 1rem 8rem;
+
     transform: translate(-50%, -50%);
+    p{
+      width: 80%;
+      margin-left: 25px;
+      font-size: 16 px;
+    }
   }
 
   .content-container {
@@ -71,20 +84,31 @@ export const StyledDatingDetails = styled.div`
   }
 
   .list-section {
-    width: 90%;
+    width: 80%;
     margin: auto;
 }
 
   .list-content {
     display: flex;
-    width: 76%;
+    width: 85%;
     justify-content: space-around;
   }
 
-  .head {
-    font-size: 13px;
-    font-weight: 600;
+  img#likep {
+    width: 14px;
+    height: 12px;
 }
+
+  .head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  h5{
+    font-size: 16px;
+  }
+  
+}
+
 
 .para {
     font-size: 13px;

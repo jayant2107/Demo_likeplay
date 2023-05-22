@@ -3,12 +3,12 @@ import StyledButton from "../Components/Button";
 import { useEffect } from "react";
 
 export default function DeleteModal({ closeModal, prop }) {
-  useEffect(() => {
-    document.body.style.overflowY = "hidden";
-    return () => {
-      document.body.style.overflowY = "scroll";
-    };
-  }, []);
+  // useEffect(() => {
+  //   document.body.style.overflowY = "hidden";
+  //   return () => {
+  //     document.body.style.overflowY = "scroll";
+  //   };
+  // }, []);
 
   console.log("srgfgt", prop);
 

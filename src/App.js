@@ -1,14 +1,15 @@
 import "./App.css";
 // import Settings from "./Feautres/Settings/Settings";
 import React from "react";
-import Routing from "./Routes/Routing";
+import DatingDetailModal from "./Modals/DatingDetailModal";
+// import Routing from "./Routes/Routing";
 
 
 
 function App() {
   return (
     <>
-    <Routing/>
+   <DatingDetailModal/>
     </>
   );
 }
