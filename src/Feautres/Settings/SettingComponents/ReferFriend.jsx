@@ -104,42 +104,50 @@ const ReferFriend = () => {
 export default ReferFriend;
 
 const ReferWrapper = styled.div`
-  width: 100%;
+  width: 95%;
   font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 
   .willsmith {
     border: 1px dotted;
-    width: 75%;
+    width: 335px;
     border: 1px dashed #c8c8c8;
     border-radius: 12px;
     margin-top: 1rem;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    padding: 4px 0px;
   }
   .InnerWillSmith {
-    width: 90%;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   .ReferImage {
     width: 318px;
-    height: 200px;
+    height: 296.51px;
     display: flex;
     align-items: center;
-    justify-content: center;
   }
   .ReferImage img {
     max-width: 100%;
     max-height: 100%;
   }
   .Refer {
+    margin: 0.5rem 0;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
     font-size: 10px;
   }
   .InnerWillSmith > div {
-    margin: 1rem 0rem;
+    margin: 12px 0px;
   }
   .BtnFlex {
     display: flex;
@@ -148,12 +156,13 @@ const ReferWrapper = styled.div`
     margin-left: 12px;
   }
   .ReferFrnd {
-    width: 100%;
+    width: 300px;
     height: 56px;
     background: #f0f0f0;
     border-radius: 10px;
     padding-left: 17px;
     font-size: 16px;
+    border: none;
   }
   .Commonbtn {
     width: 51px;

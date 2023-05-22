@@ -39,8 +39,8 @@ const Routing = () => {
     return <Outlet />;
   };
 
+  console.log(value, "vvv");
   let prop = value;
-
   return (
     <>
       <BrowserRouter>
