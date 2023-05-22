@@ -204,7 +204,7 @@ const Wrapper = styled.div`
     margin-top: 4%;
   } */
   .NormalBtn {
-    width: 80%;
+    width: 228px;
     height: 58px;
     padding: 3% 5%;
     border: none;

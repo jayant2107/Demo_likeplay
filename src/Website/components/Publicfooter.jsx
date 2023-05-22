@@ -8,7 +8,17 @@ import {
   twitter,
   youtube,
 } from "../../Utils/images/Publichomeimg";
+import footerdata from "../../Data/footerdata";
+import { useNavigate } from "react-router-dom";
 export default function Publicfooter() {
+  const navigate = useNavigate();
+  const MatchesDetailPage = (name) => {
+    navigate("/Safety", { state: { id: name } });
+  };
+  const Country = (name) => {
+    navigate("/Nigeria", { state: { id: name } });
+  };
+
   const Footer = styled.footer`
     section {
       background-color: #242424;
@@ -30,10 +40,7 @@ export default function Publicfooter() {
           margin: 12px 0;
           cursor: pointer;
           &:hover {
-            background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: rgb(255, 40, 90);
           }
         }
       }
@@ -79,28 +86,61 @@ export default function Publicfooter() {
           <div className="list">
             <h2>Our Company</h2>
             <ul>
-              <li>About Us</li>
-              <li>Support</li>
-              <li>Press & Media</li>
-              <li>Contact Us</li>
-              <li>Anti-Sex Trafficking</li>
+              {footerdata.map((ele) => {
+                return (
+                  <>
+                    {ele.company &&
+                      ele.company.map((e) => {
+                        return (
+                          <li onClick={() => MatchesDetailPage(e.page)}>
+                            {e.page}
+                          </li>
+                        );
+                      })}
+                  </>
+                );
+              })}
             </ul>
           </div>
           <div className="list">
             <ul>
-              <li>Women’s Rights</li>
-              <li>Terms</li>
-              <li>Our Refund policy</li>
+              {footerdata.map((ele) => {
+                return (
+                  <>
+                    {ele.terms &&
+                      ele.terms.map((e) => {
+                        return (
+                          <li onClick={() => MatchesDetailPage(e.page)}>
+                            {e.page}
+                          </li>
+                        );
+                      })}
+                  </>
+                );
+              })}
             </ul>
           </div>
           <div className="list">
             <h2>Countries</h2>
             <ul>
-              <li>Nigeria</li>
-              <li>Ghana</li>
-              <li>Congo</li>
-              <li>South Africa</li>
-              <li>Cote D'Ivoire.</li>
+              {footerdata.map((ele) => {
+                return (
+                  <>
+                    {ele.coutry &&
+                      ele.coutry.map((ele) => {
+                        return (
+                          <>
+                            <li
+                              onClick={() => Country(ele.conturyimageheading)}
+                            >
+                              {ele.conturyimageheading}
+                            </li>
+                          </>
+                        );
+                      })}
+                  </>
+                );
+              })}
             </ul>
           </div>
           <div className="list5">

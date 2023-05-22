@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Nigeria from "../../Data/contorydata";
@@ -7,6 +7,9 @@ import Publicfooter from "../components/Publicfooter";
 
 export default function Country() {
   let location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
   console.log(location);
 
   const newArray = Nigeria.filter(

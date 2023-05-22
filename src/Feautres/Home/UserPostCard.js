@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-
+import DeleteModal from "../../Modals/DeleteModal";
+import BlockData from "../../Modals/ModalData/BlockData";
+import DeleteData from "../../Modals/ModalData/DeleteShotData";
+import HideData from "../../Modals/ModalData/HideShotData";
 import { Popover } from "antd";
 // images
 import HeartTickImg from "../../Assets/Images/heartTickFeed.png";
 import ThreeDotsImg from "../../Assets/Images/OptionsDotsFeed.png";
 import DownArrowImg from "../../Assets/Images/downArrow.png";
-
+import ReportUserModal from "../../Modals/ReportUserModal";
 //IconsFunctions
 import {
   CommentFeedIcon,
@@ -20,32 +23,81 @@ import {
 import { TagesData } from "./DataPage";
 import FeedCommentView from "./FeedCommentView";
 
-const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
-
+const UserPostCard = ({ val, like, star, heart, changeIcon,changeModal }) => {
   const [comment, setComment] = useState(false);
-  
-  const changeModal = () => {
-    setComment(!comment);
+  const [showModal, setShowModal] = useState(false);
+  const [showHideModal, setShowHideModal] = useState(false);
+  const [showBlockModal, setshowBlockModal] = useState(false);
+  const [reportUserModal, setReportUserModal] = useState(false);
+
+  const closeModal = () => {
+    if (showBlockModal === true) {
+      setshowBlockModal(false);
+    } else if (showModal === true) {
+      setShowModal(false);
+    } else if (showHideModal === true) {
+      setShowHideModal(false);
+    }
   };
 
-  useEffect(()=>{
-    window.addEventListener('click',function(){
-      document.body.style.overflow = 'hidden';
-    });
-    return ()=> document.body.style.overflow = 'unset';
-    
-  },[comment]);
-
-  
+  const closeReportModal = () => {
+    setReportUserModal(false);
+  };
 
   const content = (
     <PopContentCss>
       <div className="popContent">
         <div className="popbtn">Edit</div>
-        <div className="popbtn">Block</div>
-        <div className="popbtn">Delete</div>
-        <div className="popbtn">Report</div>
-        <div className="popbtn">Hide Shot</div>
+        <div
+          className="popbtn"
+          onClick={() => {
+            setshowBlockModal(true);
+            setShowModal(false);
+            setShowHideModal(false);
+          }}
+        >
+          Block
+        </div>
+        {showBlockModal && (
+          <DeleteModal prop={BlockData} closeModal={closeModal} />
+        )}
+        <div
+          className="popbtn"
+          onClick={() => {
+            setShowModal(true);
+            setShowHideModal(false);
+            setshowBlockModal(false);
+          }}
+        >
+          Delete
+        </div>
+        {showModal && <DeleteModal prop={DeleteData} closeModal={closeModal} />}
+
+        <div
+          className="popbtn"
+          onClick={() => {
+            setReportUserModal(true);
+          }}
+        >
+          Report
+        </div>
+        {reportUserModal && (
+          <ReportUserModal closeReportModal={closeReportModal} />
+        )}
+
+        <div
+          className="popbtn"
+          onClick={() => {
+            setShowModal(false);
+            setShowHideModal(true);
+            setshowBlockModal(false);
+          }}
+        >
+          Hide Shot
+        </div>
+        {showHideModal && (
+          <DeleteModal prop={HideData} closeModal={closeModal} />
+        )}
       </div>
     </PopContentCss>
   );
@@ -163,7 +215,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
             </span>
           </div>
         </div>
-      </UserPostCardCss>
+  
       {comment && (
         <FeedCommentView
           commentOn={comment}
@@ -171,6 +223,8 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
           val={val}
         />
       )}
+    
+    </UserPostCardCss>
     </>
   );
 };
@@ -316,18 +370,35 @@ background-color : #FFFFFF;
     margin : 0 0.3rem;
     font-size : 0.8rem;
   }
-}
-.imgSpan{
-  border-radius : 6rem;
-  width : 36px;
-  height : 36px;
-  overflow : hidden;
-  
-  img{
-    width : 100%;
-    height : 100%;
-    object-fit : cover;
+  .popbtn {
+    font-size: 1rem;
+    padding: 0.3rem 0;
+    margin: 0 0.5rem;
+    cursor: pointer;
+  }
+  .popbtn:hover {
+    color: black;
+  }
+  .popFlex {
+    display: flex;
+    align-items: center;
+    margin: 0.2rem 0;
+    span {
+      margin: 0 0.3rem;
+      font-size: 0.8rem;
+    }
+  }
+  .imgSpan {
+    border-radius: 6rem;
+    width: 36px;
+    height: 36px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }
-.
 `;
