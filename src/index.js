@@ -5,7 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import store, { persistor } from "./Store/Store";
-import Subscription from "./Feautres/Subscription/Subscriptions";
+import "react-chat-elements/dist/main.css"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,7 +15,6 @@ root.render(
       <App />
     </PersistGate>
   </Provider>
-  // <Subscription/>
 );
 
 reportWebVitals();
