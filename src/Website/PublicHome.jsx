@@ -92,8 +92,6 @@ export default function Publichome() {
 
   // -------------------------Our Features CSS START-----------------------------
 
-  // -----------------------Work CSS END--------------------------------
-
   const Featurewrapper = styled.section`
     section {
       background: linear-gradient(268.55deg, #ffdbac 0%, #ffcebb 100%);
@@ -225,7 +223,7 @@ export default function Publichome() {
         flex-wrap: wrap;
         padding: 0 4rem 3rem;
         justify-content: space-around;
-        margin-top: 1rem;
+        margin: 1.6rem 0;
         .card {
           background-color: #ffc0cb63;
           text-align: left;
@@ -322,7 +320,7 @@ export default function Publichome() {
     section {
       display: flex;
       flex-wrap: wrap;
-      padding: 2rem;
+      padding: 4rem 2rem;
       justify-content: space-around;
       .single_heart {
         display: flex;
@@ -333,6 +331,7 @@ export default function Publichome() {
       .left {
         width: 30%;
         .mission {
+          margin-bottom: 1rem;
           .head {
             display: flex;
             align-items: center;

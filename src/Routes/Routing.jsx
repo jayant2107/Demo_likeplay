@@ -17,10 +17,8 @@ import Notfound from "../Feautres/Notfound/Notfound";
 import Registration from "../Auth/Registration";
 import LoginPage from "../Auth/LoginPage";
 import Subscription from "../Feautres/Subscription/Subscriptions";
-import Country from "../Website/pages/country";
 import { useSelector } from "react-redux";
-
-
+import Country from "../Website/pages/Country";
 
 const Routing = () => {
   const value= useSelector((e)=>e.LoginSlice.data)
