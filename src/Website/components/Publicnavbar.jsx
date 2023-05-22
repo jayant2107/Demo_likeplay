@@ -59,14 +59,46 @@ const Navbar = styled.nav`
       }
     }
   }
+
+  /* media quary for Smart Phones responsive  */
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    .nav {
+      .right_content {
+        ul {
+          display: none;
+        }
+      }
+    }
+  }
+
+  /* media quary for Tablats responsive  */
+  @media (min-width: 481px) and (max-width: 768px) {
+    .nav {
+      .right_content {
+        ul {
+          display: none;
+        }
+      }
+    }
+  }
+  /* media quary for laptop responsive  */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .nav {
+      .right_content {
+        ul {
+          display: none;
+        }
+      }
+    }
+  }
 `;
 
 export default function Publicnavbar() {
   const navigate = useNavigate();
-  const MatchesDetailPage = (name) =>{
-    navigate("/Safety", { state: { id: name } })
-
-  }
+  const MatchesDetailPage = (name) => {
+    navigate("/Safety", { state: { id: name } });
+  };
   return (
     <>
       <Navbar>
@@ -77,7 +109,9 @@ export default function Publicnavbar() {
               {navbarlist.map((ele) => {
                 return (
                   <>
-                    <li onClick={()=>MatchesDetailPage(ele.page)}>{ele.page}</li>
+                    <li onClick={() => MatchesDetailPage(ele.page)}>
+                      {ele.page}
+                    </li>
                   </>
                 );
               })}

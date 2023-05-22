@@ -70,6 +70,88 @@ export default function Publicfooter() {
         }
       }
     }
+    /*  Media quary for Smart Phone responsive  */
+
+    @media (min-width: 320px) and (max-width: 480px) {
+      section {
+        padding: 4rem 1rem;
+        .list1 {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+        .list {
+          width: 100%;
+        }
+        .list5 {
+          margin-top: 3rem;
+          width: 100%;
+          .copyright {
+            bottom: 0px;
+          }
+        }
+      }
+    }
+    /* media quary for Tablats responsive  */
+    @media (min-width: 481px) and (max-width: 768px) {
+      section {
+        padding: 4rem 1rem;
+        .list1 {
+          width: 40%;
+          margin-bottom: 15px;
+        }
+        .list {
+          width: 37%;
+        }
+        .list5 {
+          margin-top: 3rem;
+          width: 86%;
+          .copyright {
+            bottom: 0px;
+          }
+        }
+      }
+    }
+    /* media quary for laptop responsive  */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      section {
+        padding: 4rem 1rem;
+        .list1 {
+          width: 40%;
+          margin-bottom: 15px;
+        }
+        .list {
+          width: 37%;
+        }
+        .list5 {
+          margin-top: 3rem;
+          width: 86%;
+          .copyright {
+            bottom: 0px;
+          }
+        }
+      }
+    }
+    /* media quary for large laptop responsive  */
+    @media (min-width: 1025px) and (max-width: 1200px) {
+      section {
+        justify-content: space-between;
+        padding: 4rem 1rem;
+        .list1 {
+          width: 40%;
+          margin-bottom: 15px;
+        }
+        .list {
+          width: 20%;
+        }
+        .list5 {
+          margin-top: 3rem;
+          width: 50%;
+          .copyright {
+            bottom: 0px;
+          }
+        }
+      }
+    }
   `;
   return (
     <>

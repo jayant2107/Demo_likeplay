@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router";
 import styled from "styled-components";
 import footercontentdata from "../../Data/footercontentdata";
-import { footerbg, whylikeheart } from "../../Utils/images/Publichomeimg";
+import { footerbg, footerheart } from "../../Utils/images/Publichomeimg";
+import Publicfooter from "../components/Publicfooter";
+import ResHeaderComponent from "../../Auth/RegistrationPage/ResHeader";
 
 export default function Footercontent() {
   let location = useLocation();
@@ -12,11 +14,16 @@ export default function Footercontent() {
   );
   console.log(footerContent);
 
+  // page start on the top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
   // ----------------------------styleing--------------------------
   const Footercontent = styled.section`
     section {
       position: relative;
       z-index: -2;
+      margin-top: -92px;
       width: 100%;
       height: 100vh;
       background-image: url(${footerbg});
@@ -43,6 +50,7 @@ export default function Footercontent() {
         z-index: -1;
       }
       .head {
+        margin-top: 5rem;
         font-family: "Oregano", cursive;
         font-size: 1.3rem;
         line-height: 3rem;
@@ -76,6 +84,7 @@ export default function Footercontent() {
   return (
     <>
       <Footercontent>
+        <ResHeaderComponent />
         <section>
           {footerContent.map((ele) => {
             return (
@@ -88,7 +97,7 @@ export default function Footercontent() {
                   return (
                     <>
                       <div className="content">
-                        <img src={whylikeheart} alt="" />
+                        <img src={footerheart} alt="" />
                         <p>{e}</p>
                       </div>
                     </>
@@ -99,6 +108,7 @@ export default function Footercontent() {
           })}
         </section>
       </Footercontent>
+      <Publicfooter />
     </>
   );
 }
