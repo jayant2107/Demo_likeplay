@@ -3,31 +3,31 @@ import styled from "styled-components";
 import { userprofile } from "../Utils/Images";
 import { AiOutlineRight } from "react-icons/ai";
 import { Switch } from "antd";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Rightsidebar() {
-  const location=useLocation()
-  const [path,setPath]=useState(true)
-  console.log(location.pathname,"p")
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [path, setPath] = useState(true);
   const onChange = (checked) => {
     console.log(`switch to ${checked}`);
   };
-  useEffect(()=>{
-    if(location.pathname==='/Layout/Myprofile')
-    {
-      setPath(false)
-
+  useEffect(() => {
+    if (location.pathname === "/Layout/Myprofile") {
+      setPath(false);
+    } else {
+      setPath(true);
     }
-    else{
-      setPath(true)
-    }
-  },[location])
+  }, [location]);
   return (
     <Rightsidebarwrapper>
       <Profilesection>
         <div>
           <p className="My_profile">My Profile</p>
-          <div className="profile_section">
+          <div
+            className="profile_section"
+            onClick={() => navigate("/Layout/MyProfile")}
+          >
             <img src={userprofile} alt="" height={50} />
             <p>Logan Lerman</p>
             <AiOutlineRight />
@@ -74,7 +74,6 @@ export default function Rightsidebar() {
       <Introduce>
         <p>introduce on the floor</p>
         <Switch defaultChecked onChange={onChange} />
-
       </Introduce>
     </Rightsidebarwrapper>
   );
@@ -145,17 +144,16 @@ const Userinfo = styled.div`
     }
   }
 `;
-const Introduce=styled.div`
-padding:10px;
-margin:20px 0px;
-border: 1px solid #e2e2e2;
-border-radius: 10px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-p{
-  color:#242424;
-  letter-spacing:1px;
-}
-
-`
+const Introduce = styled.div`
+  padding: 10px;
+  margin: 20px 0px;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  p {
+    color: #242424;
+    letter-spacing: 1px;
+  }
+`;

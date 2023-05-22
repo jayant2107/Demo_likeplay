@@ -8,32 +8,26 @@ import { Outlet, useLocation } from "react-router-dom";
 
 export default function Layout() {
   const location = useLocation();
-  const [rightnav,setrightnav]=useState()
-  
+  const [rightnav, setrightnav] = useState();
 
-useEffect(()=>{
-  if(location?.pathname==="/Layout/Settings" || location?.pathname==='/Layout/Subscriptions'){
-    setrightnav(true)
-
-  }
-  else{
-    setrightnav(false)
-  }
-
-  
-
-},[location])
-console.log(rightnav,"rrr")
-
-
+  useEffect(() => {
+    if (
+      location?.pathname === "/Layout/Settings" ||
+      location?.pathname === "/Layout/Subscriptions"
+    ) {
+      setrightnav(true);
+    } else {
+      setrightnav(false);
+    }
+  }, [location]);
 
   return (
     <>
-      <Layoutdesign isRightNav={!rightnav} >
+      <Layoutdesign isRightNav={!rightnav}>
         <div className="left-sidebar">
           <Sidebar />
         </div>
-        <div className="center-content" >
+        <div className="center-content">
           <Outlet></Outlet>
         </div>
         {!rightnav && (
@@ -56,7 +50,7 @@ const Layoutdesign = styled.div`
   .center-content {
     width: 100%;
     margin-left: calc(100% - 80%);
-    margin-right: ${({isRightNav})=> isRightNav && 'calc(100% - 80%)'};
+    margin-right: ${({ isRightNav }) => isRightNav && "calc(100% - 80%)"};
   }
 
   .right-sidebar {
