@@ -71,8 +71,8 @@ const LoginPage = () => {
           <ResHeaderComponent />
           <RisgistationPage1>
             <div className="Risgistation_content">
-              <div className="risgistation_img_log">
-                <img src={Logimg} className="rig_img_log" alt="empty" />
+              <div className="risgistation_img_log" >
+                <img src={Logimg}  className="rig_img_log" alt="empty" />
                 <h1>The #Dating Site in Nigeria</h1>
               </div>
               <Formik

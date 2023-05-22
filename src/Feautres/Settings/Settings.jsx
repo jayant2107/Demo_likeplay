@@ -123,15 +123,25 @@ const Settings = () => {
           </div>
           <div className="SetRight">
             {btn === "Refer" ? (
-              <ReferFriend />
+              <div>
+                <ReferFriend />
+              </div>
             ) : btn === "Reset" ? (
-              <ResetPassword />
+              <div>
+                <ResetPassword />
+              </div>
             ) : btn === "Upgrade" ? (
-              <UpgradeSubscription />
+              <div>
+                <UpgradeSubscription />
+              </div>
             ) : btn === "Blocked" ? (
-              <BlockedUser />
+              <div>
+                <BlockedUser />
+              </div>
             ) : (
-              <CancelSubscription />
+              <div>
+                <CancelSubscription />
+              </div>
             )}
           </div>
         </div>
@@ -166,6 +176,9 @@ const Wrapper = styled.div`
     color: white;
     cursor: pointer;
   }
+  .SetRight > div {
+    margin: 0 2rem;
+  }
   .Setfir {
     display: flex;
     flex-direction: column;
@@ -178,16 +191,20 @@ const Wrapper = styled.div`
   }
   .Header .Setting {
     height: 100%;
-    width: 25%;
+    width: 30%;
     display: flex;
     align-items: center;
     padding-left: 22px;
+    border-right: 1px solid #e2e2e2;
   }
   .mainContainer {
     display: flex;
     align-items: start;
-    padding: 1rem 0rem;
-    height: 89vh;
+
+    height: 90vh;
+  }
+  .mainContainer > div {
+    padding: 3rem 0rem;
   }
   .SetLeft {
     width: 30%;
@@ -196,26 +213,20 @@ const Wrapper = styled.div`
     flex-direction: column;
     height: 100%;
     padding: 0rem 0.3px;
+    border-right: 1px solid #e2e2e2;
   }
-  .SetLeft > div:not(:first-child) {
-  }
-
-  /* .SetLeft > div div:not(:first-child) {
-    margin-top: 4%;
-  } */
   .NormalBtn {
-    width: 80%;
+    width: 228px;
     height: 58px;
     padding: 3% 5%;
     border: none;
     font-weight: 600;
   }
-  //css for Active btn
   .ActiveState {
     border: 10px solid;
     border-image-slice: 1;
     border-width: 5px;
-    width: 80%;
+    width: 228px;
     height: 58px;
     padding: 3% 5%;
     font-weight: 600;

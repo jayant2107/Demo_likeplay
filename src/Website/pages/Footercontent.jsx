@@ -33,6 +33,7 @@ export default function Footercontent() {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      background-size:cover;
       &::before {
         content: "";
         position: absolute;
