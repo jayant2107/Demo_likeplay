@@ -18,6 +18,7 @@ import img2_7    from '../../Assets/Registration/Arti7.png'
 import img3_7    from '../../Assets/Registration/Group7.png'
 import LoginBg   from "../../Assets/Registration/LoginBg.png"
 import forgotbg from "../../Assets/Registration/fogotpassword.png"
+// import loginComplited from '../../Assets/Registration/loginCompleted.png'
 
 //------------Icon---------//
 

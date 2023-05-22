@@ -21,7 +21,7 @@ import ResgistPage15 from './RegistrationPage/Rest_page15';
 
 const Registration = () => {
     const [count, setCount] = React.useState(1);
-    const Nextpage = () => (count === 15)?setCount(13):setCount(count + 1)
+    const Nextpage = () => (count === 15)?setCount(15):setCount(count + 1)
     const Backpage = () => (count === 0)?setCount(1):setCount(count - 1)
 
 

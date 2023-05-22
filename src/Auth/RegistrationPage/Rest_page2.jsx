@@ -50,5 +50,7 @@ const ResgistPage2 = ({Next, Back}) => {
       </RisgistationPage1>
 
     </RisgistionBgImg>
+    </>)
+}
 
 export default ResgistPage2;
