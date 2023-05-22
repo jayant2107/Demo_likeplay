@@ -1,17 +1,37 @@
-import React from 'react'
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import { searchIcon } from "../../Utils/Images";
+import data from "../Matches/Matches_JSON";
+import MatchesCard from "../../Components/MatchesCard";
+import AdmirerCards from "./AdmirerCards";
 
 export default function Admirers() {
   return (
     <div>
-            <AdmirerHeader>
-        <header>Admirers</header>
-        <span>Clear</span>
+      <AdmirerHeader>
+        <header>
+          Admirers<span>(They want me, I dey enter their eye)</span>
+        </header>
+        <img src={searchIcon} alt="" className="SLogo" />
       </AdmirerHeader>
+
+      <CardWrapper>
+        {data.map((value) => (
+          <AdmirerCards key={value.id} props={value} />
+        ))}
+      </CardWrapper>
     </div>
-  )
+  );
 }
 
+const CardWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  padding: 20px 8px;
+`;
 
 const AdmirerHeader = styled.div`
   width: 100%;
@@ -29,7 +49,22 @@ const AdmirerHeader = styled.div`
     font-size: 18px;
     line-height: 28px;
     letter-spacing: 0.05em;
-    color: #242424;
+    color: #a8580f;
+    display: flex;
+    align-items: center;
+
+    span {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 24px;
+      letter-spacing: 0.05em;
+      text-transform: capitalize;
+      color: #242424;
+      background: transparent;
+      padding: 0 5px;
+    }
 
     @media (max-width: 800px) {
       color: red;

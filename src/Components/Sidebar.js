@@ -100,11 +100,11 @@ export default function Sidebar() {
           onMouseEnter={() => setAdmiringcolor(true)}
           onMouseLeave={() => setAdmiringcolor(false)}
         >
-          <div className="content-list">
+          <div className="content-list"   onClick={() => Navigate("/Layout/Admiring")}>
             <Slogo>
-              <Admiring color={Admiringcolor ? primarycolor : secondarycolor} />
+              <Admiring color={Admiringcolor || active == "/Layout/Admiring" ? primarycolor : secondarycolor} />
             </Slogo>
-            <Slabel>
+            <Slabel active={active === "/Layout/Admiring"}>
               <p>Admiring</p>
             </Slabel>
           </div>
