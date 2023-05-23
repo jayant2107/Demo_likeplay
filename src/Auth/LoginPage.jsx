@@ -6,6 +6,7 @@ import { Formik, Form, Field } from "formik";
 import ForgetPage from "./ForgetPage";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { LoadingOutlined } from '@ant-design/icons';
 import {  Input, Spin } from "antd";
 
 import {
@@ -60,6 +61,14 @@ const LoginPage = () => {
 
 
   };
+  const antIcon = (
+    <LoadingOutlined
+      style={{
+        fontSize: 24,
+      }}
+      spin
+    />
+  );
 
 
   return (
@@ -113,9 +122,10 @@ const LoginPage = () => {
                         {
                           loading?
                           <LoaderWrapper>
-                            <Spin size='large' />
+                            <Spin indicator={antIcon} />
+                           
                           </LoaderWrapper>:  <ButtonStyle
-                          width="27rem"
+                          width="26rem"
                           margin="1rem 0"
                           type="submit"
                         >
@@ -147,6 +157,7 @@ const LoginPage = () => {
 export default LoginPage;
 const LoaderWrapper = styled.div`
 width: 100%;
+padding:10px 0px;
 
 display: flex;
 align-items: center;
