@@ -1,16 +1,18 @@
 import React from 'react'
 import ResHeaderComponent from "./RegistrationPage/ResHeader";
-import { forgotbg } from "../Utils/RegistrationImg/Registrationflie";
+import { forgotbg } from '../Utils/RegistrationImg/Registrationflie';
 import { RisgistionBgImg, FromStyleDiv, ButtonStyle, RisgistationPage1 } from "../Auth/RegistrationPage/style";
+// import Rest_page15 from './RegistrationPage/Rest_page15'
 
 const ForgetPage = () => {
 
     return (<>
+ 
         <RisgistionBgImg height="100vh" imgUrl={forgotbg}>
             <ResHeaderComponent />
             <RisgistationPage1>
                 <div className='Risgistation_content2'>
-                    <div style={{margin:"4rem 0"}}>
+                    <div style={{ margin: "4rem 0" }}>
                         <FromStyleDiv>
 
                             <div className='registation_form'>

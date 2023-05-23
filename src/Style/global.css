@@ -2,3 +2,7 @@
     padding: 0px !important;
     border-radius: 10px;
 }
+
+.ant-modal-close-icon {
+    display: none !important;
+}

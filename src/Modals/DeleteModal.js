@@ -1,72 +1,5 @@
 import styled from "styled-components";
 import StyledButton from "../Components/Button";
-import { useEffect } from "react";
-
-export default function DeleteModal({ closeModal, prop }) {
-  useEffect(() => {
-    document.body.style.overflowY = "hidden";
-    return () => {
-      document.body.style.overflowY = "scroll";
-    };
-  }, []);
-
-  console.log("srgfgt", prop);
-
-  return (
-    <>
-      {prop && (
-        <StyledDeleteModal>
-          <div className="modal">
-            <div
-              className="modal-container"
-              onClick={() => {
-                closeModal();
-              }}
-            >
-              <div className="modal-content">
-                <div className="content-container">
-                  {/* MODAL HEADING-SECTION STARTS */}
-
-                  <div className="modal-head">
-                    <div className="heading">{prop.name}</div>
-                  </div>
-
-                  {/* MODAL HEADING-SECTION ENDS */}
-
-                  {/* MODAL PARA-SECTION STARTS  */}
-
-                  <div className="modal-para">{prop.para}</div>
-
-                  {/* MODAL PARA-SECTION ENDS  */}
-
-                  {/* MODAL BUTTONS-SECTION STARTS  */}
-                  <div className="modal-buttons">
-                    <div className="buttons-content">
-                      <div className="cancel-btn" onClick={closeModal}>
-                        <StyledButton text="#242424" bg="#f0f0f0">
-                          Cancel
-                        </StyledButton>
-                      </div>
-                      <div className="yes-btn" onClick={closeModal}>
-                        <StyledButton
-                          text="white"
-                          bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
-                        >
-                          Yes
-                        </StyledButton>
-                      </div>
-                    </div>
-                  </div>
-                  {/* MODAL BUTTONS-SECTION ENDS  */}
-                </div>
-              </div>
-            </div>
-          </div>
-        </StyledDeleteModal>
-      )}
-    </>
-  );
-}
 
 export const StyledDeleteModal = styled.div`
   .modal-container {
@@ -110,11 +43,16 @@ export const StyledDeleteModal = styled.div`
 
   /* MODAL PARA-SECTION STARTS  */
 
+
+.modal-head {
+    text-align: center;
+}
+
   .modal-para {
     font-size: 16px;
     line-height: 24px;
     color: #7b7f91;
-    width: 75%;
+    text-align: center;
     margin: auto;
     margin-top: 10px;
   }
@@ -137,5 +75,60 @@ export const StyledDeleteModal = styled.div`
     margin: auto;
   }
 
+  .modalDesign{
+    text-align: center;
+   footer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+   }
+  }
+
   /* MODAL BUTTON-SECTION ENDS  */
 `;
+
+export default function DeleteModal({ closeModal, prop }) {
+  return (
+    <>
+      {prop && (
+        <StyledDeleteModal>
+          {/* MODAL HEADING-SECTION STARTS */}
+
+          <div className="modal-head">
+            <div className="heading">{prop.name}</div>
+          </div>
+
+          {/* MODAL HEADING-SECTION ENDS */}
+
+          {/* MODAL PARA-SECTION STARTS  */}
+
+          <div className="modal-para">{prop.para}</div>
+
+          {/* MODAL PARA-SECTION ENDS  */}
+
+          
+                   {/* MODAL BUTTONS-SECTION STARTS  */}
+                                <div className="modal-buttons">
+                     <div className="buttons-content">
+                       <div className="cancel-btn" onClick={closeModal}>
+                         <StyledButton text="#242424" bg="#f0f0f0">
+                           Cancel
+                         </StyledButton>
+                       </div>
+                       <div className="yes-btn" onClick={closeModal}>
+                         <StyledButton
+                          text="white"
+                          bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
+                        >
+                          Yes
+                        </StyledButton>
+                      </div>
+                    </div>
+                  </div>
+                  {/* MODAL BUTTONS-SECTION ENDS  */}
+        </StyledDeleteModal>
+      )}
+    </>
+  );
+}

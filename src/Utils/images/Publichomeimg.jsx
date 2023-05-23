@@ -4,6 +4,8 @@ import Homecouple from "../../Assets/Images/homecouplePA.png";
 import Publicvideobg from "../../Assets/Images/Publicvideobg.svg";
 import hashimg from "../../Assets/Images/hash.svg";
 import vidoedemobg from "../../Assets/Images/PublicvideoDemobg.svg";
+import footerheart from "../../Assets/Icons/PublicFooterHeartPA.svg";
+
 
 // logo
 import category1 from "../../Assets/Icons/PubliccategoryPA1.svg";
@@ -96,8 +98,12 @@ import live from "../../Assets/Icons/PubliclivePA.svg";
 import thegurdian from "../../Assets/Icons/PublicthegurdianPA.svg";
 import punch from "../../Assets/Icons/PublicpunchPA.svg";
 
+//footer and navbar content background image
+import footerbg from "../../Assets/Images/PublicfooterbgPA.svg"
+
 export default hashimg;
 export {
+  footerheart,
   LikePlaylogo,
   Homecouple,
   Publicvideobg,
@@ -188,5 +194,6 @@ export {
   cotepart1img3,
   cotepart1img4,
   cotepart1img5,
+  footerbg
 
 };

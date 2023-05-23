@@ -21,7 +21,7 @@ const ResgistPage9 = ({ Next, Back }) => {
             <RisgistationPage1>
                 <div className='Risgistation_content2'>
 
-                    <FromStyleDiv width="37rem">
+                    <FromStyleDiv  width="37rem">
                         <ProgessStyleDiv>
                             <p><b>{percentage}</b> Complete</p>
                             <ProgessStyleDivline>

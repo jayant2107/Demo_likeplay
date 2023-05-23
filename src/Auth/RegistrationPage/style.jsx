@@ -3,13 +3,15 @@ import styled from "styled-components"
 //--------backgournd_img----------------------------------//
 
 export const RisgistionBgImg = styled.div`
-background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${(props) => props.imgUrl});
+background:linear-gradient(hsla(0, 0%, 0%, 0.5), rgba(0, 0, 0, 0.5)),url(${(props) => props.imgUrl});
  width: ${(props) => props.width || "100%"};
  height: ${(props) => props.height || ""};
  background-size: ${(props) => props.bSize || "100% 100%"};
  background-position: ${(props) => props.bPosition || "100% 100%"};
  background-attachment: ${(props) => props.bAttachment || "fixed"};
  background-color:${(props) => props.bgcolour || "rgba(2, 2, 2, 0.8"};
+ min-height:100vh;
+max-height: 100%;
 
 
 
@@ -19,7 +21,7 @@ background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${(props)
 //--------From----------------------------------//
 export const FromStyleDiv = styled.div`
   color: white;
-  width: ${(props) => props.width || "29rem"};
+  width: ${(props) => props.width || "28rem"};
   margin:${(props) => props.margin || ""};
   lable {
     font-family: 'Poppins';
@@ -45,9 +47,8 @@ export const ProgessStyleDiv = styled.div`
     margin: 0.8rem 0;
 `
 export const ProgessStyleDivline = styled.div`
-    border:${(props) => props.border || "1px white solid"};
+    border:${(props) => props.border || "2px white solid"};
     width:${(props) => props.width || "100%"};
-    height:${(props) => props.height || "1rem"};
     border-radius:${(props) => props.borderRadius || "1rem"};
     background-color: ${(props) => props.bgcolour || "#3f3f3f"};
 `
@@ -71,6 +72,7 @@ export const ButtonStyle = styled.button`
     height:${(props) => props.height || ""};
     padding: ${(props) => props.padding || "1rem"};
     margin: ${(props) => props.margin || "1rem"};
+    
 
 ;
 // ----------------Button------------------------//
@@ -102,6 +104,7 @@ export const ChoiceDiv = styled.div`
     display: flex;
     justify-content: left;
     align-items: center;
+
     :hover{
         background-color: #a8580f;
         color: white;
@@ -163,6 +166,9 @@ export const RisgistationPage1 = styled.div`
 .risgistation_img_log_login{
      margin-top:70px ;
      text-align: center;
+    padding-top: 90px;
+    float: right;
+
 }
 
 
@@ -170,10 +176,9 @@ img.rig_img_log {
     width: 12rem;
 }
 input.resgistation_input {
-    width: 99%;
+    width:400px;
     height: 3rem;
     padding-left: 1rem;
-    margin: 0rem 0px 1rem 0px;
     outline: none;
     border-radius:10px;
     border: 1px #e2e2e2 solid;

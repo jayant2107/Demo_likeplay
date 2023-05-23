@@ -1,4 +1,4 @@
-import vector from '../Assets/Icons/diamondAk (1).svg'
+import vector from '../Assets/Images/BlackAk.png'
 import vector1 from '../Assets/Icons/VectorAk.svg';
 import vector2 from '../Assets/Icons/VectorAk1.svg';
 import vector3 from '../Assets/Icons/VectorAk2.svg';
@@ -57,7 +57,8 @@ const buttonss3 = [ "1 month - 5,000", "1 month - 1,500", "1 month - 2,200", "1 
             return(
                 <>
         <div className="flex"  >
-          <div className='par153'>{e.p} </div>
+          <div className='par153'>
+          <div className='para159'>{e.p}</div> </div>
           <div className='checkimg'>
             <img src={e.pic} alt="" />
             <p className="para0">{e.p1}</p>
@@ -150,9 +151,9 @@ const Wrapper = styled.div`
     z-index: 100;
     position: absolute;
     top: 0px;
-    height: 96vh;
+    height: 102vh;
     border: 1px solid #E2E2E2;
-    left: 21%;
+    left: 22%;
     width: 1.5px;
   }
   .hr2 {
@@ -167,13 +168,16 @@ const Wrapper = styled.div`
 .hr5{
   width: 88%;
 }
+.para159{
+  width: 95%;
+}
 .wrae{
   margin-top: 20px;
 }
 .Select-subscription {
     z-index: 100;
     position: absolute;
-    top: 35rem;
+    top: 37rem;
 }
 .checkimg{
   display: flex;
@@ -240,10 +244,9 @@ margin-left: 21%;
   }
   .Options_but {
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 36% 34% 34% 30%;
     gap: 4%;
-    margin-left: 21%;
-    padding: .8rem;
+    margin-left: 23%;
     color: #7B7F91;
  
 }
@@ -254,11 +257,11 @@ margin-left: 21%;
     font-size: 14px;
     margin-top: 15px;
     display: flex;
-    width: 100%;
+    /* width: 100%; */
     background: #FFFFFF;
     border: 1px solid #E2E2E2;
     border-radius: 10px;
-    width: 180px;
+    width: 135px;
     height: 44px;
 }
 .par153{

@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { Modal } from "antd";
 import DeleteModal from "../../Modals/DeleteModal";
+import LikesViewModal from "../../Modals/LikesViewModal";
 import BlockData from "../../Modals/ModalData/BlockData";
 import DeleteData from "../../Modals/ModalData/DeleteShotData";
 import HideData from "../../Modals/ModalData/HideShotData";
@@ -23,12 +25,17 @@ import {
 import { TagesData } from "./DataPage";
 import FeedCommentView from "./FeedCommentView";
 
-const UserPostCard = ({ val, like, star, heart, changeIcon,changeModal }) => {
+const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const [comment, setComment] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showHideModal, setShowHideModal] = useState(false);
   const [showBlockModal, setshowBlockModal] = useState(false);
   const [reportUserModal, setReportUserModal] = useState(false);
+  const [likeModal, setLikeModal] = useState(false);
+
+  const changeModal=()=>{
+    setComment(!comment);
+  }
 
   const closeModal = () => {
     if (showBlockModal === true) {
@@ -40,8 +47,13 @@ const UserPostCard = ({ val, like, star, heart, changeIcon,changeModal }) => {
     }
   };
 
+
   const closeReportModal = () => {
     setReportUserModal(false);
+  };
+
+  const closeLikeModal = () => {
+    setLikeModal(false);
   };
 
   const content = (
@@ -59,7 +71,17 @@ const UserPostCard = ({ val, like, star, heart, changeIcon,changeModal }) => {
           Block
         </div>
         {showBlockModal && (
-          <DeleteModal prop={BlockData} closeModal={closeModal} />
+          <Modal
+            open={showBlockModal}
+            onOk={closeModal}
+            onCancel={closeModal}
+            // cancelText="naa"
+            className="modalDesign"
+            footer={null}
+            // okButtonProps={{ style: { backgroundColor: "green" } }}
+          >
+            <DeleteModal prop={BlockData} closeModal={closeModal} />
+          </Modal>
         )}
         <div
           className="popbtn"
@@ -71,7 +93,17 @@ const UserPostCard = ({ val, like, star, heart, changeIcon,changeModal }) => {
         >
           Delete
         </div>
-        {showModal && <DeleteModal prop={DeleteData} closeModal={closeModal} />}
+        {showModal && (
+          <Modal
+            open={showModal}
+            onOk={closeModal}
+            onCancel={closeModal}
+            className="modalDesign"
+            footer={null}
+          >
+            <DeleteModal prop={DeleteData} closeModal={closeModal} />
+          </Modal>
+        )}
 
         <div
           className="popbtn"
@@ -81,9 +113,14 @@ const UserPostCard = ({ val, like, star, heart, changeIcon,changeModal }) => {
         >
           Report
         </div>
-        {reportUserModal && (
+        <Modal
+          open={reportUserModal}
+          onOk={closeReportModal}
+          onCancel={closeReportModal}
+          footer={null}
+        >
           <ReportUserModal closeReportModal={closeReportModal} />
-        )}
+        </Modal>
 
         <div
           className="popbtn"
@@ -96,7 +133,15 @@ const UserPostCard = ({ val, like, star, heart, changeIcon,changeModal }) => {
           Hide Shot
         </div>
         {showHideModal && (
-          <DeleteModal prop={HideData} closeModal={closeModal} />
+          <Modal
+            open={showHideModal}
+            onOk={closeModal}
+            onCancel={closeModal}
+            className="modalDesign"
+            footer={null}
+          >
+            <DeleteModal prop={HideData} closeModal={closeModal} />
+          </Modal>
         )}
       </div>
     </PopContentCss>
@@ -176,7 +221,25 @@ const UserPostCard = ({ val, like, star, heart, changeIcon,changeModal }) => {
             </div>
             <div onClick={() => changeIcon("heart")}>
               <HeartFeedIcon val={heart} />
-              <span>18</span>
+              <span
+                onClick={() => {
+                  setLikeModal(true);
+                }}
+              >
+                18
+              </span>
+              {likeModal && (
+                <Modal
+                  open={likeModal}
+                  onOk={closeLikeModal}
+                  onCancel={closeLikeModal}
+                  footer={null}
+                  width="30%"
+                >
+                 
+                  <LikesViewModal closeLikeModal={closeLikeModal} />
+                </Modal>
+              )}
             </div>
             <div onClick={() => changeIcon("star")}>
               <StarFeedIcon val={star} />
@@ -194,12 +257,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon,changeModal }) => {
 
           {/* TAG BUTTON3 */}
           <div className="commentDiv">
-            <span>
-              <TagFeedIcon />
-            </span>
-            <span>5 tags</span>
-            <span className="arrow">
-              <Popover
+          <Popover
                 arrow={false}
                 overlayStyle={{
                   border: "1px solid #E2E2E2",
@@ -210,21 +268,23 @@ const UserPostCard = ({ val, like, star, heart, changeIcon,changeModal }) => {
                 placement="top"
                 trigger="click"
               >
-                <img src={DownArrowImg} alt="DownArror" />
-              </Popover>
+            <span>
+              <TagFeedIcon />
             </span>
+            <span>5 tags</span>
+                <img className="arrow" src={DownArrowImg} alt="DownArror" />
+              </Popover>
           </div>
         </div>
-  
-      {comment && (
-        <FeedCommentView
-          commentOn={comment}
-          changeModal={changeModal}
-          val={val}
-        />
-      )}
-    
-    </UserPostCardCss>
+
+        {comment && (
+          <FeedCommentView
+            commentOn={comment}
+            changeModal={changeModal}
+            val={val}
+          />
+        )}
+      </UserPostCardCss>
     </>
   );
 };
@@ -265,13 +325,13 @@ export const UserPostCardCss = styled.div`
   .userName {
     color: #252525;
     font-weight: 500;
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
   .postDate {
     color: #7b7f91;
     font-size: 0.9rem;
   }
-
+  
   .profileOptions {
     display: Flex;
     align-items: center;
@@ -303,7 +363,7 @@ export const UserPostCardCss = styled.div`
 
   .commentLikeBtn {
     display: grid;
-    grid-template-columns: 40% 30% 25%; 
+    grid-template-columns: 40% 30% 25%;
     justify-content: space-between;
     height: 3.2rem;
     div {
@@ -328,7 +388,7 @@ export const UserPostCardCss = styled.div`
       cursor: pointer;
       span {
         margin-left: 0.4rem;
-      }
+      }  
     }
   }
 
@@ -340,6 +400,7 @@ export const UserPostCardCss = styled.div`
     span {
       display: flex;
       margin-left: 0.4rem;
+      align-items: center;
     }
     .arrow {
       margin-left: 2rem;
@@ -348,27 +409,10 @@ export const UserPostCardCss = styled.div`
 `;
 
 const PopContentCss = styled.div`
-font-family: 'Poppins', sans-serif;
-background-color : #FFFFFF;
-.popContent{
-  color : #7B7F91;
-}
-.popbtn{
-  font-size : 1rem;
-  padding : 0.3rem 0;
-  margin :  0 0.5rem;
-  cursor : pointer;
-}
-.popbtn:hover{
-  color : black;
-}
-.popFlex{
-  display : flex;
-  align-items : center;
-  margin : 0.2rem 0;
-  span{
-    margin : 0 0.3rem;
-    font-size : 0.8rem;
+  font-family: "Poppins", sans-serif;
+  background-color: #ffffff;
+  .popContent {
+    color: #7b7f91;
   }
   .popbtn {
     font-size: 1rem;
@@ -387,18 +431,35 @@ background-color : #FFFFFF;
       margin: 0 0.3rem;
       font-size: 0.8rem;
     }
-  }
-  .imgSpan {
-    border-radius: 6rem;
-    width: 36px;
-    height: 36px;
-    overflow: hidden;
+    .popbtn {
+      font-size: 1rem;
+      padding: 0.3rem 0;
+      margin: 0 0.5rem;
+      cursor: pointer;
+    }
+    .popbtn:hover {
+      color: black;
+    }
+    .popFlex {
+      display: flex;
+      align-items: center;
+      margin: 0.2rem 0;
+      span {
+        margin: 0 0.3rem;
+        font-size: 0.8rem;
+      }
+    }
+    .imgSpan {
+      border-radius: 6rem;
+      width: 36px;
+      height: 36px;
+      overflow: hidden;
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
-}
 `;

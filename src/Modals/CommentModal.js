@@ -1,6 +1,7 @@
+
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import exit from "../Assets/Images/Matches Image/exit.png"
+import exit from "../Assets/Images/Matches Image/exit.png";
 
 const CommentModal = ({ show, close, props }) => {
   const navigate = useNavigate();
@@ -8,25 +9,49 @@ const CommentModal = ({ show, close, props }) => {
     <>
       <div show={show} onHide={close}>
         <CommentModalStyle>
-    
           <div className="modal">
             <div className="modal-container">
-           
               <div className="modal-content">
-              <div className="ExitButton">  <img src={exit} alt="" className="Exit" onClick={close}/> </div>
+                <div className="ExitButton">
+                  {" "}
+                  <img
+                    src={exit}
+                    alt=""
+                    className="Exit"
+                    onClick={close}
+                  />{" "}
+                </div>
                 <div className="content-container">
-                  <div className="MainDiv" >
-                    <div className="Left" >
-                      
-                      <img src={props.Image} alt="" className="img112" onClick={()=>navigate('/Layout/MatchesDetail',{ state: { about: props.about}})} />
+                  <div className="MainDiv">
+                    <div className="Left">
+                      <img
+                        src={props.Image}
+                        alt=""
+                        className="img112"
+                        onClick={() =>
+                          navigate("/Layout/MatchesDetail", {
+                            state: { about: props.about },
+                          })
+                        }
+                      />
                     </div>
                     <div className="Right">
-                      <p className="Name" ><span onClick={()=>navigate('/Layout/MatchesDetail',{ state: { about: props.about}})}>{props.Name }</span></p>
+                      <p className="Name">
+                        <span
+                          onClick={() =>
+                            navigate("/Layout/MatchesDetail", {
+                              state: { about: props.about },
+                            })
+                          }
+                        >
+                          {props.Name}
+                        </span>
+                      </p>
                       <p className="Common">
                         {" "}
                         {props.Age} <span className="dot"></span> {props.City}{" "}
                         <span className="dot" /> {props.Country}
-                      </p> 
+                      </p>
 
                       <p className="Comment">
                         Comments <span className="Common1"> ( Optional )</span>
@@ -61,24 +86,22 @@ export const CommentModalStyle = styled.div`
     right: 0;
     z-index: 2;
   }
-  .ExitButton{
-text-align: end;
+  .ExitButton {
+    text-align: end;
   }
-  .Exit{
+  .Exit {
     position: absolute;
     top: -1.8rem;
     right: -1rem;
     width: 24px;
     height: 24px;
-    
   }
-  .Name{
+  .Name {
     margin-top: 5px;
-    &:hover{
+    &:hover {
       cursor: pointer;
     }
   }
-  
 
   .modal-content {
     width: 585px;
@@ -95,7 +118,7 @@ text-align: end;
   }
 
   .content-container {
-    margin: 17px 0  0 15px   ;
+    margin: 17px 0 0 15px;
   }
   .MainDiv {
     display: flex;
@@ -130,6 +153,10 @@ text-align: end;
   .ButtonDiv {
     text-align: center;
     margin-top: 22px;
+
+    button {
+      border-style: none;
+    }
   }
 
   .img112 {
@@ -151,7 +178,7 @@ text-align: end;
     color: #7b7f91;
     margin-top: -2px;
   }
-  .Common1{
+  .Common1 {
     font-family: "Poppins", sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -172,65 +199,7 @@ text-align: end;
   .Comment {
     margin-top: 16px;
   }
-  @media only screen and (max-width: 600px) {
-  width: 100%;
-  height: 100%;
-  .modal-container {
-    width: 100%;
-    height: 100vh;
-
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
-  .Name{
- position: absolute;
- top: -27px;
-    font-size: 26px;
-    left: 98px;
-
-  }
-  .Common{
-position: absolute;
-left: 101px;
-}
-  .Comment{
-    margin-top: 42px;
-  }
-  .modal-content {
-    width: 100%;
-    height: 80%;
-
-    margin: auto;
-    position: fixed;
-  }
-  .Right {
-    width:100%;
-  }
-  .Button {
-  
-    width: 120px;
-   
-  }
-  .ButtonDiv {
-    text-align: center;
-    margin-top: 22px;
-  }
-  .InputBox {
-    width: 70%;
-    height: 50%;
-    margin: 5px 0px 0px 0px;
-  }
-  .ExitButton {
-    text-align: right;
-  }
-  .Exit {
-    position: relative;
-    top: -1rem;
-    right: 0.5rem;
-    width: 20px;
-  }
-
-  }
+ 
 `;
+
+
