@@ -31,6 +31,8 @@ export default function DatingDetailModal({ closeDetailModal }) {
   );
 }
 
+
+
 export const StyledDatingDetails = styled.div`
   .modal-container {
     width: 100%;
