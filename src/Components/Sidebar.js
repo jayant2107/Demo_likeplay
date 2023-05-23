@@ -272,13 +272,13 @@ export default function Sidebar() {
           onMouseEnter={() => setTestimonialcolor(true)}
           onMouseLeave={() => setTestimonialcolor(false)}
         >
-          <div className="content-list">
+          <div className="content-list" onClick={()=>Navigate("/Layout/Testimonal")}>
             <Slogo>
               <Testimonial
-                color={Testimonialcolor ? primarycolor : secondarycolor}
+                color={Testimonialcolor || active==="/Layout/Testimonal"? primarycolor : secondarycolor}
               />
             </Slogo>
-            <Slabel>
+            <Slabel active={active==="/Layout/Testimonal"}>
               <p>Testimonial</p>
             </Slabel>
           </div>

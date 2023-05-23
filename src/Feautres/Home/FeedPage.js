@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
+import {Modal} from "antd";
+import CreateShotsModal from "../../Modals/CreateShotsModal";
+import InfoGuidelinesModal from "../../Modals/InfoGuidelinesModal";
 //FakeData
 import { UsersData } from "./DataPage";
 import UserPostCard from "./UserPostCard";
@@ -11,6 +13,16 @@ const FeedPage = () => {
   const [like, setLike] = useState(false);
   const [heart, setHeart] = useState(false);
   const [star, setStar] = useState(false);
+  const [snapModal, setSnapModal] = useState(false);
+  const [infoModal, setInfoModal] = useState(false);
+
+  const closeInfoModal = () =>{
+    setInfoModal(false);
+  }
+
+  const closeSnapModal = () =>{
+    setSnapModal(false);
+  }
 
   const changeIcon = (val) => {
     console.log(val);
@@ -29,12 +41,34 @@ const FeedPage = () => {
 
             <input placeholder="Take the Floor,Show-off"></input>
           </div>
-          <div>
-            <Addbtn />
+          <div onClick={()=>{
+            setSnapModal(true)
+          }}>
+            <Addbtn  />
           </div>
-          <div>
+          {snapModal && (<Modal
+            open={snapModal}
+            close = {closeSnapModal}
+            onCancel={closeSnapModal}
+            maskClosable = {true}
+            footer = {null}
+            centered
+          ><CreateShotsModal closeSnapModal={closeSnapModal}/></Modal>)}
+          <div onClick = {()=>{
+            setInfoModal(true)
+          }}>
             <Info />
           </div>
+          {infoModal && (
+            <Modal open={infoModal}
+                close= {closeInfoModal}
+                onCancel={closeInfoModal}
+                maskClosable={true}
+                footer= {null}
+                width="80%"
+                style={{ top: 20 }}
+            ><InfoGuidelinesModal/></Modal>
+          )}
         </div>
       </Searchbar>
 

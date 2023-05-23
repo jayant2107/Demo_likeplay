@@ -1,16 +1,19 @@
+
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import exit from "../Assets/Images/Matches Image/exit.png";
+
 
 const CommentModal = ({ show, close, props }) => {
   const navigate = useNavigate();
   return (
     <>
+    
       <div show={show} onHide={close}>
         <CommentModalStyle>
-          <div className="modal">
-            <div className="modal-container">
-              <div className="modal-content">
+          {/* <div className="modal"> */}
+            {/* <div className="modal-container"> */}
+              {/* <div className="modal-content"> */}
                 <div className="ExitButton">
                   {" "}
                   <img
@@ -61,12 +64,13 @@ const CommentModal = ({ show, close, props }) => {
                   <div className="ButtonDiv">
                     <button className="Button">Admire</button>
                   </div>
-                </div>
-              </div>
-            </div>
+                {/* </div> */}
+              {/* </div> */}
+            {/* </div> */}
           </div>
         </CommentModalStyle>
       </div>
+    
     </>
   );
 };
@@ -198,61 +202,7 @@ export const CommentModalStyle = styled.div`
   .Comment {
     margin-top: 16px;
   }
-  @media only screen and (max-width: 600px) {
-    width: 100%;
-    height: 100%;
-    .modal-container {
-      width: 100%;
-      height: 100vh;
-
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-    }
-    .Name {
-      position: absolute;
-      top: -27px;
-      font-size: 26px;
-      left: 98px;
-    }
-    .Common {
-      position: absolute;
-      left: 101px;
-    }
-    .Comment {
-      margin-top: 42px;
-    }
-    .modal-content {
-      width: 100%;
-      height: 80%;
-
-      margin: auto;
-      position: fixed;
-    }
-    .Right {
-      width: 100%;
-    }
-    .Button {
-      width: 120px;
-    }
-    .ButtonDiv {
-      text-align: center;
-      margin-top: 22px;
-    }
-    .InputBox {
-      width: 70%;
-      height: 50%;
-      margin: 5px 0px 0px 0px;
-    }
-    .ExitButton {
-      text-align: right;
-    }
-    .Exit {
-      position: relative;
-      top: -1rem;
-      right: 0.5rem;
-      width: 20px;
-    }
-  }
+ 
 `;
+
+

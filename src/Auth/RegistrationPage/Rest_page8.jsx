@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
+import { Modal } from 'antd'
 import ResHeaderComponent from './ResHeader'
 import { Artboard8 } from '../../Utils/RegistrationImg/Registrationflie'
 import { RisgistionBgImg, FromStyleDiv, ProgessStyleDiv, ProgessStyleDivline, ProgessStyleDivfilline, ButtonStyle, RisgistationPage1 } from './style'
 import { facebook, email, pass, photo } from '../../Utils/RegistrationImg/Registrationflie'
 import CreateShotsModals from '../../Modals/CreateShotsModal'
+import GovtIDVerifyModal from "../../Modals/GovtIDVerifyModal";
+import OTPVerifyModal from "../../Modals/OTPVerifyModal"
 
 const data = [
     {
@@ -44,13 +47,16 @@ const ResgistPage8 = ({ Next, Back }) => {
             setModal(el)
         }else if (el === "pass") {
             setModal(el)
-        }
-   
-   
+        }   
 }
+
+
+
 return (<>
-  {modal === "photo" &&<CreateShotsModals next = {Next} />}
-  {modal === "pass" &&<CreateShotsModals next = {Next} />}
+  {modal === "photo" &&(<Modal open={modal}
+                            
+  ><GovtIDVerifyModal  next = {Next}/></Modal>)}
+  {modal === "pass" &&(<Modal><OTPVerifyModal next = {Next}/></Modal>)}
     <RisgistionBgImg height="100vh" imgUrl={Artboard8}>
         <ResHeaderComponent />
         <RisgistationPage1>

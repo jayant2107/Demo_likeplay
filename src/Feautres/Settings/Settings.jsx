@@ -6,16 +6,18 @@ import ResetPassword from "./SettingComponents/ResetPassword";
 import UpgradeSubscription from "./SettingComponents/UpgradeSubscription";
 import BlockedUser from "./SettingComponents/BlockedUser";
 import CancelSubscription from "./SettingComponents/CancelSubscription";
-import { message, Space } from "antd";
+import { message, Modal, Space } from "antd";
+import DeleteModal from "../../Modals/DeleteModal";
+import DeleteAccount from "../../Modals/ModalData/DeleteAccount";
 const Settings = () => {
   const [btn, setBtn] = useState("Reset");
   const [messageApi, contextHolder] = message.useMessage();
+  const [deletemod, setDelete] = useState(false);
   const warning = () => {
-    messageApi.open({
-      type: "warning",
-      content: "Account has been delete",
-      duration: 1,
-    });
+    setDelete(true);
+  };
+  const closeDelete = () => {
+    setDelete(false);
   };
   return (
     <>
@@ -110,7 +112,7 @@ const Settings = () => {
                 </button>
               </div>
             </div>
-            <div className="DivDele" onClick={warning}>
+            <div className="DivDele" onClick={() => warning()}>
               <button className="deltebtn">
                 <div className="innerFlexBtn">
                   <div>
@@ -120,6 +122,17 @@ const Settings = () => {
                 </div>
               </button>
             </div>
+            {deletemod && (
+              <Modal
+                open={deletemod}
+                onOk={closeDelete}
+                onCancel={closeDelete}
+                className="modalDesign"
+                footer={null}
+              >
+                <DeleteModal prop={DeleteAccount} closeDelete={closeDelete} />
+              </Modal>
+            )}
           </div>
           <div className="SetRight">
             {btn === "Refer" ? (
