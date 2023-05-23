@@ -20,6 +20,8 @@ import {
 } from "../Utils/Logo";
 import { useNavigate } from "react-router-dom";
 import ModalLayout from "../Modals/ModalLayout";
+import { useDispatch } from "react-redux";
+import { ValidUser } from "../Redux/SliceOfRedux/LoginSlice";
 
 export default function Sidebar() {
   const [colorsetting, setcolorsetting] = useState(false);
@@ -33,11 +35,12 @@ export default function Sidebar() {
   const [FAQcolor, setFAQcolor] = useState(false);
   const [Testimonialcolor, setTestimonialcolor] = useState(false);
   const [SubscriptionModal, setsubscriptionModal] = useState(false);
+  const dispatch=useDispatch()
   const content = (
     <Morecontent>
       <p>Verification</p>
       <p>Refer to friends</p>
-      <p style={{ color: "red" }}>Logout</p>
+      <p style={{ color: "red" }} onClick={()=>dispatch(ValidUser(false))}>Logout</p>
     </Morecontent>
   );
   const primarycolor = "#A8580F";
@@ -154,11 +157,20 @@ export default function Sidebar() {
           onMouseEnter={() => setmessagescolor(true)}
           onMouseLeave={() => setmessagescolor(false)}
         >
-          <div className="content-list">
+          <div
+            className="content-list"
+            onClick={() => Navigate("/Layout/Messages")}
+          >
             <Slogo>
-              <Messages color={messagescolor ? primarycolor : secondarycolor} />
+              <Messages
+                color={
+                  messagescolor || active == "/Layout/Messages"
+                    ? primarycolor
+                    : secondarycolor
+                }
+              />
             </Slogo>
-            <Slabel>
+            <Slabel active={active === "/Layout/Messages"}>
               <p>Messages</p>
             </Slabel>
           </div>
@@ -271,6 +283,7 @@ export default function Sidebar() {
             </Slabel>
           </div>
         </Slinkcontainer>
+
         <Slinkcontainer>
           <Popover className="more-popover" content={content}>
             <div className="content-list">
