@@ -121,8 +121,8 @@ export default function DeleteModal({ closeModal, prop, closeDelete, close }) {
                   if (path === "/Layout/FeedPage") {
                     closeModal();
                   } else if (path === "/Layout/Settings") {
-                  }
                   closeDelete();
+                  }
                 }}
               >
                 <StyledButton text="#242424" bg="#f0f0f0">
