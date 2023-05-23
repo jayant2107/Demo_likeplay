@@ -488,6 +488,7 @@ export default function Publichome() {
         padding: 2rem 0;
         .head {
           h1 {
+            font-size: 2.5rem;
             margin-left: 1.5rem;
             padding: 2rem 0rem 1rem 0rem !important;
           }
@@ -1032,7 +1033,6 @@ export default function Publichome() {
         .feature_imgs {
           /* width: 100%; */
           white-space: nowrap;
-          overflow: hidden;
           animation-play-state: running;
           animation: marquee 5s linear infinite;
           @keyframes marquee {
@@ -1057,7 +1057,6 @@ export default function Publichome() {
         .feature_imgs {
           /* width: 100%; */
           white-space: nowrap;
-          overflow: hidden;
           animation-play-state: running;
           animation: marquee 5s linear infinite;
           @keyframes marquee {
@@ -1077,7 +1076,6 @@ export default function Publichome() {
     /* media quary for laptop responsive  */
     @media (min-width: 769px) and (max-width: 1024px) {
       section {
-        overflow: hidden;
         width: 100%;
         .feature_imgs {
           /* width: 100%; */
