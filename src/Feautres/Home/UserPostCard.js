@@ -27,17 +27,22 @@ import FeedCommentView from "./FeedCommentView";
 import CreateShotsModal from "../../Modals/CreateShotsModal";
 
 const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
-  const [comment, setComment] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showHideModal, setShowHideModal] = useState(false);
   const [showBlockModal, setshowBlockModal] = useState(false);
   const [reportUserModal, setReportUserModal] = useState(false);
   const [likeModal, setLikeModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
+  const [showComment,setShowComment] = useState(false);
+  const [clicked,setClicked] = useState(false);
 
-  const changeModal=()=>{
-    setComment(!comment);
+  const changeModalComment = () => {
+    setShowComment(!showComment);
   }
+
+  const handleClickChange = () => {
+    setClicked(!clicked);
+  };
 
   const closeModal = () => {
     if (showBlockModal === true) {
@@ -214,6 +219,8 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
                 content={content}
                 placement="bottomRight"
                 trigger="click"
+                open={clicked}
+                onOpenChange={handleClickChange}
               >
                 <img src={ThreeDotsImg} alt="HeartTickImg" />
               </Popover>
@@ -238,12 +245,16 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
         <div className="commentLikeBtn">
           {/* LIKE BUTTON */}
           <div className="likeDiv">
-            <div onClick={() => changeIcon("like")}>
+            <div >
+              <span onClick={() => changeIcon("like")}>
               <LikeFeedIcon val={like} />
+              </span>
               <span>18</span>
             </div>
-            <div onClick={() => changeIcon("heart")}>
+            <div>
+              <span  onClick={() => changeIcon("heart")} >
               <HeartFeedIcon val={heart} />
+              </span>
               <span
                 onClick={() => {
                   setLikeModal(true);
@@ -268,13 +279,15 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
               )}
             </div>
             <div onClick={() => changeIcon("star")}>
+              <span>
               <StarFeedIcon val={star} />
+              </span>
               <span>18</span>
             </div>
           </div>
 
           {/* COMMENT BUTTON2 */}
-          <div className="commentDiv" onClick={changeModal}>
+          <div className="commentDiv" onClick={changeModalComment}>
             <span>
               <CommentFeedIcon />
             </span>
@@ -302,14 +315,11 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
               </Popover>
           </div>
         </div>
-
-        {comment && (
-          <FeedCommentView
-            commentOn={comment}
-            changeModal={changeModal}
-            val={val}
-          />
-        )}
+        {
+          showComment &&
+          <FeedCommentView val={val} showComment={showComment} changeModalComment={changeModalComment}/>
+        }
+        
       </UserPostCardCss>
     </>
   );
@@ -362,6 +372,7 @@ export const UserPostCardCss = styled.div`
     display: Flex;
     align-items: center;
     justify-content: space-between;
+    cursor : pointer;
   }
   .heart {
     background-color: #f7f7f7;
@@ -437,6 +448,7 @@ export const UserPostCardCss = styled.div`
 const PopContentCss = styled.div`
   font-family: "Poppins", sans-serif;
   background-color: #ffffff;
+  border-radius : 0.5rem;
   .popContent {
     color: #7b7f91;
   }
