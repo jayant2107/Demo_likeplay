@@ -63,11 +63,10 @@ const MatchesCardStyle = styled.div`
   flex-direction: column;
   align-items: center;
   margin:0 0 40px 0;
-  * {
-    border: none;
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
+
+  .MainCard {
+    width:100%;
+    height:100%;
   }
 
   .type {
@@ -146,177 +145,23 @@ const MatchesCardStyle = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 0.5rem;
+
+    button {
+      border-style:none;
+
+    }
   }
   .ImgDiv {
     width: 100%;
     height: 100%;
 
     .imgClass {
-      width: 145px;
-      height: 145px;
+      width: 100%;
+    height: 145px;
+    object-fit: fill;
     }
-      .imgClass:hover{
-        width:147px;
-        height: 147px;
-      }
     
   }
 
-  
-@media (max-width: 769px) {
-  .MainCard {
-    width: 340px;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 9px;
-    background: #ffffff;
 
-    div {
-      padding-top: 0;
-    }
-    div {
-      padding-bottom: 0;
-    }
-  }
-}
-@media (max-width: 620px) {
-  .MainCard {
-    width: 30%;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 9px;
-
-    background: #ffffff;
-  }
-}
-@media (max-width: 569px) {
-  .MainCard {
-    width: 40%;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 9px;
-    background: #ffffff;
-  }
-}
-@media (max-width: 431px) {
-  .MainCard {
-    width: 60%;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 9px;
-    background: #ffffff;
-  }
-  .Marked {
-    right: 10%;
-  }
-}
-@media (max-width: 364px) {
-  .MainCard {
-    width: 65%;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 9px;
-    background: #ffffff;
-  .Name {
-    font-size: 15px;
-  }
-  .MainDiv2 {
-    margin-top: 0.5rem;
-  }
-  .common {
-    font-size: 13px;
-  }}
-}
-@media (max-width: 332px) {
-  .MainCard {
-    width: 70.3%;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 9px;
-    background: #ffffff;
-  }
-}
-@media (max-width: 274px) {
-  .MainCard {
-    width: 75%;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 9px;
-    background: #ffffff;
-  }
-  .Name {
-    font-size: 14px;
-  }
-  .common {
-    font-size: 12px;
-  }
-  .Button1 {
-    width: 51.3px;
-    height: 18px;
-    background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
-    border-radius: 5px;
-    z-index: 0;
-  }
-  .Button2 {
-    width: 51.3px;
-    height: 18px;
-    background: #f2f2f2;
-    border-radius: 5px;
-    /* z-index: 0; */
-  }
-  .MainDiv2 {
-    margin-top: 0.5rem;
-  }
-}
-@media (max-width: 263px) {
-  .MainCard {
-    width: 76.5%;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 9px;
-    background: #ffffff;
-  }
-}
-
-@media (max-width: 224px) {
-  .MainCard {
-    width: 79%;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 9px;
-    background: #ffffff;
-  }
-}
-@media (max-width: 187px) {
-  .MainCard {
-    width: 81%;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 9px;
-    background: #ffffff;
-  .MainDiv2 {
-    margin-top: 7px;
-  }
-  }
-  }
-
-@media (max-width: 358px) {
-  .MainCard {
-    width: 65%;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 9px;
-    background: #ffffff; 
-  }
-  .common {
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 8px;
-    line-height: 18px;
-    display: flex;
-    align-items: center;
-    color: #7b7f91;
-  }
-  .Name {
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 24px;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.05em;
-    color: #242424;
-  }
-}
 `;

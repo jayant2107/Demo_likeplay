@@ -21,14 +21,19 @@ const Footer = styled.div`
     display: flex;
     text-decoration: underline;
     justify-content: space-between;
-    height: 56px;
     align-items: center;
     color: white;
     background: rgba(0, 0, 0, 0.4);
-    padding: 1rem 4rem;
-    margin-top: 58%;
-    margin-left: -30px;
-    margin-right: -28px;
+    padding: 1.5rem 4rem;
+    margin-right: -19px;
+    position: relative;
+    z-index: 2;
+    min-height: 94%;
+    min-width: 1000px;
+    width: 100%;
+    height: auto;
+    top: -100px;
+    left: 0;
 }
 
 `

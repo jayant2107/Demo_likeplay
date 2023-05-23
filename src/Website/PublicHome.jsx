@@ -50,8 +50,8 @@ export default function Publichome() {
       section {
         position: relative;
         top: 23%;
-        /* width: 40%; */
         margin-left: 11%;
+
         h3 {
           letter-spacing: 3px;
           font-weight: 400;
@@ -88,11 +88,53 @@ export default function Publichome() {
         }
       }
     }
+    /* Media quary for Smart Phone responsive  */
+    main {
+      @media (min-width: 320px) and (max-width: 480px) {
+        section {
+          top: 40%;
+        }
+      }
+    }
+    /* media quary for Tablats responsive  */
+    @media (min-width: 481px) and (max-width: 768px) {
+      section {
+        top: 42% !important;
+      }
+    }
+    /* media quary for laptop responsive  */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      section {
+        top: 54% !important;
+      }
+    }
+    /* media quary for large laptop responsive  */
+    @media (min-width: 1025px) and (max-width: 1200px) {
+      section {
+        top: 44% !important;
+        h3 {
+          font-size: 3rem;
+        }
+        .hash {
+          img {
+            width: 100px !important;
+          }
+        }
+        h1 {
+          font-size: 6rem !important;
+          line-height: 6.5rem;
+        }
+        button {
+          font-size: 2rem;
+          font-weight: 100;
+          width: 300px !important;
+          height: 70px !important;
+        }
+      }
+    }
   `;
 
   // -------------------------Our Features CSS START-----------------------------
-
-  // -----------------------Work CSS END--------------------------------
 
   const Featurewrapper = styled.section`
     section {
@@ -159,6 +201,98 @@ export default function Publichome() {
         }
       }
     }
+    /* Media quary for Smart Phone responsive  */
+    @media (min-width: 320px) and (max-width: 480px) {
+      section {
+        padding-bottom: 1rem;
+        h1 {
+          margin-left: 1.5rem;
+          padding: 2rem 0rem 1rem 0rem !important;
+        }
+        .cards {
+          justify-content: center;
+          padding: 0;
+        }
+        .card {
+          height: 250px;
+          width: 300px;
+          padding: 2rem 3rem;
+          &:nth-child(2n + 2),
+          &:nth-child(12n + 4),
+          &:nth-child(12n + 6),
+          &:nth-child(12n + 8),
+          &:nth-child(12n + 10),
+          &:nth-child(12n + 12) {
+            position: relative;
+            top: 0;
+          }
+        }
+      }
+    }
+    /* media quary for Tablats responsive  */
+    @media (min-width: 481px) and (max-width: 768px) {
+      section {
+        padding-bottom: 1rem;
+        h1 {
+          margin-left: 1.5rem;
+          padding: 2rem 0rem 1rem 0rem !important;
+        }
+        .cards {
+          justify-content: center;
+          padding: 0;
+        }
+        .card {
+          height: 250px;
+          width: 300px;
+          padding: 2rem 3rem;
+          &:nth-child(2n + 2),
+          &:nth-child(12n + 4),
+          &:nth-child(12n + 6),
+          &:nth-child(12n + 8),
+          &:nth-child(12n + 10),
+          &:nth-child(12n + 12) {
+            position: relative;
+            top: 0 !important;
+          }
+        }
+      }
+    }
+    /* media quary for laptop responsive  */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      section {
+        padding: 3rem 0;
+        h1 {
+          margin-left: 1.5rem;
+          padding: 2rem 0rem 1rem 0rem !important;
+        }
+        .cards {
+          justify-content: center;
+          padding: 0;
+        }
+        .card {
+          margin-bottom: 10px;
+          /* height: 250px; */
+          width: 200px;
+          padding: 2rem 3rem;
+          &:nth-child(2n + 2),
+          &:nth-child(12n + 5) {
+            position: relative;
+            top: 15px !important;
+          }
+          &:nth-child(12n + 8) {
+            top: 0 !important;
+          }
+        }
+      }
+    }
+    /* media quary for large laptop responsive  */
+    @media (min-width: 1025px) and (max-width: 1200px) {
+      section {
+        .cards {
+          padding: 0px 7rem 3rem;
+        }
+      }
+    }
   `;
 
   // -------------------------Our Features CSS END-----------------------------
@@ -199,6 +333,90 @@ export default function Publichome() {
         }
       }
     }
+    /* Media quary for Smart Phone responsive  */
+
+    @media (min-width: 320px) and (max-width: 480px) {
+      section {
+        height: auto;
+        width: auto;
+
+        .video {
+          &::before {
+            top: 12px;
+          }
+          &::after {
+            left: -50%;
+            top: 40px;
+          }
+          img {
+            /* height: 23%; */
+          }
+        }
+      }
+    }
+    /* media quary for Tablats responsive  */
+    @media (min-width: 481px) and (max-width: 768px) {
+      section {
+        padding: 2rem 0;
+        height: auto;
+        width: auto;
+        .video {
+          &::before {
+            left: 15%;
+            top: 12px;
+          }
+          &::after {
+            left: -47%;
+            top: 85px;
+          }
+          img {
+            /* height: 23%; */
+          }
+        }
+      }
+    }
+    /* media quary for laptop responsive  */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      section {
+        padding: 2rem 0;
+        height: auto;
+        width: auto;
+        .video {
+          &::before {
+            left: 15%;
+            top: 12px;
+          }
+          &::after {
+            left: -47%;
+            top: 85px;
+          }
+          img {
+            /* height: 23%; */
+          }
+        }
+      }
+    }
+    /* media quary for large laptop responsive  */
+    @media (min-width: 1025px) and (max-width: 1200px) {
+      section {
+        padding: 2rem 0;
+        height: auto;
+        width: auto;
+        .video {
+          &::before {
+            left: 13%;
+            top: 25px;
+          }
+          &::after {
+            left: -47%;
+            top: 120px;
+          }
+          img {
+            /* height: 23%; */
+          }
+        }
+      }
+    }
   `;
   // -----------------------VIDEO CSS END-------------------------------
 
@@ -225,7 +443,7 @@ export default function Publichome() {
         flex-wrap: wrap;
         padding: 0 4rem 3rem;
         justify-content: space-around;
-        margin-top: 1rem;
+        margin: 1.6rem 0;
         .card {
           background-color: #ffc0cb63;
           text-align: left;
@@ -259,6 +477,129 @@ export default function Publichome() {
             h3 {
               color: #ff483c;
             }
+          }
+        }
+      }
+    }
+    /* Media quary for Smart Phone responsive  */
+
+    @media (min-width: 320px) and (max-width: 480px) {
+      section {
+        padding: 2rem 0;
+        .head {
+          h1 {
+            margin-left: 1.5rem;
+            padding: 2rem 0rem 1rem 0rem !important;
+          }
+          img {
+            top: -25px;
+          }
+        }
+        .cards {
+          justify-content: center;
+          padding: 0;
+        }
+        .card {
+          margin: 1rem;
+          height: 250px;
+          width: 300px !important;
+          padding: 2rem 3rem;
+          &:nth-child(6n + 1),
+          &:nth-child(6n + 3),
+          &:nth-child(6n + 5) {
+            position: relative;
+            top: 0px !important;
+          }
+        }
+      }
+    }
+    /* media quary for Tablats responsive  */
+    @media (min-width: 481px) and (max-width: 768px) {
+      section {
+        padding: 2rem 0;
+        .head {
+          h1 {
+            margin-left: 1.5rem;
+            padding: 2rem 0rem 1rem 0rem !important;
+          }
+          img {
+            top: -25px;
+          }
+        }
+        .cards {
+          justify-content: center;
+          padding: 0;
+        }
+        .card {
+          margin: 0 0.8rem;
+          padding: 2rem 3rem;
+          &:nth-child(6n + 2) {
+            position: relative;
+            top: -3px !important;
+          }
+          &:nth-child(6n + 5) {
+            top: 20px !important;
+          }
+        }
+      }
+    }
+    /* media quary for laptop responsive  */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      section {
+        padding: 2rem 0;
+        .head {
+          h1 {
+            margin-left: 1.5rem;
+            padding: 2rem 0rem 1rem 0rem !important;
+          }
+          img {
+            top: -25px;
+          }
+        }
+        .cards {
+          justify-content: center;
+          padding: 0;
+        }
+        .card {
+          margin: 0 0.8rem;
+          padding: 2rem 3rem;
+          &:nth-child(6n + 2) {
+            position: relative;
+            top: -3px !important;
+          }
+          &:nth-child(6n + 5) {
+            top: 20px !important;
+          }
+        }
+      }
+    }
+    /* media quary for large laptop responsive  */
+    @media (min-width: 1025px) and (max-width: 1200px) {
+      section {
+        padding: 2rem 1rem !important;
+        .head {
+          h1 {
+            margin-left: 1.5rem;
+            padding: 2rem 0rem 1rem 0rem !important;
+          }
+          img {
+            top: -25px;
+          }
+        }
+        .cards {
+          justify-content: center;
+          padding: 0;
+        }
+        .card {
+          width: 230px !important;
+          margin: 0 0.8rem;
+          padding: 2rem 3rem;
+          &:nth-child(6n + 2) {
+            position: relative;
+            top: -3px !important;
+          }
+          &:nth-child(6n + 5) {
+            top: 20px !important;
           }
         }
       }
@@ -314,6 +655,84 @@ export default function Publichome() {
         }
       }
     }
+    /* Media quary for Smart Phone responsive  */
+
+    @media (min-width: 320px) and (max-width: 480px) {
+      section {
+        padding: 0;
+        .left {
+          padding: 10rem 9rem;
+        }
+        .right {
+          .head {
+            img {
+              top: 10px;
+            }
+          }
+        }
+        .points {
+          width: 370px;
+        }
+      }
+    }
+    /* media quary for Tablats responsive  */
+    @media (min-width: 481px) and (max-width: 768px) {
+      section {
+        padding: 3rem 0;
+        .left {
+          padding: 10rem 10rem;
+        }
+        .right {
+          padding: 1rem;
+          .head {
+            width: 640px;
+            margin: 1rem;
+            img {
+              top: -30px;
+            }
+          }
+        }
+        .points {
+          width: 500px;
+        }
+      }
+    }
+    /* media quary for laptop responsive  */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      section {
+        padding: 3rem 0;
+        .left {
+          padding: 10rem 18rem;
+        }
+        .right {
+          padding: 1rem;
+          .head {
+            width: 640px;
+            margin: 1rem;
+            img {
+              top: -30px;
+            }
+          }
+        }
+        .points {
+          width: 700px;
+        }
+      }
+    }
+    /* media quary for large laptop responsive  */
+    @media (min-width: 1025px) and (max-width: 1200px) {
+      section {
+        .right {
+          .head {
+            width: 83%;
+            img {
+              left: -90px;
+              top: 0;
+            }
+          }
+        }
+      }
+    }
   `;
   /* -------------------------WHY LIKEPLAY CSS END-----------------------------  */
 
@@ -322,7 +741,7 @@ export default function Publichome() {
     section {
       display: flex;
       flex-wrap: wrap;
-      padding: 2rem;
+      padding: 4rem 2rem;
       justify-content: space-around;
       .single_heart {
         display: flex;
@@ -333,6 +752,7 @@ export default function Publichome() {
       .left {
         width: 30%;
         .mission {
+          margin-bottom: 1rem;
           .head {
             display: flex;
             align-items: center;
@@ -451,6 +871,64 @@ export default function Publichome() {
         }
       }
     }
+    /* Media quary for Smart Phone responsive  */
+
+    @media (min-width: 320px) and (max-width: 480px) {
+      section {
+        padding: 4rem 0;
+        .left {
+          width: 80%;
+        }
+        .right {
+          margin-left: 14px;
+          .heartborder {
+            transform: rotate(45deg);
+            top: 4rem;
+            z-index: -2;
+          }
+          .iphone2 {
+            left: 3px;
+          }
+        }
+      }
+    }
+    /* media quary for Tablats responsive  */
+    @media (min-width: 481px) and (max-width: 768px) {
+      section {
+        padding: 4rem 0;
+        .left {
+          width: 80%;
+          .vision {
+            padding: 1rem 0 0 0;
+          }
+        }
+        .right {
+          padding: 5rem 0 3rem 0;
+          margin-left: 14px;
+          .heartborder {
+            transform: rotate(45deg);
+            top: 4rem;
+            z-index: -2;
+          }
+        }
+      }
+    }
+    /* media quary for laptop responsive  */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      section {
+        padding: 4rem 0;
+        .left {
+          width: 80%;
+          .vision {
+            padding: 1rem 0 0 0;
+          }
+        }
+        .right {
+          padding: 5rem 0 3rem 0;
+          margin-left: 14px;
+        }
+      }
+    }
   `;
 
   /* -------------------------MISSION VISSION END-----------------------------  */
@@ -472,6 +950,7 @@ export default function Publichome() {
       }
       .bottom {
         display: flex;
+        flex-wrap: wrap !important;
         justify-content: center;
         margin-top: 10px;
         gap: 1rem;
@@ -484,6 +963,44 @@ export default function Publichome() {
           /* background-color: red; */
           width: 200px;
           height: 200px;
+        }
+      }
+    }
+    /* Media quary for Smart Phone responsive  */
+
+    @media (min-width: 320px) and (max-width: 480px) {
+      section {
+        padding: 2rem 0;
+        .top {
+          img {
+            width: 70px;
+          }
+          h1 {
+            font-size: 2.4rem;
+          }
+        }
+        .bottom {
+          .card {
+            width: 300px;
+            h1 {
+              font-size: 2rem;
+            }
+          }
+        }
+      }
+    }
+    /* media quary for Tablats responsive  */
+    @media (min-width: 481px) and (max-width: 768px) {
+    }
+
+    /* media quary for large laptop responsive  */
+    @media (min-width: 1025px) and (max-width: 1200px) {
+      section {
+        padding: 2rem 0 !important;
+        .bottom {
+          .card {
+            width: 186px;
+          }
         }
       }
     }
@@ -504,6 +1021,107 @@ export default function Publichome() {
         display: flex;
         justify-content: center;
         gap: 1.5rem;
+      }
+    }
+    /* Media quary for Smart Phone responsive  */
+
+    @media (min-width: 320px) and (max-width: 480px) {
+      section {
+        overflow: hidden;
+        width: 100%;
+        .feature_imgs {
+          /* width: 100%; */
+          white-space: nowrap;
+          overflow: hidden;
+          animation-play-state: running;
+          animation: marquee 5s linear infinite;
+          @keyframes marquee {
+            0% {
+              transform: translateX(0%);
+            }
+            100% {
+              transform: translateX(100%);
+            }
+          }
+          &:hover {
+            animation-play-state: paused;
+          }
+        }
+      }
+    }
+    /* media quary for Tablats responsive  */
+    @media (min-width: 481px) and (max-width: 768px) {
+      section {
+        overflow: hidden;
+        width: 100%;
+        .feature_imgs {
+          /* width: 100%; */
+          white-space: nowrap;
+          overflow: hidden;
+          animation-play-state: running;
+          animation: marquee 5s linear infinite;
+          @keyframes marquee {
+            0% {
+              transform: translateX(0%);
+            }
+            100% {
+              transform: translateX(100%);
+            }
+          }
+          &:hover {
+            animation-play-state: paused;
+          }
+        }
+      }
+    }
+    /* media quary for laptop responsive  */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      section {
+        overflow: hidden;
+        width: 100%;
+        .feature_imgs {
+          /* width: 100%; */
+          white-space: nowrap;
+          overflow: hidden;
+          animation-play-state: running;
+          animation: marquee 5s linear infinite;
+          @keyframes marquee {
+            0% {
+              transform: translateX(0%);
+            }
+            100% {
+              transform: translateX(100%);
+            }
+          }
+          &:hover {
+            animation-play-state: paused;
+          }
+        }
+      }
+    }
+    /* media quary for large laptop responsive  */
+    @media (min-width: 1025px) and (max-width: 1200px) {
+      section {
+        overflow: hidden;
+        width: 100%;
+        .feature_imgs {
+          /* width: 100%; */
+          white-space: nowrap;
+          overflow: hidden;
+          animation-play-state: running;
+          animation: marquee 5s linear infinite;
+          @keyframes marquee {
+            0% {
+              transform: translateX(0%);
+            }
+            100% {
+              transform: translateX(100%);
+            }
+          }
+          &:hover {
+            animation-play-state: paused;
+          }
+        }
       }
     }
   `;
