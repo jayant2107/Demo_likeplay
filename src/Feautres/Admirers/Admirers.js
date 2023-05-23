@@ -9,10 +9,17 @@ export default function Admirers() {
   return (
     <div>
       <AdmirerHeader>
+        <div>
         <header>
           Admirers<span>(They want me, I dey enter their eye)</span>
         </header>
+        </div>
+        <div>
         <img src={searchIcon} alt="" className="SLogo" />
+
+        </div>
+      
+        
       </AdmirerHeader>
 
       <CardWrapper>
@@ -31,14 +38,19 @@ const CardWrapper = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 14px;
   padding: 20px 8px;
+  @media(max-width:1200px){
+    grid-template-columns:repeat(3,1fr);
+
+}
 `;
 
 const AdmirerHeader = styled.div`
   width: 100%;
-  height: 88px;
+ 
   background: #f0f0f0;
   display: flex;
   justify-content: space-between;
+  align-items:center;
   align-items: end;
   padding: 20px;
 

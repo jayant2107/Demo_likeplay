@@ -152,7 +152,7 @@ const Admiring = () => {
                     ></img>
                   </div>
                   <div className="admiring_text_conten">
-                    <h5 className="admiring_name_heading">{el.headname}</h5>
+                    <p className="admiring_name_heading">{el.headname}</p>
                     <div className="admiring_name">
                       <p>{el.age}</p>
                       <div className="admiring_dote_text">
