@@ -4,6 +4,8 @@ import { userprofile } from "../Utils/Images";
 import { AiOutlineRight } from "react-icons/ai";
 import { Switch } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
+import { SecondUser, ThirdUser, fourthUser } from "../Utils/SettingImgaes/SettingP";
+
 
 export default function Rightsidebar() {
   const navigate = useNavigate();
@@ -38,16 +40,16 @@ export default function Rightsidebar() {
         <p className="messages_text">Messages</p>
         <div>
           <div className="messages_user">
-            <img src={userprofile} alt="" height={40} />
+            <img src={SecondUser} alt="" height={40} />
             <p>Julia Roberts</p>
           </div>
           <div className="messages_user">
-            <img src={userprofile} alt="" height={40} />
-            <p>Julia Roberts</p>
+            <img src={ThirdUser} alt="" height={40} />
+            <p>emmy</p>
           </div>
           <div className="messages_user">
-            <img src={userprofile} alt="" height={40} />
-            <p>Julia Roberts</p>
+            <img src={fourthUser} alt="" height={40} />
+            <p>ronny</p>
           </div>
         </div>
       </Messagessection></>:
@@ -99,6 +101,7 @@ const Profilesection = styled.div`
     font-weight: 600;
     letter-spacing: 2px;
     font-size: 14px;
+    padding:10px 0px;
   }
   p {
     font-size: 16px;
@@ -118,6 +121,7 @@ const Messagessection = styled.div`
     letter-spacing: 2px;
     font-weight: 600;
     font-size: 14px;
+    padding:10px 0px;
   }
   .messages_user {
     display: flex;

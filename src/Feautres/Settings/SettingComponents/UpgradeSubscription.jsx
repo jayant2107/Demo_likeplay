@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Check, diamond } from "../../../Utils/IconsP";
 import UpgradeComp from "../../../Components/UpgradeComp";
 import { upgradeArr } from "../../../Data/SettingData";
+import { Modal } from "antd";
+import GridType from "../../../Layouts/GridLayout";
 
 const UpgradeSubscription = () => {
+  const [updatemod, setUpdtemod] = useState(false);
+  const UpdateModule = () => {
+    setUpdtemod(true);
+  };
+  const CancelUpdatemodule = () => {
+    setUpdtemod(false);
+  };
   return (
     <>
       <Plan>Plan details</Plan>
@@ -35,11 +44,24 @@ const UpgradeSubscription = () => {
             })}
         </div>
       </Upgrade>
-      <UpdateBtn>
+      <UpdateBtn onClick={UpdateModule}>
         <ButtonUpdate background="linear-gradient(268.55deg, #FF483C 0%, #FF2C5A 100%)">
           Update Subscription
         </ButtonUpdate>
       </UpdateBtn>
+      {updatemod && (
+        <Modal
+          centered
+          open={updatemod}
+          onOk={CancelUpdatemodule}
+          onCancel={CancelUpdatemodule}
+          width={1100}
+          footer={null}
+          style={{ top: 40 }}
+        >
+          <GridType />
+        </Modal>
+      )}
     </>
   );
 };

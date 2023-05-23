@@ -6,3 +6,6 @@
 .ant-modal-close-icon {
     display: none !important;
 }
+.ant-switch-checked {
+    background: #A8580F !important;
+}

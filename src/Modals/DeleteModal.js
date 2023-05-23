@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import StyledButton from "../Components/Button";
+import { useLocation } from "react-router-dom";
 
 export const StyledDeleteModal = styled.div`
   .modal-container {
@@ -43,10 +44,9 @@ export const StyledDeleteModal = styled.div`
 
   /* MODAL PARA-SECTION STARTS  */
 
-
-.modal-head {
+  .modal-head {
     text-align: center;
-}
+  }
 
   .modal-para {
     font-size: 16px;
@@ -75,20 +75,25 @@ export const StyledDeleteModal = styled.div`
     margin: auto;
   }
 
-  .modalDesign{
+  .modalDesign {
     text-align: center;
-   footer{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-   }
+    footer {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
   }
 
   /* MODAL BUTTON-SECTION ENDS  */
 `;
 
-export default function DeleteModal({ closeModal, prop }) {
+export default function DeleteModal({ closeModal, prop, closeDelete, close }) {
+  console.log(closeDelete, "jkdfnsdjk");
+  const location = useLocation();
+  console.log(location);
+  const path = location?.pathname;
+
   return (
     <>
       {prop && (
@@ -107,26 +112,43 @@ export default function DeleteModal({ closeModal, prop }) {
 
           {/* MODAL PARA-SECTION ENDS  */}
 
-          
-                   {/* MODAL BUTTONS-SECTION STARTS  */}
-                                <div className="modal-buttons">
-                     <div className="buttons-content">
-                       <div className="cancel-btn" onClick={closeModal}>
-                         <StyledButton text="#242424" bg="#f0f0f0">
-                           Cancel
-                         </StyledButton>
-                       </div>
-                       <div className="yes-btn" onClick={closeModal}>
-                         <StyledButton
-                          text="white"
-                          bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
-                        >
-                          Yes
-                        </StyledButton>
-                      </div>
-                    </div>
-                  </div>
-                  {/* MODAL BUTTONS-SECTION ENDS  */}
+          {/* MODAL BUTTONS-SECTION STARTS  */}
+          <div className="modal-buttons">
+            <div className="buttons-content">
+              <div
+                className="cancel-btn"
+                onClick={() => {
+                  if (path === "/Layout/FeedPage") {
+                    closeModal();
+                  } else if (path === "/Layout/Settings") {
+                  closeDelete();
+                  }
+                }}
+              >
+                <StyledButton text="#242424" bg="#f0f0f0">
+                  Cancel
+                </StyledButton>
+              </div>
+              <div
+                className="yes-btn"
+                onClick={() => {
+                  if (path === "/Layout/FeedPage") {
+                    closeModal();
+                  } else if (path === "/Layout/Settings") {
+                    closeDelete();
+                  }
+                }}
+              >
+                <StyledButton
+                  text="white"
+                  bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
+                >
+                  Yes
+                </StyledButton>
+              </div>
+            </div>
+          </div>
+          {/* MODAL BUTTONS-SECTION ENDS  */}
         </StyledDeleteModal>
       )}
     </>

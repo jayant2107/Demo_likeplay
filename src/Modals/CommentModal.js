@@ -1,5 +1,5 @@
 
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import exit from "../Assets/Images/Matches Image/exit.png";
 
@@ -62,7 +62,7 @@ const CommentModal = ({ show, close, props }) => {
                     </div>
                   </div>
                   <div className="ButtonDiv">
-                    <button className="Button">Admire</button>
+                   <button className="Button">Admire</button>
                   </div>
                 {/* </div> */}
               {/* </div> */}
@@ -161,6 +161,9 @@ export const CommentModalStyle = styled.div`
   }
   button {
       border-style: none;
+      &:hover{
+        cursor: pointer;
+      }
     }
 
   .img112 {
