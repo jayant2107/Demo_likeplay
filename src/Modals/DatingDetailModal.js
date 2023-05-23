@@ -6,8 +6,8 @@ export default function DatingDetailModal() {
   return (
     <>
       <StyledDatingDetails>
-        <div className="modal">
-          <div className="modal-container">
+        {/* <div className="modal"> */}
+          {/* <div className="modal-container"> */}
             <div className="modal-content">
               {DatingData.map((data) => {
                 console.log("datahead", data.head);
@@ -70,7 +70,7 @@ export default function DatingDetailModal() {
     </>
   )
 }
-export default DatingDetailModal;
+
 
 
 export const StyledDatingDetails = styled.div`
