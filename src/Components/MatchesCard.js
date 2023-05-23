@@ -3,13 +3,29 @@ import styled from "styled-components";
 import logo1 from "../Assets/Images/Matches Image/logo1 (1).png";
 import logo2 from "../Assets/Images/Matches Image/logo1 (2).png";
 import CommentModal from "../Modals/CommentModal";
+import { Button, Modal } from 'antd';
+
 
 
 
 
 const MatchesCard = ({ props }) => {
 
-
+  const [loadings, setLoadings] = useState([]);
+  const enterLoading = (index) => {
+    setLoadings((prevLoadings) => {
+      const newLoadings = [...prevLoadings];
+      newLoadings[index] = true;
+      return newLoadings;
+    });
+    setTimeout(() => {
+      setLoadings((prevLoadings) => {
+        const newLoadings = [...prevLoadings];
+        newLoadings[index] = false;
+        return newLoadings;
+      });
+    }, 3000);
+  };
   
   const [showDiv, setShowDiv] = useState(false);
 
@@ -26,7 +42,15 @@ const MatchesCard = ({ props }) => {
     <MatchesCardStyle>
       <div className="MainCard">
         {showDiv && (
-          <CommentModal props={props} show={showDiv} close={handleClose} />
+          <Modal 
+          open={showDiv}
+          close={handleClose}
+          centered
+          width="45%"
+          footer={null}> 
+          
+             <CommentModal props={props}  show={showDiv} close={handleClose} />
+          </Modal>
         )}
         <div className="MainDiv" onClick={handleOpenDiv}>
           <div className="ImgDiv">
@@ -47,13 +71,22 @@ const MatchesCard = ({ props }) => {
           </div>
         </div>
         <div className="MainDiv2">
-          <button className="Button1">
-            <img src={logo1} alt="" /><span className="load loading"></span>
-            <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-          </button>
-          <button className="Button2">
+          
+          
+          <Button size="small"
+           className="Button1"
+          type="primary"
+          loading={loadings[2]}
+          onClick={() => enterLoading(2)}> 
+          <img src={logo1} alt="" /></Button>
+
+          <Button className="Button2"
+          size="small"
+          type="primary"
+          loading={loadings[1]}
+          onClick={() => enterLoading(1)}>
             <img src={logo2} alt="" />
-          </button>
+          </Button>
         </div>
       </div>
     </MatchesCardStyle>
@@ -142,12 +175,15 @@ const MatchesCardStyle = styled.div`
     background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
     border-radius: 5px;
     z-index: 0;
+    color: #ffffff;
+
   }
   .Button2 {
     width: 67.5px;
     height: 24px;
     background: #f2f2f2;
     border-radius: 5px;
+   
     /* z-index: 0; */
   }
   .MainDiv2 {
@@ -175,79 +211,7 @@ const MatchesCardStyle = styled.div`
 
   
 
-  button {
-    cursor: pointer;
-    border: 0px;
-    position: relative;
-    transition: all .25s ease;
-    background: rgba(116, 23, 231, 1);
-    color: #fff;
-    overflow: hidden;
-    border-radius: 10px
-}
 
-.load {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: inherit
-}
-
-.load::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    border: 3px solid #fff;
-    width: 15px;
-    height: 15px;
-    border-left: 3px solid transparent;
-    border-bottom: 3px solid transparent;
-    animation: loading1 1s ease infinite;
-    z-index: 10
-}
-
-.load::before {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    border: 3px dashed #fff;
-    width: 15px;
-    height: 15px;
-    border-left: 3px solid transparent;
-    border-bottom: 3px solid transparent;
-    animation: loading1 2s linear infinite;
-    z-index: 5
-}
-
-@keyframes loading1 {
-    0% {
-        transform: rotate(0deg)
-    }
-
-    100% {
-        transform: rotate(360deg)
-    }
-}
-
-button.active {
-    transform: scale(.85)
-}
-
-button.activeLoading .loading {
-    visibility: visible;
-    opacity: 1
-}
-
-button .loading {
-    opacity: 0;
-    visibility: hidden
-}
 
 
 `;

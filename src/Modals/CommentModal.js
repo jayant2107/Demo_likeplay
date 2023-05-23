@@ -11,9 +11,9 @@ const CommentModal = ({ show, close, props }) => {
     
       <div show={show} onHide={close}>
         <CommentModalStyle>
-          <div className="modal">
-            <div className="modal-container">
-              <div className="modal-content">
+          {/* <div className="modal"> */}
+            {/* <div className="modal-container"> */}
+              {/* <div className="modal-content"> */}
                 <div className="ExitButton">
                   {" "}
                   <img
@@ -64,9 +64,9 @@ const CommentModal = ({ show, close, props }) => {
                   <div className="ButtonDiv">
                     <button className="Button">Admire</button>
                   </div>
-                </div>
-              </div>
-            </div>
+                {/* </div> */}
+              {/* </div> */}
+            {/* </div> */}
           </div>
         </CommentModalStyle>
       </div>
