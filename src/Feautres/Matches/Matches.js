@@ -1,10 +1,14 @@
-import React from "react";
+import React  from "react";
 import styled from "styled-components";
+
 import MatchesCard from "../../Components/MatchesCard";
 import data from "../../Feautres/Matches/Matches_JSON";
 import search from "../../Assets/Images/Matches Image/search.png";
 
+
+
 const Matches = () => {
+  
   return (
     <MatchesStyle>
       <div className="Header">
@@ -15,7 +19,7 @@ const Matches = () => {
       </div>
       <div className="Main">
         <div className="Tips">
-          <p>Online dating Tips?</p>{" "}
+          <p>Online dating Tips?</p>
         </div>
         <div className="Cards">
           {data.map((value) => (

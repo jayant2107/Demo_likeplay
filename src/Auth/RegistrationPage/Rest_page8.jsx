@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Modal } from 'antd'
 import ResHeaderComponent from './ResHeader'
 import { Artboard8 } from '../../Utils/RegistrationImg/Registrationflie'
 import { RisgistionBgImg, FromStyleDiv, ProgessStyleDiv, ProgessStyleDivline, ProgessStyleDivfilline, ButtonStyle, RisgistationPage1 } from './style'
