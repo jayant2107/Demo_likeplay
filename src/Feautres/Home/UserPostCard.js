@@ -75,6 +75,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
             open={showBlockModal}
             onOk={closeModal}
             onCancel={closeModal}
+            maskClosable = {true}
             // cancelText="naa"
             centered
             className="modalDesign"
@@ -99,6 +100,8 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
             open={showModal}
             onOk={closeModal}
             onCancel={closeModal}
+            centered
+            maskClosable = {true}
             className="modalDesign"
             footer={null}
           >
@@ -117,6 +120,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
         <Modal
           open={reportUserModal}
           onOk={closeReportModal}
+          maskClosable = {true}
           onCancel={closeReportModal}
           centered
           footer={null}
@@ -140,6 +144,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
             onOk={closeModal}
             onCancel={closeModal}
             className="modalDesign"
+            maskClosable = {true}
             centered
             footer={null}
           >
@@ -237,6 +242,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
                   onOk={closeLikeModal}
                   onCancel={closeLikeModal}
                   footer={null}
+                  maskClosable = {true}
                   centered
                   width="30%"
                 >
