@@ -37,7 +37,7 @@ const Routing = () => {
     return <Outlet />;
   };
   console.log(value,"vvv")
-  let prop = value;
+  let prop = true;
 
   return (
     <>
