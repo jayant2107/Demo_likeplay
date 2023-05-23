@@ -4,10 +4,14 @@ import { CommentHeartIcon } from "../../Utils/HomeIconsFun";
 import smile from "../../Assets/Images/commentsmile.png";
 import emoji from "../../Assets/Images/emoji.png";
 
+
 const CommentCards = ({ prop }) => {
+
   const [activeIcon, setActiveIcon] = useState(false);
+  
   return (
-    <CommentCardsCss>
+ 
+  <CommentCardsCss>
       <div className="profileImg">
         <img className="" src={prop.img} alt="userProfileImg" />
       </div>
@@ -31,6 +35,7 @@ const CommentCards = ({ prop }) => {
         </div>
       </div>
     </CommentCardsCss>
+
   );
 };
 
@@ -95,5 +100,5 @@ export const CommentCardsCss = styled.div`
   .iconChange{
     color : #d0d0d0;
   }
-  .
+  
 `;

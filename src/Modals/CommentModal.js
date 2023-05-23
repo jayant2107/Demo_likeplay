@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import exit from "../Assets/Images/Matches Image/exit.png";
 
+
 const CommentModal = ({ show, close, props }) => {
   const navigate = useNavigate();
   return (
     <>
+    
       <div show={show} onHide={close}>
         <CommentModalStyle>
           <div className="modal">
@@ -68,6 +70,7 @@ const CommentModal = ({ show, close, props }) => {
           </div>
         </CommentModalStyle>
       </div>
+    
     </>
   );
 };

@@ -2,13 +2,14 @@ import styled from "styled-components";
 import { likep } from "../Utils/images/Modalsimg";
 import DatingData from "./ModalData/DatingDetailData";
 
-export default function DatingDetailModal() {
+const  DatingDetailModal=( show1 , close1 )=> {
   return (
     <>
+       <div show={show1} onHide={close1}></div>
       <StyledDatingDetails>
-        <div className="modal">
-          <div className="modal-container">
-            <div className="modal-content">
+        {/* <div className="modal"> */}
+          {/* <div className="modal-container"> */}
+            {/* <div className="modal-content"> */}
               {DatingData.map((data) => {
                 console.log("datahead", data.head);
                 return (
@@ -63,13 +64,14 @@ export default function DatingDetailModal() {
  */}
               {/* MODAL LIST-SECTION ENDS */}
               {/* </div> */}
-            </div>
-          </div>
-        </div>
+            {/* </div> */}
+          {/* </div> */}
+        {/* </div> */}
       </StyledDatingDetails>
     </>
   );
 }
+export default DatingDetailModal;
 
 export const StyledDatingDetails = styled.div`
   .modal-container {
