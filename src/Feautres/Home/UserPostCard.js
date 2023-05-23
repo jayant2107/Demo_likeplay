@@ -247,6 +247,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
                   width="30%"
                 >
                  
+                 
                   <LikesViewModal closeLikeModal={closeLikeModal} />
                 </Modal>
               )}
