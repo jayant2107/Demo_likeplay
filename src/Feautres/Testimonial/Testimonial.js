@@ -21,42 +21,37 @@ const Testimonial = () => {
               />
               <br />
             </div>
-
-            <div className="container2-1">
-              <label for="pass" className="Email">
-                Email
-              </label>
+            
+            <div className="container2">
+              <label for="Name">Email</label>
               <br />
               <input
-                type="email"
-                id="email"
-                pattern=".+@globex\.com"
-                size="30"
+                type="text"
+                id="username"
+                name="username"
                 placeholder="Enter Email"
-                required
               />
               <br />
+            
             </div>
-            <div className="testinomial-message">
-              <label for="pass" className="Testinoamial-mssge">
+
+          
+            <div className="container2">
+              <label for="Name">
                 Testimonal
               </label>
               <br />
               <input
-                type="text"
-                id="message"
-                name="message"
-                required
-                minlength="4"
-                maxlength="8"
-                size="10"
-                className="input-message"
-                placeholder="Add Testimonial"
-              />
+              type="textarea" 
+              id='usernam'
+              placeholder="Add Testimonal"
+              ></input>
+             
             </div>
+          <div className="submit">
+          <button className="submit-btn">Submit</button>
+            
           </div>
-          <div className="btn-btn-1">
-            <h2 className="Submit-btn">Submit</h2>
           </div>
         </div>
       </StyledTestimonial>
@@ -70,6 +65,13 @@ const StyledTestimonial = styled.div`
     width: 100%;
     height: 88px;
     background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    padding:0px 10px;
+  }
+  .Testimonials-features{
+    width: 100%;
+    padding: 20px;
   }
   .Testimonials {
     font-family: "Poppins";
@@ -83,8 +85,8 @@ const StyledTestimonial = styled.div`
     height: 28px;
   }
   .container2 {
-    width: 36px;
-    height: 20px;
+    width: 100%;
+
     line-height: 40px;
   }
   .Name {
@@ -100,8 +102,17 @@ const StyledTestimonial = styled.div`
   }
   #username {
     box-sizing: border-box;
-    width: 870px;
+    width: 100%;
     height: 56px;
+    background: #ffffff;
+    padding-left: 10px;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+  }
+  #usernam{
+    box-sizing: border-box;
+    width: 100%;
+    height: 157px;
     background: #ffffff;
     padding-left: 10px;
     border: 1px solid #e2e2e2;
@@ -116,6 +127,7 @@ const StyledTestimonial = styled.div`
     font-size: 12px;
     line-height: 20px;
     letter-spacing: 0.05em;
+    margin-top: 6%;
     color: #242424;
   }
   #email {
@@ -138,6 +150,25 @@ const StyledTestimonial = styled.div`
     letter-spacing: 0.05em;
     color: #242424;
   }
+  .submit{
+    margin: 20px 0px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    .submit-btn{
+        background-color: #ff483c;
+        color: white;
+        width: 160px;
+        height: 48px;
+        border-radius: 10px;
+        border: none;
+    }
+  
+  }
+  .testinomial-message {
+    margin-top: 5%;
+}
   .input-message {
     box-sizing: border-box;
     width: 865px;
@@ -154,14 +185,5 @@ const StyledTestimonial = styled.div`
     background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
     border-radius: 10px;
   }
-  .Submit-btn {
-    width: 53px;
-    height: 22px;
-    font-family: "Nunito Sans";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 22px;
-    color: #ffffff;
-  }
+
 `;
