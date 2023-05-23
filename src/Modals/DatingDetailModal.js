@@ -2,14 +2,13 @@ import styled from "styled-components";
 import { likep } from "../Utils/images/Modalsimg";
 import DatingData from "./ModalData/DatingDetailData";
 
-const  DatingDetailModal=( show1 , close1 )=> {
+export default function DatingDetailModal() {
   return (
     <>
-       <div show={show1} onHide={close1}></div>
       <StyledDatingDetails>
-        {/* <div className="modal"> */}
-          {/* <div className="modal-container"> */}
-            {/* <div className="modal-content"> */}
+        <div className="modal">
+          <div className="modal-container">
+            <div className="modal-content">
               {DatingData.map((data) => {
                 console.log("datahead", data.head);
                 return (
@@ -64,14 +63,15 @@ const  DatingDetailModal=( show1 , close1 )=> {
  */}
               {/* MODAL LIST-SECTION ENDS */}
               {/* </div> */}
-            {/* </div> */}
-          {/* </div> */}
-        {/* </div> */}
+            </div>
+          </div>
+        </div>
       </StyledDatingDetails>
     </>
-  );
+  )
 }
 export default DatingDetailModal;
+
 
 export const StyledDatingDetails = styled.div`
   .modal-container {
@@ -106,17 +106,25 @@ export const StyledDatingDetails = styled.div`
     }
   }
 
+  p {
+      width: 73%;
+      margin-left: 25px;
+      font-size: 14px;
+    }
+
   .content-container {
     padding: 12px;
   }
 
   .list-section {
-    width: 91%;
+    width: 86%;
+    margin: auto;
+    margin-bottom: 3px;
   }
 
   .list-content {
     display: flex;
-    width: 88%;
+    width: 100%;
   }
 
   .line {
@@ -133,14 +141,13 @@ export const StyledDatingDetails = styled.div`
     display: flex;
     align-items: center;
     /* margin-bottom: 3px; */
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 600;
   }
 
   .para, .para1, .para2, .para3{
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 400;
-    padding: 2px;
     width: 98%;
     color: #484848;
   }
