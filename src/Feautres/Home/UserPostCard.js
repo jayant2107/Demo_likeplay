@@ -92,6 +92,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon, changeModal }) => {
             onOk={closeModal}
             onCancel={closeModal}
             // cancelText="naa"
+            centered
             className="modalDesign"
             footer={null}
             // okButtonProps={{ style: { backgroundColor: "green" } }}
@@ -133,6 +134,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon, changeModal }) => {
           open={reportUserModal}
           onOk={closeReportModal}
           onCancel={closeReportModal}
+          centered
           footer={null}
         >
           <ReportUserModal closeReportModal={closeReportModal} />
@@ -154,6 +156,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon, changeModal }) => {
             onOk={closeModal}
             onCancel={closeModal}
             className="modalDesign"
+            centered
             footer={null}
           >
             <DeleteModal prop={HideData} closeModal={closeModal} />
@@ -250,6 +253,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon, changeModal }) => {
                   onOk={closeLikeModal}
                   onCancel={closeLikeModal}
                   footer={null}
+                  centered
                   width="30%"
                 >
                  
