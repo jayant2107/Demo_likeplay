@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Modal } from "antd";
-import './ant.css'
+import "./ant.css";
 // Image
 import CommentCards from "./CommentCards";
 
@@ -12,60 +12,58 @@ import { CommentCardsCss } from "./CommentCards";
 import { commentofpeople } from "./DataPage";
 
 const FeedCommentView = ({ changeModalComment, showComment, val }) => {
-
   return (
-    <ModalWrapper>
-    <Modal
-    open={showComment}
-    width={1000}
-    centered
-    onCancel={changeModalComment}
-    footer={null}
-    style={{color:'red',padding:"0px"}}
-    >
+    
+      <Modal
+        open={showComment}
+        width={1000}
+        centered
+        onCancel={changeModalComment}
+        footer={null}
+        className="myModal"
+      >
         <FeedCommentViewCss>
-        <div className="modalDiv">
-          <div className="Maindiv">
-            <img className="myimg" src={val.Shots} alt="user" />
-          </div>
-
-          <div className="Maindiv">
-            {/* userProfile */}
-            <div className="header">
-              <CommentCardsCss>
-                <div className="profileImg">
-                  <img className="" src={val.Shots} alt="userProfileImg" />
-                </div>
-                <div className="ProfileInfo">
-                  <div className="userName">{val.UserName}</div>
-                  <div className="postDate">{val.Date}</div>
-                </div>
-              </CommentCardsCss>
+          <div className="modalDiv">
+            <div className="Maindiv">
+              <img className="myimg" src={val.Shots} alt="user" />
             </div>
 
-            {/* commentSection */}
-            <div className="commentSection">
-              {commentofpeople.map((val, index) => {
-                return <CommentCards prop={val} key={index} />;
-              })}
-            </div>
+            <div className="Maindiv">
+              {/* userProfile */}
+              <div className="header">
+                <CommentCardsCss>
+                  <div className="profileImg">
+                    <img className="" src={val.Shots} alt="userProfileImg" />
+                  </div>
+                  <div className="ProfileInfo">
+                    <div className="userName">{val.UserName}</div>
+                    <div className="postDate">{val.Date}</div>
+                  </div>
+                </CommentCardsCss>
+              </div>
 
-            {/* commentSend */}
-            <div className="comment">
-              <div className="commentInput">
-                <input
-                  className="input"
-                  type="text"
-                  placeholder="Add a Comment...."
-                />
-                <button className="inputButton">Post</button>
+              {/* commentSection */}
+              <div className="commentSection">
+                {commentofpeople.map((val, index) => {
+                  return <CommentCards prop={val} key={index} />;
+                })}
+              </div>
+
+              {/* commentSend */}
+              <div className="comment">
+                <div className="commentInput">
+                  <input
+                    className="input"
+                    type="text"
+                    placeholder="Add a Comment...."
+                  />
+                  <button className="inputButton">Post</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-    </FeedCommentViewCss>
+        </FeedCommentViewCss>
       </Modal>
-      </ModalWrapper>
   );
 };
 
@@ -142,7 +140,3 @@ const FeedCommentViewCss = styled.div`
     font-size: 1rem;
   }
 `;
-
-const ModalWrapper = styled.div`
-
-`
