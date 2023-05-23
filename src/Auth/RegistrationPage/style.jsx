@@ -67,7 +67,7 @@ export const ButtonStyle = styled.button`
     border-radius: 0.5rem;
     border:${(props) => props.border || "none"};
     color:${(props) => props.color || "white"};
-    background: linear-gradient(${(props) => props.bgcolour || "268.55deg, #FF483C 0%, #FF2C5A 100%"});
+    background: linear-gradient(${(props) => props.bgcolour || "268.55deg, #ff483c 0%, #FF2C5A 100%"});
     width:${(props) => props.width || "8rem"};
     height:${(props) => props.height || ""};
     padding: ${(props) => props.padding || "1rem"};
@@ -171,12 +171,12 @@ export const RisgistationPage1 = styled.div`
 
 }
 
-
 img.rig_img_log {
     width: 12rem;
+    margin-top: 10rem;
 }
 input.resgistation_input {
-    width:400px;
+    width:420px;
     height: 3rem;
     padding-left: 1rem;
     outline: none;

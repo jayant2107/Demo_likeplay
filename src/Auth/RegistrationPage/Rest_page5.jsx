@@ -34,11 +34,11 @@ const ResgistPage5 = ({Next, Back}) => {
                             <div className='body_heigth'>
                                 <div>
                                     <lable>Tribe to data<span>*</span></lable>
-                                    <SelectOptionStyle width="12rem"><option>Select</option></SelectOptionStyle>
+                                    <SelectOptionStyle width="12.5rem"><option>Select</option></SelectOptionStyle>
                                 </div>
                                 <div>
                                     <lable>Looking for?<span>*</span></lable>
-                                    <SelectOptionStyle width="12rem"><option>Select</option></SelectOptionStyle>
+                                    <SelectOptionStyle width="12.5rem"><option>Select</option></SelectOptionStyle>
                                 </div>
                             </div>
                             <div className='trib_irrelevant'>

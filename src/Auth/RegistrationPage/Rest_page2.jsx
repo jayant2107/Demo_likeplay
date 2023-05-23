@@ -6,7 +6,7 @@ import { RisgistionBgImg, FromStyleDiv, ProgessStyleDiv, ProgessStyleDivline, Pr
 const ResgistPage2 = ({Next, Back}) => {
   let percentage = "16%";
   return (<>
-    <RisgistionBgImg imgUrl={Artboard2}>
+    <RisgistionBgImg height={"100vh"} imgUrl={Artboard2}>
       <ResHeaderComponent />
       <RisgistationPage1>
         <div className='Risgistation_content2'>
@@ -31,8 +31,8 @@ const ResgistPage2 = ({Next, Back}) => {
               <br></br>
               <lable>Gender<span>*</span></lable>
               <div className='gender_btn'>
-                <ButtonStyle  width="11rem" border="1px black solid" bgcolour="white" color="black"> Male </ButtonStyle>
-                <ButtonStyle width="11rem" margin="1rem" bgcolour="#A8580F"> Female </ButtonStyle>
+                <ButtonStyle  width="12rem" margin="0" border="1px black solid" bgcolour="#e5e5e5"   color="black"> Male </ButtonStyle>
+                <ButtonStyle bgcolour="#e5e5e5" width="12rem" margin="1rem" color= "black"> Female </ButtonStyle>
               </div>
               <lable>Interested In<span>*</span></lable>
               <input type="text" className='resgistation_input' placeholder='willmith1234221' />

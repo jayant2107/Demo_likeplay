@@ -30,11 +30,11 @@ const ResgistPage4 = ({Next, Back}) => {
                             <div className='body_heigth'>
                                 <div>
                                     <lable>State of Resisdence<span>*</span></lable>
-                                    <SelectOptionStyle width="12rem"><option>Select State</option></SelectOptionStyle>
+                                    <SelectOptionStyle width="12.5rem"><option>Select State</option></SelectOptionStyle>
                                 </div>
                                 <div>
                                     <lable>City of Residence<span>*</span></lable>
-                                    <SelectOptionStyle width="12rem"><option>Select City</option></SelectOptionStyle>
+                                    <SelectOptionStyle width="12.5rem"><option>Select City</option></SelectOptionStyle>
                                 </div>
                             </div>
                             <lable>Nationality<span>*</span></lable>
