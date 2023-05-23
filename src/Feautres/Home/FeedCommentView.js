@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-
+import { Modal } from "antd";
+import './ant.css'
 // Image
 import CommentCards from "./CommentCards";
 
@@ -10,11 +11,20 @@ import { CommentCardsCss } from "./CommentCards";
 // FakeData
 import { commentofpeople } from "./DataPage";
 
-const FeedCommentView = ({ val, commentOn, changeModal }) => {
+const FeedCommentView = ({ changeModalComment, showComment, val }) => {
+
   return (
-    <FeedCommentViewCss onClick={()=>changeModal()}>
-      {commentOn ? (
-        <div className="modal" onClick={e=>{e.stopPropagation()}}>
+    <ModalWrapper>
+    <Modal
+    open={showComment}
+    width={1000}
+    centered
+    onCancel={changeModalComment}
+    footer={null}
+    style={{color:'red',padding:"0px"}}
+    >
+        <FeedCommentViewCss>
+        <div className="modalDiv">
           <div className="Maindiv">
             <img className="myimg" src={val.Shots} alt="user" />
           </div>
@@ -53,34 +63,23 @@ const FeedCommentView = ({ val, commentOn, changeModal }) => {
             </div>
           </div>
         </div>
-      ) : null}
     </FeedCommentViewCss>
+      </Modal>
+      </ModalWrapper>
   );
 };
 
 export default FeedCommentView;
 
 const FeedCommentViewCss = styled.div`
-  position: fixed;
-  z-index: 3;
-  inset: 0;
-  background-color: rgb(0 0 0 / 47%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Poppins", sans-serif;
-  font-style: normal;
-  letter-spacing: 0.05em;
-
-  .modal {
-    width: 80%;
-    height: auto;
+  .modalDiv {
+    width: 100%;
+    height: 30rem;
     background: #ffffff;
     border-radius: 5px;
     display: grid;
     grid-template-columns: 50% 50%;
   }
-
   .Maindiv {
     width: fit-content;
     height: 30rem;
@@ -100,7 +99,6 @@ const FeedCommentViewCss = styled.div`
     display: flex;
     align-items: center;
   }
-
   .commentSection {
     height: 20.8rem;
     padding: 0.5rem 0 0 2rem;
@@ -113,7 +111,6 @@ const FeedCommentViewCss = styled.div`
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-
   .comment {
     padding-left: 2rem;
     border-top: 1px solid #e2e2e2;
@@ -145,3 +142,7 @@ const FeedCommentViewCss = styled.div`
     font-size: 1rem;
   }
 `;
+
+const ModalWrapper = styled.div`
+
+`
