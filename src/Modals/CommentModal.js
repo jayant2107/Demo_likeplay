@@ -157,17 +157,18 @@ export const CommentModalStyle = styled.div`
     text-align: center;
     margin-top: 22px;
 
-    button {
+
+  }
+  button {
       border-style: none;
     }
-  }
 
   .img112 {
     width: 100%;
     height: 100%;
     background: white;
     border: none;
-    object-fit: contain;
+    
     &:hover {
       cursor: pointer;
     }

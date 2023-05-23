@@ -63,9 +63,9 @@ export default function DatingDetailModal() {
  */}
               {/* MODAL LIST-SECTION ENDS */}
               {/* </div> */}
-            </div>
+            {/* </div> */}
           </div>
-        </div>
+        {/* </div> */}
       </StyledDatingDetails>
     </>
   )
