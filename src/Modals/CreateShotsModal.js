@@ -1,99 +1,102 @@
-import React from "react";
 import styled from "styled-components";
 import { upload } from "../Utils/images/Modalsimg";
 import { exit } from "../Utils/icons-folder/Modalsicons";
 import StyledButton from "../Components/Button";
 
-export default function CreateShotsModal({next}) {
+import React from "react";
+
+export default function CreateShotsModal({ closeSnapModal, image }) {
   return (
     <>
       <StyledCreateShortModal>
-        <div className="modal">
-          <div className="modal-container">
-            <div className="modal-content">
-            <div className="delete-icon">
-                <img src={exit} alt="exit" id="exit" />
-              </div>
-              <div className="content-container">
-                {/********* MODAL UPLOAD IMAGE-SECTION STARTS ********/}
+        <div className="delete-icon" onClick={closeSnapModal}>
+          <img src={exit} alt="exit" id="exit" />
+        </div>
 
-                <div className="upload-image-section">
-                  <div className="upload-image-head">
-                    <div className="heading">Take the Floor</div>
-                  </div>
-                  <div className="image-section">
-                    <div className="image-section-content">
-                      <div className="upload-pic">
-                        <img src={upload} alt="upload" id="upload"></img>
-                      </div>
-                      <div className="head">Upload Images</div>
-                    </div>
-                  </div>
+        {/********* MODAL UPLOAD IMAGE-SECTION STARTS ********/}
+
+        <div className="upload-image-section">
+          <div className="upload-image-head">
+            <div className="heading">Take the Floor</div>
+          </div>
+          <div className="image-section">
+            {/* <div className="image-section-content"> */}
+            <div className="upload-pic">
+              {image ? (
+                <img src={image} alt="upload" id="upload-edit"></img>
+              ) : (
+                <img src={upload} alt="upload" id="upload"></img>
+              )}
+              {!image && <span className="head">Upload Images</span>}
+            </div>
+
+            {/* </div> */}
+          </div>
+        </div>
+
+        {/********* MODAL UPLOAD IMAGE-SECTION ENDS ********/}
+
+        {/********* MODAL WRITE-SECTION STARTS **********/}
+
+        <div className="write-something-section">
+          <div className="write-head">
+            <div className="heading">Take the Mic</div>
+          </div>
+          <div className="write-section">
+            <div className="write-section-content">
+              <div className="head"> Write Something...</div>
+            </div>
+          </div>
+        </div>
+
+        {/********** MODAL WRITE-SECTION ENDS **********/}
+
+        {/******* MODAL TAG-SECTION STARTS ********/}
+
+        <div className="tag-section">
+          <div className="tag-head">
+            <div className="heading">Tag</div>
+          </div>
+          <div className="add-tag-section">
+            <div className="tags">
+              <div className="tag-content">
+                <div className="tag-name">Julia Roberts</div>
+                <div className="exit-icon">
+                  <img src={exit} alt="exit" id="exit" />
                 </div>
-
-                {/********* MODAL UPLOAD IMAGE-SECTION ENDS ********/}
-
-                {/********* MODAL WRITE-SECTION STARTS **********/}
-
-                <div className="write-something-section">
-                  <div className="write-head">
-                    <div className="heading">Take the Mic</div>
-                  </div>
-                  <div className="write-section">
-                    <div className="write-section-content">
-                      <div className="head"> Write Something...</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/********** MODAL WRITE-SECTION ENDS **********/}
-
-                {/******* MODAL TAG-SECTION STARTS ********/}
-
-                <div className="tag-section">
-                  <div className="tag-head">
-                    <div className="heading">Tag</div>
-                  </div>
-                  <div className="add-tag-section">
-                    <div className="tags">
-                      <div className="tag-content">
-                        <div className="tag-name">Julia Roberts</div>
-                        <div className="exit-icon">
-                          <img src={exit} alt="exit" id="exit" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/******* MODAL TAG-SECTION ENDS ********/}
-
-                {/******* MODAL BUTTON-SECTION STARTS *****/}
-
-                <div className="modal-button">
-                  <div className="buttons-content">
-                    <div className="submit-btn">
-                      <StyledButton onClick={()=>{next()}}
-                        text="white"
-                        bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
-                      >
-                        Submit
-                      </StyledButton>
-                    </div>
-                  </div>
-                </div>
-
-                {/****** MODAL BUTTON-SECTION-ENDS *******/}
               </div>
             </div>
           </div>
         </div>
+
+        {/******* MODAL TAG-SECTION ENDS ********/}
+
+        {/******* MODAL BUTTON-SECTION STARTS *****/}
+
+        <div className="modal-button">
+          <div className="buttons-content">
+            <div className="submit-btn">
+              <StyledButton
+                onClick={closeSnapModal}
+                text="white"
+                bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
+              >
+                Submit
+              </StyledButton>
+            </div>
+          </div>
+        </div>
+
+        {/****** MODAL BUTTON-SECTION-ENDS *******/}
       </StyledCreateShortModal>
     </>
   );
 }
 
 export const StyledCreateShortModal = styled.div`
+
+
+
   .modal-container {
     width: 100%;
     height: 100vh;
@@ -120,8 +123,6 @@ export const StyledCreateShortModal = styled.div`
   }
 
   .delete-icon {
-    width: 24px;
-    height: 24px;
     color: green;
     border-radius: 50%;
     display: flex;
@@ -130,19 +131,21 @@ export const StyledCreateShortModal = styled.div`
     font-weight: 600;
     cursor: pointer;
     position: absolute;
-    top: -25px;
+    top: -32px;
     right: 0px;
+  }
+
+  img#exit {
+    width: 24px;
   }
 
   .content-container {
     padding: 15px;
   }
 
-  .content-container>div{
+  .content-container > div {
     margin-top: 10px;
   }
-
-  
 
   /********* MODAL UPLOAD IMAGE-SECTION STARTS ********/
 
@@ -152,7 +155,6 @@ export const StyledCreateShortModal = styled.div`
     font-weight: 500;
     line-height: 20px;
     color: #242424;
-
   }
 
   .image-section {
@@ -160,6 +162,8 @@ export const StyledCreateShortModal = styled.div`
     border-radius: 10px;
     height: 140px;
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .image-section-content {
@@ -167,10 +171,20 @@ export const StyledCreateShortModal = styled.div`
   }
 
   .upload-pic {
-    display: flex;
+    display: grid;
+    justify-content: center;
+    width: 100%;
+    height: 140px;
+    object-fit: contain;
   }
 
   img#upload {
+    margin: auto;
+  }
+
+  img#upload-edit {
+    width: 100%;
+    height: 140px;
     margin: auto;
   }
 
@@ -178,7 +192,7 @@ export const StyledCreateShortModal = styled.div`
     font-size: 12px;
     font-weight: 400;
     line-height: 100%;
-    margin-top: 10px;
+
     color: #7b7f91;
   }
 
@@ -235,6 +249,10 @@ export const StyledCreateShortModal = styled.div`
   /********** MODAL TAG-SECTION ENDS ***********/
 
   /******* MODAL BUTTON-SECTION STARTS *****/
+
+  .modal-button {
+    margin-top: 18px;
+  }
 
   .buttons-content {
     display: flex;

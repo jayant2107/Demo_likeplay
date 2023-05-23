@@ -24,6 +24,7 @@ import {
 // FakeData
 import { TagesData } from "./DataPage";
 import FeedCommentView from "./FeedCommentView";
+import CreateShotsModal from "../../Modals/CreateShotsModal";
 
 const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const [comment, setComment] = useState(false);
@@ -32,6 +33,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const [showBlockModal, setshowBlockModal] = useState(false);
   const [reportUserModal, setReportUserModal] = useState(false);
   const [likeModal, setLikeModal] = useState(false);
+  const [editModal, setEditModal] = useState(false);
 
   const changeModal=()=>{
     setComment(!comment);
@@ -47,6 +49,9 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
     }
   };
 
+  const closeEditModal = () =>{
+    setEditModal(false);
+  }
 
   const closeReportModal = () => {
     setReportUserModal(false);
@@ -59,7 +64,17 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const content = (
     <PopContentCss>
       <div className="popContent">
-        <div className="popbtn">Edit</div>
+        <div className="popbtn" onClick={()=>setEditModal(true)}>Edit</div>
+        {editModal && (
+          <Modal
+          open= {editModal}
+          close= {closeEditModal}
+          footer= {null}
+          maskClosable = {true}
+          centered 
+          onCancel={closeEditModal}
+          ><CreateShotsModal closeSnapModal= {closeEditModal} image={val.Shots}/></Modal>
+        )}
         <div
           className="popbtn"
           onClick={() => {

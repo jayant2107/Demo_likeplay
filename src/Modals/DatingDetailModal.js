@@ -2,113 +2,34 @@ import styled from "styled-components";
 import { likep } from "../Utils/images/Modalsimg";
 import DatingData from "./ModalData/DatingDetailData";
 
-// export default function DatingDetailModal() {
-//   return (
-//     <>
-//       <StyledDatingDetails>
-//         <div className="modal">
-//           <div className="modal-container">
-//             <div className="modal-content">
-//               {DatingData.map((data) => {
-//                 console.log("datahead", data.head);
-//                 return (
-//                   <>
-//                     {/* <div className="head">
-//                       <img src={likep} alt="likep" id="likep" />
-//                       <h5>{data.head}</h5>
-//                     </div>
-//                     <p>{data.para}.</p> */}
-//                     <div className="list-section">
-//                       <div className="list-content">
-//                         <img src={likep} alt="likep" id="likep" />
-//                         <div className="line">
-//                           <div className="head">{data.head}</div>
-//                           <div className="para">{data.para}</div>
-//                           <div className="para1">{data.para1}</div>
-//                           <div className="para2">{data.para2}</div>
-//                           <div className="para3">{data.para3}</div>
-//                         </div>
-//                       </div>
-//                     </div>
-//                   </>
-//                 );
-//               })}
-//               {/* <div className="head">
-//               <img src={likep} alt="likep" id="likep" />
-//                 <h5>Online Dating Tips:- Dating Safety Tips</h5>
-//               </div>
-//               <p>We want to make sure you stay safe during your online
-//                         dating experience with Seeking. Keep these tips in mind
-//                         when you are talking/texting with someone or setting up
-//                         a Meet & Greet.</p> */}
-//               {/* <div className="content-container">
-//                 {/* MODAL LIST-SECTION STARTS */}
-
-//               {/* <div className="list-section">
-//                   <div className="list-content">
-//                       <img src={likep} alt="likep" id="likep" />
-//                     <div className="line">
-//                       <div className="head">
-//                         Online Dating Tips:- Dating Safety Tips
-//                       </div>
-//                       <div className="para">
-//                         We want to make sure you stay safe during your online
-//                         dating experience with Seeking. Keep these tips in mind
-//                         when you are talking/texting with someone or setting up
-//                         a Meet & Greet.
-//                       </div>
-//                     </div>
-//                   </div>
-//                 </div>
-//  */}
-//               {/* MODAL LIST-SECTION ENDS */}
-//               {/* </div> */}
-//             </div>
-//           </div>
-//         </div>
-//       </StyledDatingDetails>
-//     </>
-//   );
-// }
-
-
-import React from 'react'
-
-export default function DatingDetailModal({closeDetailModal}) {
+export default function DatingDetailModal({ closeDetailModal }) {
   return (
     <>
-    <StyledDatingDetails>
-      <div className="content">
-      {DatingData.map((data) => {
-                
-                return (
-                  <>
-                    {/* <div className="head">
-                      <img src={likep} alt="likep" id="likep" />
-                      <h5>{data.head}</h5>
+      <StyledDatingDetails>
+        <div className="content">
+          {DatingData.map((data) => {
+            return (
+              <>
+                <div className="list-section">
+                  <div className="list-content">
+                    <img src={likep} alt="likep" id="likep" />
+                    <div className="line">
+                      <div className="head">{data.head}</div>
+                      <div className="para">{data.para}</div>
+                      <div className="para1">{data.para1}</div>
+                      <div className="para2">{data.para2}</div>
+                      <div className="para3">{data.para3}</div>
                     </div>
-                    <p>{data.para}.</p> */}
-                    <div className="list-section">
-                      <div className="list-content">
-                        <img src={likep} alt="likep" id="likep" />
-                        <div className="line">
-                          <div className="head">{data.head}</div>
-                          <div className="para">{data.para}</div>
-                          <div className="para1">{data.para1}</div>
-                          <div className="para2">{data.para2}</div>
-                          <div className="para3">{data.para3}</div>
-                        </div>
-                      </div>
-                    </div>
-                  </>
-                );
-              })}
-      </div>
-    </StyledDatingDetails>
+                  </div>
+                </div>
+              </>
+            );
+          })}
+        </div>
+      </StyledDatingDetails>
     </>
-  )
+  );
 }
-
 
 export const StyledDatingDetails = styled.div`
   .modal-container {
@@ -144,10 +65,10 @@ export const StyledDatingDetails = styled.div`
   }
 
   p {
-      width: 73%;
-      margin-left: 25px;
-      font-size: 14px;
-    }
+    width: 73%;
+    margin-left: 25px;
+    font-size: 14px;
+  }
 
   .content-container {
     padding: 12px;
@@ -182,7 +103,10 @@ export const StyledDatingDetails = styled.div`
     font-weight: 600;
   }
 
-  .para, .para1, .para2, .para3{
+  .para,
+  .para1,
+  .para2,
+  .para3 {
     font-size: 13px;
     font-weight: 400;
     width: 98%;
