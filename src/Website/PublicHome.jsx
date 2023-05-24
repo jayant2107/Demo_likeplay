@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import styled from "styled-components";
 import Publicnavbar from "../Website/components/Publicnavbar";
 import Publicfooter from "../Website/components/Publicfooter";
@@ -9,12 +8,14 @@ import featuresData, {
   whylikeplaydata,
   homecontory,
 } from "../Data/PublicfeatureData.jsx";
+// video
+import video from "../Assets/Video/Romantic Dinner (Official Video).mp4";
 // images
 import hashimg, {
   Homecouple,
   Publicvideobg,
   Videoplaybtn,
-  vidoedemobg,
+  // vidoedemobg,
   LikePlaylogo,
   hearticonPA,
   iphone1,
@@ -32,14 +33,26 @@ import hashimg, {
 } from "../Utils/images/Publichomeimg";
 
 export default function Publichome() {
-  // -----------------------MainWrapper CSS START-------------------------------
-
-  // -----------------------MainWrapper CSS END-------------------------------
   const navigate = useNavigate();
   const Country = (name) => {
     console.log(name);
     navigate("/Nigeria", { state: { id: name } });
   };
+
+  // video logic
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlay = () => {
+    if (videoRef.current.paused) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    } else {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+  // -----------------------MainWrapper CSS START-------------------------------
   const MainWrapper = styled.main`
     main {
       background: url(${Homecouple});
@@ -133,6 +146,7 @@ export default function Publichome() {
       }
     }
   `;
+  // -----------------------MainWrapper CSS END-------------------------------
 
   // -------------------------Our Features CSS START-----------------------------
 
@@ -302,34 +316,45 @@ export default function Publichome() {
   const VideoWrapper = styled.section`
     section {
       position: relative;
+      top: -3rem;
       background: url(${Publicvideobg});
-      background-size: contain;
+      background-size: cover;
       background-repeat: no-repeat;
-      height: 100vh;
+      /* height: 100vh; */
       width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 0 3rem 0;
+      margin-bottom: 1.5rem;
 
       .video {
-        height: 90%;
         display: flex;
+        flex-direction: column;
         justify-content: center;
+        /* height: 80%; */
+        width: 80%;
+        cursor: pointer;
         &::before {
-          content: url(${LikePlaylogo});
-          height: 20vh;
-          position: relative;
-          z-index: 1;
-          top: 15%;
-          left: 10%;
-        }
-        &::after {
-          content: url(${Videoplaybtn});
-          height: 20vh;
-          position: relative;
-          top: 40%;
-          left: -44%;
-          z-index: 3;
+          content: "";
+          background-image: url(${LikePlaylogo});
+          background-repeat: no-repeat;
+          background-position: center;
+          position: absolute;
+          top: 12%;
+          left: 8%;
+          width: 250px;
+          height: 150px;
+          z-index: 2;
         }
         img {
-          width: 80%;
+          position: relative;
+          top: 20rem;
+          left: 48%;
+          width: 80px;
+        }
+        video {
+          border-radius: 10px;
         }
       }
     }
@@ -337,19 +362,24 @@ export default function Publichome() {
 
     @media (min-width: 320px) and (max-width: 480px) {
       section {
+        top: 0;
         height: auto;
         width: auto;
-
+        /* padding: 1rem 0; */
         .video {
-          &::before {
-            top: 12px;
+          video {
+            width: 100%;
           }
-          &::after {
-            left: -50%;
-            top: 40px;
+          &::before {
+            top: -8%;
+            left: -15%;
+            background-size: 30px;
           }
           img {
-            /* height: 23%; */
+            position: relative;
+            top: 6rem;
+            left: 9rem;
+            width: 30px;
           }
         }
       }
@@ -357,20 +387,24 @@ export default function Publichome() {
     /* media quary for Tablats responsive  */
     @media (min-width: 481px) and (max-width: 768px) {
       section {
-        padding: 2rem 0;
+        top: 0;
         height: auto;
         width: auto;
+        /* padding: 1rem 0; */
         .video {
-          &::before {
-            left: 15%;
-            top: 12px;
+          video {
+            width: 100%;
           }
-          &::after {
-            left: -47%;
-            top: 85px;
+          &::before {
+            top: 8%;
+            left: 2%;
+            background-size: 50px;
           }
           img {
-            /* height: 23%; */
+            position: relative;
+            top: 12rem;
+            left: 19rem;
+            width: 50px;
           }
         }
       }
@@ -378,20 +412,24 @@ export default function Publichome() {
     /* media quary for laptop responsive  */
     @media (min-width: 769px) and (max-width: 1024px) {
       section {
-        padding: 2rem 0;
+        top: 0;
         height: auto;
         width: auto;
+        /* padding: 1rem 0; */
         .video {
-          &::before {
-            left: 15%;
-            top: 12px;
+          video {
+            width: 100%;
           }
-          &::after {
-            left: -47%;
-            top: 85px;
+          &::before {
+            top: 8%;
+            left: 2%;
+            background-size: 50px;
           }
           img {
-            /* height: 23%; */
+            position: relative;
+            top: 12rem;
+            left: 19rem;
+            width: 50px;
           }
         }
       }
@@ -399,20 +437,24 @@ export default function Publichome() {
     /* media quary for large laptop responsive  */
     @media (min-width: 1025px) and (max-width: 1200px) {
       section {
-        padding: 2rem 0;
+        top: 0;
         height: auto;
         width: auto;
+        /* padding: 1rem 0; */
         .video {
-          &::before {
-            left: 13%;
-            top: 25px;
+          video {
+            width: 100%;
           }
-          &::after {
-            left: -47%;
-            top: 120px;
+          &::before {
+            top: 8%;
+            left: 2%;
+            background-size: 50px;
           }
           img {
-            /* height: 23%; */
+            position: relative;
+            top: 12rem;
+            left: 19rem;
+            width: 50px;
           }
         }
       }
@@ -884,7 +926,8 @@ export default function Publichome() {
           margin-left: 14px;
           .heartborder {
             transform: rotate(45deg);
-            top: 4rem;
+            top: 6rem;
+            left: -11%;
             z-index: -2;
           }
           .iphone2 {
@@ -1179,8 +1222,16 @@ export default function Publichome() {
       <VideoWrapper>
         <section>
           {/* <img src={LikePlaylogo} alt="" /> */}
-          <div className="video">
+          {/* <div className="video">
             <img src={vidoedemobg} alt="" />
+          </div> */}
+          <div className="video">
+            <img src={Videoplaybtn} alt="" />
+            <video ref={videoRef} onClick={togglePlay}>
+              {isPlaying ? "Pause" : "Play"}
+              <source src={video} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </section>
       </VideoWrapper>

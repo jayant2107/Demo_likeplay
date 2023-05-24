@@ -210,7 +210,8 @@ export default function Publicnavbar() {
   const hamburger = () => {
     setIsOpen(!isOpen);
   };
-  console.log(isOpen);
+
+  // navigate to another page with id match 
   const navigate = useNavigate();
   const MatchesDetailPage = (name) => {
     navigate("/Safety", { state: { id: name } });
