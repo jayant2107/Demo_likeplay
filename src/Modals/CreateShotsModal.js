@@ -2,14 +2,11 @@ import styled from "styled-components";
 import { upload } from "../Utils/images/Modalsimg";
 import { exit } from "../Utils/icons-folder/Modalsicons";
 import StyledButton from "../Components/Button";
-import { Select, Space } from 'antd';
+import { Select, Space } from "antd";
 import React from "react";
 
-
-
 export default function CreateShotsModal({ closeSnapModal, image }) {
-
-  const {Option} = Select;
+  const { Option } = Select;
 
   const handleChange = (value) => {
     console.log(`selected ${value}`);
@@ -52,9 +49,10 @@ export default function CreateShotsModal({ closeSnapModal, image }) {
             <div className="heading">Take the Mic</div>
           </div>
           <div className="write-section">
-            <div className="write-section-content">
+            <input type="text" placeholder="Write Something..." />
+            {/* <div className="write-section-content">
               <div className="head"> Write Something...</div>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -68,45 +66,26 @@ export default function CreateShotsModal({ closeSnapModal, image }) {
           </div>
           <div className="add-tag-section">
             <Select
-             mode="multiple"
-             style={{
-               width: '100%',
-             }}
-          
-             onChange={handleChange}
-             optionLabelProp="label"
-            ><Option value="Julia Roberts" label="Julia Roberts">
-            <Space>
-              
-             Julia Roberts
-            </Space>
-          </Option>
-          <Option value="Meryl Streep" label="Meryl Streep">
-            <Space>
-             
-             Meryl Streep
-            </Space>
-          </Option>
-          <Option value="Jennifer Lawrence" label="Jennifer Lawrence">
-            <Space>
-              
-             Jennifer Lawrence
-            </Space>
-          </Option>
-          <Option value="Jennifer Aniston" label="Jennifer Aniston">
-            <Space>
-           
-            Jennifer Aniston
-            </Space>
-          </Option></Select>
-            {/* <div className="tags">
-              <div className="tag-content">
-                <div className="tag-name">Julia Roberts</div>
-                <div className="exit-icon">
-                  <img src={exit} alt="exit" id="exit" />
-                </div>
-              </div>
-            </div> */}
+              mode="multiple"
+              style={{
+                width: "100%",
+              }}
+              onChange={handleChange}
+              optionLabelProp="label"
+            >
+              <Option value="Julia Roberts" label="Julia Roberts">
+                <Space>Julia Roberts</Space>
+              </Option>
+              <Option value="Meryl Streep" label="Meryl Streep">
+                <Space>Meryl Streep</Space>
+              </Option>
+              <Option value="Jennifer Lawrence" label="Jennifer Lawrence">
+                <Space>Jennifer Lawrence</Space>
+              </Option>
+              <Option value="Jennifer Aniston" label="Jennifer Aniston">
+                <Space>Jennifer Aniston</Space>
+              </Option>
+            </Select>
           </div>
         </div>
 
@@ -217,11 +196,22 @@ export const StyledCreateShortModal = styled.div`
   /********* MODAL UPLOAD IMAGE-SECTION ENDS ********/
 
   /********* MODAL UPLOAD WRITE-SECTION STARTS ********/
-  .write-section {
-    border: 1px solid #e2e2e2;
+  /* .write-section {
+    /* border: 1px solid #e2e2e2; */
+    /* border-radius: 10px; */
+    /* display: flex;
+    height: 100px; */
+  /* } */ 
+
+  input[type="text"] {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    color: #7B7F91;
+      border: 1px solid #e2e2e2;
     border-radius: 10px;
-    display: flex;
-    height: 100px;
+    padding: 5px 5px 77px;
+    
   }
 
   .write-section-content {
