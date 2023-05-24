@@ -5,15 +5,21 @@ import { AiOutlineRight } from "react-icons/ai";
 import { Switch } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SecondUser, ThirdUser, fourthUser } from "../Utils/SettingImgaes/SettingP";
+import { useSelector } from "react-redux";
+import moment from "moment";
 
 
 export default function Rightsidebar() {
   const navigate = useNavigate();
   const location = useLocation();
   const [path, setPath] = useState(true);
+  const loginPerson=useSelector((e) => e.LoginSlice.data)
+  let profile_image=process.env.REACT_APP_BASEURL_IMAGE+loginPerson?.user_images_while_signup[0].image_url
+
   const onChange = (checked) => {
     console.log(`switch to ${checked}`);
   };
+
   useEffect(() => {
     if (location.pathname === "/Layout/MyProfile") {
       setPath(false);
@@ -21,6 +27,7 @@ export default function Rightsidebar() {
       setPath(true);
     }
   }, [location]);
+
   return (
     <Rightsidebarwrapper>
       {path?<> <Profilesection>
@@ -30,8 +37,8 @@ export default function Rightsidebar() {
             className="profile_section"
             onClick={() => navigate("/Layout/MyProfile")}
           >
-            <img src={userprofile} alt="" height={50} />
-            <p>Logan Lerman</p>
+            <img src={profile_image} alt="" height={50} />
+            <p>{loginPerson.user_name}</p>
             <AiOutlineRight />
           </div>
         </div>
@@ -58,19 +65,19 @@ export default function Rightsidebar() {
         <div>
           <div className="user-details">
             <p className="left-section">Member Since</p>
-            <p className="right-section"> Jan 7, 2023 </p>
+            <p className="right-section">{moment(loginPerson?.createdAt).local().format("DD MMMM, YYYY")}</p>
           </div>
           <div className="user-details">
             <p className="left-section">Lost Active</p>
-            <p className="right-section"> Jan 30,2023 </p>
+            <p className="right-section">{moment(loginPerson?.active_at).local().format("DD MMMM, YYYY")}</p>
           </div>
           <div className="user-details">
             <p className="left-section">Location</p>
-            <p className="right-section"> Nigeria, Abuj </p>
+            <p className="right-section">{loginPerson?.residence_country}</p>
           </div>
           <div className="user-details">
             <p className="left-section">Verification</p>
-            <p className="right-section"> Verified </p>
+            <p className="right-section"> {loginPerson?.user_verification==="0"?"Verified":"Unverified"} </p>
           </div>
         </div>
       </Userinfo>
@@ -107,6 +114,11 @@ const Profilesection = styled.div`
     font-size: 16px;
     font-weight: 500;
     letter-spacing: 1px;
+  }
+  img{
+    border-radius: 50px;
+    height: 40px;
+    width: 40px;
   }
 `;
 

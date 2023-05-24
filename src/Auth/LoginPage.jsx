@@ -4,10 +4,10 @@ import { Logimg } from "../Utils/RegistrationImg/Registrationflie";
 import { LoginBg } from "../Utils/RegistrationImg/Registrationflie";
 import { Formik, Form, Field } from "formik";
 import ForgetPage from "./ForgetPage";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { LoadingOutlined } from "@ant-design/icons";
-import { Input, Spin } from "antd";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { LoadingOutlined } from '@ant-design/icons';
+import {  Input, Spin } from "antd";
 
 import {
   RisgistionBgImg,
@@ -24,13 +24,13 @@ import styled from "styled-components";
 
 const LoginPage = () => {
   const [passwordVisible, setPasswordVisible] = React.useState(false);
-  const [loading, setloading] = useState(false);
-  const value = useSelector((e) => e);
-  console.log(value, "vvv");
+  const [loading,setloading]=useState(false)
+  const value= useSelector((e)=>e)
+  console.log(value,"vvv")
 
-  const [forgot, setForgot] = useState(false);
-  const OpenFogot = () => setForgot(true);
-  const CloseFogot = () => setForgot(false);
+  const [forgot,setForgot] = useState(false)
+  const OpenFogot =()=>setForgot(true)
+  const CloseFogot =()=>setForgot(false)
   // const CloseFogot =()=>setForgot(false)
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -41,22 +41,25 @@ const LoginPage = () => {
   });
 
   const handleSubmit = (values) => {
-    setloading(true);
-
-    console.log(values, "--------");
+    setloading(true)
+   
+    console.log(values,"--------");
     setTimeout(() => {
-      if (
-        values.email === "admin123@gmail.com" &&
-        values.password === "admin123"
-      ) {
+      if(values.email==='admin123@gmail.com' && values.password==='admin123'){
         dispatch(ValidUser(true));
-        setloading(false);
-      } else {
-        setloading(false);
-        console.log("eror");
-        toast.error("enter correct password and email");
+        setloading(false)
       }
+      else{
+        setloading(false)
+        console.log("eror")
+        toast.error("enter correct password and email")
+        
+       
+      }
+      
     }, 2000);
+
+
   };
   const antIcon = (
     <LoadingOutlined
@@ -67,6 +70,7 @@ const LoginPage = () => {
     />
   );
 
+
   return (
     <>
       {forgot ? (
@@ -76,8 +80,8 @@ const LoginPage = () => {
           <ResHeaderComponent />
           <RisgistationPage1>
             <div className="Risgistation_content">
-              <div className="risgistation_img_log">
-                <img src={Logimg} className="rig_img_log" alt="empty" />
+              <div className="risgistation_img_log" >
+                <img src={Logimg}  className="rig_img_log" alt="empty" />
                 <h1>The #Dating Site in Nigeria</h1>
               </div>
               <Formik
@@ -112,22 +116,25 @@ const LoginPage = () => {
                       <p className="fogotpassword" onClick={OpenFogot}>
                         Forgot Password
                       </p>
-
+                      <br></br>
+                      <br></br>
                       <div className="btn">
-                        {loading ? (
+                        {
+                          loading?
                           <LoaderWrapper>
                             <Spin indicator={antIcon} />
-                          </LoaderWrapper>
-                        ) : (
-                          <ButtonStyle
-                            width="100%"
-                            margin="1rem 0"
-                            type="submit"
-                          >
-                            Login
-                          </ButtonStyle>
-                        )}
+                           
+                          </LoaderWrapper>:  <ButtonStyle
+                          width="26rem"
+                          margin="1rem 0"
+                          type="submit"
+                        >
+                          Login
+                        </ButtonStyle>
+                        }
 
+                    
+                      
                         <p style={{ cursor: "pointer" }}>
                           Don't have a account{" "}
                           <span onClick={() => navigate("/Registration")}>
@@ -149,9 +156,10 @@ const LoginPage = () => {
 
 export default LoginPage;
 const LoaderWrapper = styled.div`
-  width: 100%;
-  padding: 10px 0px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+width: 100%;
+padding:10px 0px;
+
+display: flex;
+align-items: center;
+justify-content: center;
 `;
