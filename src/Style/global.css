@@ -3,8 +3,12 @@
     border-radius: 10px;
 }
 
-.ant-modal-close-icon {
+.ant-modal-close {
     display: none !important;
+}
+.info-modal.ant-modal-close{
+    display: block !important;
+    color: red !important;
 }
 .ant-switch-checked {
     background: #A8580F !important;

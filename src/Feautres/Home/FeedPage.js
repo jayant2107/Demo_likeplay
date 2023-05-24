@@ -63,10 +63,13 @@ const FeedPage = () => {
             <Modal open={infoModal}
                 close= {closeInfoModal}
                 onCancel={closeInfoModal}
+                className="info-modal"
+                prefixCls="info-modal1"
                 maskClosable={true}
                 footer= {null}
                 width="80%"
                 style={{ top: 20 }}
+                closable={true}
             ><InfoGuidelinesModal/></Modal>
           )}
         </div>
