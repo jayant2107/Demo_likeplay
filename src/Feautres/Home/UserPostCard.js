@@ -36,6 +36,8 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const [showComment,setShowComment] = useState(false);
   const [clicked,setClicked] = useState(false);
 
+ 
+ 
   const changeModalComment = () => {
     setShowComment(!showComment);
   }
@@ -95,7 +97,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
             open={showBlockModal}
             onOk={closeModal}
             onCancel={closeModal}
-            maskClosable = {true}
+            maskClosable={true}
             // cancelText="naa"
             centered
             className="modalDesign"
@@ -121,7 +123,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
             onOk={closeModal}
             onCancel={closeModal}
             centered
-            maskClosable = {true}
+            maskClosable={true}
             className="modalDesign"
             footer={null}
           >
@@ -140,7 +142,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
         <Modal
           open={reportUserModal}
           onOk={closeReportModal}
-          maskClosable = {true}
+          maskClosable={true}
           onCancel={closeReportModal}
           centered
           footer={null}
@@ -164,7 +166,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
             onOk={closeModal}
             onCancel={closeModal}
             className="modalDesign"
-            maskClosable = {true}
+            maskClosable={true}
             centered
             footer={null}
           >
@@ -268,12 +270,10 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
                   onOk={closeLikeModal}
                   onCancel={closeLikeModal}
                   footer={null}
-                  maskClosable = {true}
+                  maskClosable={true}
                   centered
                   width="30%"
                 >
-                 
-                 
                   <LikesViewModal closeLikeModal={closeLikeModal} />
                 </Modal>
               )}
@@ -296,23 +296,23 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
 
           {/* TAG BUTTON3 */}
           <div className="commentDiv">
-          <Popover
-                arrow={false}
-                overlayStyle={{
-                  border: "1px solid #E2E2E2",
-                  backgroundColor: "#FFFFFF",
-                  borderRadius: "0.5rem",
-                }}
-                content={tagContent}
-                placement="top"
-                trigger="click"
-              >
-            <span>
-              <TagFeedIcon />
-            </span>
-            <span>5 tags</span>
-                <img className="arrow" src={DownArrowImg} alt="DownArror" />
-              </Popover>
+            <Popover
+              arrow={false}
+              overlayStyle={{
+                border: "1px solid #E2E2E2",
+                backgroundColor: "#FFFFFF",
+                borderRadius: "0.5rem",
+              }}
+              content={tagContent}
+              placement="top"
+              trigger="click"
+            >
+              <span>
+                <TagFeedIcon />
+              </span>
+              <span>5 tags</span>
+              <img className="arrow" src={DownArrowImg} alt="DownArror" />
+            </Popover>
           </div>
         </div>
         {
@@ -367,7 +367,7 @@ export const UserPostCardCss = styled.div`
     color: #7b7f91;
     font-size: 0.9rem;
   }
-  
+
   .profileOptions {
     display: Flex;
     align-items: center;
@@ -425,7 +425,7 @@ export const UserPostCardCss = styled.div`
       cursor: pointer;
       span {
         margin-left: 0.4rem;
-      }  
+      }
     }
   }
 

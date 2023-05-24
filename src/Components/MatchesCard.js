@@ -46,7 +46,8 @@ const MatchesCard = ({ props }) => {
           open={showDiv}
           close={handleClose}
           centered
-          width="45%"
+          width="585px"
+          maskClosable={true}
           footer={null}> 
           
              <CommentModal props={props}  show={showDiv} close={handleClose} />

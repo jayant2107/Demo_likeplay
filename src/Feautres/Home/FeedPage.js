@@ -107,7 +107,7 @@ padding:20px 0px;
 .search-bar{
   width:80%;
   display:flex;
-  background:rgba(168, 88, 15, 0.06)
+  background:rgba(168, 88, 15, 0.06);
 
   border-radius:15px;
   
