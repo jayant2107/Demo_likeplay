@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import img1 from "../Assets/Images/Matches Image/logo1 (2).png"
+import { Button } from 'antd';
 
 const MatchesCard2 = ({props}) => {
   return (
@@ -12,8 +13,8 @@ const MatchesCard2 = ({props}) => {
                 <p className="Common"> {props.Age} <span className='dot'></span> {props.City} <span className='dot'/> {props.County}</p>
                 </div>
                 <div className='Div3'>
-                    <button className='button'>Entering my eye</button>
-                    <button className='button1'> <img src={img1} alt="" className='img'/> Waive</button>
+                    <Button className='button'>Entering my eye</Button>
+                    <Button className='button1'> <img src={img1} alt="" className='img'/> Waive</Button>
                 </div>
             </div>
             <div className='Div4'>

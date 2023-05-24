@@ -160,6 +160,9 @@ font-size: 14px;
 line-height: 150%;
 color: #242424;
   }
+textarea {
+  resize: none;
+}
   .ButtonDiv {
     text-align: center;
     margin-top: 22px;
