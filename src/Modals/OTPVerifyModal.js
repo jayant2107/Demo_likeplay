@@ -1,68 +1,97 @@
-import React from "react";
 import styled from "styled-components";
 import StyledButton from "../Components/Button";
+import OtpInput from "react-otp-input";
+import { useState } from "react";
 
-export default function OTPVerifyModal() {
+export default function OTPVerifyModal({ closeMobileModal }) {
+  const [code, setCode] = useState("");
+  const handleChange = (code) => {
+    setCode(code);
+  };
   return (
     <>
       <StyledOTPModal>
-        <div className="modal">
-          <div className="modal-container">
-            <div className="modal-content">
-              <div className="content-container">
-                {/******* MODAL HEADER-SECTION STARTS ********/}
+        {/******* MODAL HEADER-SECTION STARTS ********/}
 
-                <div className="modal-head">
-                  <div className="heading">OTP Verification</div>
-                </div>
-                {/******* MODAL HEADER-SECTION ENDS ********/}
+        <div className="modal-head">
+          <div className="heading">OTP Verification</div>
+        </div>
+        {/******* MODAL HEADER-SECTION ENDS ********/}
 
-                {/* MODAL HERO-SECTION STARTS  */}
+        {/* MODAL HERO-SECTION STARTS  */}
 
-                <div className="modal-hero-section">
-                  <div className="hero-section-head"> Enter OTP</div>
-                  <div className="hero-section-main">
-                    <input type="number" className="number" placeholder="-" />
-                    <input type="number" className="number" placeholder="-" />
-                    <input type="number" className="number"  placeholder="-" />
-                    <input type="number" className="number"  placeholder="-" />
-                    <input type="number" className="number"  placeholder="-" />
-                    <input type="number" className="number"  placeholder="-" />
-                  </div>
-                  <div className="hero-section-para">
-                    <div className="timer">
-                      <u>00.45</u>
-                    </div>
-                    <div className="para">Resend</div>
-                  </div>
-                </div>
-
-                {/* MODAL HERO-SECTION ENDS  */}
-
-                {/* MODAL BUTTON-SECTION STARTS  */}
-
-                <div className="modal-button">
-                  <div className="button-content">
-                    <StyledButton
-                      text="white"
-                      bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
-                    >
-                      Verify
-                    </StyledButton>
-                  </div>
-                </div>
-
-                {/* MODAL BUTTON-SECTION ENDS  */}
-              </div>
+        <div className="modal-hero-section">
+          <div className="hero-section-head"> Enter OTP</div>
+          <div className="hero-section-main">
+            <OtpInput
+              value={code}
+              onChange={handleChange}
+              numInputs={6}
+              renderSeparator={<span style={{ width: "13px" }}></span>}
+              isInputNum={true}
+              inputType="tel"
+              renderInput={(props) => <input {...props} />}
+              shouldAutoFocus={true}
+              inputStyle={{
+                border: "1px solid #cfcfcf",
+                borderRadius: "10px",
+                width: "48px",
+                height: "48px",
+                fontSize: "12px",
+                backgroundColor: "#F8F8F8",
+                fontWeight: "400",
+              }}
+            />
+            {/* {OTP.map((data, index) => {
+              return (
+                <>
+                  <input
+                    type="number"
+                    name="otp"
+                    key={index}
+                    maxLength="1"
+                    className="number"
+                    placeholder="-"
+                    value={data}
+                    onChange={e => handleChange(e.target, index)}
+                  />
+                </>
+              );
+            })} */}
+          </div>
+          <div className="hero-section-para">
+            <div className="timer">
+              <u>00.45</u>
             </div>
+            <div className="para">Resend</div>
           </div>
         </div>
+
+        {/* MODAL HERO-SECTION ENDS  */}
+
+        {/* MODAL BUTTON-SECTION STARTS  */}
+
+        <div className="modal-button">
+          <div className="button-content">
+            <StyledButton
+              onClick={closeMobileModal}
+              text="white"
+              bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
+            >
+              Verify
+            </StyledButton>
+          </div>
+        </div>
+
+        {/* MODAL BUTTON-SECTION ENDS  */}
       </StyledOTPModal>
     </>
   );
 }
 
 export const StyledOTPModal = styled.div`
+  margin: 25px;
+
   .modal-container {
     width: 100%;
     height: 100vh;
@@ -117,19 +146,23 @@ export const StyledOTPModal = styled.div`
   .hero-section-main {
     display: flex;
     justify-content: space-between;
-    margin-top: 5px;
+    margin-top: 8px;
   }
 
   input.number {
-    width: 12%;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    width: 48px;
+    height: 48px;
     border: 1px solid #cfcfcf;
     border-radius: 10px;
     background-color: #f8f8f8;
     margin-right: 10px;
     text-align: center;
-    padding-left: 10px;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 
   .hero-section-para {
@@ -142,10 +175,12 @@ export const StyledOTPModal = styled.div`
     color: #e94057;
     font-size: 12px;
     font-weight: 400;
+    cursor: pointer;
   }
 
   .para {
     color: #7b7f91;
+    cursor: pointer;
   }
 
   /* MODAL HERO-SECTION ENDS  */
@@ -156,5 +191,11 @@ export const StyledOTPModal = styled.div`
     margin-top: 20px;
   }
 
+  .button-content {
+    width: 97%;
+  }
+
   /* MODAL BUTTON-SECTION ENDS  */
 `;
+
+// export const OTP = [1, 2, 3, 4, 5, 6];

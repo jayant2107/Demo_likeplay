@@ -2,10 +2,16 @@ import styled from "styled-components";
 import { upload } from "../Utils/images/Modalsimg";
 import { exit } from "../Utils/icons-folder/Modalsicons";
 import StyledButton from "../Components/Button";
-
+import { Select, Space } from "antd";
 import React from "react";
 
 export default function CreateShotsModal({ closeSnapModal, image }) {
+  const { Option } = Select;
+
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+  };
+
   return (
     <>
       <StyledCreateShortModal>
@@ -43,9 +49,10 @@ export default function CreateShotsModal({ closeSnapModal, image }) {
             <div className="heading">Take the Mic</div>
           </div>
           <div className="write-section">
-            <div className="write-section-content">
+            <input type="text" placeholder="Write Something..." />
+            {/* <div className="write-section-content">
               <div className="head"> Write Something...</div>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -58,14 +65,27 @@ export default function CreateShotsModal({ closeSnapModal, image }) {
             <div className="heading">Tag</div>
           </div>
           <div className="add-tag-section">
-            <div className="tags">
-              <div className="tag-content">
-                <div className="tag-name">Julia Roberts</div>
-                <div className="exit-icon">
-                  <img src={exit} alt="exit" id="exit" />
-                </div>
-              </div>
-            </div>
+            <Select
+              mode="multiple"
+              style={{
+                width: "100%",
+              }}
+              onChange={handleChange}
+              optionLabelProp="label"
+            >
+              <Option value="Julia Roberts" label="Julia Roberts">
+                <Space>Julia Roberts</Space>
+              </Option>
+              <Option value="Meryl Streep" label="Meryl Streep">
+                <Space>Meryl Streep</Space>
+              </Option>
+              <Option value="Jennifer Lawrence" label="Jennifer Lawrence">
+                <Space>Jennifer Lawrence</Space>
+              </Option>
+              <Option value="Jennifer Aniston" label="Jennifer Aniston">
+                <Space>Jennifer Aniston</Space>
+              </Option>
+            </Select>
           </div>
         </div>
 
@@ -96,31 +116,6 @@ export default function CreateShotsModal({ closeSnapModal, image }) {
 export const StyledCreateShortModal = styled.div`
 
 
-
-  .modal-container {
-    width: 100%;
-    height: 100vh;
-    background-color: rgb(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 2;
-  }
-
-  .modal-content {
-    width: 39%;
-    border: 1px solid transparent;
-    border-radius: 12px;
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 20px 0px;
-    margin: auto;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
 
   .delete-icon {
     color: green;
@@ -155,6 +150,8 @@ export const StyledCreateShortModal = styled.div`
     font-weight: 500;
     line-height: 20px;
     color: #242424;
+    margin-top: 10px;
+    margin-bottom: 5px;
   }
 
   .image-section {
@@ -199,11 +196,22 @@ export const StyledCreateShortModal = styled.div`
   /********* MODAL UPLOAD IMAGE-SECTION ENDS ********/
 
   /********* MODAL UPLOAD WRITE-SECTION STARTS ********/
-  .write-section {
-    border: 1px solid #e2e2e2;
+  /* .write-section {
+    /* border: 1px solid #e2e2e2; */
+    /* border-radius: 10px; */
+    /* display: flex;
+    height: 100px; */
+  /* } */ 
+
+  input[type="text"] {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    color: #7B7F91;
+      border: 1px solid #e2e2e2;
     border-radius: 10px;
-    display: flex;
-    height: 100px;
+    padding: 5px 5px 77px;
+    
   }
 
   .write-section-content {
@@ -215,12 +223,13 @@ export const StyledCreateShortModal = styled.div`
 
   /********* MODAL TAG-SECTION STARTS **********/
 
-  .add-tag-section {
-    border: 1px solid #e2e2e2;
+
+  /* .add-tag-section {
+   
     border-radius: 10px;
     display: flex;
-    padding: 12px;
-  }
+    /* padding: 12px; */
+  } */
 
   .tags {
     width: 30%;
