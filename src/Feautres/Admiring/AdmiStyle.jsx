@@ -30,10 +30,22 @@ span.spnaAddmi {
     padding: 10px;
 }
 .admiring_content {
-    margin: 45px 8px 10px 9px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 39px 14px;
+   
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    justify-content:center;
+    gap:20px;
+    width: 97.6%;
+    margin: auto;
+    margin-top: 45px;
+
+    @media(max-width:1200px){
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+}
+   
     
 }
 span.search_icon {
@@ -41,12 +53,12 @@ span.search_icon {
 }`
 
 export const AdmiringCard = styled.div`
-width: 200px;
+
 position: relative;
 
 .admiring_card_img {
     width: 100%;
-    height: 190px;
+    height: 175px;
     border-radius: 11px;
 }
 
@@ -65,7 +77,7 @@ position: relative;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 12px;
     line-height: 18px;
     display: flex;
     align-items: center;
@@ -75,6 +87,7 @@ position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+
     padding: 6px;
 }
 
@@ -107,13 +120,13 @@ button.admired_btn_cart_bottom {
     font-family: Poppins;
     font-style: normal;
     font-weight: 400;
-    font-size: 26px;
+    font-size: 16px;
     line-height: 30px;
     display: flex;
     -webkit-box-align: center;
     align-items: center;
     letter-spacing: 0.05em;
-    margin: 18px 0px;
+ 
 
 }
 .admired_btn_cart_select{

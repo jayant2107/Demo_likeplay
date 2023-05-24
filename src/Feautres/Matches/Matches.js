@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState }  from "react";
 import styled from "styled-components";
+import { Modal } from "antd";
 import MatchesCard from "../../Components/MatchesCard";
 import data from "../../Feautres/Matches/Matches_JSON";
 import search from "../../Assets/Images/Matches Image/search.png";
+import DatingDetailModal from "../../Modals/DatingDetailModal";
+
+
+
 
 const Matches = () => {
+
+  const [detailModal, setDetailModal] = useState(false);
+
+  const closeDetailModal = () =>{
+    setDetailModal(false);
+  }
+  
   return (
     <MatchesStyle>
       <div className="Header">
@@ -15,7 +27,18 @@ const Matches = () => {
       </div>
       <div className="Main">
         <div className="Tips">
-          <p>Online dating Tips?</p>{" "}
+          <p onClick={()=>{setDetailModal(true)}}>Online dating Tips?</p>
+          {detailModal && (<Modal
+          open={detailModal}
+          onCancel={closeDetailModal}
+          close={closeDetailModal}
+          maskClosable = {true}
+          footer={null}
+          width="80%"
+          style={{ top: 20 }}
+          >
+            <DatingDetailModal/>
+          </Modal>)}
         </div>
         <div className="Cards">
           {data.map((value) => (

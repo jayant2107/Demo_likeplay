@@ -4,6 +4,8 @@ import { userprofile } from "../Utils/Images";
 import { AiOutlineRight } from "react-icons/ai";
 import { Switch } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
+import { SecondUser, ThirdUser, fourthUser } from "../Utils/SettingImgaes/SettingP";
+
 
 export default function Rightsidebar() {
   const navigate = useNavigate();
@@ -13,7 +15,7 @@ export default function Rightsidebar() {
     console.log(`switch to ${checked}`);
   };
   useEffect(() => {
-    if (location.pathname === "/Layout/Myprofile") {
+    if (location.pathname === "/Layout/MyProfile") {
       setPath(false);
     } else {
       setPath(true);
@@ -21,7 +23,7 @@ export default function Rightsidebar() {
   }, [location]);
   return (
     <Rightsidebarwrapper>
-      <Profilesection>
+      {path?<> <Profilesection>
         <div>
           <p className="My_profile">My Profile</p>
           <div
@@ -38,20 +40,21 @@ export default function Rightsidebar() {
         <p className="messages_text">Messages</p>
         <div>
           <div className="messages_user">
-            <img src={userprofile} alt="" height={40} />
+            <img src={SecondUser} alt="" height={40} />
             <p>Julia Roberts</p>
           </div>
           <div className="messages_user">
-            <img src={userprofile} alt="" height={40} />
-            <p>Julia Roberts</p>
+            <img src={ThirdUser} alt="" height={40} />
+            <p>emmy</p>
           </div>
           <div className="messages_user">
-            <img src={userprofile} alt="" height={40} />
-            <p>Julia Roberts</p>
+            <img src={fourthUser} alt="" height={40} />
+            <p>ronny</p>
           </div>
         </div>
-      </Messagessection>
-      <Userinfo>
+      </Messagessection></>:
+      <>
+       <Userinfo>
         <div>
           <div className="user-details">
             <p className="left-section">Member Since</p>
@@ -75,6 +78,9 @@ export default function Rightsidebar() {
         <p>introduce on the floor</p>
         <Switch defaultChecked onChange={onChange} />
       </Introduce>
+      </>}
+     
+     
     </Rightsidebarwrapper>
   );
 }
@@ -95,6 +101,7 @@ const Profilesection = styled.div`
     font-weight: 600;
     letter-spacing: 2px;
     font-size: 14px;
+    padding:10px 0px;
   }
   p {
     font-size: 16px;
@@ -114,6 +121,7 @@ const Messagessection = styled.div`
     letter-spacing: 2px;
     font-weight: 600;
     font-size: 14px;
+    padding:10px 0px;
   }
   .messages_user {
     display: flex;
