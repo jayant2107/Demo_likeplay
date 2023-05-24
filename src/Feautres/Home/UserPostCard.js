@@ -37,7 +37,8 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const [editModal, setEditModal] = useState(false);
   const [showComment, setShowComment] = useState(false);
   const [clicked, setClicked] = useState(false);
-  const [tagLoader,setTagLoader]=useState(true)
+  const [tagLoader,setTagLoader]=useState(true);
+  const [tagList,setTagList]=useState([])
 
   let postUrl = val.shots.split(".");
 
@@ -72,8 +73,13 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   };
 
   const getTagsList = async (post_id) => {
+    setTagLoader(true)
     const res = await getTagDetail(post_id);
-    console.log("++res TagsList", res, post_id);
+    if(res?.status===200){
+      setTagList(res?.data)
+      setTagLoader(false)
+    }
+    else setTagLoader(false)
   };
 
   const content = (
@@ -194,24 +200,27 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
 
   const tagContent = (
     <PopContentCss>
-      {tagLoader?<TagLoader>
-        <Loader/>
-      </TagLoader>
-      :<div className="popContent">
-        {TagesData.map((val, index) => {
-          return (
-            <div key={index} className="popFlex popbtn">
-              <span className="imgSpan">
-                <img src={val.img} alt="userImg" />
-              </span>
-              <span>{val.name}</span>
-            </div>
-          );
-        })}
-      </div>}
+      <div className="popContent taglist-content">
+        {tagLoader?<TagLoader>
+          <Loader/>
+        </TagLoader>
+        :
+        tagList.length>0 ? tagList.map((val, index) => {
+            return (
+              <div key={index} className="popFlex popbtn">
+                <span className="imgSpan">
+                  <img src={val.img} alt="userImg" />
+                </span>
+                <span>{val.name}</span>
+              </div>
+            );
+          })
+          :<NoContent>No List</NoContent>
+        }
+      </div>
     </PopContentCss>
   );
-  const base_image_url = `https://dsi4auy1jdf82.cloudfront.net/`;
+
   return (
     <>
       <UserPostCardCss>
@@ -258,11 +267,11 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
         {/* USER SHOTS / POSTS */}
         {val.shots && postUrl[postUrl.length - 1] === "mp4" ? (
           <video width="750" height="500" controls>
-            <source src={base_image_url + val.shots} type="video/mp4" />
+            <source src={process.env.REACT_APP_BASEURL_IMAGE + val.shots} type="video/mp4" />
           </video>
         ) : (
           <div className="userPostImg">
-            <img src={base_image_url + val.shots} alt="UserPostImg" />
+            <img src={process.env.REACT_APP_BASEURL_IMAGE + val.shots} alt="UserPostImg" />
           </div>
         )}
 
@@ -470,6 +479,13 @@ export const UserPostCardCss = styled.div`
     }
   }
 `;
+const NoContent=styled.div`
+  height:100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+`
 
 const PopContentCss = styled.div`
   font-family: "Poppins", sans-serif;
@@ -477,6 +493,11 @@ const PopContentCss = styled.div`
   border-radius: 0.5rem;
   .popContent {
     color: #7b7f91;
+  }
+  .taglist-content{
+    height: 160px;
+    width: 140px;
+    overflow: auto;
   }
   .popbtn {
     font-size: 1rem;

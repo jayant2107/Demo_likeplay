@@ -39,14 +39,13 @@ const FeedPage = () => {
       : setStar(!star);
   };
 
-const base_image_url=`https://dsi4auy1jdf82.cloudfront.net/`
   const parseHomeContent=(payload)=>{
 // console.log("+====",payload,moment(payload[0]?.User?.createdAt).local().format('DD MMMM LT'))
     for(let i=0;i<payload.length;i++){
 
     }
     const parseData=payload?.map((list)=>({
-      profile_img:base_image_url+list?.User?.user_images_while_signup[0]?.image_url,
+      profile_img:process.env.REACT_APP_BASEURL_IMAGE+list?.User?.user_images_while_signup[0]?.image_url,
       userName:list?.User?.user_name || "",
       date:moment(list?.User?.createdAt).local().format('DD MMMM LT'),
       caption:list?.caption || "",

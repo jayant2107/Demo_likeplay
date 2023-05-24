@@ -8,13 +8,13 @@ const FeedShots = () => {
   return (
     <>
     {
-        ShotsData.map((val,index)=>{
-            return(
-                <>
-                <UserPostCard val={val} key={index} />
-                </>
-            )
-        })
+        // ShotsData.map((val,index)=>{
+        //     return(
+        //         <>
+        //         <UserPostCard val={val} key={index} />
+        //         </>
+        //     )
+        // })
     }    
     </>
   )

@@ -6,20 +6,18 @@ import editIcon from "../../Assets/Images/editIcon.png";
 
 //FakeData
 import { Images, AboutUser } from "./DataPage";
- 
+import { useSelector } from "react-redux";
+
 const FeedAboutMe = () => {
+  const profile_data = useSelector((e) => e.LoginSlice.data);
+
   return (
     <FeedAboutMeCss>
       <div className="aboutMe">
         <div className="edit-div">
           <p>About me</p> <img src={editIcon} alt="editicon" />
         </div>
-        <span>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled.
-        </span>
+        <span>{profile_data?.about_me}</span>
       </div>
 
       <div className="imagesDiv">
@@ -27,10 +25,10 @@ const FeedAboutMe = () => {
           <p>Images</p> <img src={editIcon} alt="editicon" />
         </div>
         <div className="pics">
-          {Images.map((val, index) => {
+          {profile_data?.user_images_while_signup.map((val, index) => {
             return (
               <div className="picsDiv">
-                <img src={val} alt="img" />
+                <img src={process.env.REACT_APP_BASEURL_IMAGE+val?.image_url} alt="img" />
               </div>
             );
           })}
@@ -38,58 +36,57 @@ const FeedAboutMe = () => {
       </div>
 
       {/* Aboutuser */}
-      {
-        AboutUser.FullName !== undefined && 
-      <div className="detailsBox">
-        <div className="boxDiv">
-          <div>
-            <p>Full Name</p>
-            <span>{AboutUser.FullName}</span>
+      {/* {AboutUser.FullName !== undefined && ( */}
+        <div className="detailsBox">
+          <div className="boxDiv">
+            <div>
+              <p>Full Name</p>
+              <span>{profile_data.user_name}</span>
+            </div>
+            <div>
+              <p>Age</p>
+              <span>{profile_data.age}</span>
+            </div>
           </div>
-          <div>
-            <p>Age</p>
-            <span>{AboutUser.Age}</span>
+          <div className="boxDiv">
+            <div>
+              <p>Gender</p>
+              <span>{profile_data.gender==="0"?"Male":"Female"}</span>
+            </div>
+            <div>
+              <p>Interested In</p>
+              <span>{profile_data.interested_in==="1"?"Female":"Male"}</span>
+            </div>
           </div>
+          <img className="editImgIcon" src={editIcon} alt="editicon" />
         </div>
-        <div className="boxDiv">
-          <div>
-            <p>Gender</p>
-            <span>{AboutUser.Gender}</span>
-          </div>
-          <div>
-            <p>Interested In</p>
-            <span>{AboutUser.InterestedIn}</span>
-          </div>
-        </div>
-        <img className="editImgIcon" src={editIcon} alt="editicon" />
-      </div>
-    }
+      {/* )} */}
       {/* UserDetails */}
       <div className="detailsBox">
         <div className="boxDiv">
           <div>
             <p>Status</p>
-            <span>single</span>
+            <span>{profile_data?.status}</span>
           </div>
           <div>
             <p>Body Type</p>
-            <span>Average</span>
+            <span>{profile_data?.body_type}</span>
           </div>
         </div>
         <div className="boxDiv">
           <div>
             <p>Height</p>
-            <span>Medium</span>
+            <span>{profile_data?.height}</span>
           </div>
           <div>
             <p>Education</p>
-            <span>Ordinary National Diploma</span>
+            <span>{profile_data?.education}</span>
           </div>
         </div>
         <div className="boxDiv">
           <div>
             <p>Employment</p>
-            <span>Infomation Technology</span>
+            <span>{profile_data?.employment}</span>
           </div>
         </div>
         <img className="editImgIcon" src={editIcon} alt="editicon" />
@@ -100,31 +97,31 @@ const FeedAboutMe = () => {
         <div className="boxDiv">
           <div>
             <p>Country of Residence</p>
-            <span>Nigeria</span>
+            <span>{profile_data?.residence_country}</span>
           </div>
           <div>
             <p>State</p>
-            <span>Abuja</span>
+            <span>{profile_data?.state}</span>
           </div>
         </div>
         <div className="boxDiv">
           <div>
             <p>City</p>
-            <span>Bamburu</span>
+            <span>{profile_data?.city}</span>
           </div>
           <div>
             <p>Nationality</p>
-            <span>Nigerian</span>
+            <span>{profile_data?.nationality}</span>
           </div>
         </div>
         <div className="boxDiv">
           <div>
             <p>Religion</p>
-            <span>Christian</span>
+            <span>{profile_data?.religion}</span>
           </div>
           <div>
             <p>Tribe to date</p>
-            <span>Hausa</span>
+            <span>{profile_data?.tribe_to_date}</span>
           </div>
         </div>
         <img className="editImgIcon" src={editIcon} alt="editicon" />
@@ -135,27 +132,27 @@ const FeedAboutMe = () => {
         <div className="boxDiv">
           <div>
             <p>Age Range preferred to date</p>
-            <span>24-30</span>
+            <span>{profile_data?.age_range_for_date}</span>
           </div>
           <div>
             <p>Tribe to date</p>
-            <span>Hausa</span>
+            <span>{profile_data?.tribe_to_date}</span>
           </div>
         </div>
         <div className="boxDiv">
           <div>
             <p>Looking for</p>
-            <span>Something serious & Permanent</span>
+            <span>{profile_data?.looking_for}</span>
           </div>
           <div>
             <p>Education</p>
-            <span>Ordinary National Diploma</span>
+            <span>{profile_data?.education}</span>
           </div>
         </div>
         <div className="boxDiv">
           <div>
             <p>Employment</p>
-            <span>Infomation Technology</span>
+            <span>{profile_data?.employment}</span>
           </div>
         </div>
         <img className="editImgIcon" src={editIcon} alt="editicon" />
@@ -167,7 +164,7 @@ const FeedAboutMe = () => {
 export default FeedAboutMe;
 
 const FeedAboutMeCss = styled.div`
-font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   p {
     font-weight: 600;
     font-size: 14px;
@@ -214,11 +211,11 @@ font-family: 'Poppins', sans-serif;
     border-radius: 0.5rem;
     margin: 0.5rem 0;
     position: relative;
-    padding : 0.4rem 0.8rem;
+    padding: 0.4rem 0.8rem;
   }
 
   .boxDiv {
-    padding : 0.5rem 0;
+    padding: 0.5rem 0;
     display: grid;
     grid-template-columns: 50% 50%;
   }
