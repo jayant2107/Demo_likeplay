@@ -8,7 +8,7 @@ export default function Inputfield(props) {
   return (
     <Formikwrapper>
      <input {...field} {...props} />
-       {meta.error && meta.touched && <div>{meta.error}</div>}
+       {meta.error && meta.touched && <p>{meta.error}</p>}
 
     </Formikwrapper>
   

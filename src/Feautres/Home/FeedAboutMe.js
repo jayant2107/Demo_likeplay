@@ -6,23 +6,30 @@ import editIcon from "../../Assets/Images/editIcon.png";
 
 //FakeData
 import { Images, AboutUser } from "./DataPage";
+import EditPofileDetails from "./EditPofileDetails";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Countvalue } from "../../Redux/SliceOfRedux/EditProfile";
 import { useSelector } from "react-redux";
 
 const FeedAboutMe = () => {
-  const profile_data = useSelector((e) => e.LoginSlice.data);
 
+  const profile_data = useSelector((e) => e.LoginSlice.data);
+  const dispatch=useDispatch()
+  const navigate = useNavigate()
   return (
     <FeedAboutMeCss>
       <div className="aboutMe">
         <div className="edit-div">
-          <p>About me</p> <img src={editIcon} alt="editicon" />
+          <p>About me</p>
+          <img src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(6)); navigate('/MyProfileEdit')}} />
         </div>
         <span>{profile_data?.about_me}</span>
       </div>
 
       <div className="imagesDiv">
         <div className="edit-div">
-          <p>Images</p> <img src={editIcon} alt="editicon" />
+          <p>Images</p> <img src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(1)); navigate('/MyProfileEdit')}} />
         </div>
         <div className="pics">
           {profile_data?.user_images_while_signup.map((val, index) => {
@@ -89,7 +96,7 @@ const FeedAboutMe = () => {
             <span>{profile_data?.employment}</span>
           </div>
         </div>
-        <img className="editImgIcon" src={editIcon} alt="editicon" />
+        <img className="editImgIcon" src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(3)); navigate('/MyProfileEdit')}}  />
       </div>
 
       {/* residence */}
@@ -124,7 +131,7 @@ const FeedAboutMe = () => {
             <span>{profile_data?.tribe_to_date}</span>
           </div>
         </div>
-        <img className="editImgIcon" src={editIcon} alt="editicon" />
+        <img className="editImgIcon" src={editIcon} alt="editicon"  onClick={() =>{dispatch(Countvalue(4)); navigate('/MyProfileEdit')}} />
       </div>
 
       {/* age */}
@@ -155,7 +162,7 @@ const FeedAboutMe = () => {
             <span>{profile_data?.employment}</span>
           </div>
         </div>
-        <img className="editImgIcon" src={editIcon} alt="editicon" />
+        <img className="editImgIcon" src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(5)); navigate('/MyProfileEdit')}}  />
       </div>
     </FeedAboutMeCss>
   );

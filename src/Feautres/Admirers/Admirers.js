@@ -4,21 +4,25 @@ import { searchIcon } from "../../Utils/Images";
 import data from "../Matches/Matches_JSON";
 import MatchesCard from "../../Components/MatchesCard";
 import AdmirerCards from "./AdmirerCards";
+import {  AiOutlineSearch } from "react-icons/ai";
 
 export default function Admirers() {
   return (
     <div>
       <AdmirerHeader>
-        <div>
-        <header>
-          Admirers<span>(They want me, I dey enter their eye)</span>
-        </header>
-        </div>
-        <div>
-        <img src={searchIcon} alt="" className="SLogo" />
+        <div className="header">
+          <div>
+            <p>Admires <span>(They Want Me, I Dey Enter Their Eye)</span></p>
 
+          </div>
+          <div>
+          <AiOutlineSearch style={{
+            width:'18px',height:'18px'
+          }}/>
+
+          </div>
         </div>
-      
+       
         
       </AdmirerHeader>
 
@@ -45,56 +49,35 @@ const CardWrapper = styled.div`
 `;
 
 const AdmirerHeader = styled.div`
-  width: 100%;
- 
-  background: #f0f0f0;
-  display: flex;
-  justify-content: space-between;
+height:88px;
+background: #f0f0f0;
+display:flex;
+align-items:end;
+.header{
+  width:100%;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
   align-items:center;
-  align-items: end;
-  padding: 20px;
 
-  header {
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 28px;
-    letter-spacing: 0.05em;
-    color: #a8580f;
-    display: flex;
-    align-items: center;
-
-    span {
-      font-family: "Poppins";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 24px;
-      letter-spacing: 0.05em;
-      text-transform: capitalize;
-      color: #242424;
-      background: transparent;
-      padding: 0 5px;
-    }
-
-    @media (max-width: 800px) {
-      color: red;
-    }
+  p{
+    font-size:16px;
+    font-family:"Poppins";
+    font-weight:500;
+    color:#A8580F;
+    letter-spacing:0.05em;
+    line-height:24px;
   }
-
-  span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 4.5px 20px;
-    background: #ffffff;
-    border-radius: 6px;
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 19px;
-    color: #242424;
+  span{
+    color:#242424;
+    font-size:14px;
+    font-family:"Poppins";
+    font-weight:400;
   }
+ 
+
+}
+
+
+
 `;

@@ -8,7 +8,7 @@ import ResHeaderComponent from "../../Auth/RegistrationPage/ResHeader";
 
 export default function Footercontent() {
   let location = useLocation();
-  console.log(location);
+  console.log(location,"lll");
   let footerContent = footercontentdata.filter(
     (ele) => ele.page === location.state.id
   );
@@ -52,10 +52,20 @@ export default function Footercontent() {
       .head {
         margin-top: 5rem;
         font-family: "Oregano", cursive;
-        font-size: 1.3rem;
-        line-height: 3rem;
+        letter-spacing:0.05em;
+        line-height:45px;
         margin-bottom: 1rem;
         text-align: center;
+        .heading2{
+          font-size:30px;
+          font-family:"Poppins"
+        }
+        .heading1{
+          font-size:40px;
+          font-weight:500;
+          font-family:"Poppins";
+          padding:10px 0px;
+        }
       }
       .content {
         position: relative;
@@ -90,8 +100,8 @@ export default function Footercontent() {
             return (
               <>
                 <div className="head">
-                  <h2>{ele.page}</h2>
-                  <h2>{ele.heading}</h2>
+                  <p className="heading1">{ele.page}</p>
+                  <p className="heading2">{ele.heading}</p>
                 </div>
                 {ele.paragraph.map((e) => {
                   return (
