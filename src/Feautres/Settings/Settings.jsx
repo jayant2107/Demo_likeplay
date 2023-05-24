@@ -178,7 +178,7 @@ const Wrapper = styled.div`
     background-color: #f0f0f0;
     font-weight: 600;
     font-size: 18px;
-    height: 10vh;
+    height: 88px;
   }
   .deltebtn {
     width: 100%;

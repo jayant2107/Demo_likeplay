@@ -6,13 +6,20 @@ import editIcon from "../../Assets/Images/editIcon.png";
 
 //FakeData
 import { Images, AboutUser } from "./DataPage";
- 
+import EditPofileDetails from "./EditPofileDetails";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Countvalue } from "../../Redux/SliceOfRedux/EditProfile";
+
 const FeedAboutMe = () => {
+  const dispatch=useDispatch()
+  const navigate = useNavigate()
   return (
     <FeedAboutMeCss>
       <div className="aboutMe">
         <div className="edit-div">
-          <p>About me</p> <img src={editIcon} alt="editicon" />
+          <p>About me</p>
+          <img src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(6)); navigate('/MyProfileEdit')}} />
         </div>
         <span>
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -24,7 +31,7 @@ const FeedAboutMe = () => {
 
       <div className="imagesDiv">
         <div className="edit-div">
-          <p>Images</p> <img src={editIcon} alt="editicon" />
+          <p>Images</p> <img src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(1)); navigate('/MyProfileEdit')}} />
         </div>
         <div className="pics">
           {Images.map((val, index) => {
@@ -38,32 +45,31 @@ const FeedAboutMe = () => {
       </div>
 
       {/* Aboutuser */}
-      {
-        AboutUser.FullName !== undefined && 
-      <div className="detailsBox">
-        <div className="boxDiv">
-          <div>
-            <p>Full Name</p>
-            <span>{AboutUser.FullName}</span>
+      {AboutUser.FullName !== undefined && (
+        <div className="detailsBox">
+          <div className="boxDiv">
+            <div>
+              <p>Full Name</p>
+              <span>{AboutUser.FullName}</span>
+            </div>
+            <div>
+              <p>Age</p>
+              <span>{AboutUser.Age}</span>
+            </div>
           </div>
-          <div>
-            <p>Age</p>
-            <span>{AboutUser.Age}</span>
+          <div className="boxDiv">
+            <div>
+              <p>Gender</p>
+              <span>{AboutUser.Gender}</span>
+            </div>
+            <div>
+              <p>Interested In</p>
+              <span>{AboutUser.InterestedIn}</span>
+            </div>
           </div>
+          <img className="editImgIcon" src={editIcon} alt="editicon"  onClick={() =>{dispatch(Countvalue(2)); navigate('/MyProfileEdit')}}  />
         </div>
-        <div className="boxDiv">
-          <div>
-            <p>Gender</p>
-            <span>{AboutUser.Gender}</span>
-          </div>
-          <div>
-            <p>Interested In</p>
-            <span>{AboutUser.InterestedIn}</span>
-          </div>
-        </div>
-        <img className="editImgIcon" src={editIcon} alt="editicon" />
-      </div>
-    }
+      )}
       {/* UserDetails */}
       <div className="detailsBox">
         <div className="boxDiv">
@@ -92,7 +98,7 @@ const FeedAboutMe = () => {
             <span>Infomation Technology</span>
           </div>
         </div>
-        <img className="editImgIcon" src={editIcon} alt="editicon" />
+        <img className="editImgIcon" src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(3)); navigate('/MyProfileEdit')}}  />
       </div>
 
       {/* residence */}
@@ -127,7 +133,7 @@ const FeedAboutMe = () => {
             <span>Hausa</span>
           </div>
         </div>
-        <img className="editImgIcon" src={editIcon} alt="editicon" />
+        <img className="editImgIcon" src={editIcon} alt="editicon"  onClick={() =>{dispatch(Countvalue(4)); navigate('/MyProfileEdit')}} />
       </div>
 
       {/* age */}
@@ -158,7 +164,7 @@ const FeedAboutMe = () => {
             <span>Infomation Technology</span>
           </div>
         </div>
-        <img className="editImgIcon" src={editIcon} alt="editicon" />
+        <img className="editImgIcon" src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(5)); navigate('/MyProfileEdit')}}  />
       </div>
     </FeedAboutMeCss>
   );
@@ -167,7 +173,7 @@ const FeedAboutMe = () => {
 export default FeedAboutMe;
 
 const FeedAboutMeCss = styled.div`
-font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   p {
     font-weight: 600;
     font-size: 14px;
@@ -214,11 +220,11 @@ font-family: 'Poppins', sans-serif;
     border-radius: 0.5rem;
     margin: 0.5rem 0;
     position: relative;
-    padding : 0.4rem 0.8rem;
+    padding: 0.4rem 0.8rem;
   }
 
   .boxDiv {
-    padding : 0.5rem 0;
+    padding: 0.5rem 0;
     display: grid;
     grid-template-columns: 50% 50%;
   }

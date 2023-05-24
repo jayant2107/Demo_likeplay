@@ -79,7 +79,7 @@ export default function Sidebar() {
               />
             </Slogo>
             <Slabel active={active === "/Layout/FeedPage"}>
-              <p>Home</p>
+              <p>Feed Page</p>
             </Slabel>
           </div>
         </Slinkcontainer>

@@ -52,6 +52,7 @@ const FeedPage = () => {
             onCancel={closeSnapModal}
             maskClosable = {true}
             footer = {null}
+            
             centered
           ><CreateShotsModal closeSnapModal={closeSnapModal}/></Modal>)}
           <div onClick = {()=>{

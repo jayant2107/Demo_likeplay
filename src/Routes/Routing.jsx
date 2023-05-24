@@ -26,6 +26,8 @@ import FeedMyProfile from "../Feautres/Home/FeedMyProfile";
 import Admiring from "../Feautres/Admiring/Admiring";
 import Testimonial from "../Feautres/Testimonial/Testimonial";
 import ChatScreen from "../Feautres/Messages/ChatScreen";
+import EditName from "../EditProfile/EditName";
+import EditPofileDetails from "../Feautres/Home/EditPofileDetails";
 
 const Routing = () => {
   const value = useSelector((e) => e.LoginSlice.data);
@@ -56,6 +58,7 @@ const Routing = () => {
             <Route path="/Nigeria" element={<Country />} />
           </Route>
           <Route element={<PrivateRouter isAuth={prop} />}>
+          <Route path="/MyProfileEdit" element={<EditPofileDetails />} />
             <Route path="/Layout" element={<Layout />}>
               <Route path="/Layout/FeedPage" element={<FeedPage />} />
               <Route path="/Layout/MyProfile" element={<FeedMyProfile />} />
@@ -77,6 +80,7 @@ const Routing = () => {
               <Route path="/Layout/Settings" element={<Settings />} />
               <Route path="/Layout/FAQs" element={<FAQ />} />
               <Route path="/Layout/Testimonal" element={<Testimonial />} />
+              <Route path ='/Layout/EditName' element={<EditName/> }/>
               {/* <Route path="/Layout/Testimonal" element={<Testimonal />} /> */}
             </Route>
           </Route>

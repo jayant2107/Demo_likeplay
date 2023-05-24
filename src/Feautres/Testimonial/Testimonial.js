@@ -74,7 +74,9 @@ const Maincontent = styled.div`
       resize: none;
       height: 130px;
       padding: 15px;
+      outline:none;
     }
+   
   }
   .submit-btn {
     display: flex;
