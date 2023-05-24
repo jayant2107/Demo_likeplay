@@ -11,13 +11,12 @@ import Testimonial from "./Feautres/Testimonial/Testimonial";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 
-  // <Provider store={store}>
-  //   <PersistGate loading={null} persistor={persistor}>
-  //     <App />
-  //   </PersistGate>
-  // </Provider>
-  <Testimonial/>
-  // <Subscription/>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
+  </Provider>
+ 
 );
 
 reportWebVitals();
