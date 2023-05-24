@@ -10,6 +10,7 @@
     "antd": "^5.5.0",
     "axios": "^1.4.0",
     "formik": "^2.2.9",
+    "moment": "^2.29.4",
     "node-modules": "^1.0.1",
     "react": "^18.2.0",
     "react-chat-elements": "^12.0.8",

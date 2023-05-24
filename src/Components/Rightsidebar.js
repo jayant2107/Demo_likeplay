@@ -5,15 +5,19 @@ import { AiOutlineRight } from "react-icons/ai";
 import { Switch } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SecondUser, ThirdUser, fourthUser } from "../Utils/SettingImgaes/SettingP";
+import { useSelector } from "react-redux";
 
 
 export default function Rightsidebar() {
   const navigate = useNavigate();
   const location = useLocation();
   const [path, setPath] = useState(true);
+  const LoginPerson=useSelector((e) => e.LoginSlice.data)
+
   const onChange = (checked) => {
     console.log(`switch to ${checked}`);
   };
+
   useEffect(() => {
     if (location.pathname === "/Layout/MyProfile") {
       setPath(false);
@@ -21,6 +25,7 @@ export default function Rightsidebar() {
       setPath(true);
     }
   }, [location]);
+
   return (
     <Rightsidebarwrapper>
       {path?<> <Profilesection>
@@ -31,7 +36,7 @@ export default function Rightsidebar() {
             onClick={() => navigate("/Layout/MyProfile")}
           >
             <img src={userprofile} alt="" height={50} />
-            <p>Logan Lerman</p>
+            <p>{LoginPerson.user_name}</p>
             <AiOutlineRight />
           </div>
         </div>

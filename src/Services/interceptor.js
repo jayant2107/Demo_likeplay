@@ -13,7 +13,7 @@ Api.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
 
 Api.interceptors.request.use(
   (config) => {
-    if (store?.getState()?.Authlogin?.data?.token) {
+    if (store?.getState()?.LoginSlice?.data?.token) {
       const token = `Bearer ${store?.getState()?.LoginSlice?.data?.token}`;
       config.headers = {
         Authorization: token,

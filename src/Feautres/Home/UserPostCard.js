@@ -25,6 +25,8 @@ import {
 import { TagesData } from "./DataPage";
 import FeedCommentView from "./FeedCommentView";
 import CreateShotsModal from "../../Modals/CreateShotsModal";
+import { getTagDetail } from "Services/collection";
+import Loader from "Components/Loader";
 
 const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const [showModal, setShowModal] = useState(false);
@@ -33,12 +35,15 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const [reportUserModal, setReportUserModal] = useState(false);
   const [likeModal, setLikeModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
-  const [showComment,setShowComment] = useState(false);
-  const [clicked,setClicked] = useState(false);
+  const [showComment, setShowComment] = useState(false);
+  const [clicked, setClicked] = useState(false);
+  const [tagLoader,setTagLoader]=useState(true)
+
+  let postUrl = val.shots.split(".");
 
   const changeModalComment = () => {
     setShowComment(!showComment);
-  }
+  };
 
   const handleClickChange = () => {
     setClicked(!clicked);
@@ -54,9 +59,9 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
     }
   };
 
-  const closeEditModal = () =>{
+  const closeEditModal = () => {
     setEditModal(false);
-  }
+  };
 
   const closeReportModal = () => {
     setReportUserModal(false);
@@ -66,19 +71,31 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
     setLikeModal(false);
   };
 
+  const getTagsList = async (post_id) => {
+    const res = await getTagDetail(post_id);
+    console.log("++res TagsList", res, post_id);
+  };
+
   const content = (
     <PopContentCss>
       <div className="popContent">
-        <div className="popbtn" onClick={()=>setEditModal(true)}>Edit</div>
+        <div className="popbtn" onClick={() => setEditModal(true)}>
+          Edit
+        </div>
         {editModal && (
           <Modal
-          open= {editModal}
-          close= {closeEditModal}
-          footer= {null}
-          maskClosable = {true}
-          centered 
-          onCancel={closeEditModal}
-          ><CreateShotsModal closeSnapModal= {closeEditModal} image={val.Shots}/></Modal>
+            open={editModal}
+            close={closeEditModal}
+            footer={null}
+            maskClosable={true}
+            centered
+            onCancel={closeEditModal}
+          >
+            <CreateShotsModal
+              closeSnapModal={closeEditModal}
+              image={val.shots}
+            />
+          </Modal>
         )}
         <div
           className="popbtn"
@@ -95,7 +112,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
             open={showBlockModal}
             onOk={closeModal}
             onCancel={closeModal}
-            maskClosable = {true}
+            maskClosable={true}
             // cancelText="naa"
             centered
             className="modalDesign"
@@ -121,7 +138,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
             onOk={closeModal}
             onCancel={closeModal}
             centered
-            maskClosable = {true}
+            maskClosable={true}
             className="modalDesign"
             footer={null}
           >
@@ -140,7 +157,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
         <Modal
           open={reportUserModal}
           onOk={closeReportModal}
-          maskClosable = {true}
+          maskClosable={true}
           onCancel={closeReportModal}
           centered
           footer={null}
@@ -164,7 +181,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
             onOk={closeModal}
             onCancel={closeModal}
             className="modalDesign"
-            maskClosable = {true}
+            maskClosable={true}
             centered
             footer={null}
           >
@@ -177,7 +194,10 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
 
   const tagContent = (
     <PopContentCss>
-      <div className="popContent">
+      {tagLoader?<TagLoader>
+        <Loader/>
+      </TagLoader>
+      :<div className="popContent">
         {TagesData.map((val, index) => {
           return (
             <div key={index} className="popFlex popbtn">
@@ -188,21 +208,21 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
             </div>
           );
         })}
-      </div>
+      </div>}
     </PopContentCss>
   );
-
+  const base_image_url = `https://dsi4auy1jdf82.cloudfront.net/`;
   return (
     <>
       <UserPostCardCss>
         {/* USER PROFILE SECTION  */}
         <div className="userProfile">
           <div className="profileImg">
-            <img className="" src={val.ProfileImg} alt="userProfileImg" />
+            <img className="" src={val.profile_img} alt="userProfileImg" />
           </div>
           <div className="ProfileInfo">
-            <div className="userName">{val.UserName}</div>
-            <div className="postDate">{val.Date}</div>
+            <div className="userName">{val.userName}</div>
+            <div className="postDate">{val.date}</div>
           </div>
           <div className="profileOptions">
             <div className="heart">
@@ -229,38 +249,42 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
         </div>
 
         {/* USER Caption */}
-        {val.Caption && (
+        {val.caption && (
           <div className="userCaption">
-            <span>{val.Caption}</span>
+            <span>{val.caption}</span>
           </div>
         )}
-
+        {console.log("val.shots.split", val.shots.split(".").length)}
         {/* USER SHOTS / POSTS */}
-        {val.Shots && (
+        {val.shots && postUrl[postUrl.length - 1] === "mp4" ? (
+          <video width="750" height="500" controls>
+            <source src={base_image_url + val.shots} type="video/mp4" />
+          </video>
+        ) : (
           <div className="userPostImg">
-            <img src={val.Shots} alt="UserPostImg" />
+            <img src={base_image_url + val.shots} alt="UserPostImg" />
           </div>
         )}
 
         <div className="commentLikeBtn">
           {/* LIKE BUTTON */}
           <div className="likeDiv">
-            <div >
+            <div>
               <span onClick={() => changeIcon("like")}>
-              <LikeFeedIcon val={like} />
+                <LikeFeedIcon val={like} />
               </span>
-              <span>18</span>
+              <span>{val.totalLikeByThumb}</span>
             </div>
             <div>
-              <span  onClick={() => changeIcon("heart")} >
-              <HeartFeedIcon val={heart} />
+              <span onClick={() => changeIcon("heart")}>
+                <HeartFeedIcon val={heart} />
               </span>
               <span
                 onClick={() => {
                   setLikeModal(true);
                 }}
               >
-                18
+                {val.totalLikeByHeart}
               </span>
               {likeModal && (
                 <Modal
@@ -268,21 +292,19 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
                   onOk={closeLikeModal}
                   onCancel={closeLikeModal}
                   footer={null}
-                  maskClosable = {true}
+                  maskClosable={true}
                   centered
                   width="30%"
                 >
-                 
-                 
                   <LikesViewModal closeLikeModal={closeLikeModal} />
                 </Modal>
               )}
             </div>
             <div onClick={() => changeIcon("star")}>
               <span>
-              <StarFeedIcon val={star} />
+                <StarFeedIcon val={star} />
               </span>
-              <span>18</span>
+              <span>{val.totalLikeByStar}</span>
             </div>
           </div>
 
@@ -291,35 +313,39 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
             <span>
               <CommentFeedIcon />
             </span>
-            <span> 18 Comments</span>
+            <span>{val.totalCommments} Comments</span>
           </div>
 
           {/* TAG BUTTON3 */}
           <div className="commentDiv">
-          <Popover
-                arrow={false}
-                overlayStyle={{
-                  border: "1px solid #E2E2E2",
-                  backgroundColor: "#FFFFFF",
-                  borderRadius: "0.5rem",
-                }}
-                content={tagContent}
-                placement="top"
-                trigger="click"
-              >
-            <span>
-              <TagFeedIcon />
-            </span>
-            <span>5 tags</span>
+            <Popover
+              arrow={false}
+              overlayStyle={{
+                border: "1px solid #E2E2E2",
+                backgroundColor: "#FFFFFF",
+                borderRadius: "0.5rem",
+              }}
+              content={tagContent}
+              placement="top"
+              trigger="click"
+            >
+              <span>
+                <TagFeedIcon />
+              </span>
+              <span>{val.totalTags} tags</span>
+              <div onClick={() => getTagsList(val.post_id)}>
                 <img className="arrow" src={DownArrowImg} alt="DownArror" />
-              </Popover>
+              </div>
+            </Popover>
           </div>
         </div>
-        {
-          showComment &&
-          <FeedCommentView val={val} showComment={showComment} changeModalComment={changeModalComment}/>
-        }
-        
+        {showComment && (
+          <FeedCommentView
+            val={val}
+            showComment={showComment}
+            changeModalComment={changeModalComment}
+          />
+        )}
       </UserPostCardCss>
     </>
   );
@@ -367,12 +393,12 @@ export const UserPostCardCss = styled.div`
     color: #7b7f91;
     font-size: 0.9rem;
   }
-  
+
   .profileOptions {
     display: Flex;
     align-items: center;
     justify-content: space-between;
-    cursor : pointer;
+    cursor: pointer;
   }
   .heart {
     background-color: #f7f7f7;
@@ -425,7 +451,7 @@ export const UserPostCardCss = styled.div`
       cursor: pointer;
       span {
         margin-left: 0.4rem;
-      }  
+      }
     }
   }
 
@@ -448,7 +474,7 @@ export const UserPostCardCss = styled.div`
 const PopContentCss = styled.div`
   font-family: "Poppins", sans-serif;
   background-color: #ffffff;
-  border-radius : 0.5rem;
+  border-radius: 0.5rem;
   .popContent {
     color: #7b7f91;
   }
@@ -501,3 +527,7 @@ const PopContentCss = styled.div`
     }
   }
 `;
+
+const TagLoader= styled.div`
+height:80px;
+`

@@ -4,11 +4,10 @@ import { Logimg } from "../Utils/RegistrationImg/Registrationflie";
 import { LoginBg } from "../Utils/RegistrationImg/Registrationflie";
 import { Formik, Form, Field } from "formik";
 import ForgetPage from "./ForgetPage";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { LoadingOutlined } from '@ant-design/icons';
-import {  Input, Spin } from "antd";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Input, Spin } from "antd";
 import {
   RisgistionBgImg,
   FromStyleDiv,
@@ -21,16 +20,17 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { ValidUser } from "../Redux/SliceOfRedux/LoginSlice";
 import styled from "styled-components";
+import {LoginApi} from "Services/collection"
 
 const LoginPage = () => {
   const [passwordVisible, setPasswordVisible] = React.useState(false);
-  const [loading,setloading]=useState(false)
-  const value= useSelector((e)=>e)
-  console.log(value,"vvv")
+  const [loading, setloading] = useState(false);
+  const value = useSelector((e) => e);
+  console.log(value, "vvv");
 
-  const [forgot,setForgot] = useState(false)
-  const OpenFogot =()=>setForgot(true)
-  const CloseFogot =()=>setForgot(false)
+  const [forgot, setForgot] = useState(false);
+  const OpenFogot = () => setForgot(true);
+  const CloseFogot = () => setForgot(false);
   // const CloseFogot =()=>setForgot(false)
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -40,27 +40,40 @@ const LoginPage = () => {
     password: Yup.string().required(" Password is Required*"),
   });
 
-  const handleSubmit = (values) => {
-    setloading(true)
-   
-    console.log(values,"--------");
-    setTimeout(() => {
-      if(values.email==='admin123@gmail.com' && values.password==='admin123'){
-        dispatch(ValidUser(true));
-        setloading(false)
+  const handleSubmit = async(values) => {
+    // try{
+      setloading(true);
+      const res=await LoginApi(values)
+      console.log("res++ login",res)
+      if(res.status===200){
+        setloading(false);
+        dispatch(ValidUser(res?.data));
       }
       else{
-        setloading(false)
-        console.log("eror")
-        toast.error("enter correct password and email")
-        
-       
+        setloading(false);
+        toast.error(res?.message || "Enter correct password and email");
       }
-      
-    }, 2000);
+    // }
+    // catch(e){
+    //   toast.error("Something Went Wrong");
+    // }
 
 
+    // setTimeout(() => {
+    //   if (
+    //     values.email === "admin123@gmail.com" &&
+    //     values.password === "admin123"
+    //   ) {
+    //     dispatch(ValidUser(true));
+    //     setloading(false);
+    //   } else {
+    //     setloading(false);
+    //     console.log("eror");
+    //     toast.error("Enter correct password and email");
+    //   }
+    // }, 2000);
   };
+
   const antIcon = (
     <LoadingOutlined
       style={{
@@ -69,7 +82,6 @@ const LoginPage = () => {
       spin
     />
   );
-
 
   return (
     <>
@@ -80,8 +92,8 @@ const LoginPage = () => {
           <ResHeaderComponent />
           <RisgistationPage1>
             <div className="Risgistation_content">
-              <div className="risgistation_img_log" >
-                <img src={Logimg}  className="rig_img_log" alt="empty" />
+              <div className="risgistation_img_log">
+                <img src={Logimg} className="rig_img_log" alt="empty" />
                 <h1>The #Dating Site in Nigeria</h1>
               </div>
               <Formik
@@ -119,22 +131,20 @@ const LoginPage = () => {
                       <br></br>
                       <br></br>
                       <div className="btn">
-                        {
-                          loading?
+                        {loading ? (
                           <LoaderWrapper>
                             <Spin indicator={antIcon} />
-                           
-                          </LoaderWrapper>:  <ButtonStyle
-                          width="26rem"
-                          margin="1rem 0"
-                          type="submit"
-                        >
-                          Login
-                        </ButtonStyle>
-                        }
+                          </LoaderWrapper>
+                        ) : (
+                          <ButtonStyle
+                            width="26rem"
+                            margin="1rem 0"
+                            type="submit"
+                          >
+                            Login
+                          </ButtonStyle>
+                        )}
 
-                    
-                      
                         <p style={{ cursor: "pointer" }}>
                           Don't have a account{" "}
                           <span onClick={() => navigate("/Registration")}>
@@ -155,11 +165,11 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-const LoaderWrapper = styled.div`
-width: 100%;
-padding:10px 0px;
 
-display: flex;
-align-items: center;
-justify-content: center;
+const LoaderWrapper = styled.div`
+  width: 100%;
+  padding: 10px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
