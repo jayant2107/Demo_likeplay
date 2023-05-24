@@ -184,9 +184,15 @@ const MatchesCardStyle = styled.div`
     height: 24px;
     background: #f2f2f2;
     border-radius: 5px;
-   
-    /* z-index: 0; */
+    font-weight: 800;
+    font-size:18px ;
+    color: red;
   }
+  .Button2:hover {
+    color:red;
+    background: #f2f2f2;
+  }
+
   .MainDiv2 {
     display: flex;
     justify-content: space-between;
