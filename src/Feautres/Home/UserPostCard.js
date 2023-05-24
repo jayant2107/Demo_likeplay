@@ -24,18 +24,25 @@ import {
 // FakeData
 import { TagesData } from "./DataPage";
 import FeedCommentView from "./FeedCommentView";
+import CreateShotsModal from "../../Modals/CreateShotsModal";
 
 const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
-  const [comment, setComment] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showHideModal, setShowHideModal] = useState(false);
   const [showBlockModal, setshowBlockModal] = useState(false);
   const [reportUserModal, setReportUserModal] = useState(false);
   const [likeModal, setLikeModal] = useState(false);
+  const [editModal, setEditModal] = useState(false);
+  const [showComment,setShowComment] = useState(false);
+  const [clicked,setClicked] = useState(false);
 
-  const changeModal=()=>{
-    setComment(!comment);
+  const changeModalComment = () => {
+    setShowComment(!showComment);
   }
+
+  const handleClickChange = () => {
+    setClicked(!clicked);
+  };
 
   const closeModal = () => {
     if (showBlockModal === true) {
@@ -47,6 +54,9 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
     }
   };
 
+  const closeEditModal = () =>{
+    setEditModal(false);
+  }
 
   const closeReportModal = () => {
     setReportUserModal(false);
@@ -59,7 +69,17 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const content = (
     <PopContentCss>
       <div className="popContent">
-        <div className="popbtn">Edit</div>
+        <div className="popbtn" onClick={()=>setEditModal(true)}>Edit</div>
+        {editModal && (
+          <Modal
+          open= {editModal}
+          close= {closeEditModal}
+          footer= {null}
+          maskClosable = {true}
+          centered 
+          onCancel={closeEditModal}
+          ><CreateShotsModal closeSnapModal= {closeEditModal} image={val.Shots}/></Modal>
+        )}
         <div
           className="popbtn"
           onClick={() => {
@@ -75,7 +95,9 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
             open={showBlockModal}
             onOk={closeModal}
             onCancel={closeModal}
+            maskClosable = {true}
             // cancelText="naa"
+            centered
             className="modalDesign"
             footer={null}
             // okButtonProps={{ style: { backgroundColor: "green" } }}
@@ -98,6 +120,8 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
             open={showModal}
             onOk={closeModal}
             onCancel={closeModal}
+            centered
+            maskClosable = {true}
             className="modalDesign"
             footer={null}
           >
@@ -116,7 +140,9 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
         <Modal
           open={reportUserModal}
           onOk={closeReportModal}
+          maskClosable = {true}
           onCancel={closeReportModal}
+          centered
           footer={null}
         >
           <ReportUserModal closeReportModal={closeReportModal} />
@@ -138,6 +164,8 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
             onOk={closeModal}
             onCancel={closeModal}
             className="modalDesign"
+            maskClosable = {true}
+            centered
             footer={null}
           >
             <DeleteModal prop={HideData} closeModal={closeModal} />
@@ -191,6 +219,8 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
                 content={content}
                 placement="bottomRight"
                 trigger="click"
+                open={clicked}
+                onOpenChange={handleClickChange}
               >
                 <img src={ThreeDotsImg} alt="HeartTickImg" />
               </Popover>
@@ -215,12 +245,16 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
         <div className="commentLikeBtn">
           {/* LIKE BUTTON */}
           <div className="likeDiv">
-            <div onClick={() => changeIcon("like")}>
+            <div >
+              <span onClick={() => changeIcon("like")}>
               <LikeFeedIcon val={like} />
+              </span>
               <span>18</span>
             </div>
-            <div onClick={() => changeIcon("heart")}>
+            <div>
+              <span  onClick={() => changeIcon("heart")} >
               <HeartFeedIcon val={heart} />
+              </span>
               <span
                 onClick={() => {
                   setLikeModal(true);
@@ -234,21 +268,26 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
                   onOk={closeLikeModal}
                   onCancel={closeLikeModal}
                   footer={null}
+                  maskClosable = {true}
+                  centered
                   width="30%"
                 >
+                 
                  
                   <LikesViewModal closeLikeModal={closeLikeModal} />
                 </Modal>
               )}
             </div>
             <div onClick={() => changeIcon("star")}>
+              <span>
               <StarFeedIcon val={star} />
+              </span>
               <span>18</span>
             </div>
           </div>
 
           {/* COMMENT BUTTON2 */}
-          <div className="commentDiv" onClick={changeModal}>
+          <div className="commentDiv" onClick={changeModalComment}>
             <span>
               <CommentFeedIcon />
             </span>
@@ -276,14 +315,11 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
               </Popover>
           </div>
         </div>
-
-        {comment && (
-          <FeedCommentView
-            commentOn={comment}
-            changeModal={changeModal}
-            val={val}
-          />
-        )}
+        {
+          showComment &&
+          <FeedCommentView val={val} showComment={showComment} changeModalComment={changeModalComment}/>
+        }
+        
       </UserPostCardCss>
     </>
   );
@@ -336,6 +372,7 @@ export const UserPostCardCss = styled.div`
     display: Flex;
     align-items: center;
     justify-content: space-between;
+    cursor : pointer;
   }
   .heart {
     background-color: #f7f7f7;
@@ -411,6 +448,7 @@ export const UserPostCardCss = styled.div`
 const PopContentCss = styled.div`
   font-family: "Poppins", sans-serif;
   background-color: #ffffff;
+  border-radius : 0.5rem;
   .popContent {
     color: #7b7f91;
   }

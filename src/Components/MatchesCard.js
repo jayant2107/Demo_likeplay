@@ -3,11 +3,30 @@ import styled from "styled-components";
 import logo1 from "../Assets/Images/Matches Image/logo1 (1).png";
 import logo2 from "../Assets/Images/Matches Image/logo1 (2).png";
 import CommentModal from "../Modals/CommentModal";
+import { Button, Modal } from 'antd';
+
+
+
 
 
 const MatchesCard = ({ props }) => {
 
-
+  const [loadings, setLoadings] = useState([]);
+  const enterLoading = (index) => {
+    setLoadings((prevLoadings) => {
+      const newLoadings = [...prevLoadings];
+      newLoadings[index] = true;
+      return newLoadings;
+    });
+    setTimeout(() => {
+      setLoadings((prevLoadings) => {
+        const newLoadings = [...prevLoadings];
+        newLoadings[index] = false;
+        return newLoadings;
+      });
+    }, 3000);
+  };
+  
   const [showDiv, setShowDiv] = useState(false);
 
   const handleOpenDiv = () => {
@@ -17,11 +36,21 @@ const MatchesCard = ({ props }) => {
   const handleClose = () => {
     setShowDiv(false);
   };
+
+
   return (
     <MatchesCardStyle>
       <div className="MainCard">
         {showDiv && (
-          <CommentModal props={props} show={showDiv} close={handleClose} />
+          <Modal 
+          open={showDiv}
+          close={handleClose}
+          centered
+          width="45%"
+          footer={null}> 
+          
+             <CommentModal props={props}  show={showDiv} close={handleClose} />
+          </Modal>
         )}
         <div className="MainDiv" onClick={handleOpenDiv}>
           <div className="ImgDiv">
@@ -42,12 +71,22 @@ const MatchesCard = ({ props }) => {
           </div>
         </div>
         <div className="MainDiv2">
-          <button className="Button1">
-            <img src={logo1} alt="" />
-          </button>
-          <button className="Button2">
+          
+          
+          <Button size="small"
+           className="Button1"
+          type="primary"
+          loading={loadings[2]}
+          onClick={() => enterLoading(2)}> 
+          <img src={logo1} alt="" /></Button>
+
+          <Button className="Button2"
+          size="small"
+          type="primary"
+          loading={loadings[1]}
+          onClick={() => enterLoading(1)}>
             <img src={logo2} alt="" />
-          </button>
+          </Button>
         </div>
       </div>
     </MatchesCardStyle>
@@ -85,6 +124,9 @@ const MatchesCardStyle = styled.div`
   }
   .MainDiv {
     position: relative;
+    & :hover{
+      cursor: pointer;
+    }
   }
   .img {
     background: url(.jpg), #d9d9d9;
@@ -133,19 +175,22 @@ const MatchesCardStyle = styled.div`
     background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
     border-radius: 5px;
     z-index: 0;
+    color: #ffffff;
+
   }
   .Button2 {
     width: 67.5px;
     height: 24px;
     background: #f2f2f2;
     border-radius: 5px;
+   
     /* z-index: 0; */
   }
   .MainDiv2 {
     display: flex;
     justify-content: space-between;
     margin-top: 0.5rem;
-
+  
     button {
       border-style:none;
 
@@ -162,6 +207,11 @@ const MatchesCardStyle = styled.div`
     }
     
   }
+
+
+  
+
+
 
 
 `;

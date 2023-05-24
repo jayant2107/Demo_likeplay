@@ -1,189 +1,92 @@
 import React from "react";
 import styled from "styled-components";
 
-const Testimonial = () => {
+export default function Testimonial() {
   return (
     <>
-      <StyledTestimonial>
-        <div className="wrapper2">
-          <div className="con-testimonial">
-            <h2 className="Testimonials">Testimonials</h2>
+      <Testimonialheader>
+        <p>Testimonial</p>
+      </Testimonialheader>
+      <Maincontent>
+        <div className="mainform">
+          <div className="Testimonial-form">
+            <label>Name</label>
+            <br></br>
+            <input placeholder="Enter Name" />
           </div>
-          <div className="Testimonials-features">
-            <div className="container2">
-              <label for="Name">Name</label>
-              <br />
-              <input
-                type="text"
-                id="username"
-                name="username"
-                placeholder="Enter Name"
-              />
-              <br />
-            </div>
-            
-            <div className="container2">
-              <label for="Name">Email</label>
-              <br />
-              <input
-                type="text"
-                id="username"
-                name="username"
-                placeholder="Enter Email"
-              />
-              <br />
-            
-            </div>
-
-          
-            <div className="container2">
-              <label for="Name">
-                Testimonal
-              </label>
-              <br />
-              <input
-              type="textarea" 
-              id='usernam'
-              placeholder="Add Testimonal"
-              ></input>
-             
-            </div>
-          <div className="submit">
-          <button className="submit-btn">Submit</button>
-            
+          <div className="Testimonial-form">
+            <label>Email</label>
+            <br></br>
+            <input placeholder="Enter Email" />
           </div>
+          <div className="Testimonial-form">
+            <label>Testimonal</label>
+            <br></br>
+            <textarea placeholder="Add Testimonial"></textarea>
           </div>
         </div>
-      </StyledTestimonial>
+        <div className="submit-btn">
+          <button className="submit">Submit</button>
+        </div>
+      </Maincontent>
     </>
   );
-};
-
-export default Testimonial;
-const StyledTestimonial = styled.div`
-  .con-testimonial {
-    width: 100%;
-    height: 88px;
-    background: #f0f0f0;
-    display: flex;
-    align-items: center;
-    padding:0px 10px;
+}
+const Testimonialheader = styled.div`
+  height: 88px;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  P {
+    font-size: 18px;
+    letter-spacing: 2px;
+    padding: 0px 20px;
+    color: #242424;
   }
-  .Testimonials-features{
-    width: 100%;
+`;
+const Maincontent = styled.div`
+  .mainform {
     padding: 20px;
   }
-  .Testimonials {
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 28px;
-    letter-spacing: 0.05rem;
-    color: #242424;
-    width: 125px;
-    height: 28px;
-  }
-  .container2 {
-    width: 100%;
+  .Testimonial-form {
+    padding: 10px 0px;
 
-    line-height: 40px;
-  }
-  .Name {
-    width: 39px;
-    height: 20px;
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 20px;
-    letter-spacing: 0.05em;
-    color: #242424;
-  }
-  #username {
-    box-sizing: border-box;
-    width: 100%;
-    height: 56px;
-    background: #ffffff;
-    padding-left: 10px;
-    border: 1px solid #e2e2e2;
-    border-radius: 10px;
-  }
-  #usernam{
-    box-sizing: border-box;
-    width: 100%;
-    height: 157px;
-    background: #ffffff;
-    padding-left: 10px;
-    border: 1px solid #e2e2e2;
-    border-radius: 10px;
-  }
-  .container2-1 {
-    width: 36px;
-    height: 20px;
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 20px;
-    letter-spacing: 0.05em;
-    margin-top: 6%;
-    color: #242424;
-  }
-  #email {
-    box-sizing: border-box;
-    width: 865px;
-    padding-left: 10px;
-    height: 56px;
-    background: #ffffff;
-    border: 1px solid #e2e2e2;
-    border-radius: 10px;
-  }
-  .Testinoamial-mssge {
-    width: 77px;
-    height: 20px;
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 20px;
-    letter-spacing: 0.05em;
-    color: #242424;
-  }
-  .submit{
-    margin: 20px 0px;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: center;
-    .submit-btn{
-        background-color: #ff483c;
-        color: white;
-        width: 160px;
-        height: 48px;
-        border-radius: 10px;
-        border: none;
+    label {
+      font-size: 14px;
+      color: #242424;
+      font-weight: 500;
     }
-  
+    input {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0px;
+      border: 1px solid #e2e2e2;
+      border-radius: 10px;
+      &:focus {
+        outline: none;
+      }
+    }
+    textarea {
+      width: 100%;
+      margin: 10px 0px;
+      border: 1px solid #e2e2e2;
+      border-radius: 10px;
+      resize: none;
+      height: 130px;
+      padding: 15px;
+    }
   }
-  .testinomial-message {
-    margin-top: 5%;
-}
-  .input-message {
-    box-sizing: border-box;
-    width: 865px;
-    height: 157px;
-    background: #ffffff;
-    border: 1px solid #e2e2e2;
+  .submit-btn {
+    display: flex;
+    justify-content: center;
+  }
+  .submit {
+    padding: 10px 40px;
+    font-size: 16px;
+    background: linear-gradient(90deg, #ff483c 100%, #ff2c5a 100%);
+    border: none;
+    color: white;
     border-radius: 10px;
-    padding-bottom: 8%;
-    padding-left: 10px;
+    cursor: pointer;
   }
-  .btn-btn-1 {
-    width: 160px;
-    height: 48px;
-    background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
-    border-radius: 10px;
-  }
-
 `;

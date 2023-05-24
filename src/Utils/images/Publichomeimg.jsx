@@ -101,10 +101,16 @@ import punch from "../../Assets/Icons/PublicpunchPA.svg";
 //footer and navbar content background image
 import footerbg from "../../Assets/Images/PublicfooterbgPA.svg"
 
+// hamburger
+import hamburgericon from "../../Assets/Icons/Publichamburger.png"
+import crossicon from "../../Assets/Icons/PubliccrossPA.gif"
+
 export default hashimg;
 export {
   footerheart,
   LikePlaylogo,
+  hamburgericon,
+  crossicon,
   Homecouple,
   Publicvideobg,
   hearticonPA,

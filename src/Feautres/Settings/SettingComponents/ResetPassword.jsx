@@ -1,48 +1,100 @@
 import React from "react";
 import { Space, Input } from "antd";
 import styled from "styled-components";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 const ResetPassword = () => {
   const [passwordVisible, setPasswordVisible] = React.useState(false);
+  const [confirmPassword, setConfirmPassword] = React.useState(false);
+  const formik = useFormik({
+    initialValues: {
+      Password: "",
+      NewPassword: "",
+      ConfirmPassword: "",
+    },
+    validationSchema: Yup.object({
+      Password: Yup.string().required("Password is Required"),
+      NewPassword: Yup.string().required("Required"),
+      ConfirmPassword: Yup.string().oneOf(
+        [Yup.ref("NewPassword"), null],
+        "Passwords must match"
+      ),
+    }),
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
   return (
     <>
       <ResetPass>
-        <div className="InnerResetPass">
-          <div className="oldPass">
-            <p> Enter Old Password</p>
-            <Input placeholder="Enter" className="InputMeth" />
-          </div>
-          <div className="oldPass">
-            <p>Enter New Password</p>
-            <Space direction="vertical">
-              <Input.Password
-                placeholder="input password"
+        <form onSubmit={formik.handleSubmit}>
+          <div className="InnerResetPass">
+            <div className="oldPass">
+              <p> Enter Old Password</p>
+              <Input
+                id="Password"
+                placeholder="Enter"
                 className="InputMeth"
-                visibilityToggle={{
-                  visible: passwordVisible,
-                  onVisibleChange: setPasswordVisible,
-                }}
+                name="Password"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.Password}
               />
-            </Space>
-          </div>
-          <div className="oldPass">
-            <p>Confirm New Password</p>
-            <Space direction="vertical">
-              <Input.Password
-                placeholder="input password"
-                className="InputMeth"
-                visibilityToggle={{
-                  visible: passwordVisible,
-                  onVisibleChange: setPasswordVisible,
-                }}
-              />
-            </Space>
-          </div>
-          <div className="btnPass">
-            <div className="ChangePass">
-              <button className="PassChan">Change New Pasword</button>
+            </div>
+            {formik.touched.Password && formik.errors.Password ? (
+              <div>{formik.errors.Password}</div>
+            ) : null}
+            <div className="oldPass">
+              <p>Enter New Password</p>
+              <Space direction="vertical">
+                <Input.Password
+                  placeholder="input password"
+                  className="InputMeth"
+                  id="NewPassword"
+                  name="NewPassword"
+                  visibilityToggle={{
+                    visible: passwordVisible,
+                    onVisibleChange: setPasswordVisible,
+                  }}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.NewPassword}
+                />
+              </Space>
+            </div>
+            {formik.touched.NewPassword && formik.errors.NewPassword ? (
+              <div>{formik.errors.NewPassword}</div>
+            ) : null}
+            <div className="oldPass">
+              <p>Confirm New Password</p>
+              <Space direction="vertical">
+                <Input.Password
+                  placeholder="input password"
+                  className="InputMeth"
+                  id="ConfirmPassword"
+                  name="ConfirmPassword"
+                  visibilityToggle={{
+                    visible: confirmPassword,
+                    onVisibleChange: setConfirmPassword,
+                  }}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.ConfirmPassword}
+                />
+              </Space>
+            </div>
+            {formik.touched.ConfirmPassword && formik.errors.ConfirmPassword ? (
+              <div>{formik.errors.ConfirmPassword}</div>
+            ) : null}
+            <div className="btnPass">
+              <div className="ChangePass">
+                <button className="PassChan" type="submit">
+                  Change New Pasword
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </ResetPass>
     </>
   );
