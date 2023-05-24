@@ -31,21 +31,23 @@ import EditPofileDetails from "../Feautres/Home/EditPofileDetails";
 
 const Routing = () => {
   const value = useSelector((e) => e.LoginSlice.data);
+
   let PublicRouter = ({ isAuth }) => {
-    if (isAuth === true) {
+    if (isAuth?.token!== undefined) {
       return <Navigate to="/Layout/FeedPage" replace />;
     }
     return <Outlet />;
   };
+
   let PrivateRouter = ({ isAuth }) => {
-    if (isAuth === false) {
+    if (isAuth?.token === undefined) {
       return <Navigate to="/" />;
     }
     return <Outlet />;
   };
 
-  console.log(value, "vvv");
   let prop = value;
+  console.log("value",value,value?.token)
   return (
     <>
       <BrowserRouter>

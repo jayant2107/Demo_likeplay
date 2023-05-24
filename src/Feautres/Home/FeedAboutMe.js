@@ -6,6 +6,7 @@ import editIcon from "../../Assets/Images/editIcon.png";
 
 //FakeData
 import { Images, AboutUser } from "./DataPage";
+<<<<<<< HEAD
 import EditPofileDetails from "./EditPofileDetails";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -14,6 +15,13 @@ import { Countvalue } from "../../Redux/SliceOfRedux/EditProfile";
 const FeedAboutMe = () => {
   const dispatch=useDispatch()
   const navigate = useNavigate()
+=======
+import { useSelector } from "react-redux";
+
+const FeedAboutMe = () => {
+  const profile_data = useSelector((e) => e.LoginSlice.data);
+
+>>>>>>> 8b3049f3f037155b1c30b21d83dbdc16e17b4f75
   return (
     <FeedAboutMeCss>
       <div className="aboutMe">
@@ -21,12 +29,7 @@ const FeedAboutMe = () => {
           <p>About me</p>
           <img src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(6)); navigate('/MyProfileEdit')}} />
         </div>
-        <span>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled.
-        </span>
+        <span>{profile_data?.about_me}</span>
       </div>
 
       <div className="imagesDiv">
@@ -34,10 +37,10 @@ const FeedAboutMe = () => {
           <p>Images</p> <img src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(1)); navigate('/MyProfileEdit')}} />
         </div>
         <div className="pics">
-          {Images.map((val, index) => {
+          {profile_data?.user_images_while_signup.map((val, index) => {
             return (
               <div className="picsDiv">
-                <img src={val} alt="img" />
+                <img src={process.env.REACT_APP_BASEURL_IMAGE+val?.image_url} alt="img" />
               </div>
             );
           })}
@@ -45,21 +48,34 @@ const FeedAboutMe = () => {
       </div>
 
       {/* Aboutuser */}
+<<<<<<< HEAD
       {AboutUser.FullName !== undefined && (
+=======
+      {/* {AboutUser.FullName !== undefined && ( */}
+>>>>>>> 8b3049f3f037155b1c30b21d83dbdc16e17b4f75
         <div className="detailsBox">
           <div className="boxDiv">
             <div>
               <p>Full Name</p>
+<<<<<<< HEAD
               <span>{AboutUser.FullName}</span>
             </div>
             <div>
               <p>Age</p>
               <span>{AboutUser.Age}</span>
+=======
+              <span>{profile_data.user_name}</span>
+            </div>
+            <div>
+              <p>Age</p>
+              <span>{profile_data.age}</span>
+>>>>>>> 8b3049f3f037155b1c30b21d83dbdc16e17b4f75
             </div>
           </div>
           <div className="boxDiv">
             <div>
               <p>Gender</p>
+<<<<<<< HEAD
               <span>{AboutUser.Gender}</span>
             </div>
             <div>
@@ -70,32 +86,44 @@ const FeedAboutMe = () => {
           <img className="editImgIcon" src={editIcon} alt="editicon"  onClick={() =>{dispatch(Countvalue(2)); navigate('/MyProfileEdit')}}  />
         </div>
       )}
+=======
+              <span>{profile_data.gender==="0"?"Male":"Female"}</span>
+            </div>
+            <div>
+              <p>Interested In</p>
+              <span>{profile_data.interested_in==="1"?"Female":"Male"}</span>
+            </div>
+          </div>
+          <img className="editImgIcon" src={editIcon} alt="editicon" />
+        </div>
+      {/* )} */}
+>>>>>>> 8b3049f3f037155b1c30b21d83dbdc16e17b4f75
       {/* UserDetails */}
       <div className="detailsBox">
         <div className="boxDiv">
           <div>
             <p>Status</p>
-            <span>single</span>
+            <span>{profile_data?.status}</span>
           </div>
           <div>
             <p>Body Type</p>
-            <span>Average</span>
+            <span>{profile_data?.body_type}</span>
           </div>
         </div>
         <div className="boxDiv">
           <div>
             <p>Height</p>
-            <span>Medium</span>
+            <span>{profile_data?.height}</span>
           </div>
           <div>
             <p>Education</p>
-            <span>Ordinary National Diploma</span>
+            <span>{profile_data?.education}</span>
           </div>
         </div>
         <div className="boxDiv">
           <div>
             <p>Employment</p>
-            <span>Infomation Technology</span>
+            <span>{profile_data?.employment}</span>
           </div>
         </div>
         <img className="editImgIcon" src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(3)); navigate('/MyProfileEdit')}}  />
@@ -106,31 +134,31 @@ const FeedAboutMe = () => {
         <div className="boxDiv">
           <div>
             <p>Country of Residence</p>
-            <span>Nigeria</span>
+            <span>{profile_data?.residence_country}</span>
           </div>
           <div>
             <p>State</p>
-            <span>Abuja</span>
+            <span>{profile_data?.state}</span>
           </div>
         </div>
         <div className="boxDiv">
           <div>
             <p>City</p>
-            <span>Bamburu</span>
+            <span>{profile_data?.city}</span>
           </div>
           <div>
             <p>Nationality</p>
-            <span>Nigerian</span>
+            <span>{profile_data?.nationality}</span>
           </div>
         </div>
         <div className="boxDiv">
           <div>
             <p>Religion</p>
-            <span>Christian</span>
+            <span>{profile_data?.religion}</span>
           </div>
           <div>
             <p>Tribe to date</p>
-            <span>Hausa</span>
+            <span>{profile_data?.tribe_to_date}</span>
           </div>
         </div>
         <img className="editImgIcon" src={editIcon} alt="editicon"  onClick={() =>{dispatch(Countvalue(4)); navigate('/MyProfileEdit')}} />
@@ -141,27 +169,27 @@ const FeedAboutMe = () => {
         <div className="boxDiv">
           <div>
             <p>Age Range preferred to date</p>
-            <span>24-30</span>
+            <span>{profile_data?.age_range_for_date}</span>
           </div>
           <div>
             <p>Tribe to date</p>
-            <span>Hausa</span>
+            <span>{profile_data?.tribe_to_date}</span>
           </div>
         </div>
         <div className="boxDiv">
           <div>
             <p>Looking for</p>
-            <span>Something serious & Permanent</span>
+            <span>{profile_data?.looking_for}</span>
           </div>
           <div>
             <p>Education</p>
-            <span>Ordinary National Diploma</span>
+            <span>{profile_data?.education}</span>
           </div>
         </div>
         <div className="boxDiv">
           <div>
             <p>Employment</p>
-            <span>Infomation Technology</span>
+            <span>{profile_data?.employment}</span>
           </div>
         </div>
         <img className="editImgIcon" src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(5)); navigate('/MyProfileEdit')}}  />

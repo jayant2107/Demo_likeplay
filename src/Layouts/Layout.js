@@ -51,6 +51,7 @@ const Layoutdesign = styled.div`
     width: 100%;
     margin-left: calc(100% - 80%);
     margin-right: ${({ isRightNav }) => isRightNav && "calc(100% - 80%)"};
+    height:100vh;
   }
 
   .right-sidebar {

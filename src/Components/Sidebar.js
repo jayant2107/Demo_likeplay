@@ -40,7 +40,7 @@ export default function Sidebar() {
     <Morecontent>
       <p>Verification</p>
       <p>Refer to friends</p>
-      <p style={{ color: "red" }} onClick={()=>dispatch(ValidUser(false))}>Logout</p>
+      <p style={{ color: "red" }} onClick={()=>dispatch(ValidUser(null))}>Logout</p>
     </Morecontent>
   );
   const primarycolor = "#A8580F";
