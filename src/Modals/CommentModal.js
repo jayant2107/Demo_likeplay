@@ -62,7 +62,7 @@ const CommentModal = ({ show, close, props }) => {
                     </div>
                   </div>
                   <div className="ButtonDiv">
-                   <button className="Button">Admire</button>
+                   <button className="Button" onClick={()=>navigate("/Layout/Messages",{state:true})}>Admire</button>
                   </div>
                 {/* </div> */}
               {/* </div> */}
@@ -151,8 +151,18 @@ export const CommentModalStyle = styled.div`
     border: 1px solid #e2e2e2;
     border-radius: 10px;
     margin-top: 4px;
-    padding: 0%;
+    padding: 10px;
+    outline: none;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 150%;
+color: #242424;
   }
+textarea {
+  resize: none;
+}
   .ButtonDiv {
     text-align: center;
     margin-top: 22px;
