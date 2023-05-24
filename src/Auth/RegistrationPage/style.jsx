@@ -4,14 +4,15 @@ import styled from "styled-components";
 
 export const RisgistionBgImg = styled.div`
   background: url(${(props) => props.imgUrl});
-  width: ${(props) => props.width || "100%"};
-  height: ${(props) => props.height || ""};
-  background-size: ${(props) => props.bSize || "100% 100%"};
-  background-position: ${(props) => props.bPosition || "100% 100%"};
-  background-attachment: ${(props) => props.bAttachment || "fixed"};
+  /* width: ${(props) => props.width || "100%"}; */
+  height: ${(props) => props.height || "100vh"};
+  background-repeat: ${({ repeat }) => repeat || "no-repeat"};
+  background-size: ${(props) => props.bSize || "cover"};
+  background-position: ${(props) => props.bPosition || "0% 0%"};
+  /* background-attachment: ${(props) => props.bAttachment || "fixed"}; */
   background-color: ${(props) => props.bgcolour || "rgba(2, 2, 2, 0.8"};
-  min-height: 100vh;
-  max-height: 100%;
+  /* min-height: 100vh; */
+  /* max-height: 100%; */
 
   //--------backgournd_img----------------------------------//
 `;
@@ -134,8 +135,9 @@ export const RisgistationPage1 = styled.div`
 
   .Risgistation_content {
     display: flex;
+    gap: 11rem;
     width: 100%;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     padding-bottom: 1rem;
     color: white;
@@ -159,14 +161,16 @@ export const RisgistationPage1 = styled.div`
   }
 
   img.rig_img_log {
-    width: 12rem;
+    width: 10rem;
   }
   input.resgistation_input {
-    width: 415px;
+    width: 100%;
     height: 3rem;
     padding-left: 1rem;
     outline: none;
     border-radius: 10px;
+    padding-left: 10px;
+    margin: 0.5rem 0;
     border: 1px #e2e2e2 solid;
   }
   .InputMethpassword {
@@ -190,7 +194,7 @@ export const RisgistationPage1 = styled.div`
   }
 
   .risgistation_img_log {
-    text-align: center;
+    /* text-align: center; */
   }
   .btn {
     text-align: center;
@@ -253,9 +257,14 @@ export const RisgistationPage1 = styled.div`
     align-items: center;
   }
   .trib_irrelevant input {
-    width: 3rem;
-    height: 3rem;
+    width: 1rem;
+    height: 1rem;
+    border: none;
+    outline: none;
+    background-color: #d2d2d2;
+    border-radius: 5px;
     margin: 0;
+    margin-left: 5px;
   }
   /* -------Ris_page 6-------------------- */
   .textareaa {

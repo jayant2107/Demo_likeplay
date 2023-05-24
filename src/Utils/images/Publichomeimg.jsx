@@ -6,7 +6,6 @@ import hashimg from "../../Assets/Images/hash.svg";
 import vidoedemobg from "../../Assets/Images/PublicvideoDemobg.svg";
 import footerheart from "../../Assets/Icons/PublicFooterHeartPA.svg";
 
-
 // logo
 import category1 from "../../Assets/Icons/PubliccategoryPA1.svg";
 import category2 from "../../Assets/Icons/PubliccategoryPA2.svg";
@@ -32,7 +31,7 @@ import iphonebg from "../../Assets/Images/PubliciphonebgPA.svg";
 import contory1 from "../../Assets/Images/Publiccountry1.svg";
 import part1img1 from "../../Assets/Images/Publicpart1img1PA.svg";
 import part1img2 from "../../Assets/Images/Publicpart1img2PA.svg";
-import part1img3 from "../../Assets/Images/Publicpart1img3PA.svg"
+import part1img3 from "../../Assets/Images/Publicpart1img3PA.svg";
 import part2img1 from "../../Assets/Images/Publicpart2img1.svg";
 import part2img2 from "../../Assets/Images/Publicpart2img2.svg";
 import part2img3 from "../../Assets/Images/Publicpart2img3.svg";
@@ -49,24 +48,24 @@ import congopart2img3 from "../../Assets/Images/Publiccongopart2img3PA.svg";
 import congopart2img4 from "../../Assets/Images/Publiccongopart2img4PA.svg";
 import congopart2img5 from "../../Assets/Images/Publiccongopart2img5PA.svg";
 import contory3 from "../../Assets/Images/Publiccontory3.svg";
-import ghanapart1img1 from "../../Assets/Images/Publicghanapart1img1PA.svg"
-import ghanapart1img2 from "../../Assets/Images/Publicghanapart1img2PA.svg"
-import ghanapart1img3 from "../../Assets/Images/Publicghanapart1img3PA.svg"
-import ghanapart2img1 from "../../Assets/Images/Publicghanapart2img1PA.svg"
-import ghanapart2img2 from "../../Assets/Images/Publicghanapart2img2PA.svg"
-import ghanapart2img3 from "../../Assets/Images/Publicghanapart2img3PA.svg"
-import ghanapart2img4 from "../../Assets/Images/Publicghanapart2img4PA.svg"
-import ghanapart2img5 from "../../Assets/Images/Publicghanapart2img5PA.svg"
+import ghanapart1img1 from "../../Assets/Images/Publicghanapart1img1PA.svg";
+import ghanapart1img2 from "../../Assets/Images/Publicghanapart1img2PA.svg";
+import ghanapart1img3 from "../../Assets/Images/Publicghanapart1img3PA.svg";
+import ghanapart2img1 from "../../Assets/Images/Publicghanapart2img1PA.svg";
+import ghanapart2img2 from "../../Assets/Images/Publicghanapart2img2PA.svg";
+import ghanapart2img3 from "../../Assets/Images/Publicghanapart2img3PA.svg";
+import ghanapart2img4 from "../../Assets/Images/Publicghanapart2img4PA.svg";
+import ghanapart2img5 from "../../Assets/Images/Publicghanapart2img5PA.svg";
 import contory4 from "../../Assets/Images/Publiccontory4.svg";
-import southpart1img1 from "../../Assets/Images/Publicsouthpart1img1PA.svg"
-import southpart1img2 from "../../Assets/Images/Publicsouthpart1img2PA.svg"
-import southpart1img3 from "../../Assets/Images/Publicsouthpart1img3PA.svg"
+import southpart1img1 from "../../Assets/Images/Publicsouthpart1img1PA.svg";
+import southpart1img2 from "../../Assets/Images/Publicsouthpart1img2PA.svg";
+import southpart1img3 from "../../Assets/Images/Publicsouthpart1img3PA.svg";
 import contory5 from "../../Assets/Images/Publiccontory5.svg";
-import cotepart1img1 from "../../Assets/Images/Publiccotepart1img1PA.svg"
-import cotepart1img2 from "../../Assets/Images/Publiccotepart1img2PA.svg"
-import cotepart1img3 from "../../Assets/Images/Publiccotepart1img3PA.svg"
-import cotepart1img4 from "../../Assets/Images/Publiccotepart1img4PA.svg"
-import cotepart1img5 from "../../Assets/Images/Publiccotepart1img5PA.svg"
+import cotepart1img1 from "../../Assets/Images/Publiccotepart1img1PA.svg";
+import cotepart1img2 from "../../Assets/Images/Publiccotepart1img2PA.svg";
+import cotepart1img3 from "../../Assets/Images/Publiccotepart1img3PA.svg";
+import cotepart1img4 from "../../Assets/Images/Publiccotepart1img4PA.svg";
+import cotepart1img5 from "../../Assets/Images/Publiccotepart1img5PA.svg";
 
 // contory big img
 
@@ -75,8 +74,6 @@ import publicCongoPA from "../../Assets/Images/publicCongoPA.svg";
 import publicghanaPA from "../../Assets/Images/publicghanaPA.svg";
 import publicSouthafricaPA from "../../Assets/Images/publicSouthafricaPA.svg";
 import publicCotedIvoirePA from "../../Assets/Images/publicCotedIvoirePA.svg";
-
-
 
 import work1 from "../../Assets/Icons/Publicworklogo1PA.svg";
 import work2 from "../../Assets/Icons/Publicworklogo2PA.svg";
@@ -99,11 +96,11 @@ import thegurdian from "../../Assets/Icons/PublicthegurdianPA.svg";
 import punch from "../../Assets/Icons/PublicpunchPA.svg";
 
 //footer and navbar content background image
-import footerbg from "../../Assets/Images/PublicfooterbgPA.svg"
+import footerbg from "../../Assets/Images/PublicfooterbgPA.svg";
 
 // hamburger
-import hamburgericon from "../../Assets/Icons/Publichamburger.png"
-import crossicon from "../../Assets/Icons/PubliccrossPA.gif"
+import hamburgericon from "../../Assets/Icons/Publichamburger.png";
+import crossicon from "../../Assets/Icons/PubliccrossPA.gif";
 
 export default hashimg;
 export {
@@ -157,7 +154,6 @@ export {
   contory3,
   contory4,
   contory5,
-  
   publicNigeriaPA,
   part1img1,
   part1img2,
@@ -166,9 +162,8 @@ export {
   part2img2,
   part2img3,
   part3img1,
-  part3img2,  
+  part3img2,
   part3img3,
-  
   publicCongoPA,
   congopart1img1,
   congopart1img2,
@@ -178,7 +173,6 @@ export {
   congopart2img3,
   congopart2img4,
   congopart2img5,
-  
   publicghanaPA,
   ghanapart1img1,
   ghanapart1img2,
@@ -188,18 +182,16 @@ export {
   ghanapart2img3,
   ghanapart2img4,
   ghanapart2img5,
-  
   publicSouthafricaPA,
   southpart1img1,
   southpart1img2,
-  southpart1img3, 
-
+  southpart1img3,
   publicCotedIvoirePA,
   cotepart1img1,
   cotepart1img2,
   cotepart1img3,
   cotepart1img4,
   cotepart1img5,
-  footerbg
+  footerbg,
 
 };
