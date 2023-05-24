@@ -1,8 +1,30 @@
-.ant-popover-inner{
-    padding: 0px !important;
-    border-radius: 10px;
+.ant-popover-inner {
+  padding: 0px !important;
+  border-radius: 10px;
 }
 
 .ant-modal-close-icon {
-    display: none !important;
+  display: none !important;
+}
+
+.ant-select-multiple .ant-select-selection-item {
+  background-color: #a8580f;
+  color: white;
+  height: 36px;
+  width: 125px;
+  margin: auto;
+  align-items: center;
+ justify-content: center;
+}
+
+.ant-select-selection-overflow-item {
+  padding: 5px;
+}
+
+.ant-select-selection-item-remove svg {
+  color: white;
+}
+
+span.ant-select-selection-item-content {
+  font-size: 12px;
 }
