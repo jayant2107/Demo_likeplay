@@ -10,6 +10,7 @@ import { Button, Modal } from 'antd';
 
 
 const MatchesCard = ({ props }) => {
+  console.log(props,"props")
 
   const [loadings, setLoadings] = useState([]);
   const enterLoading = (index) => {
@@ -26,7 +27,12 @@ const MatchesCard = ({ props }) => {
       });
     }, 3000);
   };
-  
+  let profile_img=process.env.REACT_APP_BASEURL_IMAGE+props?.partner_data?.photos_for_verification;
+  let Name=props?.partner_data?.name
+  let age=props?.partner_data?.age
+  let city=props?.partner_data?.city
+  let Country=props?.partner_data?.country
+
   const [showDiv, setShowDiv] = useState(false);
 
   const handleOpenDiv = () => {
@@ -55,20 +61,20 @@ const MatchesCard = ({ props }) => {
         )}
         <div className="MainDiv" onClick={handleOpenDiv}>
           <div className="ImgDiv">
-            <img className="imgClass" src={props.Image} alt="" />{" "}
+            <img className="imgClass" src={profile_img} alt="" />{" "}
           </div>
           {props.Type && (
             <div className="type">
               <p>{props.Type}</p>
             </div>
           )}
-          <p className="Name">{props.Name}</p>
+          <p className="Name">{Name}</p>
           <div className="Div1">
-            <p className="common">{props.Age}</p>
+            <p className="common">{age}</p>
             <span className="dot"></span>
-            <p className="common">{props.City} </p>
+            <p className="common">{city} </p>
             <span className="dot"></span>
-            <p className="common">{props.Country}</p>
+            <p className="common">{Country}</p>
           </div>
         </div>
         <div className="MainDiv2">
@@ -122,6 +128,7 @@ const MatchesCardStyle = styled.div`
     font-size: 12px;
     text-align: center;
     color: #ffffff;
+  
   }
   .MainDiv {
     position: relative;
@@ -143,6 +150,7 @@ const MatchesCardStyle = styled.div`
     align-items: center;
     letter-spacing: 0.05em;
     color: #242424;
+    padding:5px 0px;
   }
   .Name:hover{
     font-size:18px;
@@ -161,6 +169,7 @@ const MatchesCardStyle = styled.div`
   .Div1 {
     display: flex;
     justify-content: space-around;
+    padding:5px 0px;
   }
   .dot {
     border: 1px solid #7b7f91;
@@ -209,8 +218,9 @@ const MatchesCardStyle = styled.div`
 
     .imgClass {
       width: 100%;
-    height: 145px;
+    height: 160px;
     object-fit: fill;
+    border-radius:10px;
     }
     
   }

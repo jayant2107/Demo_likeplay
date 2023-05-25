@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components';
 import MatchesCard2 from '../../Components/MatchesCard2';
 import search from "../../Assets/Images/Matches Image/search.png"
 import { useLocation } from 'react-router-dom';
+import { getMatchedUsers } from 'Services/collection';
 
 const MatchesDetailPage = () => {
   let location=useLocation()
   let data = location.state.about
-  // console.log(data)
+
+  
  
     return (
     <MatchesDetailsStyle>
