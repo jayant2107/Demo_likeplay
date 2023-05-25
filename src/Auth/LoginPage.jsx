@@ -41,23 +41,17 @@ const LoginPage = () => {
     password: Yup.string().required(" Password is Required*"),
   });
 
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     setloading(true);
-
-    console.log(values, "--------");
-    setTimeout(() => {
-      if (
-        values.email === "admin123@gmail.com" &&
-        values.password === "admin123"
-      ) {
-        dispatch(ValidUser(true));
-        setloading(false);
-      } else {
-        setloading(false);
-        console.log("eror");
-        toast.error("enter correct password and email");
-      }
-    }, 2000);
+    const res = await LoginApi(values);
+    console.log("res++ login", res);
+    if (res.status === 200) {
+      setloading(false);
+      dispatch(ValidUser(res?.data));
+    } else {
+      setloading(false);
+      toast.error(res?.message || "Enter correct password and email");
+    }
   };
   const antIcon = (
     <LoadingOutlined
