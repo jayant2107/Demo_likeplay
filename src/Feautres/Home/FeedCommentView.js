@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { Modal } from "antd";
 import "./ant.css";
@@ -11,9 +11,16 @@ import { CommentCardsCss } from "./CommentCards";
 // FakeData
 import { commentofpeople } from "./DataPage";
 
-const FeedCommentView = ({ changeModalComment, showComment, val }) => {
-  return (
-    
+const FeedCommentView = ({ changeModalComment, showComment, val,handleCommentPost }) => {
+  let comment = useRef("")
+
+  const handleChange=(e)=>comment=e.target.value
+
+  const handlePostButton=()=>{
+    handleCommentPost(comment)
+  }
+
+  return (    
       <Modal
         open={showComment}
         width={1000}
@@ -25,7 +32,7 @@ const FeedCommentView = ({ changeModalComment, showComment, val }) => {
         <FeedCommentViewCss>
           <div className="modalDiv">
             <div className="Maindiv">
-              <img className="myimg" src={val.Shots} alt="user" />
+              <img className="myimg" src={process.env.REACT_APP_BASEURL_IMAGE+val.shots} alt="user" />
             </div>
 
             <div className="Maindiv">
@@ -33,7 +40,7 @@ const FeedCommentView = ({ changeModalComment, showComment, val }) => {
               <div className="header">
                 <CommentCardsCss>
                   <div className="profileImg">
-                    <img className="" src={val.Shots} alt="userProfileImg" />
+                    <img className="" src={process.env.REACT_APP_BASEURL_IMAGE+val.shots} alt="userProfileImg" />
                   </div>
                   <div className="ProfileInfo">
                     <div className="userName">{val.UserName}</div>
@@ -56,8 +63,9 @@ const FeedCommentView = ({ changeModalComment, showComment, val }) => {
                     className="input"
                     type="text"
                     placeholder="Add a Comment...."
+                    onChange={handleChange}
                   />
-                  <button className="inputButton">Post</button>
+                  <button className="inputButton" onClick={handlePostButton}>Post</button>
                 </div>
               </div>
             </div>

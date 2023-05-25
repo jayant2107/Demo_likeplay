@@ -25,8 +25,18 @@ import {
 import { TagesData } from "./DataPage";
 import FeedCommentView from "./FeedCommentView";
 import CreateShotsModal from "../../Modals/CreateShotsModal";
-import { getTagDetail } from "Services/collection";
+import {
+  getTagDetail,
+  reportPostApi,
+  hidePostApi,
+  deletePost,
+  blockUser,
+  commentPost,
+  updatePostLikeComment,
+} from "Services/collection";
 import Loader from "Components/Loader";
+import { toast } from "react-toastify";
+import {type} from "Utils/constant"
 
 const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const [showModal, setShowModal] = useState(false);
@@ -37,13 +47,11 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const [editModal, setEditModal] = useState(false);
   const [showComment, setShowComment] = useState(false);
   const [clicked, setClicked] = useState(false);
-  const [tagLoader,setTagLoader]=useState(true);
-  const [tagList,setTagList]=useState([])
+  const [tagLoader, setTagLoader] = useState(true);
+  const [tagList, setTagList] = useState([]);
 
   let postUrl = val?.shots?.split(".");
 
- 
- 
   const changeModalComment = () => {
     setShowComment(!showComment);
   };
@@ -75,13 +83,97 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   };
 
   const getTagsList = async (post_id) => {
-    setTagLoader(true)
+    setTagLoader(true);
     const res = await getTagDetail(post_id);
-    if(res?.status===200){
-      setTagList(res?.data)
-      setTagLoader(false)
+    if (res?.status === 200) {
+      setTagList(res?.data);
+      setTagLoader(false);
+    } else setTagLoader(false);
+  };
+
+  const reportUserPost = async (reportReason) => {
+    // console.log("check post data",val)
+    let payload = {
+      post_id: val.post_id,
+      user_id: val.id,
+      message: reportReason,
+    };
+    let res = await reportPostApi(payload);
+    if (res?.status === 200) {
+      setReportUserModal(false);
+    } else {
+      toast.error(res?.message || "Something Went Wrong");
+      setReportUserModal(false);
     }
-    else setTagLoader(false)
+  };
+
+  const handleHideShot = async () => {
+    let payload = {
+      post_id: val.post_id,
+      status: true,
+    };
+    const res = await hidePostApi(payload);
+    if (res?.status === 200) {
+      closeModal();
+    } else {
+      closeModal();
+      toast.error(res?.message || "Something Went Wrong");
+    }
+  };
+
+  const handleDeletePost = async () => {
+    // const res = await deletePost({
+    //   post_id: val.post_id,
+    // });
+    // if (res?.status === 200) {
+    //   closeModal();
+    // } else {
+    //   toast.error(res?.message || "Something Went Wrong");
+    closeModal();
+    // }
+  };
+
+  const handleBlockUser = async () => {
+    const res = await blockUser({ user_id: val.id });
+    if (res?.status === 200) {
+      setshowBlockModal(false);
+    } else {
+      toast.error(res?.message || "Something Went Wrong");
+      setshowBlockModal(false);
+    }
+  };
+
+  const handleCommentPost = async (content) => {
+    const res = await commentPost({
+      post_id: val.post_id,
+      comment: content,
+    });
+    if (res?.status === 200) {
+      setShowComment(false);
+    } else {
+      toast.error(res?.message || "Something Went Wrong");
+      setShowComment(false);
+    }
+  };
+
+  const status = {
+    like: !like,
+    heart: !heart,
+    star: !star,
+  };
+
+  const handlePostLikes = async (name) => {
+    const payload = {
+      post_id: val.post_id,
+      type: type[name],
+      status: status[name],
+    };
+    changeIcon(name);
+    const res = await updatePostLikeComment(payload);
+    if (res?.status === 200) {
+    } else {
+      toast.error(res?.message || "Something Went Wrong");
+    }
   };
 
   const content = (
@@ -145,11 +237,12 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const tagContent = (
     <PopContentCss>
       <div className="popContent taglist-content">
-        {tagLoader?<TagLoader>
-          <Loader/>
-        </TagLoader>
-        :
-        tagList.length>0 ? tagList.map((val, index) => {
+        {tagLoader ? (
+          <TagLoader>
+            <Loader />
+          </TagLoader>
+        ) : tagList.length > 0 ? (
+          tagList.map((val, index) => {
             return (
               <div key={index} className="popFlex popbtn">
                 <span className="imgSpan">
@@ -159,8 +252,9 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
               </div>
             );
           })
-          :<NoContent>No List</NoContent>
-        }
+        ) : (
+          <NoContent>No List</NoContent>
+        )}
       </div>
     </PopContentCss>
   );
@@ -210,11 +304,17 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
         {/* USER SHOTS / POSTS */}
         {val.shots && postUrl[postUrl.length - 1] === "mp4" ? (
           <video width="750" height="500" controls>
-            <source src={process.env.REACT_APP_BASEURL_IMAGE + val.shots} type="video/mp4" />
+            <source
+              src={process.env.REACT_APP_BASEURL_IMAGE + val.shots}
+              type="video/mp4"
+            />
           </video>
         ) : (
           <div className="userPostImg">
-            <img src={process.env.REACT_APP_BASEURL_IMAGE + val.shots} alt="UserPostImg" />
+            <img
+              src={process.env.REACT_APP_BASEURL_IMAGE + val.shots}
+              alt="UserPostImg"
+            />
           </div>
         )}
 
@@ -222,13 +322,13 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
           {/* LIKE BUTTON */}
           <div className="likeDiv">
             <div>
-              <span onClick={() => changeIcon("like")}>
+              <span onClick={() => handlePostLikes("like")}>
                 <LikeFeedIcon val={like} />
               </span>
               <span>{val.totalLikeByThumb}</span>
             </div>
             <div>
-              <span  onClick={() => changeIcon("heart")} >
+              <span onClick={() => handlePostLikes("heart")}>
                 <HeartFeedIcon val={heart} />
               </span>
               <span
@@ -239,7 +339,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
                 {val.totalLikeByHeart}
               </span>
             </div>
-            <div onClick={() => changeIcon("star")}>
+            <div onClick={() => handlePostLikes("star")}>
               <span>
                 <StarFeedIcon val={star} />
               </span>
@@ -283,9 +383,9 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
             val={val}
             showComment={showComment}
             changeModalComment={changeModalComment}
+            handleCommentPost={handleCommentPost}
           />
         )}
-        
       </UserPostCardCss>
 
       {/* All Modals */}
@@ -313,7 +413,11 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
           footer={null}
           // okButtonProps={{ style: { backgroundColor: "green" } }}
         >
-          <DeleteModal prop={BlockData} closeModal={closeModal} />
+          <DeleteModal
+            prop={BlockData}
+            closeModal={closeModal}
+            handleAction={handleBlockUser}
+          />
         </Modal>
       )}
       {showModal && (
@@ -326,7 +430,11 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
           className="modalDesign"
           footer={null}
         >
-          <DeleteModal prop={DeleteData} closeModal={closeModal} />
+          <DeleteModal
+            prop={DeleteData}
+            closeModal={closeModal}
+            handleAction={handleDeletePost}
+          />
         </Modal>
       )}
       {reportUserModal && (
@@ -338,7 +446,10 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
           centered
           footer={null}
         >
-          <ReportUserModal closeReportModal={closeReportModal} />
+          <ReportUserModal
+            closeReportModal={closeReportModal}
+            reportUserPost={reportUserPost}
+          />
         </Modal>
       )}
       {showHideModal && (
@@ -351,7 +462,11 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
           centered
           footer={null}
         >
-          <DeleteModal prop={HideData} closeModal={closeModal} />
+          <DeleteModal
+            prop={HideData}
+            closeModal={closeModal}
+            handleAction={handleHideShot}
+          />
         </Modal>
       )}
       {likeModal && (
@@ -490,13 +605,13 @@ export const UserPostCardCss = styled.div`
     }
   }
 `;
-const NoContent=styled.div`
-  height:100%;
-  display:flex;
+const NoContent = styled.div`
+  height: 100%;
+  display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-`
+`;
 
 const PopContentCss = styled.div`
   font-family: "Poppins", sans-serif;
@@ -505,7 +620,7 @@ const PopContentCss = styled.div`
   .popContent {
     color: #7b7f91;
   }
-  .taglist-content{
+  .taglist-content {
     height: 160px;
     width: 140px;
     overflow: auto;
@@ -560,6 +675,6 @@ const PopContentCss = styled.div`
   }
 `;
 
-const TagLoader= styled.div`
-height:80px;
-`
+const TagLoader = styled.div`
+  height: 80px;
+`;

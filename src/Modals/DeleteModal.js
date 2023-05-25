@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import StyledButton from "../Components/Button";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
 export const StyledDeleteModal = styled.div`
   .modal-container {
@@ -88,11 +88,10 @@ export const StyledDeleteModal = styled.div`
   /* MODAL BUTTON-SECTION ENDS  */
 `;
 
-export default function DeleteModal({ closeModal, prop, closeDelete, close }) {
-  console.log(closeDelete, "jkdfnsdjk");
-  const location = useLocation();
-  console.log(location);
-  const path = location?.pathname;
+export default function DeleteModal({ closeModal, prop , handleAction }) {
+  // const location = useLocation();
+  // console.log(location);
+  // const path = location?.pathname;
 
   return (
     <>
@@ -118,11 +117,11 @@ export default function DeleteModal({ closeModal, prop, closeDelete, close }) {
               <div
                 className="cancel-btn"
                 onClick={() => {
-                  if (path === "/Layout/FeedPage") {
+                  // if (path === "/Layout/FeedPage") {
                     closeModal();
-                  } else if (path === "/Layout/Settings") {
-                    closeDelete();
-                  }
+                  // } else if (path === "/Layout/Settings") {
+                  //   closeDelete();
+                  // }
                 }}
               >
                 <StyledButton text="#242424" bg="#f0f0f0">
@@ -132,11 +131,11 @@ export default function DeleteModal({ closeModal, prop, closeDelete, close }) {
               <div
                 className="yes-btn"
                 onClick={() => {
-                  if (path === "/Layout/FeedPage") {
-                    closeModal();
-                  } else if (path === "/Layout/Settings") {
-                    closeDelete();
-                  }
+                  // if (path === "/Layout/FeedPage") {
+                    handleAction();
+                  // } else if (path === "/Layout/Settings") {
+                  //   closeDelete();
+                  // }
                 }}
               >
                 <StyledButton

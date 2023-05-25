@@ -1,8 +1,24 @@
 import { postApi, getApi, deleteApi, putApi } from "./api-methods";
 
 const LOGIN = "user/login";
+
 const HOME_PAGE_POSTS = "post/getPostsOnHomePageWithCount";
+
 const TAGE_DETAILS = "post/getTagsDetails";
+
+const REPORT_POST = "post/reportUserPost";
+
+const HIDE_POST="post/hidePost"
+
+const DELETE_POST="post/deleteShot"
+
+const BLOCK_USER="post/blockUser"
+
+const COMMENT_POST="post/createCommentOnPost"
+
+const POST_LIKE_COMMENT="post/createLikeOnPost"
+
+// const TAGE_DETAILS = "post/getTagsDetails";
 
 export const getHomePagePost = () => {
   return getApi(`${HOME_PAGE_POSTS}`);
@@ -16,11 +32,26 @@ export const getTagDetail = (post_id) => {
   return getApi(`${TAGE_DETAILS}?post_id=${post_id}`);
 };
 
-// export const approvePreRegUser = (payload) => {
-//   return putApi(PARTICULAR_MATCHES_LIST, payload);
-// };
+export const reportPostApi = (payload) => {
+  return postApi(REPORT_POST, payload);
+};
 
-// export const deleteReport = (id) => {
-//   return deleteApi(`${DELETE_REPORT}?report_id=${id}`);
-// };
-// GET : /post/getTagsDetails?post_id
+export const hidePostApi = (payload) => {
+  return postApi(HIDE_POST, payload);
+};
+
+export const deletePost = (id) => {
+  return deleteApi(`${DELETE_POST}?post_id=${id}`);
+};
+
+export const blockUser = (payload) => {
+  return postApi(BLOCK_USER, payload);
+};
+
+export const commentPost = (payload) => {
+  return postApi(COMMENT_POST, payload);
+};
+
+export const updatePostLikeComment = (payload) => {
+  return postApi(POST_LIKE_COMMENT, payload);
+};

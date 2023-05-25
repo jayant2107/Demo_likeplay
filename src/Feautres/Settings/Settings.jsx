@@ -130,7 +130,7 @@ const Settings = () => {
                 className="modalDesign"
                 footer={null}
               >
-                <DeleteModal prop={DeleteAccount} closeDelete={closeDelete} />
+                <DeleteModal prop={DeleteAccount} closeModal={closeDelete} handleAction={closeDelete}/>
               </Modal>
             )}
           </div>

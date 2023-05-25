@@ -31,20 +31,17 @@ const FeedPage = () => {
   };
 
   const changeIcon = (val) => {
-    console.log(val);
     val === "like"
-      ? setLike(!like)
+      ? setLike(pre=>!pre)
       : val === "heart"
-      ? setHeart(!heart)
-      : setStar(!star);
+      ? setHeart(pre=>!pre)
+      : setStar(pre=>!pre);
+      console.log("like==",like,heart,star)
   };
 
   const parseHomeContent=(payload)=>{
-// console.log("+====",payload,moment(payload[0]?.User?.createdAt).local().format('DD MMMM LT'))
-    for(let i=0;i<payload.length;i++){
-
-    }
     const parseData=payload?.map((list)=>({
+      id:list?.id,
       profile_img:process.env.REACT_APP_BASEURL_IMAGE+list?.User?.user_images_while_signup[0]?.image_url,
       userName:list?.User?.user_name || "",
       date:moment(list?.User?.createdAt).local().format('DD MMMM LT'),
@@ -63,7 +60,6 @@ const FeedPage = () => {
   const getHomePageContent = async () => {
     setLoading(true)
     const res = await getHomePagePost();
-    console.log("++res homePage", res);
     if(res?.status===200){
       const data=await parseHomeContent(res?.data)
       setUserDetails(data)
