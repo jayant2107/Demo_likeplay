@@ -40,38 +40,17 @@ const LoginPage = () => {
     password: Yup.string().required(" Password is Required*"),
   });
 
-  const handleSubmit = async(values) => {
-    // try{
-      setloading(true);
-      const res=await LoginApi(values)
-      console.log("res++ login",res)
-      if(res.status===200){
-        setloading(false);
-        dispatch(ValidUser(res?.data));
-      }
-      else{
-        setloading(false);
-        toast.error(res?.message || "Enter correct password and email");
-      }
-    // }
-    // catch(e){
-    //   toast.error("Something Went Wrong");
-    // }
-
-
-    // setTimeout(() => {
-    //   if (
-    //     values.email === "admin123@gmail.com" &&
-    //     values.password === "admin123"
-    //   ) {
-    //     dispatch(ValidUser(true));
-    //     setloading(false);
-    //   } else {
-    //     setloading(false);
-    //     console.log("eror");
-    //     toast.error("Enter correct password and email");
-    //   }
-    // }, 2000);
+  const handleSubmit = async (values) => {
+    setloading(true);
+    const res = await LoginApi(values);
+    console.log("res++ login", res);
+    if (res.status === 200) {
+      setloading(false);
+      dispatch(ValidUser(res?.data));
+    } else {
+      setloading(false);
+      toast.error(res?.message || "Enter correct password and email");
+    }
   };
 
   const antIcon = (
