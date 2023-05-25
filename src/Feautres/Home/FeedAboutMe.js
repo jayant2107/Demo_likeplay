@@ -6,22 +6,17 @@ import editIcon from "../../Assets/Images/editIcon.png";
 
 //FakeData
 import { Images, AboutUser } from "./DataPage";
-<<<<<<< HEAD
 import EditPofileDetails from "./EditPofileDetails";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Countvalue } from "../../Redux/SliceOfRedux/EditProfile";
-
-const FeedAboutMe = () => {
-  const dispatch=useDispatch()
-  const navigate = useNavigate()
-=======
 import { useSelector } from "react-redux";
 
 const FeedAboutMe = () => {
-  const profile_data = useSelector((e) => e.LoginSlice.data);
 
->>>>>>> 8b3049f3f037155b1c30b21d83dbdc16e17b4f75
+  const profile_data = useSelector((e) => e.LoginSlice.data);
+  const dispatch=useDispatch()
+  const navigate = useNavigate()
   return (
     <FeedAboutMeCss>
       <div className="aboutMe">
@@ -48,45 +43,21 @@ const FeedAboutMe = () => {
       </div>
 
       {/* Aboutuser */}
-<<<<<<< HEAD
-      {AboutUser.FullName !== undefined && (
-=======
       {/* {AboutUser.FullName !== undefined && ( */}
->>>>>>> 8b3049f3f037155b1c30b21d83dbdc16e17b4f75
         <div className="detailsBox">
           <div className="boxDiv">
             <div>
               <p>Full Name</p>
-<<<<<<< HEAD
-              <span>{AboutUser.FullName}</span>
-            </div>
-            <div>
-              <p>Age</p>
-              <span>{AboutUser.Age}</span>
-=======
               <span>{profile_data.user_name}</span>
             </div>
             <div>
               <p>Age</p>
               <span>{profile_data.age}</span>
->>>>>>> 8b3049f3f037155b1c30b21d83dbdc16e17b4f75
             </div>
           </div>
           <div className="boxDiv">
             <div>
               <p>Gender</p>
-<<<<<<< HEAD
-              <span>{AboutUser.Gender}</span>
-            </div>
-            <div>
-              <p>Interested In</p>
-              <span>{AboutUser.InterestedIn}</span>
-            </div>
-          </div>
-          <img className="editImgIcon" src={editIcon} alt="editicon"  onClick={() =>{dispatch(Countvalue(2)); navigate('/MyProfileEdit')}}  />
-        </div>
-      )}
-=======
               <span>{profile_data.gender==="0"?"Male":"Female"}</span>
             </div>
             <div>
@@ -97,7 +68,6 @@ const FeedAboutMe = () => {
           <img className="editImgIcon" src={editIcon} alt="editicon" />
         </div>
       {/* )} */}
->>>>>>> 8b3049f3f037155b1c30b21d83dbdc16e17b4f75
       {/* UserDetails */}
       <div className="detailsBox">
         <div className="boxDiv">

@@ -94,20 +94,6 @@ const FeedPage = () => {
           >
             <Addbtn />
           </div>
-<<<<<<< HEAD
-          {snapModal && (<Modal
-            open={snapModal}
-            close = {closeSnapModal}
-            onCancel={closeSnapModal}
-            maskClosable = {true}
-            footer = {null}
-            
-            centered
-          ><CreateShotsModal closeSnapModal={closeSnapModal}/></Modal>)}
-          <div onClick = {()=>{
-            setInfoModal(true)
-          }}>
-=======
           {snapModal && (
             <Modal
               open={snapModal}
@@ -125,21 +111,20 @@ const FeedPage = () => {
               setInfoModal(true);
             }}
           >
->>>>>>> 8b3049f3f037155b1c30b21d83dbdc16e17b4f75
             <Info />
           </div>
           {infoModal && (
-            <Modal
-              open={infoModal}
-              close={closeInfoModal}
-              onCancel={closeInfoModal}
-              maskClosable={true}
-              footer={null}
-              width="80%"
-              style={{ top: 20 }}
-            >
-              <InfoGuidelinesModal />
-            </Modal>
+            <Modal open={infoModal}
+                close= {closeInfoModal}
+                onCancel={closeInfoModal}
+                className="info-modal"
+                prefixCls="info-modal1"
+                maskClosable={true}
+                footer= {null}
+                width="80%"
+                style={{ top: 20 }}
+                closable={true}
+            ><InfoGuidelinesModal/></Modal>
           )}
         </div>
       </Searchbar>

@@ -20,7 +20,7 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { ValidUser } from "../Redux/SliceOfRedux/LoginSlice";
 import styled from "styled-components";
-import {LoginApi} from "Services/collection"
+import { LoginApi } from "../Services/collection";
 
 const LoginPage = () => {
   const [passwordVisible, setPasswordVisible] = React.useState(false);

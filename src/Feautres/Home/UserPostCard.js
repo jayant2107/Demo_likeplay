@@ -48,8 +48,8 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
     setShowComment(!showComment);
   };
 
-  const handleClickChange = () => {
-    setClicked(!clicked);
+  const handleClickChange = (open) => {
+    setClicked(open);
   };
 
   const closeModal = () => {
@@ -87,115 +87,57 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const content = (
     <PopContentCss>
       <div className="popContent">
-        <div className="popbtn" onClick={() => setEditModal(true)}>
+        <div
+          className="popbtn"
+          onClick={() => {
+            setEditModal(true);
+            setClicked(false);
+          }}
+        >
           Edit
         </div>
-        {editModal && (
-          <Modal
-            open={editModal}
-            close={closeEditModal}
-            footer={null}
-            maskClosable={true}
-            centered
-            onCancel={closeEditModal}
-          >
-            <CreateShotsModal
-              closeSnapModal={closeEditModal}
-              image={val.shots}
-            />
-          </Modal>
-        )}
         <div
           className="popbtn"
           onClick={() => {
             setshowBlockModal(true);
             setShowModal(false);
             setShowHideModal(false);
+            setClicked(false);
           }}
         >
           Block
         </div>
-        {showBlockModal && (
-          <Modal
-            open={showBlockModal}
-            onOk={closeModal}
-            onCancel={closeModal}
-            maskClosable={true}
-            // cancelText="naa"
-            centered
-            className="modalDesign"
-            footer={null}
-            // okButtonProps={{ style: { backgroundColor: "green" } }}
-          >
-            <DeleteModal prop={BlockData} closeModal={closeModal} />
-          </Modal>
-        )}
         <div
           className="popbtn"
           onClick={() => {
             setShowModal(true);
             setShowHideModal(false);
             setshowBlockModal(false);
+            setClicked(false);
           }}
         >
           Delete
         </div>
-        {showModal && (
-          <Modal
-            open={showModal}
-            onOk={closeModal}
-            onCancel={closeModal}
-            centered
-            maskClosable={true}
-            className="modalDesign"
-            footer={null}
-          >
-            <DeleteModal prop={DeleteData} closeModal={closeModal} />
-          </Modal>
-        )}
-
         <div
           className="popbtn"
           onClick={() => {
             setReportUserModal(true);
+            setClicked(false);
           }}
         >
           Report
         </div>
-        <Modal
-          open={reportUserModal}
-          onOk={closeReportModal}
-          maskClosable={true}
-          onCancel={closeReportModal}
-          centered
-          footer={null}
-        >
-          <ReportUserModal closeReportModal={closeReportModal} />
-        </Modal>
-
         <div
           className="popbtn"
           onClick={() => {
-            setShowModal(false);
             setShowHideModal(true);
+            setShowModal(false);
             setshowBlockModal(false);
+            setClicked(false);
           }}
         >
           Hide Shot
         </div>
-        {showHideModal && (
-          <Modal
-            open={showHideModal}
-            onOk={closeModal}
-            onCancel={closeModal}
-            className="modalDesign"
-            maskClosable={true}
-            centered
-            footer={null}
-          >
-            <DeleteModal prop={HideData} closeModal={closeModal} />
-          </Modal>
-        )}
       </div>
     </PopContentCss>
   );
@@ -287,7 +229,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
               <span>{val.totalLikeByThumb}</span>
             </div>
             <div>
-              <span onClick={() => changeIcon("heart")}>
+              <span  onClick={() => changeIcon("heart")} >
                 <HeartFeedIcon val={heart} />
               </span>
               <span
@@ -297,19 +239,6 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
               >
                 {val.totalLikeByHeart}
               </span>
-              {likeModal && (
-                <Modal
-                  open={likeModal}
-                  onOk={closeLikeModal}
-                  onCancel={closeLikeModal}
-                  footer={null}
-                  maskClosable={true}
-                  centered
-                  width="30%"
-                >
-                  <LikesViewModal closeLikeModal={closeLikeModal} />
-                </Modal>
-              )}
             </div>
             <div onClick={() => changeIcon("star")}>
               <span>
@@ -357,7 +286,88 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
             changeModalComment={changeModalComment}
           />
         )}
+        
       </UserPostCardCss>
+
+      {/* All Modals */}
+      {editModal && (
+        <Modal
+          open={editModal}
+          close={closeEditModal}
+          footer={null}
+          maskClosable={true}
+          centered
+          onCancel={closeEditModal}
+        >
+          <CreateShotsModal closeSnapModal={closeEditModal} image={val.Shots} />
+        </Modal>
+      )}
+      {showBlockModal && (
+        <Modal
+          open={showBlockModal}
+          onOk={closeModal}
+          onCancel={closeModal}
+          maskClosable={true}
+          // cancelText="naa"
+          centered
+          className="modalDesign"
+          footer={null}
+          // okButtonProps={{ style: { backgroundColor: "green" } }}
+        >
+          <DeleteModal prop={BlockData} closeModal={closeModal} />
+        </Modal>
+      )}
+      {showModal && (
+        <Modal
+          open={showModal}
+          onOk={closeModal}
+          onCancel={closeModal}
+          centered
+          maskClosable={true}
+          className="modalDesign"
+          footer={null}
+        >
+          <DeleteModal prop={DeleteData} closeModal={closeModal} />
+        </Modal>
+      )}
+      {reportUserModal && (
+        <Modal
+          open={reportUserModal}
+          onOk={closeReportModal}
+          maskClosable={true}
+          onCancel={closeReportModal}
+          centered
+          footer={null}
+        >
+          <ReportUserModal closeReportModal={closeReportModal} />
+        </Modal>
+      )}
+      {showHideModal && (
+        <Modal
+          open={showHideModal}
+          onOk={closeModal}
+          onCancel={closeModal}
+          className="modalDesign"
+          maskClosable={true}
+          centered
+          footer={null}
+        >
+          <DeleteModal prop={HideData} closeModal={closeModal} />
+        </Modal>
+      )}
+      {likeModal && (
+        <Modal
+          open={likeModal}
+          onOk={closeLikeModal}
+          onCancel={closeLikeModal}
+          footer={null}
+          maskClosable={true}
+          centered
+          width="30%"
+        >
+          <LikesViewModal closeLikeModal={closeLikeModal} />
+        </Modal>
+      )}
     </>
   );
 };
@@ -431,7 +441,7 @@ export const UserPostCardCss = styled.div`
     img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
   }
 
