@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { Modal } from "antd";
 import ResHeaderComponent from "./ResHeader";
 import { Artboard8 } from "../../Utils/RegistrationImg/Registrationflie";
@@ -18,7 +17,7 @@ import {
   pass,
   photo,
 } from "../../Utils/RegistrationImg/Registrationflie";
-// import CreateShotsModals from '../../Modals/CreateShotsModal'
+import CreateShotsModals from "../../Modals/CreateShotsModal";
 import GovtIDVerifyModal from "../../Modals/GovtIDVerifyModal";
 import OTPVerifyModal from "../../Modals/OTPVerifyModal";
 

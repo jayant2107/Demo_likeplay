@@ -17,7 +17,7 @@ const ResgistPage10 = ({ Next, Back }) => {
     let percentage = "75%";
 
     return (<>
-        <RisgistionBgImg imgUrl={Artboard10}>
+        <RisgistionBgImg height="auto" imgUrl={Artboard10}>
             <ResHeaderComponent />
             <RisgistationPage1>
                 <div className='Risgistation_content2'>

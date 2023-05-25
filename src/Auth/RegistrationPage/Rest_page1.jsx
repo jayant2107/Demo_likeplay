@@ -30,7 +30,7 @@ const ResgistPage1 = ({ Next }) => {
   });
   return (
     <>
-      <RisgistionBgImg imgUrl={Artboard1}>
+      <RisgistionBgImg height="auto" imgUrl={Artboard1}>
         <ResHeaderComponent />
         <RisgistationPage1>
           <div className="Risgistation_content">
@@ -107,12 +107,7 @@ const ResgistPage1 = ({ Next }) => {
                       placeholder="willmith1234221"
                     />
                     <div className="btn">
-                      <ButtonStyle
-                        type="submit"
-                      >
-                        {" "}
-                        Next{" "}
-                      </ButtonStyle>
+                      <ButtonStyle type="submit"> Next </ButtonStyle>
                       <p>
                         <span>Trems and Conitions</span>
                       </p>

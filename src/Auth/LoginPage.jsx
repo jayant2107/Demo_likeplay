@@ -8,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LoadingOutlined } from "@ant-design/icons";
 import { Input, Spin } from "antd";
+
 import {
   RisgistionBgImg,
   FromStyleDiv,
@@ -20,7 +21,7 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { ValidUser } from "../Redux/SliceOfRedux/LoginSlice";
 import styled from "styled-components";
-import { LoginApi } from "../Services/collection";
+import { LoginApi } from "Services/collection";
 
 const LoginPage = () => {
   const [passwordVisible, setPasswordVisible] = React.useState(false);
@@ -40,40 +41,24 @@ const LoginPage = () => {
     password: Yup.string().required(" Password is Required*"),
   });
 
-  const handleSubmit = async(values) => {
-    // try{
-      setloading(true);
-      const res=await LoginApi(values)
-      console.log("res++ login",res)
-      if(res.status===200){
-        setloading(false);
-        dispatch(ValidUser(res?.data));
-      }
-      else{
-        setloading(false);
-        toast.error(res?.message || "Enter correct password and email");
-      }
-    // }
-    // catch(e){
-    //   toast.error("Something Went Wrong");
-    // }
+  const handleSubmit = (values) => {
+    setloading(true);
 
-
-    // setTimeout(() => {
-    //   if (
-    //     values.email === "admin123@gmail.com" &&
-    //     values.password === "admin123"
-    //   ) {
-    //     dispatch(ValidUser(true));
-    //     setloading(false);
-    //   } else {
-    //     setloading(false);
-    //     console.log("eror");
-    //     toast.error("Enter correct password and email");
-    //   }
-    // }, 2000);
+    console.log(values, "--------");
+    setTimeout(() => {
+      if (
+        values.email === "admin123@gmail.com" &&
+        values.password === "admin123"
+      ) {
+        dispatch(ValidUser(true));
+        setloading(false);
+      } else {
+        setloading(false);
+        console.log("eror");
+        toast.error("enter correct password and email");
+      }
+    }, 2000);
   };
-
   const antIcon = (
     <LoadingOutlined
       style={{
@@ -165,10 +150,10 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
 const LoaderWrapper = styled.div`
   width: 100%;
   padding: 10px 0px;
+
   display: flex;
   align-items: center;
   justify-content: center;
