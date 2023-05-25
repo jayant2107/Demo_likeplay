@@ -10,7 +10,7 @@ export const RisgistionBgImg = styled.div`
   background-size: ${(props) => props.bSize || "cover"};
   background-position: ${(props) => props.bPosition || "0% 0%"};
   /* background-attachment: ${(props) => props.bAttachment || "fixed"}; */
-  background-color: ${(props) => props.bgcolour || "rgba(2, 2, 2, 0.8"};
+  // background-color: ${(props) => props.bgcolour || "rgba(0,0,0 0.9)"};
   /* min-height: 100vh; */
   /* max-height: 100%; */
 
@@ -62,9 +62,9 @@ export const ButtonStyle = styled.button`
   border-radius: 0.5rem;
   border: ${(props) => props.border || "none"};
   color: ${(props) => props.color || "white"};
-  background: linear-gradient(
-    ${(props) => props.bgcolour || "268.55deg, #FF483C 0%, #FF2C5A 100%"}
-  );
+  background:
+    ${(props) => props.bgcolour || `linear-gradient( 268.55deg, #FF483C 0%, #FF2C5A 100%)`}
+  ;
   width: ${(props) => props.width || "8rem"};
   height: ${(props) => props.height || ""};
   padding: ${(props) => props.padding || "1rem"};

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ResHeaderComponent from "./ResHeader";
 import { Artboard2 } from "../../Utils/RegistrationImg/Registrationflie";
 import {
@@ -11,8 +11,35 @@ import {
   RisgistationPage1,
 } from "./style";
 
+const OnBtn = { bgcolour: "#a8580f", color: "white", border: "none" };
+const OffBtn = {
+  bgcolour: "white",
+  color: "gray",
+  border: "1px solid #e2e2e2",
+};
+
 const ResgistPage2 = ({ Next, Back }) => {
   let percentage = "16%";
+  const [active, setActive] = useState(OffBtn);
+  const [active2, setActive2] = useState(OnBtn);
+  const [interest,setInterest] = useState('Men');
+
+  const ActiveButton = () => {
+    if (active === OffBtn) {
+      setActive(OnBtn);
+      setActive2(OffBtn);
+      setInterest('Women');
+    }
+  };
+
+  const ActiveButton2 = () => {
+    if (active2 === OffBtn) {
+      setActive2(OnBtn);
+      setActive(OffBtn);
+      setInterest('Men')
+    }
+  };
+
   return (
     <>
       <RisgistionBgImg height="auto" imgUrl={Artboard2}>
@@ -33,7 +60,7 @@ const ResgistPage2 = ({ Next, Back }) => {
               <div className="registation_form">
                 <div className="Welcome">
                   <h3>
-                    <b>Wellcome!</b>
+                    <b>Welcome!</b>
                   </h3>
                   <p>
                     <span>Step 1/2</span>
@@ -63,14 +90,22 @@ const ResgistPage2 = ({ Next, Back }) => {
                 <div className="gender_btn">
                   <ButtonStyle
                     width="11rem"
-                    border="1px black solid"
-                    bgcolour="white"
-                    color="black"
+                    border={active.border}
+                    bgcolour={active.bgcolour}
+                    color={active.color}
+                    onClick={ActiveButton}
                   >
                     {" "}
                     Male{" "}
                   </ButtonStyle>
-                  <ButtonStyle width="11rem" margin="1rem" bgcolour="#A8580F">
+                  <ButtonStyle
+                    width="11rem"
+                    margin="1rem"
+                    border={active2.border}
+                    bgcolour={active2.bgcolour}
+                    color={active2.color}
+                    onClick={ActiveButton2}
+                  >
                     {" "}
                     Female{" "}
                   </ButtonStyle>
@@ -82,6 +117,7 @@ const ResgistPage2 = ({ Next, Back }) => {
                   type="text"
                   className="resgistation_input"
                   placeholder="willmith1234221"
+                  value={interest}
                 />
                 <div className="btn">
                   <ButtonStyle

@@ -12,11 +12,14 @@ import {
 } from "./style";
 import { SelectOptionStyle } from "./style";
 
+import { Page3Data } from "./RegData";
+
 const ResgistPage3 = ({ Next, Back }) => {
+  const {status,bodytypes,education,employment} = Page3Data
   let percentage = "26%";
   return (
     <>
-      <RisgistionBgImg height="auto" imgUrl={Artboard3}>
+      <RisgistionBgImg height="100vh" imgUrl={Artboard3}>
         <ResHeaderComponent />
         <RisgistationPage1>
           <div className="Risgistation_content2">
@@ -48,7 +51,12 @@ const ResgistPage3 = ({ Next, Back }) => {
                   Status<span>*</span>
                 </lable>
                 <SelectOptionStyle>
-                  <option>Select Status</option>
+                  <option>status</option>
+                  {
+                    status.map((val,index)=>{
+                      return <option value={val}  key={index}>{val}</option>
+                    })
+                  }
                 </SelectOptionStyle>
                 <br></br>
                 <div className="body_heigth">
@@ -58,6 +66,11 @@ const ResgistPage3 = ({ Next, Back }) => {
                     </lable>
                     <SelectOptionStyle width="12rem">
                       <option>Select Body Type</option>
+                      {
+                        bodytypes.map((val,index)=>{
+                          return <option value={val} key={index}>{val}</option>
+                        })
+                      }
                     </SelectOptionStyle>
                   </div>
                   <div>
@@ -74,13 +87,23 @@ const ResgistPage3 = ({ Next, Back }) => {
                 </lable>
                 <SelectOptionStyle>
                   <option>Select Education</option>
+                  {
+                        education.map((val,index)=>{
+                          return <option value={val} key={index}>{val}</option>
+                        })
+                      }
                 </SelectOptionStyle>
                 <br></br>
                 <lable>
-                  Empoyment<span>*</span>
+                  Employment<span>*</span>
                 </lable>
                 <SelectOptionStyle>
                   <option>Select Employment</option>
+                  {
+                        employment.map((val,index)=>{
+                          return <option value={val} key={index}>{val}</option>
+                        })
+                      }
                 </SelectOptionStyle>
                 <br></br>
                 <div className="btn">

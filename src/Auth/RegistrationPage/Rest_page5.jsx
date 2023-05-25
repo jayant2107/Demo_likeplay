@@ -54,7 +54,7 @@ const ResgistPage5 = ({ Next, Back }) => {
                 <div className="body_heigth">
                   <div>
                     <lable>
-                      Tribe to data<span>*</span>
+                      Tribe to date<span>*</span>
                     </lable>
                     <SelectOptionStyle width="12rem">
                       <option>Select</option>

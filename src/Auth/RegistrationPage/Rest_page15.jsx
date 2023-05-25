@@ -1,5 +1,5 @@
 import React from "react";
-import { Artboard13 } from "../../Utils/RegistrationImg/Registrationflie";
+import { Artboard14Completefrom  } from "../../Utils/RegistrationImg/Registrationflie";
 import ResHeaderComponent from "./ResHeader";
 
 import { RisgistionBgImg } from "./style";
@@ -31,7 +31,7 @@ const Completeform = styled.div`
 const ResgistPage15 = () => {
   return (
     <>
-      <RisgistionBgImg height="auto" imgUrl={Artboard13}>
+      <RisgistionBgImg height="100vh" imgUrl={Artboard14Completefrom }>
         <ResHeaderComponent />
         <Completeform>
           <div className="completeFormcontent">

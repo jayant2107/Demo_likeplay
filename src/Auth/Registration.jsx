@@ -35,8 +35,8 @@ const Registration = () => {
         {count === 7 && <ResgistPage7 Next={Nextpage} Back={Backpage} />}
         {count === 8 && <ResgistPage8 Next={Nextpage} Back={Backpage} />} 
         {count === 9 && <ResgistPage9 Next={Nextpage} Back={Backpage} />} 
-        {count === 10 && <ResgistPage10 Next={Nextpage} Back={Backpage} />} 
-        {count === 11 && <ResgistPage11 Next={Nextpage} Back={Backpage} />} 
+        {count === 10 && <ResgistPage11 Next={Nextpage} Back={Backpage} />} 
+        {count === 11 && <ResgistPage10 Next={Nextpage} Back={Backpage} />} 
         {count === 12 && <ResgistPage12 Next={Nextpage} Back={Backpage} />} 
         {count === 13 && <ResgistPage13 Next={Nextpage} Back={Backpage} />} 
         {count === 14 && <ResgistPage14 Next={Nextpage} Back={Backpage} />} 
