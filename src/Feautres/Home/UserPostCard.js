@@ -40,7 +40,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const [tagLoader,setTagLoader]=useState(true);
   const [tagList,setTagList]=useState([])
 
-  let postUrl = val.shots.split(".");
+  let postUrl = val?.shots?.split(".");
 
   const changeModalComment = () => {
     setShowComment(!showComment);
@@ -263,7 +263,6 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
             <span>{val.caption}</span>
           </div>
         )}
-        {console.log("val.shots.split", val.shots.split(".").length)}
         {/* USER SHOTS / POSTS */}
         {val.shots && postUrl[postUrl.length - 1] === "mp4" ? (
           <video width="750" height="500" controls>
