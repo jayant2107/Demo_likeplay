@@ -11,7 +11,7 @@ import Artboard10 from "../../Assets/Registration/Artboard10.png";
 import Artboard11 from "../../Assets/Registration/Artboard11.png";
 import Artboard12 from "../../Assets/Registration/Artboard12.png";
 import Artboard13 from "../../Assets/Registration/Artboard13.png";
-import Artboard14Completefrom from "../../Assets/Registration/Artboard13.png";
+import Artboard14Completefrom from "../../Assets/Registration/Artboard14Completefrom.png";
 import AartboardDitals from "../../Assets/Registration/ArtboardDetials.png";
 import img1_7 from "../../Assets/Registration/Art7.png";
 import img2_7 from "../../Assets/Registration/Arti7.png";

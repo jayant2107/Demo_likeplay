@@ -3,7 +3,7 @@ import StyledButton from "../Components/Button";
 import OtpInput from "react-otp-input";
 import { useState } from "react";
 
-export default function OTPVerifyModal({ closeMobileModal }) {
+export default function OTPVerifyModal({ closeMobileModal ,next }) {
   const [code, setCode] = useState("");
   const handleChange = (code) => {
     setCode(code);
@@ -74,7 +74,7 @@ export default function OTPVerifyModal({ closeMobileModal }) {
         <div className="modal-button">
           <div className="button-content">
             <StyledButton
-              onClick={closeMobileModal}
+              onClick={()=>{closeMobileModal();next()}}
               text="white"
               bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
             >

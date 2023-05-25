@@ -12,7 +12,7 @@ import {
 const ForgetPage = () => {
   return (
     <>
-      <RisgistionBgImg height="auto" imgUrl={forgotbg}>
+      <RisgistionBgImg height="100vh" imgUrl={forgotbg}>
         <ResHeaderComponent />
         <RisgistationPage1>
           <div className="Risgistation_content2">

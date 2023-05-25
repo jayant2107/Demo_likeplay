@@ -62,7 +62,7 @@ const ResgistPage1 = ({ Next }) => {
                   <div className="registation_form">
                     <div className="Welcome">
                       <h3>
-                        <b>Registartion</b>
+                        <b>Registration</b>
                       </h3>
                     </div>
                     <lable>
@@ -109,10 +109,10 @@ const ResgistPage1 = ({ Next }) => {
                     <div className="btn">
                       <ButtonStyle type="submit"> Next </ButtonStyle>
                       <p>
-                        <span>Trems and Conitions</span>
+                        <span>Terms and Conditions</span>
                       </p>
                       <p>
-                        How it works <span>www.likeplaylikeplay.comm</span>
+                        How it works <span>www.likeplaylikeplay.com</span>
                       </p>
                     </div>
                   </div>
