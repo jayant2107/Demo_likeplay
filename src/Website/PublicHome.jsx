@@ -9,7 +9,7 @@ import featuresData, {
   homecontory,
 } from "../Data/PublicfeatureData.jsx";
 // video
-import video from "../Assets/Video/Romantic Dinner (Official Video).mp4";
+import video from "../Assets/Video/Romantic.mp4";
 // images
 import hashimg, {
   Homecouple,
