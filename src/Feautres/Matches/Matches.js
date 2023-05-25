@@ -1,10 +1,12 @@
-import React, { useState }  from "react";
+import React, { useEffect, useState }  from "react";
 import styled from "styled-components";
 import { Modal } from "antd";
 import MatchesCard from "../../Components/MatchesCard";
 import data from "../../Feautres/Matches/Matches_JSON";
 import search from "../../Assets/Images/Matches Image/search.png";
 import DatingDetailModal from "../../Modals/DatingDetailModal";
+import { getMatchedUsers } from "Services/collection";
+import Loader from "Components/Loader";
 
 
 
@@ -12,10 +14,34 @@ import DatingDetailModal from "../../Modals/DatingDetailModal";
 const Matches = () => {
 
   const [detailModal, setDetailModal] = useState(false);
+  const [loading,setLoading]=useState(false);
+  const [Data,setdata]=useState([])
 
   const closeDetailModal = () =>{
     setDetailModal(false);
   }
+  let matcheduser=async()=>{
+    setLoading(true)
+  
+    let attributeStatus=3
+    let req=await getMatchedUsers(attributeStatus)
+    if(req.status===200){
+
+      setdata(req?.data?.user_data)
+      setLoading(false)
+
+    }
+    else{
+      setLoading(false)
+
+    }
+  };
+  useEffect(()=>{
+    matcheduser();
+
+  },[])
+  console.log(Data,"ggggg")
+
   
   return (
     <MatchesStyle>
@@ -25,6 +51,7 @@ const Matches = () => {
           <img src={search} alt="" className="SLogo" />
         </div>
       </div>
+      {loading?<Loader/>: 
       <div className="Main">
         <div className="Tips">
           <p onClick={()=>{setDetailModal(true)}}>Online dating Tips?</p>
@@ -36,16 +63,21 @@ const Matches = () => {
           footer={null}
           width="80%"
           style={{ top: 20 }}
+          prefixCls="matcheduser-modal"
           >
             <DatingDetailModal/>
           </Modal>)}
         </div>
-        <div className="Cards">
-          {data.map((value) => (
+         <div className="Cards">
+          {Data.map((value) => (
             <MatchesCard key={value.id} props={value} />
           ))}
         </div>
-      </div>
+        
+       
+
+     
+      </div>}
     </MatchesStyle>
   );
 };
@@ -76,7 +108,7 @@ const MatchesStyle = styled.div`
     height: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
+    gap: 30px;
     padding: 20px 8px;
 
     @media (max-width: 950px) {

@@ -19,6 +19,8 @@ const COMMENT_POST="post/createCommentOnPost"
 const POST_LIKE_COMMENT="post/createLikeOnPost"
 
 // const TAGE_DETAILS = "post/getTagsDetails";
+const Matcheduser='user/getMatchedUsers'
+
 
 export const getHomePagePost = () => {
   return getApi(`${HOME_PAGE_POSTS}`);
@@ -35,6 +37,12 @@ export const getTagDetail = (post_id) => {
 export const reportPostApi = (payload) => {
   return postApi(REPORT_POST, payload);
 };
+export const getMatchedUsers=(userstatus)=>{
+  return getApi(`${Matcheduser}?attributeStatus=${userstatus}`)
+}
+// export const approvePreRegUser = (payload) => {
+//   return putApi(PARTICULAR_MATCHES_LIST, payload);
+// };
 
 export const hidePostApi = (payload) => {
   return postApi(HIDE_POST, payload);

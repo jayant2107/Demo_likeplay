@@ -6,6 +6,12 @@ import exit from "../Assets/Images/Matches Image/exit.png";
 
 const CommentModal = ({ show, close, props }) => {
   const navigate = useNavigate();
+  let profile_img=process.env.REACT_APP_BASEURL_IMAGE+props?.partner_data?.photos_for_verification;
+  let Name=props?.partner_data?.name
+  let age=props?.partner_data?.age
+  let city=props?.partner_data?.city
+  let country=props?.partner_data?.country
+
   return (
     <>
     
@@ -27,32 +33,32 @@ const CommentModal = ({ show, close, props }) => {
                   <div className="MainDiv">
                     <div className="Left">
                       <img
-                        src={props.Image}
+                        src={profile_img}
                         alt=""
                         className="img112"
-                        onClick={() =>
-                          navigate("/Layout/MatchesDetail", {
-                            state: { about: props.about },
-                          })
-                        }
+                        // onClick={() =>
+                        //   navigate("/Layout/MatchesDetail", {
+                        //     state: { about: props.about },
+                        //   })
+                        // }
                       />
                     </div>
                     <div className="Right">
                       <p className="Name">
                         <span
-                          onClick={() =>
-                            navigate("/Layout/MatchesDetail", {
-                              state: { about: props.about },
-                            })
-                          }
+                          // onClick={() =>
+                          //   navigate("/Layout/MatchesDetail", {
+                          //     state: { about: props.about },
+                          //   })
+                          // }
                         >
-                          {props.Name}
+                          {Name}
                         </span>
                       </p>
                       <p className="Common">
                         {" "}
-                        {props.Age} <span className="dot"></span> {props.City}{" "}
-                        <span className="dot" /> {props.Country}
+                        {age} <span className="dot"></span> {city}{" "}
+                        <span className="dot" /> {country}
                       </p>
 
                       <p className="Comment">
@@ -100,7 +106,11 @@ export const CommentModalStyle = styled.div`
     height: 24px;
   }
   .Name {
-    margin-top: 5px;
+    font-size:16px;
+    letter-spacing:0.05em;
+    font-weight:400;
+    color:#242424;
+    padding:5px 0px;
     &:hover {
       cursor: pointer;
     }
@@ -181,6 +191,7 @@ textarea {
     height: 100%;
     background: white;
     border: none;
+    border-radius:10px;
     
     &:hover {
       cursor: pointer;

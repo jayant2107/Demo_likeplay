@@ -32,6 +32,9 @@ span.ant-select-selection-item-content {
   display: block !important;
   color: red !important;
 }
+.matcheduser-modal.ant-modal-close{
+  display:block !important;
+}
 .ant-switch-checked {
   background: #a8580f !important;
 }
