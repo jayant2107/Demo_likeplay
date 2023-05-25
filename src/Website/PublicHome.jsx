@@ -9,7 +9,7 @@ import featuresData, {
   homecontory,
 } from "../Data/PublicfeatureData.jsx";
 // video
-import video from "../Assets/Video/Romantic Dinner (Official Video).mp4";
+// import video from "../Assets/Video/Romantic Dinner (Official Video).mp4";
 // images
 import hashimg, {
   Homecouple,
@@ -1229,7 +1229,7 @@ export default function Publichome() {
             <img src={Videoplaybtn} alt="" />
             <video ref={videoRef} onClick={togglePlay}>
               {isPlaying ? "Pause" : "Play"}
-              <source src={video} type="video/mp4" />
+              {/* <source src={video} type="video/mp4" /> */}
               Your browser does not support the video tag.
             </video>
           </div>
