@@ -11,6 +11,22 @@ import {
 } from "../Utils/SettingImgaes/SettingP";
 import { useSelector } from "react-redux";
 import moment from "moment";
+import {NoRecords} from "Style/comman_Css"
+
+const messages = [
+  {
+    image: SecondUser,
+    name: "Julia Roberts",
+  },
+  {
+    image: ThirdUser,
+    name: "emmy",
+  },
+  {
+    image: fourthUser ,
+    name: "ronny",
+  },
+];
 
 export default function Rightsidebar() {
   const navigate = useNavigate();
@@ -53,20 +69,18 @@ export default function Rightsidebar() {
           </Profilesection>
           <Messagessection>
             <p className="messages_text">Messages</p>
-            <div>
-              <div className="messages_user">
-                <img src={SecondUser} alt="" height={40} />
-                <p>Julia Roberts</p>
-              </div>
-              <div className="messages_user">
-                <img src={ThirdUser} alt="" height={40} />
-                <p>emmy</p>
-              </div>
-              <div className="messages_user">
-                <img src={fourthUser} alt="" height={40} />
-                <p>ronny</p>
-              </div>
-            </div>
+              {messages.length ? (
+                <>
+                  {messages.map((list, index) => (
+                    <div key={index} className="messages_user">
+                      <img src={list.image} alt="" height={40} />
+                      <p>{list.name}</p>
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <NoRecords height={"100px"}>No Record!</NoRecords>
+              )}              
           </Messagessection>
         </>
       ) : (
