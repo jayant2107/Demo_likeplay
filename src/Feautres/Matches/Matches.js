@@ -60,9 +60,15 @@ const MatchesStyle = styled.div`
     margin: 20px auto;
   }
   .Header {
+    /* width: 100%;
     height: 88px;
-    width: 100%;
-    background: #f0f0f0;
+    background: rgb(240, 240, 240);
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: end;
+    align-items: end;
+    padding: 20px; */
   }
 
   .Cards {
@@ -99,12 +105,15 @@ const MatchesStyle = styled.div`
     padding: 0 20px;
   }
   .HDiv {
-    position: relative;
-    width: 90%;
-    margin: auto;
-    top: 48px;
+    width: 100%;
+    height: 88px;
+    background: rgb(240, 240, 240);
     display: flex;
+    -webkit-box-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: end;
+    align-items: end;
+    padding: 20px;
   }
   .Matches {
     letter-spacing: 0.05em;

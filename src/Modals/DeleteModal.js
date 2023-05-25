@@ -121,7 +121,7 @@ export default function DeleteModal({ closeModal, prop, closeDelete, close }) {
                   if (path === "/Layout/FeedPage") {
                     closeModal();
                   } else if (path === "/Layout/Settings") {
-                  closeDelete();
+                    closeDelete();
                   }
                 }}
               >

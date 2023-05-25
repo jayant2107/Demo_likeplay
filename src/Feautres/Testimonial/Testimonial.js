@@ -30,6 +30,7 @@ export default function Testimonial() {
         </div>
       </Maincontent>
     </>
+
   );
 }
 const Testimonialheader = styled.div`
@@ -74,7 +75,9 @@ const Maincontent = styled.div`
       resize: none;
       height: 130px;
       padding: 15px;
+      outline:none;
     }
+   
   }
   .submit-btn {
     display: flex;

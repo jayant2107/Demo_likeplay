@@ -11,10 +11,11 @@ export const Admiringsdiv = styled.div`
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
-    align-items: center;
+    align-items: end;
     letter-spacing: 0.05em;
     text-transform: capitalize;
-    padding: 25px;
+   height:88px;
+   padding:20px;
     color: #242424;
  }
 

@@ -51,7 +51,9 @@ const data = [
 const ResgistPage8 = ({ Next, Back }) => {
   let percentage = "48%";
   const [modal, setModal] = useState(false);
-  const OpenModal = (el) => {
+  const [mobileModal, setMobileModal] = useState(false);
+  const OpenModal = (el) => { 
+    console.log(el)
     if (el === "facebook") {
       setModal(el);
     } else if (el === "email") {
@@ -59,23 +61,49 @@ const ResgistPage8 = ({ Next, Back }) => {
     } else if (el === "photo") {
       setModal(el);
     } else if (el === "pass") {
-      setModal(el);
+      setMobileModal(el);
     }
+  };
+
+  const closeModal = () => {
+    setModal(false);
+  };
+
+  const closeMobileModal = () => {
+    setMobileModal(false);
   };
 
   return (
     <>
       {modal === "photo" && (
-        <Modal open={modal}>
-          <GovtIDVerifyModal next={Next} />
+        <Modal
+          open={modal}
+          close={closeModal}
+          maskClosable={true}
+          onCancel={closeModal}
+          footer={null}
+          style={{ top: 65 }}
+          width="40%"
+        >
+          <GovtIDVerifyModal closeModal={closeModal} next={Next} />
         </Modal>
       )}
-      {modal === "pass" && (
-        <Modal>
-          <OTPVerifyModal next={Next} />
+      {mobileModal === "pass" && (
+        <Modal
+          open={mobileModal}
+          close={closeMobileModal}
+          onCancel={closeMobileModal}
+          footer={null}
+          style={{ bottom : 20 }}
+        
+          maskClosable={true}
+          width="30%"
+          className="mobilemodal"
+        >
+                 <OTPVerifyModal closeMobileModal={closeMobileModal} next = {Next}/>
         </Modal>
       )}
-      <RisgistionBgImg height="auto" imgUrl={Artboard8}>
+      <RisgistionBgImg height="100vh" imgUrl={Artboard8}>
         <ResHeaderComponent />
         <RisgistationPage1>
           <div className="Risgistation_content8">

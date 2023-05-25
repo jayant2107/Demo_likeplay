@@ -172,17 +172,18 @@ const Wrapper = styled.div`
     margin-left: 0.5rem;
   }
   .DivDele {
-    width: 80%;
+    width: 228px;
+    height: 58px;
   }
   .Header {
     background-color: #f0f0f0;
     font-weight: 600;
     font-size: 18px;
-    height: 10vh;
+    height: 88px;
   }
   .deltebtn {
     width: 100%;
-    height: 3rem;
+    height: 100%;
     background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
     border: none;
     border-radius: 10px;
