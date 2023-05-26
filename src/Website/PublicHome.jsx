@@ -42,17 +42,16 @@ export default function Publichome() {
   // video logic
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const videoplay=useRef(null);
-  const[playvideo,setplayvideo]=useState(true);
-  const playing=()=>{
-    if(playvideo){
+  const videoplay = useRef(null);
+  const [playvideo, setplayvideo] = useState(true);
+  const playing = () => {
+    if (playvideo) {
       videoplay.current.pause();
-    }
-    else{
+    } else {
       videoplay.current.play();
     }
-    setplayvideo(!playvideo)
-  }
+    setplayvideo(!playvideo);
+  };
 
   const togglePlay = () => {
     if (videoRef.current.paused) {
@@ -672,8 +671,6 @@ export default function Publichome() {
       gap: 15px;
       align-items: center;
       .left {
-      
-        
         border-radius: 9px;
       }
       .right {
@@ -1075,6 +1072,7 @@ export default function Publichome() {
       .feature_imgs {
         display: flex;
         justify-content: center;
+        align-items:center;
         gap: 1.5rem;
       }
     }
@@ -1238,15 +1236,11 @@ export default function Publichome() {
           </div> */}
           <div className="video">
             {/* <img src={Videoplaybtn} alt="" /> */}
-            <video   controls autoplay ref={videoRef} onClick={()=>togglePlay}>
-           
+            <video controls autoplay ref={videoRef} onClick={() => togglePlay}>
               <source src={video} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
-
-
-         
         </section>
       </VideoWrapper>
 
@@ -1283,15 +1277,20 @@ export default function Publichome() {
       {/* -------------------------WHY LIKEPLAY START-----------------------------  */}
       <WhyLikePlay>
         <section>
-          <div className="left" >
+          <div className="left">
             {/* <img src={LikePlaylogo} alt="" /> */}
-            <div className="video"  >
-            <video width='100%'  controls autoplay ref={videoRef} onClick={()=>togglePlay} >
-             
-              <source src={video} type="video/mp4"  />
-              Your browser does not support the video tag.
-            </video>
-          </div>
+            <div className="video">
+              <video
+                width="100%"
+                controls
+                autoplay
+                ref={videoRef}
+                onClick={() => togglePlay}
+              >
+                <source src={video} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
           <div className="right">
             <div className="head">
@@ -1421,13 +1420,23 @@ export default function Publichome() {
         <section>
           <h1>As featured In</h1>
           <div className="feature_imgs">
-            <img src={techpoint} alt="" />
+            <a href="https://techpoint.africa/2023/03/06/likeplay-likeplay-com-1-dating-site-in-nigeria/">
+       
+              <img src={techpoint} alt="" />
+            </a>
+       
+       <a href="https://www.thisdaylive.com/index.php/2023/03/04/likeplaylikeplay-com-dating-platform-set-to-launch-in-nigeria/" >
+
             <img src={thisday} alt="" />
+       </a>
             <img src={thesun} alt="" />
             <img src={thetimes} alt="" />
             <img src={live} alt="" />
             <img src={thegurdian} alt="" />
+            <a href="https://punchng.com/why-you-should-try-online-dating-on-likeplaylikeplay-com/"> 
+
             <img src={punch} alt="" />
+            </a>
           </div>
         </section>
       </Featured>
