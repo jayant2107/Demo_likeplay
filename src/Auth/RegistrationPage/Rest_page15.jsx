@@ -1,52 +1,87 @@
-import React from "react";
-import { Artboard14Completefrom  } from "../../Utils/RegistrationImg/Registrationflie";
-import ResHeaderComponent from "./ResHeader";
+import React from 'react'
+import ResHeaderComponent from './ResHeader'
+import { Artboard13 } from '../../Utils/RegistrationImg/Registrationflie'
 
-import { RisgistionBgImg } from "./style";
-import styled from "styled-components";
+import { ChoiceBtn, RisgistionBgImg, FromStyleDiv, ProgessStyleDiv, ProgessStyleDivline, ProgessStyleDivfilline, ButtonStyle, RisgistationPage1 } from './style'
 
-const Completeform = styled.div`
-  width: 100%;
-  text-align: center;
-  color: white;
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-family: cursive;
-  line-height: 24px;
+const data = [
+    { head: "Size", p: ["Big", "Medium", "Small"] },
+    { head: "Back End", p: ["BackEnd", "Normal", "Comfortable", "Flat"] },
+    { head: "Facial", p: ["Beautiful", "Good -looking", "okay", "Not my strong suit"] },
+    { head: "Height", p: ["Tall", "Medium", "Short"] },
+    { head: "Front", p: ["Well endowed", "Normal", "Small"] },
+    { head: "Glasses", p: ["Yes", "No"] }
 
-  .completeFormcontent p {
-    color: #f5f3f4;
-  }
-  .completeFormcontent {
-    width: 50%;
-  }
-  .thankheaging {
-    padding: 1rem;
-  }
-`;
+]
+const ResgistPage15 = ({ Next, Back }) => {
+    let percentage = "100%";
 
-const ResgistPage15 = () => {
-  return (
-    <>
-      <RisgistionBgImg height="100vh" imgUrl={Artboard14Completefrom }>
-        <ResHeaderComponent />
-        <Completeform>
-          <div className="completeFormcontent">
-            <h1 className="thankheaging">Thank you for completing the form.</h1>
-            <p>
-              The maximum period for review of your profile is 12 hours. Any
-              delays could be as a result of issues with the Profile form, and
-              you can contact us on hello@likeplaylikeplay.com with your
-              concern.
-            </p>
-          </div>
-        </Completeform>
-      </RisgistionBgImg>
-    </>
-  );
-};
+    return (<>
+        <RisgistionBgImg height="auto" imgUrl={Artboard13}>
+            <ResHeaderComponent />
+            <RisgistationPage1>
+                <div className='Risgistation_content2'>
 
-export default ResgistPage15;
+                    <FromStyleDiv width="34rem">
+                        <ProgessStyleDiv>
+                            <p><b>{percentage}</b> Complete</p>
+                            <ProgessStyleDivline>
+                                <ProgessStyleDivfilline width={percentage}>
+                                </ProgessStyleDivfilline>
+                            </ProgessStyleDivline>
+                        </ProgessStyleDiv>
+                        <div className='text10'>
+                            <h1>Pysical Attributes in your Partner</h1>
+                            <p>These short, simple and fun question help use carfully create a list of matches you will most likely get along with in a serious relationship... </p>
+                            <p>These short, simple and fun question help use carfully create a list of matches you will most likely get along with in a serious relationship... </p>
+                        </div>
+                        <div className='registation_form'>
+                            <div className='Welcome'>
+                                <h5><b>Partner's Physical Attributes</b></h5>
+                            </div>
+                            {
+                                data.map((el) => {
+                                    return (<>
+                                        <lable>{el.head}<span>*</span></lable>
+                                        <div className='btnchosediv'>
+                                            {
+                                                el.p.map((ele) => {
+                                                    return (<>
+
+                                                        <ChoiceBtn >{ele}</ChoiceBtn>
+                                                    </>)
+                                                })
+                                            }
+                                        </div>
+                                    </>)
+                                })
+                            }
+
+
+                            <div className='btn'>
+                                <ButtonStyle onClick={() => { Back() }} bgcolour="#e5e5e5" color="black"> Back </ButtonStyle>
+                                <ButtonStyle onClick={() => { Next() }} height="3rem" padding="0"> Submit </ButtonStyle>
+                            </div>
+
+                        </div>
+                    </FromStyleDiv>
+                </div>
+
+
+            </RisgistationPage1>
+
+        </RisgistionBgImg>
+
+
+    </>)
+}
+
+export default ResgistPage15
+
+
+
+
+
+
+
+

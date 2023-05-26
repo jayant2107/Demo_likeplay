@@ -19,7 +19,7 @@ export default function GovtIDVerifyModal({ closeModal }) {
         <div className="front-side">
           <div className="top">
             <div className="add-icon">
-              <img src={add} alt="add" />
+              <img src={add} alt="addnew" />
             </div>
             <div className="para">Front Side</div>
           </div>

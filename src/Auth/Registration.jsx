@@ -14,6 +14,8 @@ import ResgistPage12 from './RegistrationPage/Rest_page12';
 import ResgistPage13 from './RegistrationPage/Rest_page13';
 import ResgistPage14 from './RegistrationPage/Rest_page14';
 import ResgistPage15 from './RegistrationPage/Rest_page15';
+import ResgistPage16 from './RegistrationPage/Rest_page16';
+import ResgistPage17 from './RegistrationPage/Rest_page17';
 
 
 
@@ -21,7 +23,7 @@ import ResgistPage15 from './RegistrationPage/Rest_page15';
 
 const Registration = () => {
     const [count, setCount] = React.useState(1);
-    const Nextpage = () => (count === 15)?setCount(15):setCount(count + 1)
+    const Nextpage = () => (count === 17)?setCount(17):setCount(count + 1)
     const Backpage = () => (count === 0)?setCount(1):setCount(count - 1)
 
 
@@ -41,6 +43,8 @@ const Registration = () => {
         {count === 13 && <ResgistPage13 Next={Nextpage} Back={Backpage} />} 
         {count === 14 && <ResgistPage14 Next={Nextpage} Back={Backpage} />} 
         {count === 15 && <ResgistPage15 Next={Nextpage} Back={Backpage} />} 
+        {count === 16 && <ResgistPage16 Next={Nextpage} Back={Backpage} />} 
+        {count === 17 && <ResgistPage17 Next={Nextpage} Back={Backpage} />} 
 
     </>)
 }

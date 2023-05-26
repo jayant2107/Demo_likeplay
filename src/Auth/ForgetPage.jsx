@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ResHeaderComponent from "./RegistrationPage/ResHeader";
 import { forgotbg } from "../Utils/RegistrationImg/Registrationflie";
 import {
@@ -7,11 +7,20 @@ import {
   ButtonStyle,
   RisgistationPage1,
 } from "../Auth/RegistrationPage/style";
+import ForgetPageMessage from "./ForgetPageMessage";
 // import Rest_page15 from './RegistrationPage/Rest_page15'
 
 const ForgetPage = () => {
+  const [open,setOpen] = useState(false);
+
+  const changePassword = () => {
+    setOpen(!open);
+  }
+
   return (
     <>
+    {
+      open ? <ForgetPageMessage/> :
       <RisgistionBgImg height="100vh" imgUrl={forgotbg}>
         <ResHeaderComponent />
         <RisgistationPage1>
@@ -33,7 +42,7 @@ const ForgetPage = () => {
                     />
                   </div>
                   <div className="btn">
-                    <ButtonStyle width="25rem">Send Varification</ButtonStyle>
+                    <ButtonStyle width="25rem" onClick={changePassword}>Send Varification</ButtonStyle>
                   </div>
                 </div>
               </FromStyleDiv>
@@ -41,6 +50,7 @@ const ForgetPage = () => {
           </div>
         </RisgistationPage1>
       </RisgistionBgImg>
+}
     </>
   );
 };

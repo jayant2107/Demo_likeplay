@@ -59,7 +59,6 @@ const ResgistPage12 = ({ Next, Back }) => {
 
 
                             <div className='btn'>
-                                <ButtonStyle onClick={() => { Back() }} bgcolour="#e5e5e5" color="black"> Back </ButtonStyle>
                                 <ButtonStyle onClick={() => { Next() }} height="3rem" padding="0"> Next </ButtonStyle>
                             </div>
 

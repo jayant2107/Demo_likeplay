@@ -4,15 +4,15 @@ import styled from "styled-components";
 
 export const RisgistionBgImg = styled.div`
   background: url(${(props) => props.imgUrl});
-  /* width: ${(props) => props.width || "100%"}; */
-  height: ${(props) => props.height || "100vh"};
-  background-repeat: ${({ repeat }) => repeat || "no-repeat"};
-  background-size: ${(props) => props.bSize || "cover"};
-  background-position: ${(props) => props.bPosition || "0% 0%"};
-  /* background-attachment: ${(props) => props.bAttachment || "fixed"}; */
-  // background-color: ${(props) => props.bgcolour || "rgba(0,0,0 0.9)"};
-  /* min-height: 100vh; */
-  /* max-height: 100%; */
+
+  background-repeat:"no-repeat";
+
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100%;
+  // background-size: cover;
+  background-size: 100% 100%;
+
 
   //--------backgournd_img----------------------------------//
 `;
@@ -305,11 +305,19 @@ export const RisgistationPage1 = styled.div`
     padding-bottom: 1rem;
     color: white;
     margin: auto;
+    text-align : center;
   }
   .progessdiv {
     width: 50%;
     margin: auto;
     margin-bottom: 1rem;
+  }
+
+  .h1{
+    font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 52px;
   }
 
   .cartReg {
@@ -318,7 +326,6 @@ export const RisgistationPage1 = styled.div`
     border: 1px #d9dddd solid;
     margin: 1rem;
     padding: 1rem;
-    text-align: center;
     position: relative;
     color: #8b8888;
     border-radius: 1rem;
@@ -345,7 +352,10 @@ export const RisgistationPage1 = styled.div`
   }
   .registation_form8 {
     display: flex;
+    justify-content : space-around;
     font-size: small;
+    background-color : white;
+    border-radius : 22px;
   }
 
   /* /------------Regis page9---------- */

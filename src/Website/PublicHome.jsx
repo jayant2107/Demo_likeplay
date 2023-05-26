@@ -42,6 +42,17 @@ export default function Publichome() {
   // video logic
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const videoplay=useRef(null);
+  const[playvideo,setplayvideo]=useState(true);
+  const playing=()=>{
+    if(playvideo){
+      videoplay.current.pause();
+    }
+    else{
+      videoplay.current.play();
+    }
+    setplayvideo(!playvideo)
+  }
 
   const togglePlay = () => {
     if (videoRef.current.paused) {
@@ -349,7 +360,7 @@ export default function Publichome() {
         }
         img {
           position: relative;
-          top: 20rem;
+          top: 23rem;
           left: 48%;
           width: 80px;
         }
@@ -655,21 +666,21 @@ export default function Publichome() {
     section {
       padding: 4rem 0;
       background-color: #ffdbac;
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 40% 50%;
       justify-content: center;
       gap: 15px;
       align-items: center;
       .left {
-        background-color: black;
-        padding: 10rem 12rem;
+      
+        
         border-radius: 9px;
       }
       .right {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 45%;
+        width: 100%;
         .head {
           display: flex;
           h1 {
@@ -1226,13 +1237,16 @@ export default function Publichome() {
             <img src={vidoedemobg} alt="" />
           </div> */}
           <div className="video">
-            <img src={Videoplaybtn} alt="" />
-            <video ref={videoRef} onClick={togglePlay}>
-              {isPlaying ? "Pause" : "Play"}
+            {/* <img src={Videoplaybtn} alt="" /> */}
+            <video   controls autoplay ref={videoRef} onClick={()=>togglePlay}>
+           
               <source src={video} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
+
+
+         
         </section>
       </VideoWrapper>
 
@@ -1269,8 +1283,15 @@ export default function Publichome() {
       {/* -------------------------WHY LIKEPLAY START-----------------------------  */}
       <WhyLikePlay>
         <section>
-          <div className="left">
-            <img src={LikePlaylogo} alt="" />
+          <div className="left" >
+            {/* <img src={LikePlaylogo} alt="" /> */}
+            <div className="video"  >
+            <video width='100%'  controls autoplay ref={videoRef} onClick={()=>togglePlay} >
+             
+              <source src={video} type="video/mp4"  />
+              Your browser does not support the video tag.
+            </video>
+          </div>
           </div>
           <div className="right">
             <div className="head">

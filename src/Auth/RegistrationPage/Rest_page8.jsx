@@ -49,7 +49,7 @@ const data = [
 ];
 
 const ResgistPage8 = ({ Next, Back }) => {
-  let percentage = "48%";
+  let percentage = "64%";
   const [modal, setModal] = useState(false);
   const [mobileModal, setMobileModal] = useState(false);
   const OpenModal = (el) => { 
@@ -118,13 +118,13 @@ const ResgistPage8 = ({ Next, Back }) => {
                   ></ProgessStyleDivfilline>
                 </ProgessStyleDivline>
               </ProgessStyleDiv>
-              <h1>
+              <h1  className="h1">
                 Use any one or more to verify yourself
                 <span style={{ color: "#ff3f45", margin: "1rem" }}>*</span>
               </h1>
             </div>
-            <FromStyleDiv width="80%" margin="auto">
-              <div className="registation_form">
+            <FromStyleDiv width="100%" margin="auto">
+              {/* <div className="registation_form"> */}
                 <div className="registation_form8">
                   {data.map((el) => {
                     return (
@@ -149,7 +149,7 @@ const ResgistPage8 = ({ Next, Back }) => {
                     );
                   })}
                 </div>
-              </div>
+              {/* </div> */}
             </FromStyleDiv>
           </div>
         </RisgistationPage1>
