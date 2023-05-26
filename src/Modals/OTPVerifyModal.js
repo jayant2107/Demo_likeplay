@@ -40,6 +40,7 @@ export default function OTPVerifyModal({ closeMobileModal ,next }) {
                 fontSize: "12px",
                 backgroundColor: "#F8F8F8",
                 fontWeight: "400",
+                display:'flex'
               }}
             />
             {/* {OTP.map((data, index) => {
@@ -90,11 +91,10 @@ export default function OTPVerifyModal({ closeMobileModal ,next }) {
 }
 
 export const StyledOTPModal = styled.div`
-  margin: 25px;
 
   .modal-container {
     width: 100%;
-    height: 100vh;
+    // height: 100vh;
     background-color: rgb(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
@@ -105,7 +105,7 @@ export const StyledOTPModal = styled.div`
   }
 
   .modal-content {
-    width: 27%;
+    // width: 27%;
     border: 1px solid transparent;
     border-radius: 12px;
     background-color: white;

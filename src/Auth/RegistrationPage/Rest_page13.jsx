@@ -1,23 +1,21 @@
 import React from 'react'
 import ResHeaderComponent from './ResHeader'
-import { Artboard13 } from '../../Utils/RegistrationImg/Registrationflie'
+import { Artboard121 } from '../../Utils/RegistrationImg/Registrationflie'
 
 import { ChoiceBtn, RisgistionBgImg, FromStyleDiv, ProgessStyleDiv, ProgessStyleDivline, ProgessStyleDivfilline, ButtonStyle, RisgistationPage1 } from './style'
 
 const data = [
-    { head: "Size", p: ["Big", "Medium", "Small"] },
-    { head: "Back End", p: ["BackEnd", "Normal", "Comfortable", "Flat"] },
-    { head: "Facial", p: ["Beautiful", "Good -looking", "okay", "Not my strong suit"] },
-    { head: "Height", p: ["Tall", "Medium", "Short"] },
-    { head: "Front", p: ["Well endowed", "Normal", "Small"] },
-    { head: "Glasses", p: ["Yes", "No"] }
-
+    { head: "I cannot date someone below my socio-economic class", p: ["Yeah 100%", "Occasionally 50-50", "No Way"] },
+    { head: "People say I am a prude, and that is fine by me", p: ["Yeah 100%", "Occasionally 50-50", "No Way"] },
+    { head: "I am very judgemental", p: ["Yeah 100%", "Occasionally 50-50", "No Way"] },
+    { head: "Folks see me as a good guy", p: ["Yeah 100%", "Occasionally 50-50", "No Way"] },
+    { head: "I am a rebel, never do things the normal way", p: ["Yeah 100%", "Occasionally 50-50", "No Way"] },
 ]
 const ResgistPage13 = ({ Next, Back }) => {
-    let percentage = "100%";
+    let percentage = "80%";
 
     return (<>
-        <RisgistionBgImg height="auto" imgUrl={Artboard13}>
+        <RisgistionBgImg height="auto" imgUrl={Artboard121}>
             <ResHeaderComponent />
             <RisgistationPage1>
                 <div className='Risgistation_content2'>
@@ -31,13 +29,13 @@ const ResgistPage13 = ({ Next, Back }) => {
                             </ProgessStyleDivline>
                         </ProgessStyleDiv>
                         <div className='text10'>
-                            <h1>Pysical Attributes in your Partner</h1>
+                            <h1>Let's Know your Personality</h1>
                             <p>These short, simple and fun question help use carfully create a list of matches you will most likely get along with in a serious relationship... </p>
                             <p>These short, simple and fun question help use carfully create a list of matches you will most likely get along with in a serious relationship... </p>
                         </div>
                         <div className='registation_form'>
                             <div className='Welcome'>
-                                <h5><b>Partner's Physical Attributes</b></h5>
+                                <h5><b>Cheracter Questions</b><span>*</span></h5>
                             </div>
                             {
                                 data.map((el) => {
@@ -59,8 +57,7 @@ const ResgistPage13 = ({ Next, Back }) => {
 
 
                             <div className='btn'>
-                                <ButtonStyle onClick={() => { Back() }} bgcolour="#e5e5e5" color="black"> Back </ButtonStyle>
-                                <ButtonStyle onClick={() => { Next() }} height="3rem" padding="0"> Submit </ButtonStyle>
+                                <ButtonStyle onClick={() => { Next() }} height="3rem" padding="0"> Next </ButtonStyle>
                             </div>
 
                         </div>

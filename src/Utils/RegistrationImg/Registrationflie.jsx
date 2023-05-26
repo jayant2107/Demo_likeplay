@@ -10,6 +10,8 @@ import Artboard9 from "../../Assets/Registration/Artboard9.png";
 import Artboard10 from "../../Assets/Registration/Artboard10.png";
 import Artboard11 from "../../Assets/Registration/Artboard11.png";
 import Artboard12 from "../../Assets/Registration/Artboard12.png";
+import Artboard121 from "../../Assets/Registration/Artboard121.png";
+import Artboard122 from "../../Assets/Registration/Artboard122.png";
 import Artboard13 from "../../Assets/Registration/Artboard13.png";
 import Artboard14Completefrom from "../../Assets/Registration/Artboard14Completefrom.png";
 import AartboardDitals from "../../Assets/Registration/ArtboardDetials.png";
@@ -43,6 +45,8 @@ export {
   Artboard10,
   Artboard11,
   Artboard12,
+  Artboard121,
+  Artboard122,
   Artboard13,
   Artboard14Completefrom,
   AartboardDitals,
