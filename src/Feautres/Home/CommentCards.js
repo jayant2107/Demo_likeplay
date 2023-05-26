@@ -4,24 +4,26 @@ import { CommentHeartIcon } from "../../Utils/HomeIconsFun";
 import smile from "../../Assets/Images/commentsmile.png";
 import emoji from "../../Assets/Images/emoji.png";
 
-
-const CommentCards = ({ prop }) => {
-
+const CommentCards = ({ details,handleHeartLike }) => {
   const [activeIcon, setActiveIcon] = useState(false);
-  
+  const handleHeartStatusUpdation=()=>{
+    setActiveIcon(prev=>!prev)
+    handleHeartLike(details.comment_id,!activeIcon);
+  }
+
   return (
- 
-  <CommentCardsCss>
+    <CommentCardsCss>
       <div className="profileImg">
-        <img className="" src={prop.img} alt="userProfileImg" />
+        <img className="" src={process.env.REACT_APP_BASEURL_IMAGE+details.senderImage} alt="userProfileImg" />
       </div>
       <div className="ProfileInfo">
-        <div className="userName">{prop.UserName}</div>
-        <div className="postCap">{prop.Caption}</div>
+        <div className="userName">{details.senderName}</div>
+        <div className="postCap">{details.comment}</div>
         <div className="postCap emojiCap">
-          <span className="emoji">
+          {/* <span className="emoji">
             <img src={emoji} alt="smile" />
-          </span>
+          </span> */}
+          {details?.likeCount>0 && <span className="likes_count">{details.likeCount+1}{" "}Likes</span>}&nbsp;
           <img src={smile} alt="smile" />
         </div>
       </div>
@@ -29,25 +31,24 @@ const CommentCards = ({ prop }) => {
         <span className="postDate">18h</span>
         <div
           className={`${activeIcon === true ? "icon" : "iconChange"}`}
-          onClick={() => setActiveIcon(!activeIcon)}
+          onClick={handleHeartStatusUpdation}
         >
           <CommentHeartIcon />
         </div>
       </div>
     </CommentCardsCss>
-
   );
 };
 
 export default CommentCards;
 
 export const CommentCardsCss = styled.div`
-    height: fit-content;
-    display: grid;
-    grid-template-columns: 65px auto 45px;
-    width: 100%;
-    margin-top : 1rem;
-  
+  height: fit-content;
+  display: grid;
+  grid-template-columns: 65px auto 45px;
+  width: 100%;
+  margin-top: 1rem;
+
   .profileImg {
     border: 1px solid transparent;
     border-radius: 2rem;
@@ -82,23 +83,24 @@ export const CommentCardsCss = styled.div`
     font-size: 13px;
   }
   .emojiCap {
-    margin-top  : 0.5rem; 
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
   }
-  .emoji{
-    background-color : #D9D9D9;
-    border-radius : 0.6rem;
-    margin : 0 0.5rem;
-    padding : 0.1rem 0.5rem
+  .emoji {
+    background-color: #d9d9d9;
+    border-radius: 0.6rem;
+    margin: 0 0.5rem;
+    padding: 0.1rem 0.5rem;
   }
-  .heartDiv{
-    text-align : center;
+  .heartDiv {
+    text-align: center;
   }
 
-  .icon{
-      color : #f03d47;
+  .icon {
+    color: #f03d47;
   }
-  .iconChange{
-    color : #d0d0d0;
+  .iconChange {
+    color: #d0d0d0;
   }
-  
 `;

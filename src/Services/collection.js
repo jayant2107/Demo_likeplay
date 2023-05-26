@@ -8,19 +8,23 @@ const TAGE_DETAILS = "post/getTagsDetails";
 
 const REPORT_POST = "post/reportUserPost";
 
-const HIDE_POST="post/hidePost"
+const HIDE_POST="post/hidePost";
 
-const DELETE_POST="post/deleteShot"
+const DELETE_POST="post/deleteShot";
 
-const BLOCK_USER="post/blockUser"
+const BLOCK_USER="post/blockUser";
 
-const COMMENT_POST="post/createCommentOnPost"
+const COMMENT_POST="post/createCommentOnPost";
 
-const POST_LIKE_COMMENT="post/createLikeOnPost"
+const POST_LIKE_COMMENT="post/createLikeOnPost";
 
-// const TAGE_DETAILS = "post/getTagsDetails";
-const Matcheduser='user/getMatchedUsers'
+const Matcheduser='user/getMatchedUsers';
 
+const POST_COMMENTS_LIST = "post/getCommentsDetails";
+
+const COMMENT_HEARTLIKES = "post/commentHeartLikes";
+
+const UPLOADED_POST_LISTS="user/profileView"
 
 export const getHomePagePost = () => {
   return getApi(`${HOME_PAGE_POSTS}`);
@@ -37,12 +41,10 @@ export const getTagDetail = (post_id) => {
 export const reportPostApi = (payload) => {
   return postApi(REPORT_POST, payload);
 };
+
 export const getMatchedUsers=(userstatus)=>{
   return getApi(`${Matcheduser}?attributeStatus=${userstatus}`)
 }
-// export const approvePreRegUser = (payload) => {
-//   return putApi(PARTICULAR_MATCHES_LIST, payload);
-// };
 
 export const hidePostApi = (payload) => {
   return postApi(HIDE_POST, payload);
@@ -63,3 +65,15 @@ export const commentPost = (payload) => {
 export const updatePostLikeComment = (payload) => {
   return postApi(POST_LIKE_COMMENT, payload);
 };
+
+export const getCommentsList = (id) => {
+  return getApi(`${POST_COMMENTS_LIST}?post_id=${id}`);
+};
+
+export const updateCommentLikeResponse = (payload) => {
+  return postApi(COMMENT_HEARTLIKES, payload);
+};
+
+export const getUploadedPosts=()=>{
+  return getApi(UPLOADED_POST_LISTS)
+}

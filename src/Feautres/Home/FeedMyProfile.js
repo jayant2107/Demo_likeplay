@@ -4,15 +4,23 @@ import FeedAboutMe from "./FeedAboutMe";
 import FeedShots from "./FeedShots";
 
 // Image
-import ProfilePic from "../../Assets/Images/TopProfile.png";
 import editIcon from "../../Assets/Images/editIcon.png";
 import { useSelector } from "react-redux";
+import { userProfile_tabs } from "Utils/constant";
 
 const FeedMyProfile = () => {
   const [active, setActive] = useState("aboutme");
-  const profile_data=useSelector(e=>e.LoginSlice.data)
-  
-  let profile_image=process.env.REACT_APP_BASEURL_IMAGE+profile_data?.user_images_while_signup[0].image_url
+  const profile_data = useSelector((e) => e.LoginSlice.data);
+
+  let tabScreen = {
+    shots: <FeedShots />,
+    aboutme: <FeedAboutMe />,
+    likedShots: <></>,
+  };
+
+  let profile_image =
+    process.env.REACT_APP_BASEURL_IMAGE +
+    profile_data?.user_images_while_signup[0].image_url;
 
   return (
     <>
@@ -25,7 +33,7 @@ const FeedMyProfile = () => {
           <div className="userdata">
             <span>{profile_data.age}</span>
             <span className="spanDot"></span>
-            <span>{profile_data.gender==="0"?"Male":"Female"}</span>
+            <span>{profile_data.gender === "0" ? "Male" : "Female"}</span>
             <span className="spanDot"></span>
             <span>{profile_data?.looking_for}</span>
           </div>
@@ -36,7 +44,16 @@ const FeedMyProfile = () => {
 
       <FeedMyProfileCss>
         <div className="navDiv">
-          <div className="border-wrap ">
+          {userProfile_tabs.map((list, index) => (
+            <span
+              key={index}
+              className={`${active === list.name ? "active" : "navButton"}`}
+              onClick={() => setActive(list.name)}
+            >
+              {list.label}
+            </span>
+          ))}
+          {/* <div className="border-wrap ">
             <span
               className={`${active === "shorts" ? "active" : "navButton"}`}
               onClick={() => setActive("shorts")}
@@ -50,9 +67,15 @@ const FeedMyProfile = () => {
           >
             About me
           </span>
+          <span
+            className={`${active === "likedShots" ? "active" : "navButton"}`}
+            onClick={() => setActive("aboutme")}
+          >
+            Liked Shots
+          </span>           */}
         </div>
-
-        {active === "shorts" ? <FeedShots /> : <FeedAboutMe />}
+        {tabScreen[active]}
+        {/* {active === "shorts" ? <FeedShots /> : active==="aboutme" ? <FeedAboutMe />:<></>} */}
       </FeedMyProfileCss>
     </>
   );

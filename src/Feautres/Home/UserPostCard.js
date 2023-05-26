@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Modal } from "antd";
 import DeleteModal from "../../Modals/DeleteModal";
@@ -38,7 +38,7 @@ import Loader from "Components/Loader";
 import { toast } from "react-toastify";
 import {type} from "Utils/constant"
 
-const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
+const UserPostCard = ({ val,edit=false }) => {
   const [showModal, setShowModal] = useState(false);
   const [showHideModal, setShowHideModal] = useState(false);
   const [showBlockModal, setshowBlockModal] = useState(false);
@@ -48,7 +48,19 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const [showComment, setShowComment] = useState(false);
   const [clicked, setClicked] = useState(false);
   const [tagLoader, setTagLoader] = useState(true);
+  const [like, setLike] = useState(val?.userLikeByHeart || false);
+  const [heart, setHeart] = useState(val?.userLikeByStar || false);
+  const [star, setStar] = useState(val?.userLikeByThumb || false);
   const [tagList, setTagList] = useState([]);
+
+  const changeIcon = (val) => {
+    val === "like"
+      ? setLike(pre=>!pre)
+      : val === "heart"
+      ? setHeart(pre=>!pre)
+      : setStar(pre=>!pre);
+      console.log("like==",like,heart,star)
+  };
 
   let postUrl = val?.shots?.split(".");
 
@@ -179,7 +191,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
   const content = (
     <PopContentCss>
       <div className="popContent">
-        <div
+        {edit && <div
           className="popbtn"
           onClick={() => {
             setEditModal(true);
@@ -187,7 +199,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
           }}
         >
           Edit
-        </div>
+        </div>}
         <div
           className="popbtn"
           onClick={() => {
@@ -199,7 +211,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
         >
           Block
         </div>
-        <div
+        {edit && <div
           className="popbtn"
           onClick={() => {
             setShowModal(true);
@@ -209,7 +221,7 @@ const UserPostCard = ({ val, like, star, heart, changeIcon }) => {
           }}
         >
           Delete
-        </div>
+        </div>}
         <div
           className="popbtn"
           onClick={() => {

@@ -12,11 +12,12 @@ import { Addbtn, Info } from "Utils/Logo";
 import { Artboard } from "Utils/icons-folder/Modalsicons";
 import { toast } from "react-toastify";
 import moment from "moment/moment";
+import { NoRecords } from "Style/comman_Css";
 
 const FeedPage = () => {
-  const [like, setLike] = useState(false);
-  const [heart, setHeart] = useState(false);
-  const [star, setStar] = useState(false);
+  // const [like, setLike] = useState(false);
+  // const [heart, setHeart] = useState(false);
+  // const [star, setStar] = useState(false);
   const [snapModal, setSnapModal] = useState(false);
   const [infoModal, setInfoModal] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -30,14 +31,14 @@ const FeedPage = () => {
     setSnapModal(false);
   };
 
-  const changeIcon = (val) => {
-    val === "like"
-      ? setLike(pre=>!pre)
-      : val === "heart"
-      ? setHeart(pre=>!pre)
-      : setStar(pre=>!pre);
-      console.log("like==",like,heart,star)
-  };
+  // const changeIcon = (val) => {
+  //   val === "like"
+  //     ? setLike(pre=>!pre)
+  //     : val === "heart"
+  //     ? setHeart(pre=>!pre)
+  //     : setStar(pre=>!pre);
+  //     console.log("like==",like,heart,star)
+  // };
 
   const parseHomeContent=(payload)=>{
     const parseData=payload?.map((list)=>({
@@ -47,12 +48,15 @@ const FeedPage = () => {
       date:moment(list?.User?.createdAt).local().format('DD MMMM LT'),
       caption:list?.caption || "",
       shots:list?.PostContents[0]?.media_url,
-      post_id:list?.PostContents[0]?.id,
+      post_id:list?.PostContents[0]?.post_id,
       totalLikeByHeart:list?.totalLikeByHeart,
       totalLikeByStar:list?.totalLikeByStar,
       totalLikeByThumb:list?.totalLikeByThumb,
       totalCommments:list?.totalCommments,
       totalTags:list?.totalTags,
+      userLikeByHeart:list?.CurrentUserLikeByHeart==="0"?false:true,
+      userLikeByStar:list?.CurrentUserLikeByStar==="0"?false:true,
+      userLikeByThumb:list?.CurrentUserLikeByThumb==="0"?false:true,
     }))
     return parseData;
   }
@@ -66,7 +70,7 @@ const FeedPage = () => {
       setLoading(false)
     }else{
       setLoading(false)
-      toast.error(res?.message)
+      toast.error(res?.message || "Something Went Wrong")
     }
   };
 
@@ -124,30 +128,27 @@ const FeedPage = () => {
           )}
         </div>
       </Searchbar>
-      {/* {loading ? (
-        <Loader />
-      ) : ( */}
       <Feedpagewrapper>
         {loading ? (
           <Loader />
         ) : (
-          UsersDetails.map((val, index) => {
+          UsersDetails.length>0? UsersDetails.map((val, index) => {
             return (
               <>
                 <UserPostCard
                   val={val}
                   index={index}
-                  like={like}
-                  heart={heart}
-                  star={star}
-                  changeIcon={changeIcon}
+                  // like={like}
+                  // heart={heart}
+                  // star={star}
+                  // changeIcon={changeIcon}
                 />
               </>
             );
-          })
+          }):
+          <NoRecords>No Record Found</NoRecords>
         )}
       </Feedpagewrapper>
-      {/* // )} */}
     </>
   );
 };

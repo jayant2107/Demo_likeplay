@@ -22,3 +22,18 @@ export let report_reasons=[
     heart: 1,
     star: 2,
   };
+
+  export let userProfile_tabs = [
+    {
+      name: "shots",
+      label: "Shots",
+    },
+    {
+      name: "aboutme",
+      label: "About me",
+    },
+    {
+      name: "likedShots",
+      label: "Liked Shots",
+    },
+  ];

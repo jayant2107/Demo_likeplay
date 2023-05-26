@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { Modal } from "antd";
 import "./ant.css";
@@ -10,68 +10,150 @@ import { CommentCardsCss } from "./CommentCards";
 
 // FakeData
 import { commentofpeople } from "./DataPage";
+import {
+  getCommentsList,
+  updateCommentLikeResponse,
+} from "Services/collection";
+import { toast } from "react-toastify";
+import Loader from "Components/Loader";
+import { NoRecords } from "Style/comman_Css";
+import moment from "moment";
 
-const FeedCommentView = ({ changeModalComment, showComment, val,handleCommentPost }) => {
-  let comment = useRef("")
+const FeedCommentView = ({
+  changeModalComment,
+  showComment,
+  val,
+  handleCommentPost,
+}) => {
+  const [commentList, setCommentList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleChange=(e)=>comment=e.target.value
+  let comment = useRef("");
 
-  const handlePostButton=()=>{
-    handleCommentPost(comment)
-  }
+  const handleChange = (e) => (comment = e.target.value);
 
-  return (    
-      <Modal
-        open={showComment}
-        width={1000}
-        centered
-        onCancel={changeModalComment}
-        footer={null}
-        className="myModal"
-      >
-        <FeedCommentViewCss>
-          <div className="modalDiv">
-            <div className="Maindiv">
-              <img className="myimg" src={process.env.REACT_APP_BASEURL_IMAGE+val.shots} alt="user" />
+  const handlePostButton = () => handleCommentPost(comment);
+
+  const handleLikeStatus = async (comment_id, status) => {
+    let payload = {
+      post_id: val.post_id,
+      comment_id: comment_id,
+      status: status,
+    };
+    let res = await updateCommentLikeResponse(payload);
+    if (res?.status === 200) {
+    } else {
+      toast.error(res?.message || "Something Went Wrong");
+    }
+  };
+  const parseCommentList = async (payload) => {
+    const parseData = payload?.map((list) => {
+      let sender = list?.commentDeatils?.user_images_while_signup[0];
+      return {
+        comment: list.comment,
+        senderName: list?.commentDeatils?.name,
+        senderImage: sender?.image_url,
+        senderId: list?.commentDeatils?.comment_by,
+        comment_date:moment(list?.createdAt).local(),
+        likeCount:parseInt(list?.heartCount),//
+        comment_id: list?.id,
+        iconCommentList:list?.CommentLikes, //array of all comment icons 
+      };
+    });
+    return parseData;
+  };
+
+  const handleCommentsList = async () => {
+    setLoading(true);
+    let res = await getCommentsList(val.post_id);
+    if (res?.status === 200) {
+      let parseData= await parseCommentList(res?.data[0]?.Comments);
+      setCommentList(parseData || [])
+      setLoading(false);
+    } else {
+      toast.error(res?.message || "Something Went Wrong");
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    handleCommentsList();
+  }, []);
+
+  return (
+    <Modal
+      open={showComment}
+      width={1000}
+      centered
+      onCancel={changeModalComment}
+      footer={null}
+      className="myModal"
+    >
+      <FeedCommentViewCss>
+        <div className="modalDiv">
+          <div className="Maindiv">
+            <img
+              className="myimg"
+              src={process.env.REACT_APP_BASEURL_IMAGE + val.shots}
+              alt="user"
+            />
+          </div>
+
+          <div className="Maindiv">
+            {/* userProfile */}
+            <div className="header">
+              <CommentCardsCss>
+                <div className="profileImg">
+                  <img
+                    className=""
+                    src={val.profile_img}
+                    alt="userProfileImg"
+                  />
+                </div>
+                <div className="ProfileInfo">
+                  <div className="userName">{val.userName}</div>
+                  <div className="postDate">{val.date}</div>
+                </div>
+              </CommentCardsCss>
             </div>
 
-            <div className="Maindiv">
-              {/* userProfile */}
-              <div className="header">
-                <CommentCardsCss>
-                  <div className="profileImg">
-                    <img className="" src={process.env.REACT_APP_BASEURL_IMAGE+val.shots} alt="userProfileImg" />
-                  </div>
-                  <div className="ProfileInfo">
-                    <div className="userName">{val.UserName}</div>
-                    <div className="postDate">{val.Date}</div>
-                  </div>
-                </CommentCardsCss>
-              </div>
+            {/* commentSection */}
+            <div className="commentSection">
+              {loading ? (
+                <Loader />
+              ) : commentList.length > 0 ? (
+                commentList.map((val, index) => {
+                  return (
+                    <CommentCards
+                      details={val}
+                      key={index}
+                      handleHeartLike={handleLikeStatus}
+                    />
+                  );
+                })
+              ) : (
+                <NoRecords>No Data Found</NoRecords>
+              )}
+            </div>
 
-              {/* commentSection */}
-              <div className="commentSection">
-                {commentofpeople.map((val, index) => {
-                  return <CommentCards prop={val} key={index} />;
-                })}
-              </div>
-
-              {/* commentSend */}
-              <div className="comment">
-                <div className="commentInput">
-                  <input
-                    className="input"
-                    type="text"
-                    placeholder="Add a Comment...."
-                    onChange={handleChange}
-                  />
-                  <button className="inputButton" onClick={handlePostButton}>Post</button>
-                </div>
+            {/* commentSend */}
+            <div className="comment">
+              <div className="commentInput">
+                <input
+                  className="input"
+                  type="text"
+                  placeholder="Add a Comment...."
+                  onChange={handleChange}
+                />
+                <button className="inputButton" onClick={handlePostButton}>
+                  Post
+                </button>
               </div>
             </div>
           </div>
-        </FeedCommentViewCss>
-      </Modal>
+        </div>
+      </FeedCommentViewCss>
+    </Modal>
   );
 };
 

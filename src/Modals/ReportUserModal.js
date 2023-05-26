@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import StyledButton from "../Components/Button";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { report_reasons } from "Utils/constant";
+import {colors} from "Style/theme"
 
 export const StyledReportModal = styled.div`
   /* MODAL HEADING-SECTION STARTS */
@@ -42,12 +43,11 @@ export const StyledReportModal = styled.div`
 
   .complaint {
     padding: 15px;
-    background-color: #f0f0f0;
+    // background-color: #f0f0f0;
     font-size: 12px;
     margin-bottom: 10px;
     font-weight: 400;
     line-height: 18px;
-    // border: 1px solid ${props=>props.status?"orange":"transparent"};
     border-radius: 10px;
   }
 
@@ -84,20 +84,23 @@ export const StyledReportModal = styled.div`
   /* MODAL BUTTON-SECTION ENDS  */
 `;
 
+const ReportOptions = styled.div`
+  background: ${(props) => (props.status ? colors.brown : colors.light_grey)};
+  color: ${(props) => (props.status ? "white" : "black")};
+`;
+
 export default function ReportUserModal({ closeReportModal, reportUserPost }) {
-  let [reportReason,SetReportReason] = useState("");
-  let [userReportReason,setUserReportReason]=useState("");
+  let [reportReason, SetReportReason] = useState("");
+  let [userReportReason, setUserReportReason] = useState("");
 
   const handleChange = (e) => {
     SetReportReason(e.target.value);
     setUserReportReason(e.target.value);
-    console.log("content", reportReason);
   };
 
   const selectedReason = (list) => {
-    SetReportReason(list.value)
-    setUserReportReason("")
-    console.log("selected",reportReason)
+    SetReportReason(list.value);
+    setUserReportReason("");
   };
 
   return (
@@ -118,9 +121,14 @@ export default function ReportUserModal({ closeReportModal, reportUserPost }) {
         <div className="modal-hero-section">
           <div className="complaints-section">
             {report_reasons.map((list, index) => (
-              <div style={{border:`${reportReason===list.value?"1px solid orange":"1px solid transparent"}`}} className="complaint" key={index} onClick={()=>selectedReason(list)}>
+              <ReportOptions
+                status={reportReason === list.value}
+                className="complaint"
+                key={index}
+                onClick={() => selectedReason(list)}
+              >
                 <div className="complaint-content">{list.value}</div>
-              </div>
+              </ReportOptions>
             ))}
             {/* <div className="complaint">
               <div className="complaint-content">Bullying or harassment</div>
@@ -158,7 +166,10 @@ export default function ReportUserModal({ closeReportModal, reportUserPost }) {
                 Cancel
               </StyledButton>
             </div>
-            <div className="yes-btn" onClick={()=>reportUserPost(reportReason)}>
+            <div
+              className="yes-btn"
+              onClick={() => reportUserPost(reportReason)}
+            >
               <StyledButton
                 text="white"
                 bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"

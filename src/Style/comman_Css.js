@@ -1,7 +1,7 @@
 const { default: styled } = require("styled-components");
 
 export const NoRecords = styled.div`
-  height: ${(props)=>props.height};
+  height: ${(props)=>props.height || "100%"};
   display: flex;
   align-items: center;
   justify-content: center;
