@@ -1,82 +1,78 @@
-
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import exit from "../Assets/Images/Matches Image/exit.png";
 
-
 const CommentModal = ({ show, close, props }) => {
   const navigate = useNavigate();
-  let profile_img=process.env.REACT_APP_BASEURL_IMAGE+props?.partner_data?.photos_for_verification;
-  let Name=props?.partner_data?.name
-  let age=props?.partner_data?.age
-  let city=props?.partner_data?.city
-  let country=props?.partner_data?.country
+  
+
+  let profile_img =
+    process.env.REACT_APP_BASEURL_IMAGE +
+    props?.partner_data?.photos_for_verification;
+  let Name = props?.partner_data?.name;
+  let age = props?.partner_data?.age;
+  let city = props?.partner_data?.city;
+  let country = props?.partner_data?.country;
 
   return (
     <>
-    
       <div show={show} onHide={close}>
         <CommentModalStyle>
           {/* <div className="modal"> */}
-            {/* <div className="modal-container"> */}
-              {/* <div className="modal-content"> */}
-                <div className="ExitButton">
+          {/* <div className="modal-container"> */}
+          {/* <div className="modal-content"> */}
+          <div className="ExitButton">
+            {" "}
+            <img src={exit} alt="" className="Exit" onClick={close} />{" "}
+          </div>
+          <div className="content-container">
+            <div className="MainDiv">
+              <div className="Left">
+                <img
+                  src={profile_img}
+                  alt=""
+                  className="img112"
+                  onClick={() =>
+                    navigate("/Layout/MatchesDetail", {
+                      state: {props}
+                    })
+                  }
+                />
+              </div>
+              <div className="Right">
+                <p className="Name">
+                  <span onClick={() => navigate("/Layout/MatchesDetail",
+                  {state:{props}}
+                  )}>
+                    {Name}
+                  </span>
+                </p>
+                <p className="Common">
                   {" "}
-                  <img
-                    src={exit}
-                    alt=""
-                    className="Exit"
-                    onClick={close}
-                  />{" "}
-                </div>
-                <div className="content-container">
-                  <div className="MainDiv">
-                    <div className="Left">
-                      <img
-                        src={profile_img}
-                        alt=""
-                        className="img112"
-                        // onClick={() =>
-                        //   navigate("/Layout/MatchesDetail", {
-                        //     state: { about: props.about },
-                        //   })
-                        // }
-                      />
-                    </div>
-                    <div className="Right">
-                      <p className="Name">
-                        <span
-                          // onClick={() =>
-                          //   navigate("/Layout/MatchesDetail", {
-                          //     state: { about: props.about },
-                          //   })
-                          // }
-                        >
-                          {Name}
-                        </span>
-                      </p>
-                      <p className="Common">
-                        {" "}
-                        {age} <span className="dot"></span> {city}{" "}
-                        <span className="dot" /> {country}
-                      </p>
+                  {age} <span className="dot"></span> {city}{" "}
+                  <span className="dot" /> {country}
+                </p>
 
-                      <p className="Comment">
-                        Comments <span className="Common1"> ( Optional )</span>
-                      </p>
-                      <textarea type="text" className="InputBox" />
-                    </div>
-                  </div>
-                  <div className="ButtonDiv">
-                   <button className="Button" onClick={()=>navigate("/Layout/Messages",{state:true})}>Admire</button>
-                  </div>
-                {/* </div> */}
-              {/* </div> */}
+                <p className="Comment">
+                  Comments <span className="Common1"> ( Optional )</span>
+                </p>
+                <textarea type="text" className="InputBox" />
+              </div>
+            </div>
+            <div className="ButtonDiv">
+              <button
+                className="Button"
+                onClick={() => navigate("/Layout/Messages", { state: true })}
+              >
+                Admire
+              </button>
+            </div>
+            {/* </div> */}
+            {/* </div> */}
             {/* </div> */}
           </div>
         </CommentModalStyle>
       </div>
-    
     </>
   );
 };
@@ -106,11 +102,11 @@ export const CommentModalStyle = styled.div`
     height: 24px;
   }
   .Name {
-    font-size:16px;
-    letter-spacing:0.05em;
-    font-weight:400;
-    color:#242424;
-    padding:5px 0px;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    font-weight: 400;
+    color: #242424;
+    padding: 5px 0px;
     &:hover {
       cursor: pointer;
     }
@@ -163,36 +159,34 @@ export const CommentModalStyle = styled.div`
     margin-top: 4px;
     padding: 10px;
     outline: none;
-    font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 150%;
-color: #242424;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    color: #242424;
   }
-textarea {
-  resize: none;
-}
+  textarea {
+    resize: none;
+  }
   .ButtonDiv {
     text-align: center;
     margin-top: 22px;
-
-
   }
   button {
-      border-style: none;
-      &:hover{
-        cursor: pointer;
-      }
+    border-style: none;
+    &:hover {
+      cursor: pointer;
     }
+  }
 
   .img112 {
     width: 100%;
     height: 100%;
     background: white;
     border: none;
-    border-radius:10px;
-    
+    border-radius: 10px;
+
     &:hover {
       cursor: pointer;
     }
@@ -227,7 +221,4 @@ textarea {
   .Comment {
     margin-top: 16px;
   }
- 
 `;
-
-

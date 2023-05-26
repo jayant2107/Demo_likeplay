@@ -21,7 +21,7 @@ export default function Loader() {
 }
 
 const LoaderWrapper = styled.div`
-  height: 100%;
+  height: 80%;
   width: 100%;
   padding: 10px 0px;
   display: flex;

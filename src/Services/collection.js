@@ -21,6 +21,8 @@ const POST_LIKE_COMMENT="post/createLikeOnPost"
 // const TAGE_DETAILS = "post/getTagsDetails";
 const Matcheduser='user/getMatchedUsers'
 
+const sendrequest="/user/sendRequest"
+
 
 export const getHomePagePost = () => {
   return getApi(`${HOME_PAGE_POSTS}`);
@@ -63,3 +65,7 @@ export const commentPost = (payload) => {
 export const updatePostLikeComment = (payload) => {
   return postApi(POST_LIKE_COMMENT, payload);
 };
+
+export const sendRequest=(payload)=>{
+  return postApi(sendrequest,payload);
+}
