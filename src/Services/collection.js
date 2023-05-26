@@ -78,6 +78,8 @@ export const updateCommentLikeResponse = (payload) => {
 
 export const getUploadedPosts=()=>{
   return getApi(UPLOADED_POST_LISTS)
+}
+
 export const sendRequest=(payload)=>{
   return postApi(sendrequest,payload);
 }
