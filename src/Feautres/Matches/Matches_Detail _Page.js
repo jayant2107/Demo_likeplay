@@ -7,7 +7,10 @@ import { getMatchedUsers } from 'Services/collection';
 
 const MatchesDetailPage = () => {
   let location=useLocation()
-  let data = location.state.about
+  const value =location?.state?.props
+  console.log(location)
+  
+  
 
   
  
@@ -20,9 +23,9 @@ const MatchesDetailPage = () => {
         </div>
       </div>
       <div className='Card'>
-        { data.map((value)=>(
+      
             <MatchesCard2 key={value.id} props={value}/>
-        ))}
+      
       </div>
       
     </MatchesDetailsStyle>

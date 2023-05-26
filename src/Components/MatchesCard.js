@@ -4,34 +4,60 @@ import logo1 from "../Assets/Images/Matches Image/logo1 (1).png";
 import logo2 from "../Assets/Images/Matches Image/logo1 (2).png";
 import CommentModal from "../Modals/CommentModal";
 import { Button, Modal } from 'antd';
+import { sendRequest } from "Services/collection";
+import { toast } from "react-toastify";
 
 
 
 
 
 const MatchesCard = ({ props }) => {
-  console.log(props,"props")
-
   const [loadings, setLoadings] = useState([]);
-  const enterLoading = (index) => {
-    setLoadings((prevLoadings) => {
-      const newLoadings = [...prevLoadings];
-      newLoadings[index] = true;
-      return newLoadings;
-    });
-    setTimeout(() => {
-      setLoadings((prevLoadings) => {
-        const newLoadings = [...prevLoadings];
-        newLoadings[index] = false;
-        return newLoadings;
-      });
-    }, 3000);
-  };
+
+
+
   let profile_img=process.env.REACT_APP_BASEURL_IMAGE+props?.partner_data?.photos_for_verification;
   let Name=props?.partner_data?.name
   let age=props?.partner_data?.age
   let city=props?.partner_data?.city
   let Country=props?.partner_data?.country
+  let userid=props?.partner_data?.id
+  
+
+  const handlesubmit=async(id,index,status)=>{
+    let payload={
+      "user_id":id,
+      "status":status
+    }
+      setLoadings((prevLoadings) => {
+        const newLoadings = [...prevLoadings];
+        newLoadings[index] = true;
+        return newLoadings;
+      });
+    let req=await sendRequest(payload);
+    if(req?.status===200){
+      setLoadings((prevLoadings) => {
+        const newLoadings = [...prevLoadings];
+        newLoadings[index] = false;
+        return newLoadings;
+      });
+      
+      toast.success("Request Send")
+
+
+    }
+   else{
+    setLoadings((prevLoadings) => {
+      const newLoadings = [...prevLoadings];
+      newLoadings[index] = false;
+      return newLoadings;
+    })
+    console.log(req,"req")
+    toast.error(req.message||"Request failed")
+
+    }
+    
+  }
 
   const [showDiv, setShowDiv] = useState(false);
 
@@ -84,14 +110,14 @@ const MatchesCard = ({ props }) => {
            className="Button1"
           type="primary"
           loading={loadings[2]}
-          onClick={() => enterLoading(2)}> 
+          onClick={() =>handlesubmit(userid,2,1)}> 
           <img src={logo1} alt="" /></Button>
 
           <Button className="Button2"
           size="small"
           type="primary"
           loading={loadings[1]}
-          onClick={() => enterLoading(1)}>
+          onClick={() =>handlesubmit(userid,1,0)}> 
             <img src={logo2} alt="" />
           </Button>
         </div>

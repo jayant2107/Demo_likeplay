@@ -1,4 +1,4 @@
-import React, { useEffect, useState }  from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Modal } from "antd";
 import MatchesCard from "../../Components/MatchesCard";
@@ -7,77 +7,98 @@ import search from "../../Assets/Images/Matches Image/search.png";
 import DatingDetailModal from "../../Modals/DatingDetailModal";
 import { getMatchedUsers } from "Services/collection";
 import Loader from "Components/Loader";
-
-
-
+import { AiOutlineClose } from "react-icons/ai";
 
 const Matches = () => {
-
   const [detailModal, setDetailModal] = useState(false);
-  const [loading,setLoading]=useState(false);
-  const [Data,setdata]=useState([])
+  const [loading, setLoading] = useState(false);
+  const [Data, setdata] = useState([]);
+  const [datafound, setdatafound] = useState(false);
+  const [Searchbar, setSearchbar] = useState(false);
 
-  const closeDetailModal = () =>{
+  const closeDetailModal = () => {
     setDetailModal(false);
-  }
-  let matcheduser=async()=>{
-    setLoading(true)
-  
-    let attributeStatus=3
-    let req=await getMatchedUsers(attributeStatus)
-    if(req.status===200){
+  };
+  let matcheduser = async () => {
+    setLoading(true);
 
-      setdata(req?.data?.user_data)
-      setLoading(false)
-
-    }
-    else{
-      setLoading(false)
-
+    let attributeStatus = 3;
+    let req = await getMatchedUsers(attributeStatus);
+    if (req?.status === 200) {
+      if (req?.data == null) {
+        setLoading(false);
+        setdatafound(true);
+      } else {
+        setdata(req?.data?.user_data);
+        setLoading(false);
+      }
+    } else {
+      setLoading(false);
+      setdatafound(true);
     }
   };
-  useEffect(()=>{
+  useEffect(() => {
     matcheduser();
+  }, []);
+  console.log(Data, "ggggg");
 
-  },[])
-  console.log(Data,"ggggg")
-
-  
   return (
     <MatchesStyle>
       <div className="Header">
         <div className="HDiv">
-          <p className="Matches">Matches</p>
-          <img src={search} alt="" className="SLogo" />
+          {Searchbar ? (
+            <div className="search">
+              <input className="search-input" placeholder="Search..."></input>
+              <AiOutlineClose style={{fontSize:'20px'}} onClick={()=>setSearchbar(false)} />
+            </div>
+          ) : (
+            <div className="Match">
+              <p className="Matches">Matches</p>
+              <img src={search} onClick={()=>setSearchbar(true)} alt="" className="SLogo" />
+            </div>
+          )}
         </div>
       </div>
-      {loading?<Loader/>: 
-      <div className="Main">
-        <div className="Tips">
-          <p onClick={()=>{setDetailModal(true)}}>Online dating Tips?</p>
-          {detailModal && (<Modal
-          open={detailModal}
-          onCancel={closeDetailModal}
-          close={closeDetailModal}
-          maskClosable = {true}
-          footer={null}
-          width="80%"
-          style={{ top: 20 }}
-          prefixCls="matcheduser-modal"
-          >
-            <DatingDetailModal/>
-          </Modal>)}
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="Main">
+          <div className="Tips">
+            <p
+              onClick={() => {
+                setDetailModal(true);
+              }}
+            >
+              Online dating Tips?
+            </p>
+            {detailModal && (
+              <Modal
+                open={detailModal}
+                onCancel={closeDetailModal}
+                close={closeDetailModal}
+                maskClosable={true}
+                footer={null}
+                width="80%"
+                style={{ top: 20 }}
+                prefixCls="matcheduser-modal"
+              >
+                <DatingDetailModal />
+              </Modal>
+            )}
+          </div>
+          {datafound ? (
+            <Nodata className="No Data">
+              <p>No Data Found </p>
+            </Nodata>
+          ) : (
+            <div className="Cards">
+              {Data?.map((value) => (
+                <MatchesCard key={value.id} props={value} />
+              ))}
+            </div>
+          )}
         </div>
-         <div className="Cards">
-          {Data.map((value) => (
-            <MatchesCard key={value.id} props={value} />
-          ))}
-        </div>
-        
-       
-
-     
-      </div>}
+      )}
     </MatchesStyle>
   );
 };
@@ -147,6 +168,30 @@ const MatchesStyle = styled.div`
     align-items: end;
     padding: 20px;
   }
+  .Match{
+    display:flex;
+    align-items:end;
+    justify-content: space-between;
+    width:100%;
+
+  }
+  .search{
+    display:flex;
+    align-items:end;
+    justify-content: space-between;
+    width:100%;
+  }
+  .search-input{
+    width:60%;
+    border-radius:10px;
+    border:none;
+    padding:10px;
+    outline:none;
+    &:focus{
+      outline:none;
+    }
+  }
+
   .Matches {
     letter-spacing: 0.05em;
     color: #a8580f;
@@ -159,5 +204,16 @@ const MatchesStyle = styled.div`
   .SLogo {
     height: 17.49px;
     width: 17.49px;
+  }
+`;
+const Nodata = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 140px);
+  p {
+    color: #242424;
+    letter-spacing: 0.05em;
+    font-size: 18px;
   }
 `;

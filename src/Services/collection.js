@@ -25,6 +25,8 @@ const POST_COMMENTS_LIST = "post/getCommentsDetails";
 const COMMENT_HEARTLIKES = "post/commentHeartLikes";
 
 const UPLOADED_POST_LISTS="user/profileView"
+const sendrequest="/user/sendRequest"
+
 
 export const getHomePagePost = () => {
   return getApi(`${HOME_PAGE_POSTS}`);
@@ -76,4 +78,6 @@ export const updateCommentLikeResponse = (payload) => {
 
 export const getUploadedPosts=()=>{
   return getApi(UPLOADED_POST_LISTS)
+export const sendRequest=(payload)=>{
+  return postApi(sendrequest,payload);
 }
