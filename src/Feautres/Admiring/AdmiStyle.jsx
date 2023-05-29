@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 export const Admiringsdiv = styled.div`
+min-height:100vh;
 
  .search_bar {
     width: 100%;
@@ -39,6 +40,7 @@ span.spnaAddmi {
     width: 97.6%;
     margin: auto;
     margin-top: 45px;
+   
 
     @media(max-width:1200px){
         grid-template-columns:repeat(3,1fr);

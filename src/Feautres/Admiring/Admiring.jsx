@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Admiringsdiv, AdmiringCard } from "./AdmiStyle";
 import doteicon, {
   juli,
@@ -7,6 +7,9 @@ import doteicon, {
   iconchat,
 } from "../../Utils/Admiring/Admiring";
 import { AiOutlineSearch } from "react-icons/ai";
+import { admiringUsers } from "Services/collection";
+import Loader from "Components/Loader";
+import { Nodata } from "Components/Nodata";
 
 const data = [
   {
@@ -111,9 +114,32 @@ const data = [
 ];
 const Admiring = () => {
   const [serc, setSerc] = React.useState(false);
+  const [Data,setData]=useState();
+  const [loading,setloading]=useState(true);
+  const [datafound,setdatafound]=useState(false)
   const Search = () => {
     setSerc(true);
   };
+  const getadmiringlisting=async()=>{
+    setloading(true)
+    const req= await admiringUsers()
+    if(req?.status === 200){
+      setData(req?.data)
+      setloading(false)
+ 
+   
+      
+    }
+    else{
+      setloading(false)
+      setdatafound(true)
+     
+    }
+  }
+  useEffect(()=>{
+    getadmiringlisting()
+  },[])
+  console.log(Data,"dataa")
 
   return (
     <>
@@ -136,56 +162,65 @@ const Admiring = () => {
             <AiOutlineSearch />
           </span>
         </div>
-        <div className="admiring_content">
-          {data.map((el) => {
-            return (
-              <>
-                <AdmiringCard>
-                  <div className="admiring_card_img">
-                    {el.newbtn && (
-                      <button className="admiring_new_btn">New</button>
-                    )}
-                    <img
-                      src={el.photo}
-                      className="admiring_card_img_tag"
-                      alt="empty"
-                    ></img>
-                  </div>
-                  <div className="admiring_text_conten">
-                    <p className="admiring_name_heading">{el.headname}</p>
-                    <div className="admiring_name">
-                      <p>{el.age}</p>
-                      <div className="admiring_dote_text">
-                        <img src={doteicon} alt="" />
-                      </div>
-                      <p>{el.country}</p>
-                      <div className="admiring_dote_text">
-                        <img src={doteicon} alt="" s />
-                      </div>
-                      <p>{el.profession}</p>
-                    </div>
-                  </div>
-                  {el.admierd_btn && (
-                    <button className="admired_btn_cart_bottom">Admired</button>
-                  )}
-                  {el.padding_btn && (
-                    <button className="admired_btn_cart_bottom_padding">
-                      Pending
-                    </button>
-                  )}
-                  {el.chat_btn && (
-                    <div>
-                      <img className="chating_icon" src={iconchat} alt="" />
-                      <select className="admired_btn_cart_select">
-                        <option value="a">chat</option>
-                      </select>
-                    </div>
-                  )}
-                </AdmiringCard>
-              </>
-            );
-          })}
-        </div>
+        {loading?(<Loader/>):( 
+           <div className="admiring_content">
+            {datafound?(<Nodata><p>No Data Found</p></Nodata>):(<>
+              {Data?.map((el) => {
+            const image =process.env.REACT_APP_BASEURL_IMAGE +el?.AdmireTo?.user_images_while_signup[0]?.image_url
+             return (
+               <>
+                 <AdmiringCard>
+                   <div className="admiring_card_img">
+                     {el.newbtn && (
+                       <button className="admiring_new_btn">New</button>
+                     )}
+                     <img
+                       src={image}
+                       className="admiring_card_img_tag"
+                       alt="empty"
+                     ></img>
+                   </div>
+                   <div className="admiring_text_conten">
+                     <p className="admiring_name_heading">{el?.AdmireTo?.name}</p>
+                     <div className="admiring_name">
+                       <p>{el?.AdmireTo?.age}</p>
+                       <div className="admiring_dote_text">
+                         <img src={doteicon} alt="" />
+                       </div>
+                       <p>{el?.AdmireTo?.country}</p>
+                       <div className="admiring_dote_text">
+                         <img src={doteicon} alt="" s />
+                       </div>
+                       <p>{el?.AdmireTo?.employment}</p>
+                     </div>
+                   </div>
+                   {el.admierd_btn && (
+                     <button className="admired_btn_cart_bottom">Admired</button>
+                   )}
+                   {el?.status==1 && (
+                     <button className="admired_btn_cart_bottom_padding">
+                       Pending
+                     </button>
+                   )}
+                   {el?.status==2 && (
+                     <div>
+                       <img className="chating_icon" src={iconchat} alt="" />
+                       <select className="admired_btn_cart_select">
+                        <option selected='disable'>Chat</option>
+                         <option value="a">Video Call</option>
+                         <option>Voice Call</option>
+                       </select>
+                     </div>
+                   )}
+                 </AdmiringCard>
+               </>
+             );
+           })}
+            </>)}
+         
+         </div>
+        )}
+    
       </Admiringsdiv>
     </>
   );

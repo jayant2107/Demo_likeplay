@@ -1,111 +1,144 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
-import { Modal } from "antd";
+import {Modal} from "antd";
 import MatchesCard from "../../Components/MatchesCard";
 import data from "../../Feautres/Matches/Matches_JSON";
 import search from "../../Assets/Images/Matches Image/search.png";
 import DatingDetailModal from "../../Modals/DatingDetailModal";
-import { getMatchedUsers } from "Services/collection";
+import {getMatchedUsers} from "Services/collection";
 import Loader from "Components/Loader";
-import { AiOutlineClose } from "react-icons/ai";
+import {AiOutlineClose} from "react-icons/ai";
+import {object} from "yup";
 
 const Matches = () => {
-  const [detailModal, setDetailModal] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [Data, setdata] = useState([]);
-  const [datafound, setdatafound] = useState(false);
-  const [Searchbar, setSearchbar] = useState(false);
+    const [detailModal, setDetailModal] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [Data, setdata] = useState([]);
+    const [datafound, setdatafound] = useState(false);
+    const [Searchbar, setSearchbar] = useState(false);
+    const [Searchtext, setsearchtext] = useState()
 
-  const closeDetailModal = () => {
-    setDetailModal(false);
-  };
-  let matcheduser = async () => {
-    setLoading(true);
+    const closeDetailModal = () => {
+        setDetailModal(false);
+    };
 
-    let attributeStatus = 3;
-    let req = await getMatchedUsers(attributeStatus);
-    if (req?.status === 200) {
-      if (req?.data == null) {
-        setLoading(false);
-        setdatafound(true);
-      } else {
-        setdata(req?.data?.user_data);
-        setLoading(false);
-      }
-    } else {
-      setLoading(false);
-      setdatafound(true);
+    const searchdata = (e) => {
+        setsearchtext(e.target.value) 
+        const FilterData = Data?.filter((val) =>val?.partner_data?.name.toLowerCase().includes(e?.target.value.toLowerCase()))
+        if(e.target.value.length>0){
+          setdata(FilterData)
+        }else{
+          matcheduser()
+        }  
     }
-  };
-  useEffect(() => {
-    matcheduser();
-  }, []);
-  console.log(Data, "ggggg");
 
-  return (
-    <MatchesStyle>
-      <div className="Header">
-        <div className="HDiv">
-          {Searchbar ? (
-            <div className="search">
-              <input className="search-input" placeholder="Search..."></input>
-              <AiOutlineClose style={{fontSize:'20px'}} onClick={()=>setSearchbar(false)} />
+
+    let matcheduser = async () => {
+        setLoading(true);
+
+        let attributeStatus = 3;
+        let req = await getMatchedUsers(attributeStatus);
+        if (req?.status === 200) {
+            if (req?.data == null) {
+                setLoading(false);
+                setdatafound(true);
+            } else {
+                setdata(req?.data?.user_data);
+                setLoading(false);
+            }
+        } else {
+            setLoading(false);
+            setdatafound(true);
+        }
+    };
+    useEffect(() => {
+        matcheduser();
+    }, []);
+
+
+    return (
+        <MatchesStyle>
+            <div className="Header">
+                <div className="HDiv">
+                    {
+                    Searchbar ? (
+                        <div className="search">
+                            <input className="search-input" placeholder="Search..."
+                                onChange={searchdata}></input>
+                            <AiOutlineClose style={
+                                    {fontSize: '20px'}
+                                }
+                                onClick={
+                                    () => setSearchbar(false)
+                                }/>
+                        </div>
+                    ) : (
+                        <div className="Match">
+                            <p className="Matches">Matches</p>
+                            <img src={search}
+                                onClick={
+                                    () => setSearchbar(true)
+                                }
+                                alt=""
+                                className="SLogo"/>
+                        </div>
+                    )
+                } </div>
             </div>
-          ) : (
-            <div className="Match">
-              <p className="Matches">Matches</p>
-              <img src={search} onClick={()=>setSearchbar(true)} alt="" className="SLogo" />
-            </div>
-          )}
-        </div>
-      </div>
-      {loading ? (
-        <Loader />
-      ) : (
-        <div className="Main">
-          <div className="Tips">
-            <p
-              onClick={() => {
-                setDetailModal(true);
-              }}
-            >
-              Online dating Tips?
-            </p>
-            {detailModal && (
-              <Modal
-                open={detailModal}
-                onCancel={closeDetailModal}
-                close={closeDetailModal}
-                maskClosable={true}
-                footer={null}
-                width="80%"
-                style={{ top: 20 }}
-                prefixCls="matcheduser-modal"
-              >
-                <DatingDetailModal />
-              </Modal>
-            )}
-          </div>
-          {datafound ? (
-            <Nodata className="No Data">
-              <p>No Data Found </p>
-            </Nodata>
-          ) : (
-            <div className="Cards">
-              {Data?.map((value) => (
-                <MatchesCard key={value.id} props={value} />
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-    </MatchesStyle>
-  );
+            {
+            loading ? (
+                <Loader/>) : (
+                <div className="Main">
+                    <div className="Tips">
+                        <p onClick={
+                            () => {
+                                setDetailModal(true);
+                            }
+                        }>
+                            Online dating Tips?
+                        </p>
+                        {
+                        detailModal && (
+                            <Modal open={detailModal}
+                                onCancel={closeDetailModal}
+                                close={closeDetailModal}
+                                maskClosable={true}
+                                footer={null}
+                                width="80%"
+                                style={
+                                    {top: 20}
+                                }
+                                prefixCls="matcheduser-modal">
+                                <DatingDetailModal/>
+                            </Modal>
+                        )
+                    } </div>
+                    {
+                    datafound ? (
+                        <Nodata className="No Data">
+                            <p>No Data Found
+                            </p>
+                        </Nodata>
+                    ) : (
+                        <div className="Cards">
+                            {
+                            Data ?. map((value) => (
+                                <MatchesCard key={
+                                        value.id
+                                    }
+                                    props={value}/>
+                            ))
+                        } </div>
+                    )
+                } </div>
+            )
+        } </MatchesStyle>
+    );
 };
 
 export default Matches;
 
-const MatchesStyle = styled.div`
+const MatchesStyle = styled.div `
   width: 100%;
   height: 100%;
   .Main {
@@ -206,7 +239,7 @@ const MatchesStyle = styled.div`
     width: 17.49px;
   }
 `;
-const Nodata = styled.div`
+const Nodata = styled.div `
   display: flex;
   align-items: center;
   justify-content: center;

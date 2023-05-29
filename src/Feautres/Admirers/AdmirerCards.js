@@ -1,30 +1,47 @@
+import { sendRequest } from "Services/collection";
 import React from "react";
+import { toast } from "react-toastify";
 import styled from "styled-components";
 
 export default function AdmirerCards({ props }) {
+const admireback=async()=>{
+  const res={
+    "user_id":props?.AdmireBy?.id,
+    "status":2
+  }
+  const req= await sendRequest(res)
+  if(req?.status===200){
+    toast.success(req?.message)
+  }
+  else{
+    toast.error(req?.message)
+
+  }
+}
+  const Images= process.env.REACT_APP_BASEURL_IMAGE +props?.AdmireBy?.user_images_while_signup[0]?.image_url
   return (
     <MatchesCardStyle>
       <div className="MainCard">
         <div className="MainDiv">
           <div className="ImgDiv">
-            <img className="imgClass" src={props.Image} alt="" />{" "}
+            <img className="imgClass" src={Images} alt="" />{" "}
           </div>
           {props.Type && (
             <div className="type">
               <p>{props.Type}</p>
             </div>
           )}
-          <p className="Name">{props.Name}</p>
+          <p className="Name">{props?.AdmireBy?.name}</p>
           <div className="Div1">
-            <p className="common">{props.Age}</p>
+            <p className="common">{props?.AdmireBy?.age}</p>
             <span className="dot"></span>
-            <p className="common">{props.City} </p>
+            <p className="common">{props?.AdmireBy?.country} </p>
             <span className="dot"></span>
-            <p className="common">{props.Country}</p>
+            <p className="common">{props?.AdmireBy?.employment}</p>
           </div>
         </div>
         <AdmirerCardFooter>
-       <button className="admire-back">Admire Back</button>
+       <button className="admire-back" onClick={()=>admireback()}>Admire Back</button>
      
         </AdmirerCardFooter>
       </div>
