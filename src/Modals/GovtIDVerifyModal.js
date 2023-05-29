@@ -1,9 +1,21 @@
 import styled from "styled-components";
 import StyledButton from "../Components/Button";
 import { add } from "../Utils/images/Modalsimg";
-import React from "react";
+import React, { useState } from "react";
 
 export default function GovtIDVerifyModal({ closeModal }) {
+  const [doc,setDoc] = useState();
+  const [docBack,setDocBack] = useState();
+  
+  
+  const handleGovtDoc = (e) => {
+      setDoc(URL.createObjectURL(e.target.files[0])) 
+  };  
+  const handleGovtDoc2 = (e) => {
+    setDocBack(URL.createObjectURL(e.target.files[0]))
+};  
+  console.log(doc);
+
   return (
     <>
       <StyledIDModal>
@@ -17,20 +29,46 @@ export default function GovtIDVerifyModal({ closeModal }) {
         {/******* MODAL HERO-SECTION STARTS ********/}
 
         <div className="front-side">
+            {
+              doc ?
+              <img src={doc} alt='' className="selectedImg"/>
+            :
           <div className="top">
-            <div className="add-icon">
-              <img src={add} alt="addnew" />
-            </div>
+            <label htmlFor="govtDoc" className="fileLable">
+              <img src={add} alt='' className="selectedImg"/>
+            </label>
+            <input
+                    type="file"
+                    className="inputFile"
+                    name="govtDoc"
+                    id="govtDoc"
+                    onChange={handleGovtDoc}
+                    // accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    />
             <div className="para">Front Side</div>
-          </div>
+            </div>
+          }
         </div>
         <div className="back-side">
-          <div className="bottom">
-            <div className="add-icon">
-              <img src={add} alt="add"></img>
-            </div>
+        {
+              docBack ?
+              <img src={docBack} alt='' className="selectedImg"/>
+            :
+          <div className="top">
+            <label htmlFor="govtDoc" className="fileLable">
+              <img src={add} alt='' className="selectedImg"/>
+            </label>
+            <input
+                    type="file"
+                    className="inputFile"
+                    name="govtDoc"
+                    id="govtDoc"
+                    onChange={handleGovtDoc2}
+                    // accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    />
             <div className="para">Back Side</div>
-          </div>
+            </div>
+          }
         </div>
         {/******* MODAL HERO-SECTION ENDS ********/}
 
@@ -118,4 +156,22 @@ export const StyledIDModal = styled.div`
   }
 
   /******* MODAL BUTTON-SECTION ENDS ********/
+
+  .inputFile{
+    display : none;
+  }
+  .fileLable{
+    border-radius: 1rem;
+    background-color : #F0F0F0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position : relative;
+    margin : auto
+  }
+  .selectedImg{
+    width : 100%;
+    height : 100%;
+    border-radius: 1rem;
+  }
 `;

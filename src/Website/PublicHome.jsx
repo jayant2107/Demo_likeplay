@@ -30,6 +30,8 @@ import hashimg, {
   live,
   thegurdian,
   punch,
+  LikePlayJbklutselogo,
+  LikePlayTechNovalogo,
 } from "../Utils/images/Publichomeimg";
 
 export default function Publichome() {
@@ -325,8 +327,8 @@ export default function Publichome() {
 
   const VideoWrapper = styled.section`
     section {
-      position: relative;
-      top: -3rem;
+      // position: relative;
+      // top: -3rem;
       background: url(${Publicvideobg});
       background-size: cover;
       background-repeat: no-repeat;
@@ -336,7 +338,7 @@ export default function Publichome() {
       justify-content: center;
       align-items: center;
       padding: 0 0 3rem 0;
-      margin-bottom: 1.5rem;
+      margin-bottom: 30px 0px;
 
       .video {
         display: flex;
@@ -1072,8 +1074,11 @@ export default function Publichome() {
       .feature_imgs {
         display: flex;
         justify-content: center;
-        align-items:center;
+        align-items: center;
         gap: 1.5rem;
+        img {
+          width: 110px;
+        }
       }
     }
     /* Media quary for Smart Phone responsive  */
@@ -1421,21 +1426,29 @@ export default function Publichome() {
           <h1>As featured In</h1>
           <div className="feature_imgs">
             <a href="https://techpoint.africa/2023/03/06/likeplay-likeplay-com-1-dating-site-in-nigeria/">
-       
               <img src={techpoint} alt="" />
             </a>
-       
-       <a href="https://www.thisdaylive.com/index.php/2023/03/04/likeplaylikeplay-com-dating-platform-set-to-launch-in-nigeria/" >
-
-            <img src={thisday} alt="" />
-       </a>
-            <img src={thesun} alt="" />
-            <img src={thetimes} alt="" />
-            <img src={live} alt="" />
+            <a href="https://www.thisdaylive.com/index.php/2023/03/04/likeplaylikeplay-com-dating-platform-set-to-launch-in-nigeria/">
+              <img src={thisday} alt="" />
+            </a>
+            <a href="https://sunnewsonline.com/likeplay-likeplay-com-1-dating-site-in-nigeria/">
+              <img src={thesun} alt="" />
+            </a>
+            <a>
+              <img src={thetimes} alt="" />
+            </a>
+            <a href=" https://www.vanguardngr.com/2023/03/likeplay-likeplay-com-1-dating-site-in-nigeria-4/">
+              <img src={live} alt="" />
+            </a>
             <img src={thegurdian} alt="" />
-            <a href="https://punchng.com/why-you-should-try-online-dating-on-likeplaylikeplay-com/"> 
-
-            <img src={punch} alt="" />
+            <a href="https://punchng.com/why-you-should-try-online-dating-on-likeplaylikeplay-com/">
+              <img src={punch} alt="" />
+            </a>
+            <a href="https://www.jbklutse.com/likeplaylikeplay-com-1-dating-site-ghana/">
+              <img src={LikePlayJbklutselogo} alt="" />
+            </a>
+            <a href=" https://technovagh.com/likeplaylikeplay-wants-to-be-a-dating-site-for-africans/">
+              <img src={LikePlayTechNovalogo} alt="" />
             </a>
           </div>
         </section>
