@@ -298,6 +298,30 @@ export const RisgistationPage1 = styled.div`
     top: -2.8rem;
     left: 5rem;
   }
+  .inputFile{
+    display : none;
+  }
+  .fileLable{
+    width: 8rem;
+    height: 8rem;
+    border-radius: 1rem;
+    background-color : #F0F0F0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position : relative;
+  }
+  .removeUpload{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor : pointer;
+  }
+  .selectedImg{
+    width : 100%;
+    height : 100%;
+    border-radius: 1rem;
+  }
 
   /* ----------Rist Page8---------------- */
   .Risgistation_content8 {

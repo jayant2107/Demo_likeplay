@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import {
   LikePlaylogo,
-  linkedin,
   facebook,
   instagram,
   twitter,
@@ -229,7 +228,6 @@ export default function Publicfooter() {
             <div>
               <h2>Follow us on</h2>
               <div className="social_logo">
-                <img src={linkedin} alt="" />
                 <img src={facebook} alt="" />
                 <img src={instagram} alt="" />
                 <img src={twitter} alt="" />

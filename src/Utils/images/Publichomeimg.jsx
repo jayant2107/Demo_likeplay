@@ -94,6 +94,8 @@ import thetimes from "../../Assets/Icons/PublictimesPA.svg";
 import live from "../../Assets/Icons/PubliclivePA.svg";
 import thegurdian from "../../Assets/Icons/PublicthegurdianPA.svg";
 import punch from "../../Assets/Icons/PublicpunchPA.svg";
+import LikePlayJbklutselogo from 'Assets/Images/LikePlayJbklutselogo.png'
+import LikePlayTechNovalogo from 'Assets/Images/LikePlayTechNovalogo.jpeg'
 
 //footer and navbar content background image
 import footerbg from "../../Assets/Images/PublicfooterbgPA.svg";
@@ -149,6 +151,8 @@ export {
   live,
   thegurdian,
   punch,
+  LikePlayJbklutselogo,
+  LikePlayTechNovalogo,
   contory1,
   contory2,
   contory3,

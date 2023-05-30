@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Refer } from "../../../Utils/SettingImgaes/SettingP";
-import { copy, insta, linkdin, twitter, whatsapp } from "../../../Utils/IconsP";
+import { copy, insta, twitter, whatsapp } from "../../../Utils/IconsP";
 const ReferFriend = () => {
   return (
     <>
@@ -20,18 +20,6 @@ const ReferFriend = () => {
                 Refer to 5 friends and Earn 1 month subscription
               </div>
               <div className="BtnFlex">
-                <div className="Commonbtn">
-                  <Button
-                    Background="linear-gradient(225deg, #007AB5 14.64%, #0046E5 85.36%)"
-                    flex="flex"
-                    align="center"
-                    content="center"
-                  >
-                    <div className="innerLink">
-                      <img src={linkdin} alt="something wrong" />
-                    </div>
-                  </Button>
-                </div>
                 <div className="Commonbtn">
                   <Button
                     Background="radial-gradient(96.43% 78% at 26% 104%, #FFC600 0%, #FE311E 57.71%, rgba(254, 49, 30, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, radial-gradient(111% 111% at 11% 14%, #9331FF 0%, #FF1E9D 46.38%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */"

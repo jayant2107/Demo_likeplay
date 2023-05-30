@@ -75,7 +75,7 @@ const ResgistPage8 = ({ Next, Back }) => {
 
   return (
     <>
-      {modal === "photo" && (
+      {modal === "email" && (
         <Modal
           open={modal}
           close={closeModal}
@@ -141,7 +141,7 @@ const ResgistPage8 = ({ Next, Back }) => {
                             margin="0"
                             padding="0"
                             className="btn_buttom"
-                          >
+                            >
                             {el.btn}
                           </ButtonStyle>
                         </div>
