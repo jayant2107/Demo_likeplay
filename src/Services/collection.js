@@ -32,6 +32,10 @@ const admiring='user/admiringUsers'
 
 const admirers='/user/admirersUsers'
 
+const notifications="/user/notificationsListing"
+
+const notificationsclear='/user/clearNotifications'
+
 
 export const getHomePagePost = () => {
   return getApi(`${HOME_PAGE_POSTS}`);
@@ -95,4 +99,10 @@ export const admiringUsers=(payload)=>{
 
 export const admirersUsers=(payload)=>{
   return getApi(admirers,payload)
+}
+export const getnotificationList=(payload)=>{
+  return getApi(notifications,payload)
+}
+export const clearNotifications=(payload)=>{
+  return deleteApi(notificationsclear)
 }

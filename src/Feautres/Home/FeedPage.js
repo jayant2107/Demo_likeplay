@@ -138,6 +138,7 @@ const FeedPage = () => {
                 <UserPostCard
                   val={val}
                   index={index}
+                  getHomePageContent={getHomePageContent}
                   // like={like}
                   // heart={heart}
                   // star={star}

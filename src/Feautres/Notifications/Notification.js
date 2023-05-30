@@ -1,59 +1,89 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Homecouple } from "../../Utils/images/Publichomeimg";
+import { clearNotifications, getnotificationList } from "Services/collection";
+import { toast } from "react-toastify";
+import Loader from "Components/Loader";
+import moment from "moment";
 
 export default function Notification() {
+  const[loading,setloading]=useState(false)
+  const [notificationlist,setnotificationlist]=useState([])
+  const getdate=(time)=>{
+    const date=moment(time).format("DD MMMM YYYY")
+    return date
+  }
+  const clearAllNotifications=()=>{
+    const req=clearNotifications()
+    if(req?.status==200){
+      toast.success(req?.message|| "notifications deleted successfully")
+    }
+    else{
+      toast.error(req?.message)
+    }
+  }
+
+
+  const notificationsListing=async()=>{
+    const req=await getnotificationList()
+    setloading(true)
+    if(req?.status===200){
+      setnotificationlist(req?.data)
+      setloading(false)
+
+    }
+    else{
+      setloading(false)
+      toast.error(req?.message || "something went wrong")
+
+    }
+  }
+  useEffect(()=>{
+    notificationsListing()
+
+  },[])
+  console.log(notificationlist,"nnn")
   return (
     <div>
       <NotificationHeader>
         <header>Notifications</header>
-        <span>Clear</span>
+        <span onClick={()=>clearAllNotifications()}>Clear</span>
       </NotificationHeader>
 
       <NotificationContainer>
-        <section>
-          <div className="LeftSection">
-            <img src={Homecouple} alt="" />
-            <div>
-              <p>Julia Roberts</p>
-              <label>Sent you a message</label>
-            </div>
-          </div>
-          <span>7 Feb 2023</span>
-        </section>
+        {loading?(
+          <Loader/>
+        ):(<>
+        
+        {notificationlist?.map((el)=>{
+          const image=process.env.REACT_APP_BASEURL_IMAGE +el?.send_by?.user_images_while_signup[0]?.image_url
+          
 
-        <section>
-          <div className="LeftSection">
-            <img src={Homecouple} alt="" />
-            <div>
-              <p>Julia Roberts</p>
-              <label>Sent you a message</label>
-            </div>
-          </div>
-          <span>7 Feb 2023</span>
-        </section>
 
-        <section>
-          <div className="LeftSection">
-            <img src={Homecouple} alt="" />
-            <div>
-              <p>Julia Roberts</p>
-              <label>Sent you a message</label>
+          
+          return(
+            <section>
+            <div className="LeftSection">
+              <img src={image} alt="" />
+              <div>
+                <p>{el?.send_by?.name}</p>
+                <label>{el?.message}</label>
+              </div>
             </div>
-          </div>
-          <span>7 Feb 2023</span>
-        </section>
+            
 
-        <section>
-          <div className="LeftSection">
-            <img src={Homecouple} alt="" />
-            <div>
-              <p>Julia Roberts</p>
-              <label>Sent you a message</label>
-            </div>
-          </div>
-          <span>7 Feb 2023</span>
-        </section>
+            <span>{getdate(el?.createdAt)}</span>
+           
+          </section>
+          )
+
+        })}
+        
+        </>
+        )}
+       
+
+       
       </NotificationContainer>
     </div>
   );
@@ -116,6 +146,7 @@ const NotificationContainer = styled.div`
       text-align: right;
       letter-spacing: 0.05em;
       color: #7b7f91;
+      width:15%;
     }
   }
 `;
@@ -156,5 +187,6 @@ const NotificationHeader = styled.div`
     font-size: 14px;
     line-height: 19px;
     color: #242424;
+   
   }
 `;

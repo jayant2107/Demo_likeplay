@@ -35,7 +35,7 @@ export default function Rightsidebar() {
   const loginPerson = useSelector((e) => e.LoginSlice.data);
   let profile_image =
     process.env.REACT_APP_BASEURL_IMAGE +
-    loginPerson?.user_images_while_signup[0].image_url;
+    loginPerson?.user_images_while_signup[0]?.image_url;
 
   const onChange = (checked) => {
     console.log(`switch to ${checked}`);

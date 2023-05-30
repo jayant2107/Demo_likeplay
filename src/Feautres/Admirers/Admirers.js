@@ -75,7 +75,8 @@ export default function Admirers() {
                                 onClick={
                                     () => setSearchbar(true)
                                 }/>
-                        </div>)}
+                        </div>
+                        )}
         
         
     

@@ -47,10 +47,11 @@ const FeedCommentView = ({
     }
   };
   const parseCommentList = async (payload) => {
+    console.log(payload,"payload")
     const parseData = payload?.map((list) => {
       let sender = list?.commentDeatils?.user_images_while_signup[0];
       return {
-        comment: list.comment,
+        comment: list?.comment,
         senderName: list?.commentDeatils?.name,
         senderImage: sender?.image_url,
         senderId: list?.commentDeatils?.comment_by,
@@ -67,9 +68,10 @@ const FeedCommentView = ({
     setLoading(true);
     let res = await getCommentsList(val.post_id);
     if (res?.status === 200) {
-      let parseData= await parseCommentList(res?.data[0]?.Comments);
-      setCommentList(parseData || [])
-      setLoading(false);
+      
+       let parseData= await parseCommentList(res?.data?.Comments);
+       setCommentList(parseData)
+       setLoading(false);
     } else {
       toast.error(res?.message || "Something Went Wrong");
       setLoading(false);
@@ -79,6 +81,7 @@ const FeedCommentView = ({
   useEffect(() => {
     handleCommentsList();
   }, []);
+  console.log(commentList,"ccccc")
 
   return (
     <Modal
@@ -94,7 +97,7 @@ const FeedCommentView = ({
           <div className="Maindiv">
             <img
               className="myimg"
-              src={process.env.REACT_APP_BASEURL_IMAGE + val.shots}
+              src={process.env.REACT_APP_BASEURL_IMAGE + val?.shots}
               alt="user"
             />
           </div>
@@ -106,13 +109,13 @@ const FeedCommentView = ({
                 <div className="profileImg">
                   <img
                     className=""
-                    src={val.profile_img}
+                    src={val?.profile_img}
                     alt="userProfileImg"
                   />
                 </div>
                 <div className="ProfileInfo">
-                  <div className="userName">{val.userName}</div>
-                  <div className="postDate">{val.date}</div>
+                  <div className="userName">{val?.userName}</div>
+                  <div className="postDate">{val?.date}</div>
                 </div>
               </CommentCardsCss>
             </div>
@@ -121,8 +124,8 @@ const FeedCommentView = ({
             <div className="commentSection">
               {loading ? (
                 <Loader />
-              ) : commentList.length > 0 ? (
-                commentList.map((val, index) => {
+              ) : commentList?.length > 0 ? (
+                commentList?.map((val, index) => {
                   return (
                     <CommentCards
                       details={val}

@@ -6,125 +6,37 @@ import doteicon, {
   markg,
   iconchat,
 } from "../../Utils/Admiring/Admiring";
-import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineSearch } from "react-icons/ai";
 import { admiringUsers } from "Services/collection";
 import Loader from "Components/Loader";
 import { Nodata } from "Components/Nodata";
 
-const data = [
-  {
-    photo: juli,
-    newbtn: true,
-    headname: "Julia Roberts",
-    age: 21,
-    country: "Nigeria",
-    profession: "Teacher",
-    admierd_btn: true,
-    chat_btn: false,
-    padding_btn: false,
-  },
-  {
-    photo: natai,
-    newbtn: true,
-    headname: "Julia Roberts",
-    age: 21,
-    country: "Nigeria",
-    profession: "Teacher",
-    admierd_btn: false,
-    chat_btn: true,
-    padding_btn: false,
-  },
-  {
-    photo: markg,
-    newbtn: false,
-    headname: "Julia Roberts",
-    age: 21,
-    country: "Nigeria",
-    profession: "Teacher",
-    admierd_btn: false,
-    chat_btn: false,
-    padding_btn: true,
-  },
-  {
-    photo: juli,
-    newbtn: true,
-    headname: "Julia Roberts",
-    age: 21,
-    country: "Nigeria",
-    profession: "Teacher",
-    admierd_btn: true,
-    chat_btn: false,
-    padding_btn: false,
-  },
-  {
-    photo: natai,
-    newbtn: true,
-    headname: "Julia Roberts",
-    age: 21,
-    country: "Nigeria",
-    profession: "Teacher",
-    admierd_btn: false,
-    chat_btn: true,
-    padding_btn: false,
-  },
-  {
-    photo: markg,
-    newbtn: false,
-    headname: "Julia Roberts",
-    age: 21,
-    country: "Nigeria",
-    profession: "Teacher",
-    admierd_btn: false,
-    chat_btn: false,
-    padding_btn: true,
-  },
-  {
-    photo: juli,
-    newbtn: true,
-    headname: "Julia Roberts",
-    age: 21,
-    country: "Nigeria",
-    profession: "Teacher",
-    admierd_btn: true,
-    chat_btn: false,
-    padding_btn: false,
-  },
-  {
-    photo: natai,
-    newbtn: true,
-    headname: "Julia Roberts",
-    age: 21,
-    country: "Nigeria",
-    profession: "Teacher",
-    admierd_btn: false,
-    chat_btn: true,
-    padding_btn: false,
-  },
-  {
-    photo: markg,
-    newbtn: false,
-    headname: "Julia Roberts",
-    age: 21,
-    country: "Nigeria",
-    profession: "Teacher",
-    admierd_btn: false,
-    chat_btn: false,
-    padding_btn: true,
-  },
-];
+
 const Admiring = () => {
-  const [serc, setSerc] = React.useState(false);
-  const [Data,setData]=useState();
+  const [searchbar, setSearchbar] = React.useState(false);
+  const [Data,setData]=useState([]);
+  const [itemsArray,setitemsArray]=useState()
   const [loading,setloading]=useState(true);
-  const [datafound,setdatafound]=useState(false)
-  const Search = () => {
-    setSerc(true);
+  
+  const searchdata = (e) => {
+   
+    const filterdata=itemsArray?.filter((items)=>items?.AdmireTo?.name.toLowerCase().includes(e.target.value.toLowerCase()))
+   
+    if(e.target.value.length>0){
+      setData(filterdata)
+    }
+    else{
+      getadmiringlisting()
+    }
+
+  
   };
   const getadmiringlisting=async()=>{
     setloading(true)
     const req= await admiringUsers()
     if(req?.status === 200){
       setData(req?.data)
+      setitemsArray(req?.data)
       setloading(false)
  
    
@@ -132,39 +44,43 @@ const Admiring = () => {
     }
     else{
       setloading(false)
-      setdatafound(true)
-     
+      
     }
   }
   useEffect(()=>{
     getadmiringlisting()
   },[])
-  console.log(Data,"dataa")
+
 
   return (
     <>
       <Admiringsdiv>
-        <div className="search_bar">
-          {!serc && (
+        {searchbar?(    <div className="search_bar">
             <p className="text_search">
               <span className="spnaAddmi">Admiring</span> Those I am Admiring
               whey de enter my eye
             </p>
-          )}
-          {serc && (
-            <input
-              type="Search"
-              className="admiring_search"
-              placeholder="text........"
-            />
-          )}
-          <span className="search_icon" onClick={Search}>
-            <AiOutlineSearch />
+          
+          <span className="search_icon" >
+            <AiOutlineSearch  onClick={()=>setSearchbar(false)}/>
           </span>
-        </div>
-        {loading?(<Loader/>):( 
-           <div className="admiring_content">
-            {datafound?(<Nodata><p>No Data Found</p></Nodata>):(<>
+        </div>):(  <div className="search">
+                            <input className="search-input" placeholder="Search..."
+                                onChange={searchdata}></input>
+                            <AiOutlineClose style={
+                                    {fontSize: '20px'}
+                                }
+                                onClick={
+                                    () => setSearchbar(true)
+                                }/>
+                        </div>)}
+    
+      
+        {loading?(<Loader/>):( <>
+        
+           
+            {Data?.length===0?(<Nodata><p>No Data Found</p></Nodata>):(
+              <div className="admiring_content">
               {Data?.map((el) => {
             const image =process.env.REACT_APP_BASEURL_IMAGE +el?.AdmireTo?.user_images_while_signup[0]?.image_url
              return (
@@ -216,9 +132,14 @@ const Admiring = () => {
                </>
              );
            })}
-            </>)}
+            
          
          </div>
+            )
+          }
+          </>
+       
+
         )}
     
       </Admiringsdiv>

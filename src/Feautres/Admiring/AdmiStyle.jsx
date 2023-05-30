@@ -1,6 +1,25 @@
 import styled from 'styled-components'
 export const Admiringsdiv = styled.div`
 min-height:100vh;
+ .search{
+    height:88px;
+    background:#f0f0f0;
+    padding:20px;
+    display:flex;
+    align-items:end;
+    justify-content: space-between;
+    width:100%;
+  }
+  .search-input{
+    width:60%;
+    border-radius:10px;
+    border:none;
+    padding:10px;
+    outline:none;
+    &:focus{
+      outline:none;
+    }
+  }
 
  .search_bar {
     width: 100%;
@@ -52,7 +71,7 @@ span.spnaAddmi {
     
 }
 span.search_icon {
-    font-size: 30px;
+    font-size: 20px;
 }`
 
 export const AdmiringCard = styled.div`

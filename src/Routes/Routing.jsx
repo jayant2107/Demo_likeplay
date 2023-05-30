@@ -47,7 +47,7 @@ const Routing = () => {
   };
 
   let prop = value;
-  console.log("value",value,value?.token)
+
   return (
     <>
       <BrowserRouter>

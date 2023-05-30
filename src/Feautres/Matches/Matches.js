@@ -14,7 +14,8 @@ const Matches = () => {
     const [detailModal, setDetailModal] = useState(false);
     const [loading, setLoading] = useState(false);
     const [Data, setdata] = useState([]);
-    const [datafound, setdatafound] = useState(false);
+  const [itemArray,setitemArray]=useState([])
+    
     const [Searchbar, setSearchbar] = useState(false);
     const [Searchtext, setsearchtext] = useState()
 
@@ -24,12 +25,15 @@ const Matches = () => {
 
     const searchdata = (e) => {
         setsearchtext(e.target.value) 
-        const FilterData = Data?.filter((val) =>val?.partner_data?.name.toLowerCase().includes(e?.target.value.toLowerCase()))
+       
+        const FilterData = itemArray?.filter((val) =>val?.partner_data?.name.toLowerCase().includes(e?.target.value.toLowerCase()))
+    
+
         if(e.target.value.length>0){
-          setdata(FilterData)
-        }else{
+          setdata(FilterData)}
+        else{
           matcheduser()
-        }  
+        } 
     }
 
 
@@ -41,14 +45,16 @@ const Matches = () => {
         if (req?.status === 200) {
             if (req?.data == null) {
                 setLoading(false);
-                setdatafound(true);
+             
             } else {
                 setdata(req?.data?.user_data);
+                setitemArray(req?.data?.user_data)
+                
                 setLoading(false);
             }
         } else {
             setLoading(false);
-            setdatafound(true);
+          
         }
     };
     useEffect(() => {
@@ -114,7 +120,7 @@ const Matches = () => {
                         )
                     } </div>
                     {
-                    datafound ? (
+                    Data?.length===0 ? (
                         <Nodata className="No Data">
                             <p>No Data Found
                             </p>
@@ -122,7 +128,7 @@ const Matches = () => {
                     ) : (
                         <div className="Cards">
                             {
-                            Data ?. map((value) => (
+                            Data?.map((value) => (
                                 <MatchesCard key={
                                         value.id
                                     }

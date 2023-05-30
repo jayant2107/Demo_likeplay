@@ -20,7 +20,7 @@ const FeedMyProfile = () => {
 
   let profile_image =
     process.env.REACT_APP_BASEURL_IMAGE +
-    profile_data?.user_images_while_signup[0].image_url;
+    profile_data?.user_images_while_signup[0]?.image_url;
 
   return (
     <>

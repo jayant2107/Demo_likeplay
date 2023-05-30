@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Modal } from "antd";
+import { Modal, Spin } from "antd";
 import DeleteModal from "../../Modals/DeleteModal";
 import LikesViewModal from "../../Modals/LikesViewModal";
 import BlockData from "../../Modals/ModalData/BlockData";
@@ -37,8 +37,9 @@ import {
 import Loader from "Components/Loader";
 import { toast } from "react-toastify";
 import {type} from "Utils/constant"
+import { LoadingOutlined } from "@ant-design/icons";
 
-const UserPostCard = ({ val,edit=false }) => {
+const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
   const [showModal, setShowModal] = useState(false);
   const [showHideModal, setShowHideModal] = useState(false);
   const [showBlockModal, setshowBlockModal] = useState(false);
@@ -47,7 +48,7 @@ const UserPostCard = ({ val,edit=false }) => {
   const [editModal, setEditModal] = useState(false);
   const [showComment, setShowComment] = useState(false);
   const [clicked, setClicked] = useState(false);
-  const [tagLoader, setTagLoader] = useState(true);
+  const [tagLoader, setTagLoader] = useState(false);
   const [like, setLike] = useState(val?.userLikeByHeart || false);
   const [heart, setHeart] = useState(val?.userLikeByStar || false);
   const [star, setStar] = useState(val?.userLikeByThumb || false);
@@ -71,6 +72,15 @@ const UserPostCard = ({ val,edit=false }) => {
   const handleClickChange = (open) => {
     setClicked(open);
   };
+  const antIcon = (
+    <LoadingOutlined
+      style={{
+        fontSize: 30,
+        color:'red'
+      }}
+      spin
+    />
+  );
 
   const closeModal = () => {
     if (showBlockModal === true) {
@@ -127,6 +137,9 @@ const UserPostCard = ({ val,edit=false }) => {
     const res = await hidePostApi(payload);
     if (res?.status === 200) {
       closeModal();
+      getHomePageContent();
+      toast.success(res?.message || "Request Updated")
+
     } else {
       closeModal();
       toast.error(res?.message || "Something Went Wrong");
@@ -156,6 +169,7 @@ const UserPostCard = ({ val,edit=false }) => {
   };
 
   const handleCommentPost = async (content) => {
+    console.log(content,"ccc")
     const res = await commentPost({
       post_id: val.post_id,
       comment: content,
@@ -250,17 +264,24 @@ const UserPostCard = ({ val,edit=false }) => {
     <PopContentCss>
       <div className="popContent taglist-content">
         {tagLoader ? (
-          <TagLoader>
-            <Loader />
-          </TagLoader>
+          <Loading>
+            <Spin indicator={antIcon} />
+
+          </Loading>
+        
+       
         ) : tagList.length > 0 ? (
           tagList.map((val, index) => {
+            
+            const img=process.env.REACT_APP_BASEURL_IMAGE+val?.tagTo?.user_images_while_signup[0]?.image_url
+
+
             return (
               <div key={index} className="popFlex popbtn">
                 <span className="imgSpan">
-                  <img src={val.img} alt="userImg" />
+                  <img src={img} alt="userImg" />
                 </span>
-                <span>{val.name}</span>
+                <span>{val?.tagTo?.name}</span>
               </div>
             );
           })
@@ -341,7 +362,7 @@ const UserPostCard = ({ val,edit=false }) => {
             </div>
             <div>
               <span onClick={() => handlePostLikes("heart")}>
-                <HeartFeedIcon val={heart} />
+                <HeartFeedIcon val={like} />
               </span>
               <span
                 onClick={() => {
@@ -635,7 +656,11 @@ const PopContentCss = styled.div`
   .taglist-content {
     height: 160px;
     width: 140px;
-    overflow: auto;
+    overflow:auto;
+    &::-webkit-scrollbar{
+      display:none;
+    }
+   
   }
   .popbtn {
     font-size: 1rem;
@@ -687,6 +712,11 @@ const PopContentCss = styled.div`
   }
 `;
 
-const TagLoader = styled.div`
-  height: 80px;
-`;
+const Loading=styled.div`
+display:flex;
+align-items:center;
+justify-content:center;
+height:150px;
+
+
+`
