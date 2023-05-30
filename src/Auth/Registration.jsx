@@ -23,28 +23,27 @@ import ResgistPage17 from './RegistrationPage/Rest_page17';
 
 const Registration = () => {
     const [count, setCount] = React.useState(1);
-    const Nextpage = () => (count === 17)?setCount(17):setCount(count + 1)
+    const Nextpage = () => (count === 16)?setCount(16):setCount(count + 1)
     const Backpage = () => (count === 0)?setCount(1):setCount(count - 1)
 
 
     return (<>
-        {count === 1 && <ResgistPage1 Next={Nextpage} Back={Backpage} />}
-        {count === 2 && <Resgistpage2 Next={Nextpage} Back={Backpage} />}
-        {count === 3 && <Resgistpage3 Next={Nextpage} Back={Backpage} />}
-        {count === 4 && <Resgistpage4 Next={Nextpage} Back={Backpage} />}
-        {count === 5 && <ResgistPage5 Next={Nextpage} Back={Backpage} />}
-        {count === 6 && <ResgistPage6 Next={Nextpage} Back={Backpage} />}
-        {count === 7 && <ResgistPage7 Next={Nextpage} Back={Backpage} />}
-        {count === 8 && <ResgistPage8 Next={Nextpage} Back={Backpage} />} 
-        {count === 9 && <ResgistPage9 Next={Nextpage} Back={Backpage} />} 
-        {count === 10 && <ResgistPage11 Next={Nextpage} Back={Backpage} />} 
-        {count === 11 && <ResgistPage10 Next={Nextpage} Back={Backpage} />} 
-        {count === 12 && <ResgistPage12 Next={Nextpage} Back={Backpage} />} 
-        {count === 13 && <ResgistPage13 Next={Nextpage} Back={Backpage} />} 
-        {count === 14 && <ResgistPage14 Next={Nextpage} Back={Backpage} />} 
-        {count === 15 && <ResgistPage15 Next={Nextpage} Back={Backpage} />} 
-        {count === 16 && <ResgistPage16 Next={Nextpage} Back={Backpage} />} 
-        {count === 17 && <ResgistPage17 Next={Nextpage} Back={Backpage} />} 
+        {count === 1 && <Resgistpage2 Next={Nextpage} Back={Backpage} />}
+        {count === 2 && <Resgistpage3 Next={Nextpage} Back={Backpage} />}
+        {count === 3 && <Resgistpage4 Next={Nextpage} Back={Backpage} />}
+        {count === 4 && <ResgistPage5 Next={Nextpage} Back={Backpage} />}
+        {count === 5 && <ResgistPage6 Next={Nextpage} Back={Backpage} />}
+        {count === 6 && <ResgistPage7 Next={Nextpage} Back={Backpage} />}
+        {count === 7 && <ResgistPage8 Next={Nextpage} Back={Backpage} />} 
+        {count === 8 && <ResgistPage9 Next={Nextpage} Back={Backpage} />} 
+        {count === 9 && <ResgistPage11 Next={Nextpage} Back={Backpage} />} 
+        {count === 10 && <ResgistPage10 Next={Nextpage} Back={Backpage} />} 
+        {count === 11 && <ResgistPage12 Next={Nextpage} Back={Backpage} />} 
+        {count === 12 && <ResgistPage13 Next={Nextpage} Back={Backpage} />} 
+        {count === 13 && <ResgistPage14 Next={Nextpage} Back={Backpage} />} 
+        {count === 14 && <ResgistPage15 Next={Nextpage} Back={Backpage} />} 
+        {count === 15 && <ResgistPage16 Next={Nextpage} Back={Backpage} />} 
+        {count === 16 && <ResgistPage17 Next={Nextpage} Back={Backpage} />} 
 
     </>)
 }

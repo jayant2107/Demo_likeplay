@@ -32,6 +32,8 @@ const admiring='user/admiringUsers'
 
 const admirers='/user/admirersUsers'
 
+const Register ='/user/register'
+
 
 export const getHomePagePost = () => {
   return getApi(`${HOME_PAGE_POSTS}`);
@@ -95,4 +97,8 @@ export const admiringUsers=(payload)=>{
 
 export const admirersUsers=(payload)=>{
   return getApi(admirers,payload)
+}
+
+export const registerApi=(payload)=>{
+  return postApi(Register,payload);
 }

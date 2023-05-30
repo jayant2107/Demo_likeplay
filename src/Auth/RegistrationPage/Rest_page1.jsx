@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ResHeaderComponent from "./ResHeader";
 import { Formik, Form, Field } from "formik";
 
@@ -16,12 +16,52 @@ import {
 } from "./style";
 import Inputfield from "../../Validation/Inputfield";
 import * as Yup from "yup";
+import RestEmailPage from "./Rest_emailPage";
+import { registerApi } from "Services/collection";
+import { toast } from "react-toastify";
+import {LoaderWrapper} from 'Auth/LoginPage'
+import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
 
-const ResgistPage1 = ({ Next }) => {
+const ResgistPage1 = () => {
+  const [emailVer , setEmailVer] = useState(false);
+  const [passEmail , setPassEmail] = useState();
+  const [loading,setLoading] = useState(false);
+
   let percentage = "10%";
-  const handlesubmit = (values) => {
-    console.log("vvvv", values);
-    Next();
+
+  const antIcon = (
+    <LoadingOutlined
+      style={{
+        fontSize: 24,
+      }}
+      spin
+    />
+  );
+
+  const handlesubmit = async (values) => {
+    setLoading(true);
+    console.log("vvvv", values);  
+    const req={
+      "user_name":values.username,
+      'email':values.email,
+      'password':values.password,
+      'refer_code': values.referralcode,
+      'profile_status':0,
+      'country':'Nigeria'
+    }
+    const res = await registerApi(req)
+    console.log('res   ',res.message)
+    console.log('res   ',res.status)
+  
+    if(res.status ===200){
+      setLoading(false);
+      setEmailVer(!emailVer);
+      setPassEmail(values.email);
+    }else{
+      setLoading(false);
+      toast.error(res?.message || "Enter correct user, password and email")
+    }
   };
   const validationschema = Yup.object().shape({
     username: Yup.string().required("Username is Required*"),
@@ -30,6 +70,8 @@ const ResgistPage1 = ({ Next }) => {
   });
   return (
     <>
+    {
+      emailVer === false ? 
       <RisgistionBgImg height="auto" imgUrl={Artboard1}>
         <ResHeaderComponent />
         <RisgistationPage1>
@@ -101,13 +143,21 @@ const ResgistPage1 = ({ Next }) => {
                     <lable>
                       Enter Referral code if referred by a friend<span>*</span>
                     </lable>
-                    <input
+                    <Field
+                    name="referralcode"
                       type="text"
                       className="resgistation_input"
                       placeholder="willmith1234221"
                     />
                     <div className="btn">
+                      {
+                        loading ? (
+                        <LoaderWrapper>
+                          <Spin indicator={antIcon} />
+                        </LoaderWrapper>
+                        ):
                       <ButtonStyle type="submit"> Next </ButtonStyle>
+                      }
                       <p>
                         <span>Terms and Conditions</span>
                       </p>
@@ -122,6 +172,9 @@ const ResgistPage1 = ({ Next }) => {
           </div>
         </RisgistationPage1>
       </RisgistionBgImg>
+      :
+      <RestEmailPage passEmail={passEmail} />
+              }
     </>
   );
 };
