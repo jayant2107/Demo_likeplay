@@ -53,7 +53,7 @@ const LoginPage = () => {
       toast.error(res?.message || "Enter correct password and email");
     }
   };
-  const antIcon = (
+ const antIcon = (
     <LoadingOutlined
       style={{
         fontSize: 24,
@@ -127,7 +127,7 @@ const LoginPage = () => {
 
                         <p style={{ cursor: "pointer" }}>
                           Don't have a account{" "}
-                          <span onClick={() => navigate("/Registration")}>
+                          <span onClick={() => navigate("/Register")}>
                             Register
                           </span>
                         </p>
@@ -145,7 +145,7 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-const LoaderWrapper = styled.div`
+export const LoaderWrapper = styled.div`
   width: 100%;
   padding: 10px 0px;
 

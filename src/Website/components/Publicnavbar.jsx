@@ -211,14 +211,19 @@ export default function Publicnavbar() {
     setIsOpen(!isOpen);
   };
 
-  // navigate to another page with id match 
+  // navigate to another page with id match
   const navigate = useNavigate();
   const MatchesDetailPage = (name) => {
-    navigate("/Safety", { state: { id: name } });
+    navigate("/Safety", {
+      state: {
+        id: name,
+      },
+    });
   };
   return (
     <>
       <Navbar>
+        {" "}
         {/* hamburger */}
         <div className={`hamburger ${isOpen ? "open" : ""}`}>
           <div className="cross">
@@ -226,17 +231,16 @@ export default function Publicnavbar() {
           </div>
           <div className="right_content">
             <ul>
-              <img src={LikePlaylogo} alt="" />
+              <img src={LikePlaylogo} alt="" />{" "}
               {navbarlist.map((ele) => {
                 return (
                   <>
                     <li onClick={() => MatchesDetailPage(ele.page)}>
-                      {ele.page}
+                      {ele.page}{" "}
                     </li>
                   </>
                 );
               })}
-
               <div className="btn_div">
                 <button className="btn1" onClick={() => navigate("/login")}>
                   Login
@@ -250,28 +254,24 @@ export default function Publicnavbar() {
           <img src={LikePlaylogo} alt="" />
           <div className="right_content">
             <ul>
+              {" "}
               {navbarlist.map((ele) => {
                 return (
                   <>
                     <li onClick={() => MatchesDetailPage(ele.page)}>
-                      {ele.page}
+                      {ele.page}{" "}
                     </li>
                   </>
                 );
               })}
-
               <div className="btn_div">
-              
-
-                <button className="btn1"  onClick={()=>navigate("/login")}>
-                  Login 
+                <button className="btn1" onClick={() => navigate("/login")}>
+                  Login
                 </button>
-              
-              <a href='https://delta.likeplaylikeplay.com/#/'>
 
-                <button className="btn2"  >Join Now</button>
-             
-              </a>
+                <a href="https://delta.likeplaylikeplay.com/#/">
+                  <button className="btn2">Join Now</button>
+                </a>
               </div>
             </ul>
             <img src={hamburgericon} alt="" onClick={hamburger} />
