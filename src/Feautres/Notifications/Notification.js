@@ -5,22 +5,34 @@ import { clearNotifications, getnotificationList } from "Services/collection";
 import { toast } from "react-toastify";
 import Loader from "Components/Loader";
 import moment from "moment";
+import {  Modal } from 'antd';
+import { AiOutlineWarning } from "react-icons/ai";
+
+
 
 export default function Notification() {
   const[loading,setloading]=useState(false)
-  const [notificationlist,setnotificationlist]=useState([])
+  const [notificationlist,setnotificationlist]=useState([]);
+  const [openmodal,setopenmodal]=useState(false)
   const getdate=(time)=>{
     const date=moment(time).format("DD MMMM YYYY")
     return date
   }
-  const clearAllNotifications=()=>{
-    const req=clearNotifications()
+  const clearAllNotifications=async()=>{
+   
+    const req=await clearNotifications()
     if(req?.status==200){
-      toast.success(req?.message|| "notifications deleted successfully")
+      toast.success(req?.message || "notifications deleted successfully")
+      setopenmodal(false)
     }
     else{
-      toast.error(req?.message)
+      setopenmodal(false)
+      console.log(req)
+      toast.error(req?.message || "something went wrong")
     }
+  }
+  const showModal=()=>{
+    setopenmodal(true)
   }
 
 
@@ -30,6 +42,7 @@ export default function Notification() {
     if(req?.status===200){
       setnotificationlist(req?.data)
       setloading(false)
+   
 
     }
     else{
@@ -47,8 +60,29 @@ export default function Notification() {
     <div>
       <NotificationHeader>
         <header>Notifications</header>
-        <span onClick={()=>clearAllNotifications()}>Clear</span>
+        <span onClick={showModal}>Clear</span>
       </NotificationHeader>
+      <Modal open={openmodal} footer={false} width={400}>
+       <DeleteNotification>
+        <div>
+          <div className="warning-msg"> 
+          <AiOutlineWarning style={{
+            fontSize:"30px",
+            color:"F5C404"
+          }}/>
+
+          <p>Clear All Notifications</p>
+          </div>
+          <div className="delete-btn">
+            <button className="cancel-btn" onClick={()=>setopenmodal(false)}>Cancel</button>
+            <button className="confirm-btn" onClick={()=>clearAllNotifications()}>Confirm</button>
+          </div>
+      
+        </div>
+
+       </DeleteNotification>
+
+      </Modal>
 
       <NotificationContainer>
         {loading?(
@@ -190,3 +224,43 @@ const NotificationHeader = styled.div`
    
   }
 `;
+const DeleteNotification=styled.div`
+display:flex;
+align-items:center;
+justify-content:center;
+.delete-btn{
+  display:flex;
+  gap:15px;
+  .cancel-btn{
+    padding: 10px 30px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    color: rgb(36, 36, 36);
+  }
+  .confirm-btn{
+    padding: 10px 30px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    background-image: linear-gradient(rgb(255, 72, 60) 100%, rgb(255, 44, 90) 100%);
+    color: white;
+  }
+}
+.warning-msg{
+  padding:20px 0px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  p{
+    font-size:22px;
+    color:#242424;
+  }
+}
+
+`

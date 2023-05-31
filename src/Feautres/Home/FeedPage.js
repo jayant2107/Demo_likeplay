@@ -30,6 +30,7 @@ const FeedPage = () => {
   const closeSnapModal = () => {
     setSnapModal(false);
   };
+  console.log(UsersDetails,"uuuuu")
 
   // const changeIcon = (val) => {
   //   val === "like"

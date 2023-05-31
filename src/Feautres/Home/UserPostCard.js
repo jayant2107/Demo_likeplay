@@ -49,19 +49,84 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
   const [showComment, setShowComment] = useState(false);
   const [clicked, setClicked] = useState(false);
   const [tagLoader, setTagLoader] = useState(false);
-  const [like, setLike] = useState(val?.userLikeByHeart || false);
-  const [heart, setHeart] = useState(val?.userLikeByStar || false);
-  const [star, setStar] = useState(val?.userLikeByThumb || false);
+  const [like, setLike] = useState(val?.userLikeByThumb);
+  const[likecount,setlikecount]=useState(val?.totalLikeByThumb)
+  const [heart, setHeart] = useState( val?.userLikeByHeart);
+  const [heartcount,setHeartcount]=useState(val?.totalLikeByHeart)
+  const [star, setStar] = useState( val?.userLikeByStar );
+  const [starcount,setStarcount]=useState(val?.totalLikeByStar)
   const [tagList, setTagList] = useState([]);
+  
+  console.log(val,"vv")
 
-  const changeIcon = (val) => {
-    val === "like"
-      ? setLike(pre=>!pre)
-      : val === "heart"
-      ? setHeart(pre=>!pre)
-      : setStar(pre=>!pre);
-      console.log("like==",like,heart,star)
-  };
+ console.log(likecount,"likecount")
+  const colorchangeicons=(name)=>{
+    if(name==="like"){
+      setLike(pre=>!pre)
+      if(like===false){
+
+        setlikecount(+likecount+1)
+      }
+      else{
+        setlikecount(+likecount-1)
+      }
+      if(heart===true){
+
+        setHeart(false)
+        setHeartcount(+heartcount-1)
+      }
+      if(star===true){
+        setStar(false)
+        setStarcount(+starcount-1)
+      }
+     
+    }
+    if(name==="heart"){
+      setHeart(pre=>!pre)
+      if(heart===false){
+        setHeartcount(+heartcount+1)
+      }
+      else{
+        setHeartcount(+heartcount-1)
+      }
+      if(star===true){
+        setStar(false)
+        setStarcount(+starcount-1)
+
+      }
+      if(like===true){
+        setLike(false)
+        setlikecount(+likecount-1)
+
+      }
+
+      
+    }
+    if(name==="star"){
+      setStar(pre=>!pre)
+      if(star===false){
+        setStarcount(+starcount+1)
+      }
+      else{
+        setStarcount(+starcount-1)
+      }
+      if(like===true){
+
+        setLike(false)
+        setlikecount(+likecount-1)
+      }
+      if(heart===true){
+        
+        setHeart(false)
+        setHeartcount(+heartcount-1)
+      }
+    }
+    else{
+      console.log("nnnnnn")
+    }
+
+    
+  }
 
   let postUrl = val?.shots?.split(".");
 
@@ -194,9 +259,14 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
       type: type[name],
       status: status[name],
     };
-    changeIcon(name);
+    
     const res = await updatePostLikeComment(payload);
     if (res?.status === 200) {
+     
+      colorchangeicons(name)
+
+
+
     } else {
       toast.error(res?.message || "Something Went Wrong");
     }
@@ -358,25 +428,26 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
               <span onClick={() => handlePostLikes("like")}>
                 <LikeFeedIcon val={like} />
               </span>
-              <span>{val.totalLikeByThumb}</span>
+              <span  onClick={() => {
+                  setLikeModal(true);
+                }}>{likecount}</span>
+           
             </div>
             <div>
               <span onClick={() => handlePostLikes("heart")}>
-                <HeartFeedIcon val={like} />
+                <HeartFeedIcon val={heart} />
               </span>
               <span
-                onClick={() => {
-                  setLikeModal(true);
-                }}
+               
               >
-                {val.totalLikeByHeart}
+                {heartcount}
               </span>
             </div>
             <div onClick={() => handlePostLikes("star")}>
               <span>
                 <StarFeedIcon val={star} />
               </span>
-              <span>{val.totalLikeByStar}</span>
+              <span>{starcount}</span>
             </div>
           </div>
 

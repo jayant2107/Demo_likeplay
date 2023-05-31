@@ -35,7 +35,10 @@ const admirers='/user/admirersUsers'
 const notifications="/user/notificationsListing"
 
 const notificationsclear='/user/clearNotifications'
+
 const Register ='/user/register'
+
+const testimonial='/user/testimonials'
 
 
 export const getHomePagePost = () => {
@@ -110,4 +113,8 @@ export const clearNotifications=(payload)=>{
 
 export const registerApi=(payload)=>{
   return postApi(Register,payload);
+}
+
+export const usertestimonials=(payload)=>{
+  return postApi(testimonial,payload)
 }

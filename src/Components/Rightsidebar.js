@@ -33,6 +33,8 @@ export default function Rightsidebar() {
   const location = useLocation();
   const [path, setPath] = useState(true);
   const loginPerson = useSelector((e) => e.LoginSlice.data);
+  const reduxdata=useSelector((e)=>e)
+  console.log(reduxdata,"rrrrr")
   let profile_image =
     process.env.REACT_APP_BASEURL_IMAGE +
     loginPerson?.user_images_while_signup[0]?.image_url;
