@@ -40,6 +40,8 @@ const Register ='/user/register'
 
 const testimonial='/user/testimonials'
 
+const updateProfile = '/user/updateProfile'
+
 
 export const getHomePagePost = () => {
   return getApi(`${HOME_PAGE_POSTS}`);
@@ -117,4 +119,7 @@ export const registerApi=(payload)=>{
 
 export const usertestimonials=(payload)=>{
   return postApi(testimonial,payload)
+}
+export const RegisterFirstStep=(payload)=>{
+  return putApi(updateProfile,payload)
 }
