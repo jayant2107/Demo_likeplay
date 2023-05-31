@@ -10,13 +10,45 @@ import {
   ButtonStyle,
   RisgistationPage1,
 } from "./style";
-import { SelectOptionStyle } from "./style";
 
 import { Page3Data } from "./RegData";
+import { Field, Form, Formik } from "formik";
+import styled from "styled-components";
 
-const ResgistPage3 = ({ Next, Back }) => {
-  const {status,bodytypes,education,employment} = Page3Data
+import { RegisterFirstStep } from "Services/collection";
+
+const ResgistPage3 = ({ Next, changePage, formData }) => {
+  const { status, bodytypes, education, employment, height } = Page3Data;
   let percentage = "26%";
+
+  const initialObj = {
+    status : '',
+    bodytype : '',
+    height:'',
+    education:'',
+    employment:'',
+  }
+
+  const handleSubmit = async (values) => {
+    console.log('fun')
+    const req = {
+      name: formData.name,
+      age: formData.age,
+      gender: 0,
+      interested_in: 1,
+      status: values?.status,
+      body_type: values?.bodytype,
+      height: values?.height,
+      education: values?.education,
+      employment: values?.employment,
+      profile_status: 1,
+    };
+    const res = await RegisterFirstStep(req);
+    console.log("page3 res    ", res);
+    if(res.status === 200){
+      Next();
+    }
+  };
   return (
     <>
       <RisgistionBgImg height="100vh" imgUrl={Artboard3}>
@@ -47,85 +79,116 @@ const ResgistPage3 = ({ Next, Back }) => {
                     <span>Step 2/6</span>
                   </p>
                 </div>
-                <lable>
-                  Status<span>*</span>
-                </lable>
-                <SelectOptionStyle>
-                  <option>status</option>
-                  {
-                    status.map((val,index)=>{
-                      return <option value={val}  key={index}>{val}</option>
-                    })
-                  }
-                </SelectOptionStyle>
-                <br></br>
-                <div className="body_heigth">
-                  <div>
+                <Formik initialValues={initialObj} onSubmit={handleSubmit}>
+                  <Form>
                     <lable>
-                      Body Type<span>*</span>
+                      Status<span>*</span>
                     </lable>
-                    <SelectOptionStyle width="12rem">
-                      <option>Select Body Type</option>
-                      {
-                        bodytypes.map((val,index)=>{
-                          return <option value={val} key={index}>{val}</option>
-                        })
-                      }
-                    </SelectOptionStyle>
-                  </div>
-                  <div>
+                    <SelectOptionsCss>
+                      <Field className="field" as="select" name="status">
+                        <option>status</option>
+                        {status.map((val, index) => {
+                          return (
+                            <option value={val} key={index}>
+                              {val}
+                            </option>
+                          );
+                        })}
+                      </Field>
+                    </SelectOptionsCss>
+                    <br></br>
+                    <div className="body_heigth">
+                      <div>
+                        <lable>
+                          Body Type<span>*</span>
+                        </lable>
+                        <SelectOptionsCss>
+                          <Field
+                            className="field add"
+                            as="select"
+                            name="bodytype"
+                          >
+                            <option>Select Body Type</option>
+                            {bodytypes.map((val, index) => {
+                              return (
+                                <option value={val} key={index}>
+                                  {val}
+                                </option>
+                              );
+                            })}
+                          </Field>
+                        </SelectOptionsCss>
+                      </div>
+                      <div>
+                        <lable>
+                          Height<span>*</span>
+                        </lable>
+                        <SelectOptionsCss>
+                          <Field
+                            className="field add"
+                            as="select"
+                            name="height"
+                          >
+                            <option>Select Height</option>
+                            {height.map((val, index) => {
+                              return (
+                                <option value={val} key={index}>
+                                  {val}
+                                </option>
+                              );
+                            })}
+                          </Field>
+                        </SelectOptionsCss>
+                      </div>
+                    </div>
                     <lable>
-                      Height<span>*</span>
+                      Education<span>*</span>
                     </lable>
-                    <SelectOptionStyle width="12rem">
-                      <option>Select Height</option>
-                    </SelectOptionStyle>
-                  </div>
-                </div>
-                <lable>
-                  Education<span>*</span>
-                </lable>
-                <SelectOptionStyle>
-                  <option>Select Education</option>
-                  {
-                        education.map((val,index)=>{
-                          return <option value={val} key={index}>{val}</option>
-                        })
-                      }
-                </SelectOptionStyle>
-                <br></br>
-                <lable>
-                  Employment<span>*</span>
-                </lable>
-                <SelectOptionStyle>
-                  <option>Select Employment</option>
-                  {
-                        employment.map((val,index)=>{
-                          return <option value={val} key={index}>{val}</option>
-                        })
-                      }
-                </SelectOptionStyle>
-                <br></br>
-                <div className="btn">
-                  <ButtonStyle
-                    onClick={() => {
-                      Back();
-                    }}
-                    bgcolour="#e5e5e5"
-                    color="black"
-                  >
-                    {" "}
-                    Back{" "}
-                  </ButtonStyle>
-                  <ButtonStyle
-                    onClick={() => {
-                      Next();
-                    }}
-                  >
-                    {" "}
-                    Next{" "}
-                  </ButtonStyle>
-                </div>
+                    <SelectOptionsCss>
+                      <Field className="field" as="select" name="education">
+                        <option>Select Education</option>
+                        {education.map((val, index) => {
+                          return (
+                            <option value={val} key={index}>
+                              {val}
+                            </option>
+                          );
+                        })}
+                      </Field>
+                    </SelectOptionsCss>
+                    <br></br>
+                    <lable>
+                      Employment<span>*</span>
+                    </lable>
+                    <SelectOptionsCss>
+                      <Field className="field" as="select" name="employment">
+                        <option>Select Employment</option>
+                        {employment.map((val, index) => {
+                          return (
+                            <option value={val} key={index}>
+                              {val}
+                            </option>
+                          );
+                        })}
+                      </Field>
+                    </SelectOptionsCss>
+                    <br></br>
+                    <div className="btn">
+                      <ButtonStyle
+                        onClick={changePage}
+                        bgcolour="#e5e5e5"
+                        color="black"
+                      >
+                        {" "}
+                        Back{" "}
+                      </ButtonStyle>
+                      <ButtonStyle type="submit">
+                        {" "}
+                        Next{" "}
+                      </ButtonStyle>
+                    </div>
+                  </Form>
+                </Formik>
               </div>
             </FromStyleDiv>
           </div>
@@ -136,3 +199,19 @@ const ResgistPage3 = ({ Next, Back }) => {
 };
 
 export default ResgistPage3;
+
+export const SelectOptionsCss = styled.div`
+  .field {
+    width: 26rem;
+    height: 3rem;
+    margin: "0rem 0px 1rem 0px";
+    padding-left: 1rem;
+    outline: none;
+    font-size: 1rem;
+    color: #878784;
+    border-radius: 10px;
+  }
+  .add {
+    width: 12rem;
+  }
+`;

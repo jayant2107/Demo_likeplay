@@ -23,9 +23,13 @@ import { ValidUser } from "../Redux/SliceOfRedux/LoginSlice";
 import styled from "styled-components";
 import { LoginApi } from "Services/collection";
 
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+
 const LoginPage = () => {
   const [passwordVisible, setPasswordVisible] = React.useState(false);
   const [loading, setloading] = useState(false);
+  const [passEye,setPassEye] = useState(false);
+
   const value = useSelector((e) => e);
   console.log(value, "vvv");
 
@@ -45,14 +49,25 @@ const LoginPage = () => {
     setloading(true);
     const res = await LoginApi(values);
     console.log("res++ login", res);
+    console.log("res++ ", res.data.profile_status);
     if (res.status === 200) {
       setloading(false);
-      dispatch(ValidUser(res?.data));
+      userStatus(res);
+      // dispatch(ValidUser(res?.data));
     } else {
       setloading(false);
       toast.error(res?.message || "Enter correct password and email");
     }
   };
+
+  const userStatus = (res) =>{
+    if(res.data.profile_status === 0){
+      navigate('/Registration')
+    }
+    else{
+      dispatch(ValidUser(res?.data));
+    }
+  }
  const antIcon = (
     <LoadingOutlined
       style={{
@@ -98,13 +113,16 @@ const LoginPage = () => {
                       />
                       <br></br>
                       <lable>Password</lable>
+                      <div className="password-div">
                       <Field
                         name="password"
-                        type="Password"
+                        type={passEye === false ? 'password' : 'type'}
                         className="resgistation_input"
                         placeholder="Password"
                         component={Inputfield}
-                      />
+                        />
+                        <span onClick={()=>setPassEye(!passEye)}>{passEye === false ? (<AiFillEyeInvisible className="eyeLogo"/>) : (<AiFillEye className="eyeLogo"/>)}</span>
+                        </div>
                       <p className="fogotpassword" onClick={OpenFogot}>
                         Forgot Password
                       </p>

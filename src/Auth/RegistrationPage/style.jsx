@@ -199,6 +199,18 @@ export const RisgistationPage1 = styled.div`
   .btn {
     text-align: center;
   }
+  .password-div{
+    position : relative;
+  }
+  .eyeLogo{
+    width: 20px;
+    position: absolute;
+    top: 22px;
+    right: 20px;
+    cursor : pointer;
+    color : black;
+    font-size:20px;
+  }
   /* -------------?loginpage---------? */
   h2.loginHeading {
     margin: 1rem 0;
@@ -246,6 +258,7 @@ export const RisgistationPage1 = styled.div`
   /* -------Ris_page 3-------------------- */
   .body_heigth {
     display: flex;
+    justify-content: space-between;
   }
   /* -------Ris_page 5-------------------- */
   .trib_irrelevant {
