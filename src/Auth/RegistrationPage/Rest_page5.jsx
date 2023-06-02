@@ -15,11 +15,38 @@ import { Form, Formik, Field } from "formik";
 import { SelectOptionsCss } from "./Rest_page3";
 import { Page4Data, Page5Data } from "./RegData";
 
+import { RegisterFirstStep } from "Services/collection";
+
 const ResgistPage5 = ({ Next, Back }) => {
   const { agerange, lookingfor } = Page5Data;
   const { tribe } = Page4Data;
-
   let percentage = "40%";
+
+  const handleSubmit = async (values) => {
+    console.log(values)
+    const req = {
+      residence_country: "",
+      state: "",
+      city: "",
+      religion: "",
+      your_tribe: "",
+      age_range_for_date: values.ageRange,
+      tribe_to_date: values.tribeTodate,
+      tribe_irrelevant: values.irrelevant,
+      looking_for: values.lookingfor,
+      nationality: "",
+      profile_status: 2,
+    };
+
+    let res = await RegisterFirstStep(req);
+    if(res?.status === 200){
+      Next();
+    }else{
+      console.log('error :',res?.message)
+    }
+
+  };
+
   return (
     <>
       <RisgistionBgImg height="100vh" imgUrl={Artboard5}>
@@ -50,7 +77,15 @@ const ResgistPage5 = ({ Next, Back }) => {
                     <span>Step 4/6</span>
                   </p>
                 </div>
-                <Formik initialValues={{}} onSubmit={''}>
+                <Formik
+                  initialValues={{
+                    ageRange: "",
+                    tribeTodate: "",
+                    lookingfor: "",
+                    irrelevant: "",
+                  }}
+                  onSubmit={handleSubmit}
+                >
                   <Form>
                     <lable>
                       Age Range preferred to date<span>*</span>
@@ -60,7 +95,7 @@ const ResgistPage5 = ({ Next, Back }) => {
                         <option>Select Range</option>
                         {agerange.map((val, index) => {
                           return (
-                            <option value="val" key={index}>
+                            <option value={val} key={index}>
                               {val}
                             </option>
                           );
@@ -82,7 +117,7 @@ const ResgistPage5 = ({ Next, Back }) => {
                             <option>Select</option>
                             {tribe.map((val, index) => {
                               return (
-                                <option value="val" key={index}>
+                                <option value={val} key={index}>
                                   {val}
                                 </option>
                               );
@@ -103,7 +138,7 @@ const ResgistPage5 = ({ Next, Back }) => {
                             <option>Select</option>
                             {lookingfor.map((val, index) => {
                               return (
-                                <option value="val" key={index}>
+                                <option value={val} key={index}>
                                   {val}
                                 </option>
                               );
@@ -114,9 +149,9 @@ const ResgistPage5 = ({ Next, Back }) => {
                     </div>
                     <div className="trib_irrelevant">
                       <lable>
-                      Tribe irrelevant<span>*</span>
+                        Tribe irrelevant<span>*</span>
                       </lable>
-                      <Field type="checkbox" name='irrelevant'/>
+                      <Field type="checkbox" name="irrelevant" />
                     </div>
 
                     <div className="btn">
@@ -130,10 +165,8 @@ const ResgistPage5 = ({ Next, Back }) => {
                         {" "}
                         Back{" "}
                       </ButtonStyle>
-                      <ButtonStyle type="submit"
-                        onClick={() => {
-                          Next();
-                        }}
+                      <ButtonStyle
+                        type="submit"
                       >
                         {" "}
                         Next{" "}

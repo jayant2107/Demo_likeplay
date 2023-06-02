@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 import ResHeaderComponent from "./ResHeader";
 
-import {
-  Artboard7,
-  img1_7,
-  img2_7,
-  img3_7,
-} from "../../Utils/RegistrationImg/Registrationflie";
+import { Artboard7 } from "../../Utils/RegistrationImg/Registrationflie";
 import { heartIcon } from "../../Utils/RegistrationImg/Registrationflie";
 import PlusUpload from "Assets/Images/PlusUpload.png";
 import removeImg from "Assets/Images/removeUpload.png";
-
 
 import {
   RisgistionBgImg,
@@ -22,7 +16,13 @@ import {
   RisgistationPage1,
 } from "./style";
 
-const data = [
+import { UpdateMediaApi, DeleteMediaApi } from "Services/collection";
+import { useSelector } from "react-redux";
+import { LoaderWrapper } from "Auth/LoginPage";
+import { Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
+
+const userImg = [
   {
     p: "Please upload as many pictures that is minimum of 1 and  maximum of 5 pictures. Be sure that the pictures you upload are your best pictures to put your best self forward. The pictures should be current, as it helps any match to see you as you currently look. Your pictures should show your face clearly. No face mask, no sunglasses. No face cap. Hijab is well allowed. Please do not post picture with face facing sideways,all pictures should be directly facing the camera.",
   },
@@ -44,29 +44,64 @@ const data = [
   { p: "Improperly rotated or cropped images." },
   { p: "Contact information or logos" },
 ];
-const imgss = [
-  { imgss: img1_7, btn: true },
-  { imgss: img2_7, btn: true },
-  { imgss: img3_7, btn: false },
-  { imgss: img3_7, btn: false },
-  { imgss: img3_7, btn: false },
-];
+
+const imageBaseUrl = process.env.REACT_APP_BASEURL_IMAGE;
 
 const ResgistPage7 = ({ Next, Back }) => {
   let percentage = "56%";
+  const user_id = useSelector((state) => state.UserId.id);
+  const [loading, setloading] = useState(false);
 
-  const [selectFiles, setSelectFiles] = useState([]);
+  const [imgpre, setImgpre] = useState();
 
-  const handleFileChange = (e) => {
-    setSelectFiles([...selectFiles,URL.createObjectURL(e.target.files[0])]);
+  const handleFileChange = async (e) => {
+    setloading(true);
+    let userImg = e.target.files;
+    uploadImage(userImg);
   };
 
-  const removeUpload = (i) => {
-   let newData =  [...selectFiles]
-   newData.splice(i,1)
-    setSelectFiles(newData)
-  }
+  const uploadImage = async (userImg) => {
+    let fromData = new FormData();
 
+    fromData.append("image_url", userImg?.[0], userImg?.[0]?.name);
+    fromData.append("user_id", user_id);
+
+    let res = await UpdateMediaApi(fromData);
+
+    if(res?.status === 200){
+      setloading(false);
+      setImgpre(imageBaseUrl + res?.data?.image_url);
+    }else{
+      console.log('error :',res?.message)
+    }
+  };
+  console.log(user_id)
+
+  const removeUpload = async () => {
+    // let fromDelete = new FormData();
+    // fromDelete.append("id", user_id);
+
+   
+   
+
+    // let res = await DeleteMediaApi(fromDelete);
+
+    // if(res?.status === 200){
+    //   setImgpre(null);
+    // }else{
+    //   console.log('error :',res?.message)
+    // }
+
+  };
+
+  const antIcon = (
+    <LoadingOutlined
+      style={{
+        fontSize: 24,
+      }}
+      spin
+    />
+  );
   return (
     <>
       <RisgistionBgImg height="auto" imgUrl={Artboard7}>
@@ -95,7 +130,7 @@ const ResgistPage7 = ({ Next, Back }) => {
                 </div>
 
                 <div className="contantdata" style={{ color: "#7B7F91" }}>
-                  {data.map((el) => (
+                  {userImg.map((el) => (
                     <p>
                       <img
                         style={{ marginRight: "5px" }}
@@ -110,19 +145,29 @@ const ResgistPage7 = ({ Next, Back }) => {
                   Upload Images<span>*</span>
                 </lable>
                 <div className="imgUpload">
-                  {selectFiles?.map((el, index) => {
-                    return (
-                      <>
-                        <div className="fileLable" key={index}>
-                        <img className='selectedImg' src={el} alt="upload" />
-                        <img className="removeUpload" src={removeImg} alt='cross btn' onClick={()=>removeUpload(index)}/>
-                        </div>
-                      </>
-                    );
-                  })}
-                  <label htmlFor="uploadImg" className="fileLable">
-                    <img src={PlusUpload} alt="upload" />
-                  </label>
+                  <div className="frame">
+                    <label htmlFor="uploadImg" className="fileLable">
+                      {loading ? (
+                        <LoaderWrapper>
+                          <Spin indicator={antIcon} />
+                        </LoaderWrapper>
+                      ) : (
+                        <img
+                          className="selectedImg"
+                          src={imgpre || PlusUpload}
+                          alt="upload"
+                        />
+                      )}
+                    </label>
+                    {imgpre && (
+                      <img
+                        className="removeUpload"
+                        src={removeImg}
+                        alt="cross btn"
+                        onClick={removeUpload}
+                      />
+                    )}
+                  </div>
 
                   <input
                     type="file"
@@ -130,7 +175,7 @@ const ResgistPage7 = ({ Next, Back }) => {
                     name="uploadImg"
                     id="uploadImg"
                     onChange={handleFileChange}
-                    disabled={selectFiles.length < 5 ? false : true}
+                    // disabled={selectFiles}
                   />
                 </div>
 

@@ -30,6 +30,8 @@ import EditName from "../EditProfile/EditName";
 import EditPofileDetails from "../Feautres/Home/EditPofileDetails";
 import ResgistPage1 from "Auth/RegistrationPage/Rest_page1";
 import ResgistPage4 from "Auth/RegistrationPage/Rest_page4";
+import ResgistPage6 from "Auth/RegistrationPage/Rest_page6";
+import ResgistPage7 from "Auth/RegistrationPage/Rest_page7";
 
 const Routing = () => {
   const value = useSelector((e) => e.LoginSlice.data);
@@ -60,6 +62,8 @@ const Routing = () => {
             <Route path="/Login" element={<LoginPage />} />
             <Route path='/Register' element={<ResgistPage1/>}/>
             <Route path="/ResgistPage4" element={<ResgistPage4/>}/>
+            <Route path="/ResgistPage6" element={<ResgistPage6/>}/>
+            <Route path="/ResgistPage7" element={<ResgistPage7/>}/>
             <Route path="/Safety" element={<Footercontent />} />
             <Route path="/Nigeria" element={<Country />} />
           </Route>

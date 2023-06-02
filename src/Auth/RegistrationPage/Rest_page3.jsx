@@ -17,7 +17,7 @@ import styled from "styled-components";
 
 import { RegisterFirstStep } from "Services/collection";
 
-const ResgistPage3 = ({ Next, formData, changePage,  interest }) => {
+const ResgistPage3 = ({ Next,Back, formData,  interest }) => {
   const { status, bodytypes, education, employment, height } = Page3Data;
   let percentage = "26%";
 
@@ -46,7 +46,7 @@ const ResgistPage3 = ({ Next, formData, changePage,  interest }) => {
     console.log("page3 res    ", res);
     if(res.status === 200){
       console.log('hello')
-      Next();
+      Next(); 
     }else{
       console.log('error :', res?.message)
     }
@@ -177,9 +177,9 @@ const ResgistPage3 = ({ Next, formData, changePage,  interest }) => {
                     <br></br>
                     <div className="btn">
                       <ButtonStyle
-                        onClick={changePage}
                         bgcolour="#e5e5e5"
                         color="black"
+                        onClick={()=>{Back()}}
                       >
                         {" "}
                         Back{" "}

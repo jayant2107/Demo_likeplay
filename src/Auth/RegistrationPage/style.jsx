@@ -290,6 +290,9 @@ export const RisgistationPage1 = styled.div`
     border: 1px #e2e2e2 solid;
     margin: 1rem 0;
     padding: 10px;
+  }textarea {
+      resize: none;
+    
   }
   /* ------------Regis Page 7----------- */
   .imgUpload {
@@ -314,6 +317,9 @@ export const RisgistationPage1 = styled.div`
   }
   .inputFile{
     display : none;
+  }
+  .frame{
+    position : relative;
   }
   .fileLable{
     width: 8rem;

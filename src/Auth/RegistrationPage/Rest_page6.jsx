@@ -11,9 +11,25 @@ import {
   ButtonStyle,
   RisgistationPage1,
 } from "./style";
+import { Field, Form, Formik } from "formik";
+import { RegisterFirstStep } from "Services/collection";
 
 const ResgistPage6 = ({ Next, Back }) => {
   let percentage = "48%";
+
+  const handleSubmit = async (values) => {
+    let req = {
+      about_me: values.aboutme,
+      profile_status: 3,
+    };
+
+    let res = await RegisterFirstStep(req);
+    if(res?.status === 200){
+      Next();
+    }else{
+      console.log('error :',res?.message)
+    }
+  };
   return (
     <>
       <RisgistionBgImg height="100vh" imgUrl={Artboard6}>
@@ -40,34 +56,40 @@ const ResgistPage6 = ({ Next, Back }) => {
                     <span>Step /6</span>
                   </p>
                 </div>
-                <lable>
-                  About me<span>*</span>
-                </lable>
-                <textarea
-                  type="textarea"
-                  className="textareaa"
-                  placeholder="Type something......"
-                ></textarea>
-                <div className="btn">
-                  <ButtonStyle
-                    onClick={() => {
-                      Back();
-                    }}
-                    bgcolour="#e5e5e5"
-                    color="black"
-                  >
-                    {" "}
-                    Back{" "}
-                  </ButtonStyle>
-                  <ButtonStyle
-                    onClick={() => {
-                      Next();
-                    }}
-                  >
-                    {" "}
-                    Next{" "}
-                  </ButtonStyle>
-                </div>
+                <Formik initialValues={{ aboutme: "" }} onSubmit={handleSubmit}>
+                  <Form>
+                    <lable>
+                      About me<span>*</span>
+                    </lable>
+                    <Field
+                      name="aboutme"
+                      as="textarea"
+                      className="textareaa"
+                      placeholder="Type something......"
+                    />
+                    <div className="btn">
+                      <ButtonStyle
+                        onClick={() => {
+                          Back();
+                        }}
+                        bgcolour="#e5e5e5"
+                        color="black"
+                      >
+                        {" "}
+                        Back{" "}
+                      </ButtonStyle>
+                      <ButtonStyle
+                        // onClick={() => {
+                        //   Next();
+                        // }}
+                        type="submit"
+                      >
+                        {" "}
+                        Next{" "}
+                      </ButtonStyle>
+                    </div>
+                  </Form>
+                </Formik>
               </div>
             </FromStyleDiv>
           </div>

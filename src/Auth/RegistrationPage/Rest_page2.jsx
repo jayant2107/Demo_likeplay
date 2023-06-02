@@ -157,7 +157,7 @@ const ResgistPage2 = ({ Next }) => {
           </RisgistationPage1>
         </RisgistionBgImg>
       ) : (
-        <Resgistpage3 Next={Next} formData={data} changePage={changePage} interest={interest}/>
+        <Resgistpage3 formData={data} interest={interest}/>
       )}
     </>
   );
