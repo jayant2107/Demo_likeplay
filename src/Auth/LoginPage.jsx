@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 import Inputfield from "../Validation/Inputfield";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { ValidUser } from "../Redux/SliceOfRedux/LoginSlice";
+import { ValidUser, TempValidUser } from "../Redux/SliceOfRedux/LoginSlice";
 import styled from "styled-components";
 import { LoginApi } from "Services/collection";
 
@@ -28,7 +28,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 const LoginPage = () => {
   const [passwordVisible, setPasswordVisible] = React.useState(false);
   const [loading, setloading] = useState(false);
-  const [passEye,setPassEye] = useState(false);
+  const [passEye, setPassEye] = useState(false);
 
   const value = useSelector((e) => e);
   console.log(value, "vvv");
@@ -48,27 +48,31 @@ const LoginPage = () => {
   const handleSubmit = async (values) => {
     setloading(true);
     const res = await LoginApi(values);
-    console.log("res++ login", res);
-    console.log("res++ ", res.data.profile_status);
+    console.log("res    :", res);
     if (res.status === 200) {
       setloading(false);
       userStatus(res);
-      // dispatch(ValidUser(res?.data));
     } else {
       setloading(false);
+      console.log(res, "ressssssss");
       toast.error(res?.message || "Enter correct password and email");
     }
   };
 
-  const userStatus = (res) =>{
-    if(res.data.profile_status === 0){
-      navigate('/Registration')
-    }
-    else{
+  const userStatus = (res) => {
+    if (res.data.profile_status < 9) {
+      if (res.data.profile_status === 0) {
+        navigate("/Registration");
+      } else if (res.data.profile_status === 1) {
+        navigate("/ResgistPage4");
+      }
+      dispatch(TempValidUser(res?.data));
+    } else {
       dispatch(ValidUser(res?.data));
     }
-  }
- const antIcon = (
+  };
+
+  const antIcon = (
     <LoadingOutlined
       style={{
         fontSize: 24,
@@ -114,15 +118,21 @@ const LoginPage = () => {
                       <br></br>
                       <lable>Password</lable>
                       <div className="password-div">
-                      <Field
-                        name="password"
-                        type={passEye === false ? 'password' : 'type'}
-                        className="resgistation_input"
-                        placeholder="Password"
-                        component={Inputfield}
+                        <Field
+                          name="password"
+                          type={passEye === false ? "password" : "type"}
+                          className="resgistation_input"
+                          placeholder="Password"
+                          component={Inputfield}
                         />
-                        <span onClick={()=>setPassEye(!passEye)}>{passEye === false ? (<AiFillEyeInvisible className="eyeLogo"/>) : (<AiFillEye className="eyeLogo"/>)}</span>
-                        </div>
+                        <span onClick={() => setPassEye(!passEye)}>
+                          {passEye === false ? (
+                            <AiFillEyeInvisible className="eyeLogo" />
+                          ) : (
+                            <AiFillEye className="eyeLogo" />
+                          )}
+                        </span>
+                      </div>
                       <p className="fogotpassword" onClick={OpenFogot}>
                         Forgot Password
                       </p>

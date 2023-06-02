@@ -55,6 +55,7 @@ const ResgistPage2 = ({ Next }) => {
     changePage();
   };
 
+
   return (
     <>
       {nextPage === false ? (
@@ -73,7 +74,7 @@ const ResgistPage2 = ({ Next }) => {
                     ></ProgessStyleDivfilline>
                   </ProgessStyleDivline>
                 </ProgessStyleDiv>
-                <Formik initialValues={{}} onSubmit={handleSubmit}>
+                <Formik initialValues={{name:'',age:''}} onSubmit={handleSubmit}>
                   <Form>
                     <div className="registation_form">
                       <div className="Welcome">
@@ -111,8 +112,9 @@ const ResgistPage2 = ({ Next }) => {
                       </lable>
                       <div className="gender_btn">
                         <ButtonStyle
-                        type="reset"
+                        type="button"
                           width="11rem"
+                          margin="1rem"
                           border={active.border}
                           bgcolour={active.bgcolour}
                           color={active.color}
@@ -121,6 +123,7 @@ const ResgistPage2 = ({ Next }) => {
                           Male{" "}
                         </ButtonStyle>
                         <ButtonStyle
+                        type="button"
                           width="11rem"
                           margin="1rem"
                           border={active2.border}
@@ -134,14 +137,17 @@ const ResgistPage2 = ({ Next }) => {
                       <lable>
                         Interested In<span>*</span>
                       </lable>
-                      <input
+                      <Field
+                      name='interest'
                         type="text"
                         className="resgistation_input"
                         placeholder="willmith1234221"
                         value={interest}
                       />
                       <div className="btn">
-                        <SubmitButton type="submit"> Next </SubmitButton>
+                        <SubmitButton>
+                        <button className="button" type="submit">Next</button>
+                        </SubmitButton>
                       </div>
                     </div>
                   </Form>
@@ -151,7 +157,7 @@ const ResgistPage2 = ({ Next }) => {
           </RisgistationPage1>
         </RisgistionBgImg>
       ) : (
-        <Resgistpage3 formData={data} changePage={changePage} />
+        <Resgistpage3 Next={Next} formData={data} changePage={changePage} interest={interest}/>
       )}
     </>
   );
@@ -160,10 +166,18 @@ const ResgistPage2 = ({ Next }) => {
 export default ResgistPage2;
 
 const SubmitButton = styled.div`
-border-radius: 0.5rem;
+.button{
+  border:1px solid transparent;
+  border-radius: 0.5rem;
   color: white;
   background: linear-gradient( 268.55deg, #FF483C 0%, #FF2C5A 100%);
-  width: "8rem";
+  width: 8rem;
+  height: 3rem;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: "1rem";
-  margin: "1rem";
+  cursor: pointer;
+}
 `

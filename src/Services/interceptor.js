@@ -18,6 +18,11 @@ Api.interceptors.request.use(
       config.headers = {
         Authorization: token,
       };
+    } else if (store?.getState()?.LoginSlice?.tempData?.token) {
+      const token = `Bearer ${store?.getState()?.LoginSlice?.tempData?.token}`;
+      config.headers = {
+        Authorization: token,
+      };
     }
     return config;
   },
@@ -29,7 +34,7 @@ Api.interceptors.request.use(
 // Add a response interceptor
 Api.interceptors.response.use(
   (response) => {
-      return response;
+    return response;
   },
   (error) => {
     return Promise.reject(error);

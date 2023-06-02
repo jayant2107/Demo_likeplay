@@ -21,7 +21,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import ModalLayout from "../Modals/ModalLayout";
 import { useDispatch } from "react-redux";
-import { ValidUser } from "../Redux/SliceOfRedux/LoginSlice";
+import { Logout } from "../Redux/SliceOfRedux/LoginSlice";
 
 export default function Sidebar() {
   const [colorsetting, setcolorsetting] = useState(false);
@@ -40,7 +40,7 @@ export default function Sidebar() {
     <Morecontent>
       <p>Verification</p>
       <p>Refer to friends</p>
-      <p style={{ color: "red" }} onClick={()=>dispatch(ValidUser(null))}>Logout</p>
+      <p style={{ color: "red" }} onClick={()=>dispatch(Logout(null))}>Logout</p>
     </Morecontent>
   );
   const primarycolor = "#A8580F";

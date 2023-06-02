@@ -25,11 +25,11 @@ const Registration = () => {
     const Nextpage = () => (count === 15)?setCount(15):setCount(count + 1)
     const Backpage = () => (count === 0)?setCount(1):setCount(count - 1)
 
-
+console.log('resPage     :' ,count)
     return (<>
         {count === 1 && <Resgistpage2 Next={Nextpage} Back={Backpage} />}
         {/* {count === 2 && <Resgistpage3 Next={Nextpage} Back={Backpage} />} */}
-        {count === 2 && <Resgistpage4 Next={Nextpage} Back={Backpage} />}
+        {count === 2 && <Resgistpage4 Next={Nextpage} Back={Backpage} />}   
         {count === 3 && <ResgistPage5 Next={Nextpage} Back={Backpage} />}
         {count === 4 && <ResgistPage6 Next={Nextpage} Back={Backpage} />}
         {count === 5 && <ResgistPage7 Next={Nextpage} Back={Backpage} />}

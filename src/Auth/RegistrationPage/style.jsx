@@ -259,6 +259,7 @@ export const RisgistationPage1 = styled.div`
   .body_heigth {
     display: flex;
     justify-content: space-between;
+    margin-bottom : 1rem;
   }
   /* -------Ris_page 5-------------------- */
   .trib_irrelevant {

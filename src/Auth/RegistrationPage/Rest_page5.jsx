@@ -11,8 +11,14 @@ import {
   RisgistationPage1,
 } from "./style";
 import { SelectOptionStyle } from "./style";
+import { Form, Formik, Field } from "formik";
+import { SelectOptionsCss } from "./Rest_page3";
+import { Page4Data, Page5Data } from "./RegData";
 
 const ResgistPage5 = ({ Next, Back }) => {
+  const { agerange, lookingfor } = Page5Data;
+  const { tribe } = Page4Data;
+
   let percentage = "40%";
   return (
     <>
@@ -44,58 +50,97 @@ const ResgistPage5 = ({ Next, Back }) => {
                     <span>Step 4/6</span>
                   </p>
                 </div>
-                <lable>
-                  Age Range preferred to date<span>*</span>
-                </lable>
-                <SelectOptionStyle>
-                  <option>Select Range</option>
-                </SelectOptionStyle>
-                <br></br>
-                <div className="body_heigth">
-                  <div>
+                <Formik initialValues={{}} onSubmit={''}>
+                  <Form>
                     <lable>
-                      Tribe to date<span>*</span>
+                      Age Range preferred to date<span>*</span>
                     </lable>
-                    <SelectOptionStyle width="12rem">
-                      <option>Select</option>
-                    </SelectOptionStyle>
-                  </div>
-                  <div>
-                    <lable>
-                      Looking for?<span>*</span>
-                    </lable>
-                    <SelectOptionStyle width="12rem">
-                      <option>Select</option>
-                    </SelectOptionStyle>
-                  </div>
-                </div>
-                <div className="trib_irrelevant">
-                  <lable>
-                    Looking for?<span>*</span>
-                  </lable>
-                  <input type="checkbox" />
-                </div>
+                    <SelectOptionsCss>
+                      <Field as="select" className="field" name="ageRange">
+                        <option>Select Range</option>
+                        {agerange.map((val, index) => {
+                          return (
+                            <option value="val" key={index}>
+                              {val}
+                            </option>
+                          );
+                        })}
+                      </Field>
+                    </SelectOptionsCss>
+                    <br></br>
+                    <div className="body_heigth">
+                      <div>
+                        <lable>
+                          Tribe to date<span>*</span>
+                        </lable>
+                        <SelectOptionsCss>
+                          <Field
+                            as="select"
+                            className="field add"
+                            name="tribeTodate"
+                          >
+                            <option>Select</option>
+                            {tribe.map((val, index) => {
+                              return (
+                                <option value="val" key={index}>
+                                  {val}
+                                </option>
+                              );
+                            })}
+                          </Field>
+                        </SelectOptionsCss>
+                      </div>
+                      <div>
+                        <lable>
+                          Looking for?<span>*</span>
+                        </lable>
+                        <SelectOptionsCss>
+                          <Field
+                            as="select"
+                            className="field add"
+                            name="lookingfor"
+                          >
+                            <option>Select</option>
+                            {lookingfor.map((val, index) => {
+                              return (
+                                <option value="val" key={index}>
+                                  {val}
+                                </option>
+                              );
+                            })}
+                          </Field>
+                        </SelectOptionsCss>
+                      </div>
+                    </div>
+                    <div className="trib_irrelevant">
+                      <lable>
+                      Tribe irrelevant<span>*</span>
+                      </lable>
+                      <Field type="checkbox" name='irrelevant'/>
+                    </div>
 
-                <div className="btn">
-                  <ButtonStyle
-                    onClick={() => {
-                      Back();
-                    }}
-                    bgcolour="#e5e5e5"
-                    color="black"
-                  >
-                    {" "}
-                    Back{" "}
-                  </ButtonStyle>
-                  <ButtonStyle
-                    onClick={() => {
-                      Next();
-                    }}
-                  >
-                    {" "}
-                    Next{" "}
-                  </ButtonStyle>
-                </div>
+                    <div className="btn">
+                      <ButtonStyle
+                        onClick={() => {
+                          Back();
+                        }}
+                        bgcolour="#e5e5e5"
+                        color="black"
+                      >
+                        {" "}
+                        Back{" "}
+                      </ButtonStyle>
+                      <ButtonStyle type="submit"
+                        onClick={() => {
+                          Next();
+                        }}
+                      >
+                        {" "}
+                        Next{" "}
+                      </ButtonStyle>
+                    </div>
+                  </Form>
+                </Formik>
               </div>
             </FromStyleDiv>
           </div>

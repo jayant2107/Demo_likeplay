@@ -17,7 +17,7 @@ import styled from "styled-components";
 
 import { RegisterFirstStep } from "Services/collection";
 
-const ResgistPage3 = ({ Next, changePage, formData }) => {
+const ResgistPage3 = ({ Next, formData, changePage,  interest }) => {
   const { status, bodytypes, education, employment, height } = Page3Data;
   let percentage = "26%";
 
@@ -30,12 +30,11 @@ const ResgistPage3 = ({ Next, changePage, formData }) => {
   }
 
   const handleSubmit = async (values) => {
-    console.log('fun')
     const req = {
-      name: formData.name,
-      age: formData.age,
-      gender: 0,
-      interested_in: 1,
+      name: formData?.name,
+      age: formData?.age,
+      gender: `${interest === 'men' ? 1 : 0}`,
+      interested_in: `${interest === 'men' ? 0 : 1}`,
       status: values?.status,
       body_type: values?.bodytype,
       height: values?.height,
@@ -46,7 +45,10 @@ const ResgistPage3 = ({ Next, changePage, formData }) => {
     const res = await RegisterFirstStep(req);
     console.log("page3 res    ", res);
     if(res.status === 200){
+      console.log('hello')
       Next();
+    }else{
+      console.log('error :', res?.message)
     }
   };
   return (
