@@ -43,6 +43,7 @@ const FeedPage = () => {
 
   const parseHomeContent=(payload)=>{
     const parseData=payload?.map((list)=>({
+      user_id:list?.user_id ,
       id:list?.id,
       profile_img:process.env.REACT_APP_BASEURL_IMAGE+list?.User?.user_images_while_signup[0]?.image_url,
       userName:list?.User?.user_name || "",

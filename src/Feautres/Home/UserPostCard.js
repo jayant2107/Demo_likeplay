@@ -38,6 +38,7 @@ import Loader from "Components/Loader";
 import { toast } from "react-toastify";
 import {type} from "Utils/constant"
 import { LoadingOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
   const [showModal, setShowModal] = useState(false);
@@ -57,9 +58,10 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
   const [starcount,setStarcount]=useState(val?.totalLikeByStar)
   const [tagList, setTagList] = useState([]);
   
-  console.log(val,"vv")
+  const navigate =useNavigate()
+ 
 
- console.log(likecount,"likecount")
+
   const colorchangeicons=(name)=>{
     if(name==="like"){
       setLike(pre=>!pre)
@@ -265,9 +267,12 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
      
       colorchangeicons(name)
 
-
-
-    } else {
+    }
+     else  if(res?.status===400){
+      colorchangeicons(name)
+    }
+    else {
+      console.log("error updated")
       toast.error(res?.message || "Something Went Wrong");
     }
   };
@@ -368,16 +373,20 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
         {/* USER PROFILE SECTION  */}
         <div className="userProfile">
           <div className="profileImg">
-            <img className="" src={val.profile_img} alt="userProfileImg" />
+            <img className="" src={val.profile_img} alt="userProfileImg"  onClick={()=>navigate('/Layout/Userdetails',{
+              state:val?.user_id
+            })}/>
           </div>
           <div className="ProfileInfo">
-            <div className="userName">{val.userName}</div>
+            <div className="userName" onClick={()=>navigate('/Layout/Userdetails',{
+              state:val?.user_id
+            })}>{val.userName}</div>
             <div className="postDate">{val.date}</div>
           </div>
           <div className="profileOptions">
-            <div className="heart">
+            {/* <div className="heart">
               <img src={HeartTickImg} alt="HeartTickImg" />
-            </div>
+            </div> */}
             <div>
               <Popover
                 arrow={false}
@@ -610,6 +619,7 @@ export const UserPostCardCss = styled.div`
     border-radius: 2rem;
     height: 3.7rem;
     width: 100%;
+    cursor: pointer;
     overflow: hidden;
     img {
       width: 100%;
@@ -626,6 +636,7 @@ export const UserPostCardCss = styled.div`
   .userName {
     color: #252525;
     font-weight: 500;
+    cursor: pointer;
     font-size: 1rem;
   }
   .postDate {
@@ -636,7 +647,8 @@ export const UserPostCardCss = styled.div`
   .profileOptions {
     display: Flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: end;
+    padding:0px 10px;
     cursor: pointer;
   }
   .heart {

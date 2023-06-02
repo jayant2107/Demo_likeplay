@@ -14,12 +14,12 @@ import { SelectOptionStyle } from "./style";
 import { SelectOptionsCss } from "./Rest_page3";
 import { Page4Data } from "./RegData";
 import { Field, Form, Formik } from "formik";
-import cities from './cities';
+
 
 const ResgistPage4 = ({ Next, Back }) => {
   const { tribe, religionlist } = Page4Data;
   let percentage = "32%";
-  console.log(cities)
+
   return (
     <>
       <RisgistionBgImg height="auto" imgUrl={Artboard4}>

@@ -11,6 +11,7 @@ import { userProfile_tabs } from "Utils/constant";
 const FeedMyProfile = () => {
   const [active, setActive] = useState("aboutme");
   const profile_data = useSelector((e) => e.LoginSlice.data);
+  console.log(profile_data,'pp-----')
 
   let tabScreen = {
     shots: <FeedShots />,
@@ -29,16 +30,16 @@ const FeedMyProfile = () => {
           <img src={profile_image} alt="pic" />
         </div>
         <div className="detailsDiv">
-          <div className="username">{profile_data.user_name}</div>
+          <div className="username">{profile_data?.user_name}</div>
           <div className="userdata">
-            <span>{profile_data.age}</span>
+            <span>{profile_data?.age}</span>
             <span className="spanDot"></span>
-            <span>{profile_data.gender === "0" ? "Male" : "Female"}</span>
+            <span>{profile_data?.gender === "0" ? "Male" : "Female"}</span>
             <span className="spanDot"></span>
             <span>{profile_data?.looking_for}</span>
           </div>
           <div className="userdata">{profile_data?.city}</div>
-          <img className="editIcon" src={editIcon} alt="edit" />
+     
         </div>
       </LoginProfileCss>
 
@@ -47,10 +48,10 @@ const FeedMyProfile = () => {
           {userProfile_tabs.map((list, index) => (
             <span
               key={index}
-              className={`${active === list.name ? "active" : "navButton"}`}
-              onClick={() => setActive(list.name)}
+              className={`${active === list?.name ? "active" : "navButton"}`}
+              onClick={() => setActive(list?.name)}
             >
-              {list.label}
+              {list?.label}
             </span>
           ))}
           {/* <div className="border-wrap ">

@@ -42,6 +42,8 @@ const testimonial='/user/testimonials'
 
 const updateProfile = '/user/updateProfile'
 
+const userprofileview= '/user/profileView'
+
 
 export const getHomePagePost = () => {
   return getApi(`${HOME_PAGE_POSTS}`);
@@ -122,4 +124,8 @@ export const usertestimonials=(payload)=>{
 }
 export const RegisterFirstStep=(payload)=>{
   return putApi(updateProfile,payload)
+}
+
+export const getProfileView=(payload)=>{
+  return getApi(`${userprofileview}?user_id=${payload}`)
 }

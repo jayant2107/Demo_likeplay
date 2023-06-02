@@ -30,6 +30,7 @@ import EditName from "../EditProfile/EditName";
 import EditPofileDetails from "../Feautres/Home/EditPofileDetails";
 import ResgistPage1 from "Auth/RegistrationPage/Rest_page1";
 import ResgistPage4 from "Auth/RegistrationPage/Rest_page4";
+import Userdetails from '../Feautres/Home/Userdetails'
 
 const Routing = () => {
   const value = useSelector((e) => e.LoginSlice.data);
@@ -85,8 +86,9 @@ const Routing = () => {
               <Route path="/Layout/Subscription" element={<Subscription />} />
               <Route path="/Layout/Settings" element={<Settings />} />
               <Route path="/Layout/FAQs" element={<FAQ />} />
-              <Route path="/Layout/Testimonal" element={<Testimonial />} />
+              <Route path="/Layout/Testimonal" element={<Testimonial  />} />
               <Route path ='/Layout/EditName' element={<EditName/> }/>
+              <Route path ='/Layout/Userdetails' element={<Userdetails/>}/>
               {/* <Route path="/Layout/Testimonal" element={<Testimonal />} /> */}
             </Route>
           </Route>
