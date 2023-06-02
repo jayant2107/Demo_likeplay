@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ValidUser, TempValidUser } from "../Redux/SliceOfRedux/LoginSlice";
 import styled from "styled-components";
 import { LoginApi } from "Services/collection";
+import { AddUserId } from "Redux/SliceOfRedux/UserId";
 
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
@@ -49,7 +50,7 @@ const LoginPage = () => {
     setloading(true);
     const res = await LoginApi(values);
     console.log("res    :", res);
-    if (res.status === 200) {
+    if (res?.status === 200) {
       setloading(false);
       userStatus(res);
     } else {
@@ -60,11 +61,16 @@ const LoginPage = () => {
   };
 
   const userStatus = (res) => {
+    dispatch(AddUserId(res?.data?.id))
     if (res.data.profile_status < 9) {
       if (res.data.profile_status === 0) {
         navigate("/Registration");
       } else if (res.data.profile_status === 1) {
         navigate("/ResgistPage4");
+      } else if (res.data.profile_status === 2) {
+        navigate("/ResgistPage6");
+      } else if (res.data.profile_status === 3) {
+        navigate("/ResgistPage7");
       }
       dispatch(TempValidUser(res?.data));
     } else {
