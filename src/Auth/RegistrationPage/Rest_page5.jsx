@@ -16,25 +16,40 @@ import { SelectOptionsCss } from "./Rest_page3";
 import { Page4Data, Page5Data } from "./RegData";
 
 import { RegisterFirstStep } from "Services/collection";
+import {useDispatch,useSelector} from 'react-redux';
+import { page5 } from '../../Redux/SliceOfRedux/FormDataSlice';
+import {countAdd,countMinus} from "../../Redux/SliceOfRedux/RegistrationSlice";
 
-const ResgistPage5 = ({ Next, Back }) => {
+const ResgistPage5 = () => {
   const { agerange, lookingfor } = Page5Data;
   const { tribe } = Page4Data;
   let percentage = "40%";
 
+    const dispatch = useDispatch();
+  const userData = useSelector((state)=>state?.FormData)
+
+   const count = useSelector((state)=>state?.RegistrationSlice?.count);
+    
+    const Next = () => {
+        dispatch(countAdd(count+1));
+    }
+    const Back = () => {
+        dispatch(countMinus(count-1));
+    }
+
   const handleSubmit = async (values) => {
-    console.log(values)
+    dispatch(page5(values))
     const req = {
-      residence_country: "",
-      state: "",
-      city: "",
-      religion: "",
-      your_tribe: "",
+      residence_country: userData?.country,
+      state: userData?.state,
+      city: userData?.city,
+      religion: userData?.religion,
+      your_tribe: userData?.tribe,
       age_range_for_date: values.ageRange,
       tribe_to_date: values.tribeTodate,
       tribe_irrelevant: values.irrelevant,
       looking_for: values.lookingfor,
-      nationality: "",
+      nationality: values.nationality,
       profile_status: 2,
     };
 
@@ -79,10 +94,10 @@ const ResgistPage5 = ({ Next, Back }) => {
                 </div>
                 <Formik
                   initialValues={{
-                    ageRange: "",
-                    tribeTodate: "",
-                    lookingfor: "",
-                    irrelevant: "",
+                    ageRange:userData?.ageRange,
+                    tribeTodate:userData?.tribeTodate ,
+                    lookingfor:userData?.lookingfor,
+                    irrelevant:userData?.irrelevant,
                   }}
                   onSubmit={handleSubmit}
                 >

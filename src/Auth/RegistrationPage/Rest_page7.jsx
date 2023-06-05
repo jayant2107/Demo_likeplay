@@ -17,10 +17,12 @@ import {
 } from "./style";
 
 import { UpdateMediaApi, DeleteMediaApi } from "Services/collection";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import { LoaderWrapper } from "Auth/LoginPage";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
+import {countAdd,countMinus} from "../../Redux/SliceOfRedux/RegistrationSlice";
+
 
 const userImg = [
   {
@@ -47,7 +49,17 @@ const userImg = [
 
 const imageBaseUrl = process.env.REACT_APP_BASEURL_IMAGE;
 
-const ResgistPage7 = ({ Next, Back }) => {
+const ResgistPage7 = () => {
+    const dispatch = useDispatch();
+    const count = useSelector((state)=>state?.RegistrationSlice?.count);
+
+  const Next = () => {
+    dispatch(countAdd(count+1));
+}
+const Back = () => {
+    dispatch(countMinus(count-1));
+}
+
   let percentage = "56%";
   const user_id = useSelector((state) => state.UserId.id);
   const [loading, setloading] = useState(false);
@@ -152,11 +164,22 @@ const ResgistPage7 = ({ Next, Back }) => {
                           <Spin indicator={antIcon} />
                         </LoaderWrapper>
                       ) : (
-                        <img
-                          className="selectedImg"
-                          src={imgpre || PlusUpload}
+                        <>
+                        {
+                          imgpre ?
+                          <img
+                          className='selectedImg2'
+                          src={imgpre}
                           alt="upload"
-                        />
+                          />
+                          :
+                            <img
+                          className='selectedImg'
+                          src={PlusUpload}
+                          alt="upload"
+                          />
+                        }
+                        </>
                       )}
                     </label>
                     {imgpre && (
@@ -190,11 +213,7 @@ const ResgistPage7 = ({ Next, Back }) => {
                     {" "}
                     Back{" "}
                   </ButtonStyle>
-                  <ButtonStyle
-                    onClick={() => {
-                      Next();
-                    }}
-                  >
+                  <ButtonStyle onClick={Next}>
                     {" "}
                     Next{" "}
                   </ButtonStyle>

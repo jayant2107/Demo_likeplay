@@ -25,6 +25,7 @@ import { LoginApi } from "Services/collection";
 import { AddUserId } from "Redux/SliceOfRedux/UserId";
 
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import {countAdd} from "../Redux/SliceOfRedux/RegistrationSlice";
 
 const LoginPage = () => {
   const [passwordVisible, setPasswordVisible] = React.useState(false);
@@ -33,6 +34,8 @@ const LoginPage = () => {
 
   const value = useSelector((e) => e);
   console.log(value, "vvv");
+
+  const count  = useSelector((state)=>state.RegistrationSlice.count)
 
   const [forgot, setForgot] = useState(false);
   const OpenFogot = () => setForgot(true);
@@ -64,13 +67,23 @@ const LoginPage = () => {
     dispatch(AddUserId(res?.data?.id))
     if (res.data.profile_status < 9) {
       if (res.data.profile_status === 0) {
+        dispatch(countAdd(1));
         navigate("/Registration");
       } else if (res.data.profile_status === 1) {
+        dispatch(countAdd(3));
         navigate("/ResgistPage4");
       } else if (res.data.profile_status === 2) {
+        dispatch(countAdd(5));
         navigate("/ResgistPage6");
       } else if (res.data.profile_status === 3) {
+        dispatch(countAdd(6));
         navigate("/ResgistPage7");
+      } else if (res.data.profile_status === 4) {
+        dispatch(countAdd(7));
+        navigate("/ResgistPage8");
+      } else if (res.data.profile_status === 5) {
+        dispatch(countAdd(8));
+        navigate("/ResgistPage9");
       }
       dispatch(TempValidUser(res?.data));
     } else {

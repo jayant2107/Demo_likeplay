@@ -17,15 +17,21 @@ import ResgistPage16 from './RegistrationPage/Rest_page16';
 import ResgistPage17 from './RegistrationPage/Rest_page17';
 
 
-
+import { useSelector, useDispatch } from "react-redux";
+import {countAdd,countMinus} from "../Redux/SliceOfRedux/RegistrationSlice";
 
 
 const Registration = () => {
-    const [count, setCount] = React.useState(1);
-    const Nextpage = () => (count === 15)?setCount(15):setCount(count + 1)
-    const Backpage = () => (count === 0)?setCount(1):setCount(count - 1)
-
-
+    const dispatch = useDispatch();
+    const count = useSelector((state)=>state?.RegistrationSlice?.count);
+    const Nextpage = () => {
+        dispatch(countAdd(count+1));
+        
+    }
+    const Backpage = () => {
+        dispatch(countMinus(count-1));
+    }
+    console.log(count)
     return (<>
         {count === 1 && <Resgistpage2 Next={Nextpage} Back={Backpage} />}
         {count === 2 && <Resgistpage3 Next={Nextpage} Back={Backpage} />}

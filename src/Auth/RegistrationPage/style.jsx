@@ -338,7 +338,10 @@ export const RisgistationPage1 = styled.div`
     cursor : pointer;
   }
   .selectedImg{
-    width : 100%;
+    border-radius: 1rem;
+  }
+  .selectedImg2{
+    width:100%;
     height : 100%;
     border-radius: 1rem;
   }

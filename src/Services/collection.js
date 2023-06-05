@@ -46,6 +46,8 @@ const uploadMediaFile = "/user/uploadMediaFile";
 
 const deleteMediaFile = "/user/deleteMediaFile";
 
+const userVerification ='/user/userVerification';
+
 export const getHomePagePost = () => {
   return getApi(`${HOME_PAGE_POSTS}`);
 };
@@ -135,3 +137,7 @@ export const DeleteMediaApi = (payload) => {
   console.log(payload);
   return deleteApi(deleteMediaFile, payload );
 };
+
+export const userVerificationApi=(payload)=>{
+  return putApi(userVerification,payload);
+}
