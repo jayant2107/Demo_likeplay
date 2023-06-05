@@ -195,6 +195,7 @@ const MatchesStyle = styled.div `
     text-transform: capitalize;
     color: #ff384d;
     padding: 0 20px;
+    cursor:pointer;
   }
   .HDiv {
     width: 100%;

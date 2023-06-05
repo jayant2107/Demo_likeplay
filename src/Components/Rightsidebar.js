@@ -12,6 +12,8 @@ import {
 import { useSelector } from "react-redux";
 import moment from "moment";
 import {NoRecords} from "Style/comman_Css"
+import { ShowuserOnFloor } from "Services/collection";
+import { toast } from "react-toastify";
 
 const messages = [
   {
@@ -31,25 +33,55 @@ const messages = [
 export default function Rightsidebar() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [loginPerson,setloginPerson]=useState()
   const [path, setPath] = useState(true);
-  const loginPerson = useSelector((e) => e.LoginSlice.data);
+  const login = useSelector((e) => e.LoginSlice.data);
+  const userdetail=useSelector((e)=>e.Userinfo.data)
+  const user_id=useSelector((e)=>e.Userinfo.data.id)
   const reduxdata=useSelector((e)=>e)
   console.log(reduxdata,"rrrrr")
   let profile_image =
     process.env.REACT_APP_BASEURL_IMAGE +
-    loginPerson?.user_images_while_signup[0]?.image_url;
+    login?.user_images_while_signup[0]?.image_url;
 
-  const onChange = (checked) => {
-    console.log(`switch to ${checked}`);
+  const onChange = async(checked) => {
+    let res={
+      "floor_status":checked,
+      
+    }
+   
+   let req=await ShowuserOnFloor(res)
+
+   if(req?.status==200){
+    toast.success(req?.message || "Status updated ")
+   }
+   else{
+    toast.error(req?.message || "Error")
+   }
   };
 
+ 
+
   useEffect(() => {
-    if (location.pathname === "/Layout/MyProfile") {
+    if (location.pathname === "/Layout/MyProfile" ) {
       setPath(false);
-    } else {
+      setloginPerson(login)
+    }
+    else if(location.pathname==='/Layout/Userdetails'){
+      setPath(false)
+      setloginPerson(userdetail)
+
+    }
+    
+    else {
       setPath(true);
     }
-  }, [location]);
+  }, [location,user_id]);
+
+  
+  
+  
+
 
   return (
     <Rightsidebarwrapper>
@@ -64,7 +96,7 @@ export default function Rightsidebar() {
                 onClick={() => navigate("/Layout/MyProfile")}
               >
                 <img src={profile_image} alt="" height={50} />
-                <p>{loginPerson.user_name}</p>
+                <p>{login?.user_name}</p>
                 <AiOutlineRight />
               </div>
             </div>
@@ -122,10 +154,11 @@ export default function Rightsidebar() {
               </div>
             </div>
           </Userinfo>
-          <Introduce>
+          {location.pathname==='/Layout/MyProfile' &&   <Introduce>
             <p>introduce on the floor</p>
             <Switch defaultChecked onChange={onChange} />
-          </Introduce>
+          </Introduce>}
+        
         </>
       )}
     </Rightsidebarwrapper>

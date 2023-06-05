@@ -7,6 +7,7 @@ import FeedShots from "./FeedShots";
 import editIcon from "../../Assets/Images/editIcon.png";
 import { useSelector } from "react-redux";
 import { userProfile_tabs } from "Utils/constant";
+import LikedPosts from "./LikedPosts";
 
 const FeedMyProfile = () => {
   const [active, setActive] = useState("aboutme");
@@ -16,7 +17,7 @@ const FeedMyProfile = () => {
   let tabScreen = {
     shots: <FeedShots />,
     aboutme: <FeedAboutMe />,
-    likedShots: <></>,
+    likedShots: <LikedPosts/>,
   };
 
   let profile_image =

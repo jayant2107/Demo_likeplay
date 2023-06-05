@@ -36,21 +36,21 @@ export default function FeedAboutUserProfile({data}) {
           <div className="boxDiv">
             <div>
               <p>Full Name</p>
-              <span>{profile_data.user_name}</span>
+              <span>{profile_data?.user_name}</span>
             </div>
             <div>
               <p>Age</p>
-              <span>{profile_data.age}</span>
+              <span>{profile_data?.age}</span>
             </div>
           </div>
           <div className="boxDiv">
             <div>
               <p>Gender</p>
-              <span>{profile_data.gender==="0"?"Male":"Female"}</span>
+              <span>{profile_data?.gender==="0"?"Male":"Female"}</span>
             </div>
             <div>
               <p>Interested In</p>
-              <span>{profile_data.interested_in==="1"?"Female":"Male"}</span>
+              <span>{profile_data?.interested_in==="1"?"Female":"Male"}</span>
             </div>
           </div>
           

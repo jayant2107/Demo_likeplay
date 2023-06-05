@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react';
 
 import styled from 'styled-components';
 
-import FeedShotsUserProfile from './UserShorts';
+
 import FeedAboutUserProfile from './UserAbout';
 import { getProfileView } from 'Services/collection';
 import { useLocation } from 'react-router-dom';
 import UserPostCard from './UserPostCard';
+import UserPosts from './UserPosts';
+import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import  { info } from 'Redux/SliceOfRedux/Userinfo';
 
  let userProfile_tabs = [
     {
@@ -24,12 +28,13 @@ export default function Userdetails() {
     const [Data,setData]=useState([])
     const location =useLocation();
     const user_id=location.state
+    const dispatch =useDispatch()
 
 
   let profile_image = process.env.REACT_APP_BASEURL_IMAGE 
  
   let tabScreen = {
-    shots: <UserPostCard val={Data.Posts} />,
+    shots: <UserPosts data={Data?.Posts} profileimg={Data?.user_images_while_signup} name={Data?.name} />,
     aboutme: <FeedAboutUserProfile  data={Data}/>, 
   };
   const getprofiledetails=async()=>{
@@ -37,10 +42,12 @@ export default function Userdetails() {
     const req =await getProfileView(user_id)
     if(req?.status===200){
         setData(req?.data)
+        dispatch(info(req?.data))
 
 
     }
     else{
+      toast.error(req?.message || "Couldn't get profile")
 
     }
 
@@ -48,7 +55,7 @@ export default function Userdetails() {
   useEffect(()=>{
     getprofiledetails()
   },[])
-  console.log(Data,"data")
+  console.log(Data,"dataa")
 
   return (
     <>

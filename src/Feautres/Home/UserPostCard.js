@@ -57,6 +57,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
   const [star, setStar] = useState( val?.userLikeByStar );
   const [starcount,setStarcount]=useState(val?.totalLikeByStar)
   const [tagList, setTagList] = useState([]);
+  const [totalcomment,settotalcomment]=useState(+val?.totalCommments)
   
   const navigate =useNavigate()
  
@@ -243,6 +244,8 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
     });
     if (res?.status === 200) {
       setShowComment(false);
+      settotalcomment(+1)
+     
     } else {
       toast.error(res?.message || "Something Went Wrong");
       setShowComment(false);
@@ -465,7 +468,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
             <span>
               <CommentFeedIcon />
             </span>
-            <span>{val.totalCommments} Comments</span>
+            <span>{totalcomment} Comments</span>
           </div>
 
           {/* TAG BUTTON3 */}
