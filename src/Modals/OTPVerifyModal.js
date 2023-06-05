@@ -3,11 +3,20 @@ import StyledButton from "../Components/Button";
 import OtpInput from "react-otp-input";
 import { useState } from "react";
 
-export default function OTPVerifyModal({ closeMobileModal ,next }) {
+import { useSelector, useDispatch } from "react-redux";
+import {countAdd} from "../Redux/SliceOfRedux/RegistrationSlice"
+
+export default function OTPVerifyModal({ closeMobileModal}) {
   const [code, setCode] = useState("");
   const handleChange = (code) => {
     setCode(code);
   };
+    const dispatch = useDispatch();
+   const count = useSelector((state)=>state?.RegistrationSlice?.count);
+    
+    const Next = () => {
+        dispatch(countAdd(count+1));
+    }
   return (
     <>
       <StyledOTPModal>
@@ -75,7 +84,7 @@ export default function OTPVerifyModal({ closeMobileModal ,next }) {
         <div className="modal-button">
           <div className="button-content">
             <StyledButton
-              onClick={()=>{closeMobileModal();next()}}
+              onClick={()=>{closeMobileModal();Next()}}
               text="white"
               bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
             >

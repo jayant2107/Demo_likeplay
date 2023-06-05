@@ -15,12 +15,28 @@ import { SelectOptionsCss } from "./Rest_page3";
 import { Page4Data } from "./RegData";
 import { Field, Form, Formik } from "formik";
 
-import ResgistPage5 from "./Rest_page5";
+import {useDispatch,useSelector} from 'react-redux';
+import { page4 } from '../../Redux/SliceOfRedux/FormDataSlice';
+import {countAdd,countMinus} from "../../Redux/SliceOfRedux/RegistrationSlice";
 
-const ResgistPage4 = ({ Next, Back }) => {
+const ResgistPage4 = () => {
   const { tribe, religionlist } = Page4Data;
   let percentage = "32%";
 
+  const dispatch = useDispatch();
+  const userData = useSelector((state)=>state?.FormData)
+  const count = useSelector((state)=>state?.RegistrationSlice?.count);
+     const Next = () => {
+        dispatch(countAdd(count+1));
+    }
+    const Back = () => {
+        dispatch(countMinus(count-1));
+    }
+
+  const handleSubmit=(values)=>{
+    dispatch(page4(values));
+    Next();
+  }
   return (
     <>
       <RisgistionBgImg height="auto" imgUrl={Artboard4}>
@@ -48,10 +64,8 @@ const ResgistPage4 = ({ Next, Back }) => {
                 </p>
               </div>
               <Formik
-                initialValues={{country:'',state:'',city:'',nationality:'',religion:'',tribe:'' }}
-                onSubmit={(values) => {
-                  console.log(values);
-                }}
+                initialValues={{country:userData.country,state:userData.state,city:userData.city,nationality:userData.nationality,religion:userData.religion,tribe:userData.tribe}}
+                onSubmit={handleSubmit}
               >
                 <Form>
                   <lable>
@@ -62,7 +76,7 @@ const ResgistPage4 = ({ Next, Back }) => {
                         <option>Select Country</option>
                           {religionlist.map((val, index) => {
                             return (
-                              <option value="val" key={index}>
+                              <option value={val} key={index}>
                                 {val}
                               </option>
                             );
@@ -80,7 +94,7 @@ const ResgistPage4 = ({ Next, Back }) => {
                           <option>Select State</option>
                           {religionlist.map((val, index) => {
                             return (
-                              <option value="val" key={index}>
+                              <option value={val} key={index}>
                                 {val}
                               </option>
                             );
@@ -98,7 +112,7 @@ const ResgistPage4 = ({ Next, Back }) => {
                           <option>Select City</option>
                           {religionlist.map((val, index) => {
                             return (
-                              <option value="val" key={index}>
+                              <option value={val} key={index}>
                                 {val}
                               </option>
                             );
@@ -115,7 +129,7 @@ const ResgistPage4 = ({ Next, Back }) => {
                       <option>Select Nationality</option>
                       {religionlist.map((val, index) => {
                         return (
-                          <option value="val" key={index}>
+                          <option value={val} key={index}>
                             {val}
                           </option>
                         );
@@ -131,7 +145,7 @@ const ResgistPage4 = ({ Next, Back }) => {
                       <option>Select Religion</option>
                       {religionlist.map((val, index) => {
                         return (
-                          <option value="val" key={index}>
+                          <option value={val} key={index}>
                             {val}
                           </option>
                         );
@@ -148,7 +162,7 @@ const ResgistPage4 = ({ Next, Back }) => {
                       <option>Select Your tribe</option>
                       {tribe.map((val, index) => {
                         return (
-                          <option value="val" key={index}>
+                          <option value={val} key={index}>
                             {val}
                           </option>
                         );
@@ -183,7 +197,6 @@ const ResgistPage4 = ({ Next, Back }) => {
         </div>
       </RisgistationPage1>
     </RisgistionBgImg>
-     <ResgistPage5/>
     </>
   );
 };

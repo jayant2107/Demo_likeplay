@@ -51,6 +51,7 @@ const deleteMediaFile = "/user/deleteMediaFile";
 const introduceonfloor='/user/showUserOnFloor';
 
 const likedposts='/user/getlikeShots'
+const userVerification ='/user/userVerification';
 
 export const getHomePagePost = () => {
   return getApi(`${HOME_PAGE_POSTS}`);
@@ -153,4 +154,7 @@ export const ShowuserOnFloor=(payload)=>{
 
 export const Likedposts=(payload)=>{
   return getApi(likedposts,payload)
+}
+export const userVerificationApi=(payload)=>{
+  return putApi(userVerification,payload);
 }

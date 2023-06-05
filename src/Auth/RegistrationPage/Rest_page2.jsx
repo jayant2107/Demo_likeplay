@@ -12,8 +12,11 @@ import {
   RisgistationPage1,
 } from "./style";
 import Inputfield from "Validation/Inputfield";
-import Resgistpage3 from "../RegistrationPage/Rest_page3";
 import styled from "styled-components";
+
+import {useDispatch,useSelector} from 'react-redux';
+import { page2 } from '../../Redux/SliceOfRedux/FormDataSlice';
+import {countAdd} from "../../Redux/SliceOfRedux/RegistrationSlice";
 
 const OnBtn = { bgcolour: "#a8580f", color: "white", border: "none" };
 const OffBtn = {
@@ -22,13 +25,19 @@ const OffBtn = {
   border: "1px solid #e2e2e2",
 };
 
-const ResgistPage2 = ({ Next }) => {
+const ResgistPage2 = () => {
   let percentage = "16%";
   const [active, setActive] = useState(OffBtn);
-  const [active2, setActive2] = useState(OnBtn);
-  const [interest, setInterest] = useState("Men");
-  const [nextPage, setNextPage] = useState(false);
-  const [data, setData] = useState();
+  const [active2, setActive2] = useState(OffBtn);
+  const [interest, setInterest] = useState("");
+
+  const dispatch = useDispatch();
+  const userData = useSelector((state)=>state?.FormData)
+   const count = useSelector((state)=>state?.RegistrationSlice?.count);
+
+   const Next = () => {
+        dispatch(countAdd(count+1));
+    }
 
   const ActiveButton = () => {
     if (active === OffBtn) {
@@ -45,20 +54,14 @@ const ResgistPage2 = ({ Next }) => {
       setInterest("Men");
     }
   };
-
-  const changePage = () => {
-    setNextPage(!nextPage);
-  };
-
   const handleSubmit = (values) => {
-    setData(values);
-    changePage();
+    dispatch(page2(values))
+    Next();
   };
 
 
   return (
     <>
-      {nextPage === false ? (
         <RisgistionBgImg height="auto" imgUrl={Artboard2}>
           <ResHeaderComponent />
           <RisgistationPage1>
@@ -74,7 +77,7 @@ const ResgistPage2 = ({ Next }) => {
                     ></ProgessStyleDivfilline>
                   </ProgessStyleDivline>
                 </ProgessStyleDiv>
-                <Formik initialValues={{name:'',age:''}} onSubmit={handleSubmit}>
+                <Formik initialValues={{name:userData?.name,age:userData?.age}} onSubmit={handleSubmit}>
                   <Form>
                     <div className="registation_form">
                       <div className="Welcome">
@@ -142,7 +145,7 @@ const ResgistPage2 = ({ Next }) => {
                         type="text"
                         className="resgistation_input"
                         placeholder="willmith1234221"
-                        value={interest}
+                        value = {interest}
                       />
                       <div className="btn">
                         <SubmitButton>
@@ -156,9 +159,6 @@ const ResgistPage2 = ({ Next }) => {
             </div>
           </RisgistationPage1>
         </RisgistionBgImg>
-      ) : (
-        <Resgistpage3 formData={data} interest={interest}/>
-      )}
     </>
   );
 };

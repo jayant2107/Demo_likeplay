@@ -35,9 +35,9 @@ export default function Rightsidebar() {
   const location = useLocation();
   const [loginPerson,setloginPerson]=useState()
   const [path, setPath] = useState(true);
-  const login = useSelector((e) => e.LoginSlice.data);
-  const userdetail=useSelector((e)=>e.Userinfo.data)
-  const user_id=useSelector((e)=>e.Userinfo.data.id)
+  const login = useSelector((e) => e?.LoginSlice?.data);
+  const userdetail=useSelector((e)=>e?.Userinfo?.data)
+  const user_id=useSelector((e)=>e?.Userinfo?.data?.id)
   const reduxdata=useSelector((e)=>e)
   console.log(reduxdata,"rrrrr")
   let profile_image =

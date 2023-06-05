@@ -17,22 +17,39 @@ import styled from "styled-components";
 
 import { RegisterFirstStep } from "Services/collection";
 
-const ResgistPage3 = ({ Next,Back, formData,  interest }) => {
+import {useDispatch,useSelector} from 'react-redux';
+import { page3 } from '../../Redux/SliceOfRedux/FormDataSlice';
+import {countAdd,countMinus} from "../../Redux/SliceOfRedux/RegistrationSlice";
+
+const ResgistPage3 = ({interest }) => {
   const { status, bodytypes, education, employment, height } = Page3Data;
   let percentage = "26%";
 
+   const count = useSelector((state)=>state?.RegistrationSlice?.count);
+  const dispatch = useDispatch();
+  const userData = useSelector((state)=>state?.FormData)
+
+  const Next = () => {
+        dispatch(countAdd(count+1));
+    }
+    const Back = () => {
+        dispatch(countMinus(count-1));
+    }
+
   const initialObj = {
-    status : '',
-    bodytype : '',
-    height:'',
-    education:'',
-    employment:'',
+    status : userData?.status,
+    bodytype : userData?.bodytype,
+    height:userData?.height,
+    education:userData?.education,
+    employment:userData?.employment,
   }
 
   const handleSubmit = async (values) => {
+    dispatch(page3(values))
+
     const req = {
-      name: formData?.name,
-      age: formData?.age,
+      name: userData?.name,
+      age: userData?.age,
       gender: `${interest === 'men' ? 1 : 0}`,
       interested_in: `${interest === 'men' ? 0 : 1}`,
       status: values?.status,
@@ -43,9 +60,7 @@ const ResgistPage3 = ({ Next,Back, formData,  interest }) => {
       profile_status: 1,
     };
     const res = await RegisterFirstStep(req);
-    console.log("page3 res    ", res);
     if(res.status === 200){
-      console.log('hello')
       Next(); 
     }else{
       console.log('error :', res?.message)

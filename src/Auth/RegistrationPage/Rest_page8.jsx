@@ -48,10 +48,11 @@ const data = [
   },
 ];
 
-const ResgistPage8 = ({ Next, Back }) => {
+const ResgistPage8 = () => {
   let percentage = "64%";
   const [modal, setModal] = useState(false);
   const [mobileModal, setMobileModal] = useState(false);
+
   const OpenModal = (el) => { 
     console.log(el)
     if (el === "facebook") {
@@ -85,7 +86,7 @@ const ResgistPage8 = ({ Next, Back }) => {
           style={{ top: 65 }}
           width="40%"
         >
-          <GovtIDVerifyModal closeModal={closeModal} next={Next} />
+          <GovtIDVerifyModal closeModal={closeModal}/>
         </Modal>
       )}
       {mobileModal === "pass" && (
@@ -100,7 +101,7 @@ const ResgistPage8 = ({ Next, Back }) => {
           width="30%"
           className="mobilemodal"
         >
-                 <OTPVerifyModal closeMobileModal={closeMobileModal} next = {Next}/>
+                 <OTPVerifyModal closeMobileModal={closeMobileModal}/>
         </Modal>
       )}
       <RisgistionBgImg height="100vh" imgUrl={Artboard8}>
