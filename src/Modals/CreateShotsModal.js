@@ -3,14 +3,72 @@ import { upload } from "../Utils/images/Modalsimg";
 import { exit } from "../Utils/icons-folder/Modalsicons";
 import StyledButton from "../Components/Button";
 import { Select, Space } from "antd";
-import React from "react";
+import React, { useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
+import { createNewPosts } from "Services/collection";
 
-export default function CreateShotsModal({ closeSnapModal, image }) {
+export default function CreateShotsModal({ closeSnapModal, taglist }) {
   const { Option } = Select;
-
+  const[imgvidupload,setimgvidupload]=useState() 
+  const [uploadnew,setuploadnew]=useState(false)
+  const [filetype,setfiletype]=useState()
+  const [captionvalue,setcaptionvalue]=useState()
+  const [tagto,settagto]=useState()
+  const [imageprev,setimageprev]=useState()
   const handleChange = (value) => {
     console.log(`selected ${value}`);
+    settagto(value)
   };
+  const handlesubmit=async()=>{
+    const data= new FormData()
+      data.append("media_url",imgvidupload?.[0],imgvidupload?.[0]?.name)
+      data.append("caption",captionvalue)
+      data.append("media_type",filetype)
+      data.append("tag_to",tagto)
+    const req= await createNewPosts(data)
+    if(req?.status===200){
+      
+
+    }
+    else{
+
+    }
+
+  }
+  const video_extension=[
+    "mpeg-2",
+    "webm",
+    "html5",
+    "mkv",
+    "swf",
+    "f4v",
+    "flv",
+    "avchd",
+    "avi",
+    "wmv",
+    "mov",
+    "mp4",
+  ]
+  const imageupload=(e)=>{
+    
+    const fr=new FileReader();
+    let fileExtension=e.target.files[0].name.split('.')[1];
+    let type=video_extension.includes(fileExtension)?1:0;
+    if(type===1){
+      setfiletype(1)
+    }
+    else{
+      setfiletype(0)
+    }
+    const url=URL.createObjectURL(e.target.files[0])
+    setimgvidupload(e.target.files)
+    setuploadnew(true)
+    setimageprev(url)
+
+
+  }
+
+ 
 
   return (
     <>
@@ -27,14 +85,32 @@ export default function CreateShotsModal({ closeSnapModal, image }) {
           </div>
           <div className="image-section">
             {/* <div className="image-section-content"> */}
-            <div className="upload-pic">
-              {image ? (
-                <img src={image} alt="upload" id="upload-edit"></img>
-              ) : (
-                <img src={upload} alt="upload" id="upload"></img>
+            
+              {uploadnew?( <div className="image-prev">
+              <AiOutlineClose className="close-icon" onClick={()=>setuploadnew(false)}/>
+              {filetype===0?(<img src={imageprev} alt='imgvidupload' />):(
+                <video src={imageprev} alt="videoupload"/>
               )}
-              {!image && <span className="head">Upload Images</span>}
-            </div>
+
+             
+            </div>):( <div className="upload-pic">
+              <label for="uploadImgVid">
+                
+             
+                <img src={upload} alt="upload" id="upload"  />
+              </label>
+              <input
+                type="file"
+                id="uploadImgVid"
+                accept="audio/*,video/*,image/*" 
+                onChange={(e)=>imageupload(e)}
+
+                style={{ display: "none" }}
+              />
+              <span className="head">Upload Images</span>
+            </div>)}
+           
+           
 
             {/* </div> */}
           </div>
@@ -49,7 +125,7 @@ export default function CreateShotsModal({ closeSnapModal, image }) {
             <div className="heading">Take the Mic</div>
           </div>
           <div className="write-section">
-            <input type="text" placeholder="Write Something..." />
+            <input type="text"  placeholder="Write Something..." onChange={(e)=>setcaptionvalue(e.target.value)}/>
             {/* <div className="write-section-content">
               <div className="head"> Write Something...</div>
             </div> */}
@@ -64,6 +140,7 @@ export default function CreateShotsModal({ closeSnapModal, image }) {
           <div className="tag-head">
             <div className="heading">Tag</div>
           </div>
+
           <div className="add-tag-section">
             <Select
               mode="multiple"
@@ -73,18 +150,13 @@ export default function CreateShotsModal({ closeSnapModal, image }) {
               onChange={handleChange}
               optionLabelProp="label"
             >
-              <Option value="Julia Roberts" label="Julia Roberts">
-                <Space>Julia Roberts</Space>
-              </Option>
-              <Option value="Meryl Streep" label="Meryl Streep">
-                <Space>Meryl Streep</Space>
-              </Option>
-              <Option value="Jennifer Lawrence" label="Jennifer Lawrence">
-                <Space>Jennifer Lawrence</Space>
-              </Option>
-              <Option value="Jennifer Aniston" label="Jennifer Aniston">
-                <Space>Jennifer Aniston</Space>
-              </Option>
+              {taglist?.map((item) => {
+                return (
+                  <Option value={item?.id} label={item?.name}>
+                    <Space>{item?.name}</Space>
+                  </Option>
+                );
+              })}
             </Select>
           </div>
         </div>
@@ -97,7 +169,7 @@ export default function CreateShotsModal({ closeSnapModal, image }) {
           <div className="buttons-content">
             <div className="submit-btn">
               <StyledButton
-                onClick={closeSnapModal}
+                onClick={()=>handlesubmit()}
                 text="white"
                 bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
               >
@@ -166,6 +238,27 @@ export const StyledCreateShortModal = styled.div`
   .image-section-content {
     margin: auto;
   }
+  .image-prev{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    img{
+      width:97%;
+      height:97%;
+      border-radius:5px;
+    }
+    .close-icon{
+      position: absolute;
+      top: 10;
+      top: 15px;
+      right: 15px;
+      color: #fff;
+      width: 22px;
+      height: 22px;
+    }
+  }
 
   .upload-pic {
     display: grid;
@@ -173,6 +266,12 @@ export const StyledCreateShortModal = styled.div`
     width: 100%;
     height: 140px;
     object-fit: contain;
+
+    label{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   img#upload {

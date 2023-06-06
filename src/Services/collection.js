@@ -52,6 +52,10 @@ const introduceonfloor='/user/showUserOnFloor';
 
 const likedposts='/user/getlikeShots'
 
+const createPosts='/post/createPosts'
+
+const taglist ='/post/getAllUserForTag'
+
 export const getHomePagePost = () => {
   return getApi(`${HOME_PAGE_POSTS}`);
 };
@@ -153,4 +157,13 @@ export const ShowuserOnFloor=(payload)=>{
 
 export const Likedposts=(payload)=>{
   return getApi(likedposts,payload)
+}
+
+export const createNewPosts=(payload)=>{
+  return postApi(createPosts,payload)
+  
+}
+
+export const getTaglist=(payload)=>{
+  return getApi(taglist,payload)
 }
