@@ -51,7 +51,15 @@ const deleteMediaFile = "/user/deleteMediaFile";
 const introduceonfloor='/user/showUserOnFloor';
 
 const likedposts='/user/getlikeShots'
+
 const userVerification ='/user/userVerification';
+
+const chooseAnyOne = '/user/chooseAnyOne';
+
+const updateusersQuestions = "/user/updateusersQuestions"
+
+const updatePartnersPhysicalQuestions = "/user/updatePartnersPhysicalQuestions"
+
 
 export const getHomePagePost = () => {
   return getApi(`${HOME_PAGE_POSTS}`);
@@ -127,13 +135,14 @@ export const registerApi = (payload) => {
   return postApi(Register, payload);
 };
 
-
 export const getProfileView=(payload)=>{
   return getApi(`${userprofileview}?user_id=${payload}`)
 }
+
 export const usertestimonials = (payload) => {
   return postApi(testimonial, payload);
 };
+
 export const RegisterFirstStep = (payload) => {
   return putApi(updateProfile, payload);
 };
@@ -155,6 +164,19 @@ export const ShowuserOnFloor=(payload)=>{
 export const Likedposts=(payload)=>{
   return getApi(likedposts,payload)
 }
+
 export const userVerificationApi=(payload)=>{
   return putApi(userVerification,payload);
+}
+
+export const chooseAnyOneApi =(payload) =>{
+  return postApi(chooseAnyOne,payload);
+}
+
+export const updateusersQuestionsApi=(payload)=>{
+  return putApi(updateusersQuestions,payload);
+}
+
+export const updatePartnersPhysicalQuestionsApi=(payload)=>{
+  return putApi(updatePartnersPhysicalQuestions,payload);
 }

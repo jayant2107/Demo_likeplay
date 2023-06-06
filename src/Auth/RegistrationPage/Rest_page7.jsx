@@ -22,6 +22,8 @@ import { LoaderWrapper } from "Auth/LoginPage";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import {countAdd,countMinus} from "../../Redux/SliceOfRedux/RegistrationSlice";
+import { toast } from "react-toastify";
+import { useNavigate,useLocation } from "react-router-dom";
 
 
 const userImg = [
@@ -53,9 +55,13 @@ const ResgistPage7 = () => {
     const dispatch = useDispatch();
     const count = useSelector((state)=>state?.RegistrationSlice?.count);
 
-  const Next = () => {
-    dispatch(countAdd(count+1));
-}
+    const navigate = useNavigate();
+    const location = useLocation();
+    
+    const Next = () => {
+          dispatch(countAdd(count+1));
+          if(location.pathname !== '/Registration' ) navigate("/Registration")
+      }
 const Back = () => {
     dispatch(countMinus(count-1));
 }
@@ -84,7 +90,7 @@ const Back = () => {
       setloading(false);
       setImgpre(imageBaseUrl + res?.data?.image_url);
     }else{
-      console.log('error :',res?.message)
+      toast.error(res?.message  || "something went wrong")
     }
   };
   console.log(user_id)

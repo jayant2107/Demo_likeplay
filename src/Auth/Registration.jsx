@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Resgistpage2 from './RegistrationPage/Rest_page2';
 import Resgistpage3 from './RegistrationPage/Rest_page3';
 import Resgistpage4 from './RegistrationPage/Rest_page4';
@@ -31,7 +31,6 @@ const Registration = () => {
     const Backpage = () => {
         dispatch(countMinus(count-1));
     }
-    console.log(count)
     return (<>
         {count === 1 && <Resgistpage2 Next={Nextpage} Back={Backpage} />}
         {count === 2 && <Resgistpage3 Next={Nextpage} Back={Backpage} />}
@@ -49,7 +48,6 @@ const Registration = () => {
         {count === 14 && <ResgistPage15 Next={Nextpage} Back={Backpage} />} 
         {count === 15 && <ResgistPage16 Next={Nextpage} Back={Backpage} />} 
         {count === 16 && <ResgistPage17 Next={Nextpage} Back={Backpage} />} 
-
     </>)
 }
 

@@ -5,6 +5,13 @@ import { Artboard122 } from '../../Utils/RegistrationImg/Registrationflie'
 import { ChoiceBtn, RisgistionBgImg, FromStyleDiv, ProgessStyleDiv, ProgessStyleDivline, ProgessStyleDivfilline, ButtonStyle, RisgistationPage1 } from './style'
 import Restpage14Modal from 'Modals/Rest_page14Modal'
 
+import { updateusersQuestionsApi } from "../../Services/collection";
+
+import { useDispatch, useSelector } from "react-redux";
+import { countAdd } from "../../Redux/SliceOfRedux/RegistrationSlice";
+import { toast } from "react-toastify";
+import { useNavigate, useLocation } from "react-router-dom";
+
 const data = [
     { head: "I don’t care what people say about me", p: ["Yeah 100%", "Occasionally 50-50", "No Way"] },
     { head: "I am a very strong willed person", p: ["Yeah 100%", "Occasionally 50-50", "No Way"] },
@@ -12,17 +19,49 @@ const data = [
     { head: "Sex/Chemistry is my #1 attraction in relationship", p: ["Yeah 100%", "Occasionally 50-50", "No Way"] },
     { head: "Character is my #1 attraction to an individual", p: ["Yeah 100%", "Occasionally 50-50", "No Way"] },
 ]
-const ResgistPage14 = ({ Next, Back }) => {
+const ResgistPage14 = () => {
     let percentage = "80%";
-    const [show,setShow] = useState(false);
 
-    const changeModal = () => {
-        setShow(!show);
-      };
+       const [selected, setSelected] = useState({
+        "I don’t care what people say about me": "",
+        "I am a very strong willed person": "",
+        "I am a people person": "",
+        "Sex/Chemistry is my #1 attraction in relationship": "",
+        "Character is my #1 attraction to an individual": "",
+  });
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const count = useSelector((state) => state?.RegistrationSlice?.count);
+
+  const Next = () => {
+    dispatch(countAdd(count + 1));
+    if (location.pathname !== "/Registration") navigate("/Registration");
+  };
+
+  const selectedOptions = (head, val) => {
+    setSelected({ ...selected, [head]: val });
+  };
+
+  const handleSubmit = async () => {
+    const req = {
+        character_i_dont_care_what_people_say_aboutme: selected['I don’t care what people say about me'],
+        character_am_strong_willed_person: selected['I am a very strong willed person'],
+        character_am_people_person: selected['I am a people person'],
+        character_attraction_in_relationship: selected['Sex/Chemistry is my #1 attraction in relationship'],
+        character_attraction_in_individual: selected['Character is my #1 attraction to an individual'],
+        profile_status: 7
+    };
+    const res =await updateusersQuestionsApi(req);
+    if(res?.status === 200){
+        Next();
+    }else{
+     toast.error(res?.message || 'something went wrong') 
+    }
+  };
 
     return (<>
-    {
-        show && <Restpage14Modal show={show} changeModal={changeModal} Next={Next}/>  }
         <RisgistionBgImg height="auto" imgUrl={Artboard122}>
             <ResHeaderComponent />
             <RisgistationPage1>
@@ -51,10 +90,10 @@ const ResgistPage14 = ({ Next, Back }) => {
                                         <lable>{el.head}<span>*</span></lable>
                                         <div className='btnchosediv'>
                                             {
-                                                el.p.map((ele) => {
+                                                el.p.map((ele,index) => {
                                                     return (<>
 
-                                                        <ChoiceBtn >{ele}</ChoiceBtn>
+                                                        <ChoiceBtn className={selected[el.head] === ele && 'activeButton'} key={index} onClick={()=>selectedOptions(el.head,ele)}>{ele}</ChoiceBtn>
                                                     </>)
                                                 })
                                             }
@@ -65,7 +104,7 @@ const ResgistPage14 = ({ Next, Back }) => {
 
 
                             <div className='btn'>
-                                <ButtonStyle onClick={changeModal} height="3rem" padding="0"> Submit </ButtonStyle>
+                                <ButtonStyle onClick={handleSubmit} height="3rem" padding="0"> Submit </ButtonStyle>
                             </div>
 
                         </div>

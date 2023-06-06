@@ -20,6 +20,8 @@ import { RegisterFirstStep } from "Services/collection";
 import {useDispatch,useSelector} from 'react-redux';
 import { page3 } from '../../Redux/SliceOfRedux/FormDataSlice';
 import {countAdd,countMinus} from "../../Redux/SliceOfRedux/RegistrationSlice";
+import { toast } from "react-toastify";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ResgistPage3 = ({interest }) => {
   const { status, bodytypes, education, employment, height } = Page3Data;
@@ -29,8 +31,12 @@ const ResgistPage3 = ({interest }) => {
   const dispatch = useDispatch();
   const userData = useSelector((state)=>state?.FormData)
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  
   const Next = () => {
         dispatch(countAdd(count+1));
+        if(location.pathname !== '/Registration' ) navigate("/Registration")
     }
     const Back = () => {
         dispatch(countMinus(count-1));
@@ -63,7 +69,7 @@ const ResgistPage3 = ({interest }) => {
     if(res.status === 200){
       Next(); 
     }else{
-      console.log('error :', res?.message)
+      toast.error(res?.message  || "something went wrong")
     }
   };
   return (

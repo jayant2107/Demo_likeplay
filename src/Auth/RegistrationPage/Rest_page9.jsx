@@ -14,37 +14,23 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import {
   countAdd,
-  countMinus,
 } from "../../Redux/SliceOfRedux/RegistrationSlice";
 import { Field, Form, Formik } from "formik";
 
-import { userVerificationApi } from "../../Services/collection";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { userVerificationApi } from "../../Services/collection";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const data = [
-  { p: "Have you been involved in taking hard drugs?" },
-  { p: "Have you been involved in crimaial activity?" },
-  { p: "Have you been involved in taking hard drugs?" },
-  { p: "Have you been involved in crimaial activity?" },
-  {
-    p: "Have you been involved in taking hard drugs.have you been involved in taking hard drugs?",
-  },
-  { p: "Have you been involved in crimaial activity?" },
-  { p: "Have you been involved in crimaial activity?" },
-];
 const ResgistPage9 = () => {
   let percentage = "64%";
   const dispatch = useDispatch();
   const count = useSelector((state) => state?.RegistrationSlice?.count);
   const navigate=useNavigate()
+  let location = useLocation()
 
   const Next = () => {
     dispatch(countAdd(count + 1));
-    navigate("/Registration")
-  };
-  const Back = () => {
-    dispatch(countMinus(count - 1));
+    if(location.pathname !== '/Registration' ) navigate("/Registration")
   };
 
   const handleSubmit = async (values) => {
@@ -62,11 +48,8 @@ const ResgistPage9 = () => {
     let res = await userVerificationApi(req);
    if(res?.status===200){
     Next()
-    
-
    }else{
     toast.error(res?.message  || "something went wrong")
-
    }
     
   };

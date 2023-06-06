@@ -20,6 +20,10 @@ import {
 import CreateShotsModals from "../../Modals/CreateShotsModal";
 import GovtIDVerifyModal from "../../Modals/GovtIDVerifyModal";
 import OTPVerifyModal from "../../Modals/OTPVerifyModal";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+import {countAdd} from "../../Redux/SliceOfRedux/RegistrationSlice"
 
 const data = [
   {
@@ -52,6 +56,17 @@ const ResgistPage8 = () => {
   let percentage = "64%";
   const [modal, setModal] = useState(false);
   const [mobileModal, setMobileModal] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const dispatch = useDispatch();
+  const count = useSelector((state)=>state?.RegistrationSlice?.count);
+  
+  const Next = () => {
+        dispatch(countAdd(count+1));
+        if(location.pathname !== '/Registration' ) navigate("/Registration")
+    }
 
   const OpenModal = (el) => { 
     console.log(el)
@@ -101,7 +116,7 @@ const ResgistPage8 = () => {
           width="30%"
           className="mobilemodal"
         >
-                 <OTPVerifyModal closeMobileModal={closeMobileModal}/>
+                 <OTPVerifyModal closeMobileModal={closeMobileModal} Next={Next}/>
         </Modal>
       )}
       <RisgistionBgImg height="100vh" imgUrl={Artboard8}>

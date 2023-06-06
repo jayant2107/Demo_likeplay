@@ -82,8 +82,17 @@ const LoginPage = () => {
         dispatch(countAdd(7));
         navigate("/ResgistPage8");
       } else if (res.data.profile_status === 5) {
-        dispatch(countAdd(8));
-        navigate("/ResgistPage9");
+        dispatch(countAdd(9));
+        navigate("/ResgistPage11"); 
+      }else if(res.data.profile_status === 6) {
+        dispatch(countAdd(10));
+        navigate("/ResgistPage10")
+      }else if(res.data.profile_status === 7) {
+        dispatch(countAdd(12));
+        navigate("/ResgistPage13")
+      }else if(res.data.profile_status === 8) {
+        dispatch(countAdd(15));
+        navigate("/ResgistPage16")
       }
       dispatch(TempValidUser(res?.data));
     } else {

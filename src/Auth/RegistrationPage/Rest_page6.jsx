@@ -17,6 +17,8 @@ import { RegisterFirstStep } from "Services/collection";
 import {useDispatch,useSelector} from 'react-redux';
 import { page6 } from '../../Redux/SliceOfRedux/FormDataSlice';
 import {countAdd,countMinus} from "../../Redux/SliceOfRedux/RegistrationSlice";
+import { toast } from "react-toastify";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const ResgistPage6 = () => {
   let percentage = "48%";
@@ -25,9 +27,13 @@ const ResgistPage6 = () => {
   const userData = useSelector((state)=>state?.FormData)
    const count = useSelector((state)=>state?.RegistrationSlice?.count);
     
-    const Next = () => {
-        dispatch(countAdd(count+1));
-    }
+   const navigate = useNavigate();
+   const location = useLocation();
+   
+   const Next = () => {
+         dispatch(countAdd(count+1));
+         if(location.pathname !== '/Registration' ) navigate("/Registration")
+     }
     const Back = () => {
         dispatch(countMinus(count-1));
     }
@@ -43,7 +49,7 @@ const ResgistPage6 = () => {
     if(res?.status === 200){
       Next();
     }else{
-      console.log('error :',res?.message)
+      toast.error(res?.message  || "something went wrong")
     }
   };
   return (

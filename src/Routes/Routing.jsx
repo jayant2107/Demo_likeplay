@@ -30,17 +30,21 @@ import EditName from "../EditProfile/EditName";
 import EditPofileDetails from "../Feautres/Home/EditPofileDetails";
 import ResgistPage1 from "Auth/RegistrationPage/Rest_page1";
 import ResgistPage4 from "Auth/RegistrationPage/Rest_page4";
-import Userdetails from '../Feautres/Home/Userdetails'
+import Userdetails from "../Feautres/Home/Userdetails";
 import ResgistPage6 from "Auth/RegistrationPage/Rest_page6";
 import ResgistPage7 from "Auth/RegistrationPage/Rest_page7";
 import ResgistPage8 from "../Auth/RegistrationPage/Rest_page8";
-import ResgistPage9 from "../Auth/RegistrationPage/Rest_page9";
+import ResgistPage11 from "Auth/RegistrationPage/Rest_page11";
+import ResgistPage10 from "Auth/RegistrationPage/Rest_page10";
+import ResgistPage15 from "../Auth/RegistrationPage/Rest_page15";
+import ResgistPage13 from "../Auth/RegistrationPage/Rest_page13";
+import ResgistPage16 from "../Auth/RegistrationPage/Rest_page16";
 
 const Routing = () => {
   const value = useSelector((e) => e.LoginSlice.data);
 
   let PublicRouter = ({ isAuth }) => {
-    if (isAuth?.token!== undefined) {
+    if (isAuth?.token !== undefined) {
       return <Navigate to="/Layout/FeedPage" replace />;
     }
     return <Outlet />;
@@ -63,17 +67,22 @@ const Routing = () => {
             <Route path="/" element={<Publichome />} />
             <Route path="/Registration" element={<Registration />} />
             <Route path="/Login" element={<LoginPage />} />
-            <Route path='/Register' element={<ResgistPage1/>}/>
-            <Route path="/ResgistPage4" element={<ResgistPage4/>}/>
-            <Route path="/ResgistPage6" element={<ResgistPage6/>}/>
-            <Route path="/ResgistPage7" element={<ResgistPage7/>}/>
-            <Route path='/ResgistPage8' element={<ResgistPage8/>}/>
-            <Route path='/ResgistPage9' element={<ResgistPage9/>}/>
+            <Route path="/Register" element={<ResgistPage1 />} />
+            <Route path="/ResgistPage4" element={<ResgistPage4 />} />
+            <Route path="/ResgistPage6" element={<ResgistPage6 />} />
+            <Route path="/ResgistPage7" element={<ResgistPage7 />} />
+            <Route path="/ResgistPage8" element={<ResgistPage8 />} />
+            <Route path="/ResgistPage11" element={<ResgistPage11 />} />
+            <Route path="/ResgistPage10" element={<ResgistPage10 />} />
+            <Route path="/ResgistPage13" element={<ResgistPage13 />} />
+            <Route path="/ResgistPage15" element={<ResgistPage15 />} />
+            <Route path="/ResgistPage16" element={<ResgistPage16 />} />
+
             <Route path="/Safety" element={<Footercontent />} />
             <Route path="/Nigeria" element={<Country />} />
           </Route>
           <Route element={<PrivateRouter isAuth={prop} />}>
-          <Route path="/MyProfileEdit" element={<EditPofileDetails />} />
+            <Route path="/MyProfileEdit" element={<EditPofileDetails />} />
             <Route path="/Layout" element={<Layout />}>
               <Route path="/Layout/FeedPage" element={<FeedPage />} />
               <Route path="/Layout/MyProfile" element={<FeedMyProfile />} />
@@ -94,9 +103,9 @@ const Routing = () => {
               <Route path="/Layout/Subscription" element={<Subscription />} />
               <Route path="/Layout/Settings" element={<Settings />} />
               <Route path="/Layout/FAQs" element={<FAQ />} />
-              <Route path="/Layout/Testimonal" element={<Testimonial  />} />
-              <Route path ='/Layout/EditName' element={<EditName/> }/>
-              <Route path ='/Layout/Userdetails' element={<Userdetails/>}/>
+              <Route path="/Layout/Testimonal" element={<Testimonial />} />
+              <Route path="/Layout/EditName" element={<EditName />} />
+              <Route path="/Layout/Userdetails" element={<Userdetails />} />
               {/* <Route path="/Layout/Testimonal" element={<Testimonal />} /> */}
             </Route>
           </Route>

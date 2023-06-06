@@ -90,20 +90,15 @@ export const ChoiceDiv = styled.div`
   height: ${(props) => props.height || "3rem"};
   margin: ${(props) => props.margin || "0rem 0px 0rem 0px"};
   padding-left: ${(props) => props.paddingLeft || "11px"};
+  background-color: ${(props) => props.backgroundColor || "#F0F0F0"};
   font-size: 1rem;
-  color: #878784;
+  color: ${(props)=>props.backgroundColor||'#878784'};
   border-radius: 10px;
   border: 1px #878784 solid;
   text-align: left;
   display: flex;
   justify-content: left;
   align-items: center;
-
-  :hover {
-    background-color: #a8580f;
-    color: white;
-  }
-
   // ----------------Choice Button------------------------//
 `;
 
@@ -116,14 +111,6 @@ export const ChoiceBtn = styled.div`
   margin-bottom: 15px;
   font-size: smaller;
   cursor: pointer;
-  &:hover {
-    background: rgb(122, 121, 121);
-    color: rgb(33, 32, 32);
-    :active {
-      background-color: #a8580f;
-      color: white;
-    }
-  }
 `;
 
 /// --------------------Pages---------------------------------------------------------//
@@ -254,7 +241,10 @@ export const RisgistationPage1 = styled.div`
     font-size: 14px;
     line-height: 21px;
   }
-
+  .activeButton{
+    color : white;
+    background-color:#A8580F;
+  }
   /* -------Ris_page 3-------------------- */
   .body_heigth {
     display: flex;
@@ -457,6 +447,12 @@ line-height: 52px;
     margin-top: 1rem;
     font-size: small;
     color: #4a4848;
+  }
+
+  .activeButton{
+    color : white;
+    background-color:#A8580F;
+
   }
 
   .text10 p {

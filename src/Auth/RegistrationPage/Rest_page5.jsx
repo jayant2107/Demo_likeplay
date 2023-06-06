@@ -16,9 +16,11 @@ import { SelectOptionsCss } from "./Rest_page3";
 import { Page4Data, Page5Data } from "./RegData";
 
 import { RegisterFirstStep } from "Services/collection";
-import {useDispatch,useSelector} from 'react-redux';
 import { page5 } from '../../Redux/SliceOfRedux/FormDataSlice';
+import {useDispatch,useSelector} from 'react-redux';
 import {countAdd,countMinus} from "../../Redux/SliceOfRedux/RegistrationSlice";
+import { toast } from "react-toastify";
+import { useNavigate,useLocation } from "react-router-dom";
 
 const ResgistPage5 = () => {
   const { agerange, lookingfor } = Page5Data;
@@ -30,9 +32,13 @@ const ResgistPage5 = () => {
 
    const count = useSelector((state)=>state?.RegistrationSlice?.count);
     
-    const Next = () => {
-        dispatch(countAdd(count+1));
-    }
+   const navigate = useNavigate();
+   const location = useLocation();
+   
+   const Next = () => {
+         dispatch(countAdd(count+1));
+         if(location.pathname !== '/Registration' ) navigate("/Registration")
+     }
     const Back = () => {
         dispatch(countMinus(count-1));
     }
@@ -57,7 +63,7 @@ const ResgistPage5 = () => {
     if(res?.status === 200){
       Next();
     }else{
-      console.log('error :',res?.message)
+      toast.error(res?.message  || "something went wrong")
     }
 
   };
