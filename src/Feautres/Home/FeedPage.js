@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Modal } from "antd";
 import CreateShotsModal from "../../Modals/CreateShotsModal";
 import InfoGuidelinesModal from "../../Modals/InfoGuidelinesModal";
-import { getHomePagePost } from "Services/collection";
+import { getHomePagePost, getTaglist } from "Services/collection";
 import Loader from "Components/Loader";
 //FakeData
 import { UsersData } from "./DataPage";
@@ -22,6 +22,7 @@ const FeedPage = () => {
   const [infoModal, setInfoModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const [UsersDetails,setUserDetails]=useState([])
+  const [taglist,settaglist]=useState()
 
   const closeInfoModal = () => {
     setInfoModal(false);
@@ -78,7 +79,33 @@ const FeedPage = () => {
 
   useEffect(() => {
     getHomePageContent();
+    getAllUserForTag()
   }, []);
+
+  const taguserlist=(payload)=>{
+    const parseData=payload?.map((items,key)=>({
+      name:items?.user_name,
+      id:items?.id,
+      key:key
+
+
+    }))
+    return parseData;
+
+  }
+  const getAllUserForTag =async()=>{
+    const res= await getTaglist()
+    if(res?.status===200){
+    const data= await taguserlist(res?.data)
+    settaglist(data)
+
+    }
+    else{
+      toast.error(res?.message)
+
+    }
+  }
+  console.log(taglist,"")
 
   return (
     <>
@@ -102,10 +129,12 @@ const FeedPage = () => {
               close={closeSnapModal}
               onCancel={closeSnapModal}
               maskClosable={true}
+             
+
               footer={null}
               centered
             >
-              <CreateShotsModal closeSnapModal={closeSnapModal} />
+              <CreateShotsModal closeSnapModal={closeSnapModal}  taglist={taglist} />
             </Modal>
           )}
           <div

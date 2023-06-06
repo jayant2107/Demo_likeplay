@@ -60,6 +60,9 @@ const updateusersQuestions = "/user/updateusersQuestions"
 
 const updatePartnersPhysicalQuestions = "/user/updatePartnersPhysicalQuestions"
 
+const createPosts='/post/createPosts'
+
+const taglist ='/post/getAllUserForTag'
 
 export const getHomePagePost = () => {
   return getApi(`${HOME_PAGE_POSTS}`);
@@ -179,4 +182,12 @@ export const updateusersQuestionsApi=(payload)=>{
 
 export const updatePartnersPhysicalQuestionsApi=(payload)=>{
   return putApi(updatePartnersPhysicalQuestions,payload);
+}
+export const createNewPosts=(payload)=>{
+  return postApi(createPosts,payload)
+  
+}
+
+export const getTaglist=(payload)=>{
+  return getApi(taglist,payload)
 }
