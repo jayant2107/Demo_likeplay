@@ -33,6 +33,7 @@ import {
   blockUser,
   commentPost,
   updatePostLikeComment,
+  getLikedetails,
 } from "Services/collection";
 import Loader from "Components/Loader";
 import { toast } from "react-toastify";
@@ -46,6 +47,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
   const [showBlockModal, setshowBlockModal] = useState(false);
   const [reportUserModal, setReportUserModal] = useState(false);
   const [likeModal, setLikeModal] = useState(false);
+  const [likepostdata,setlikepostdata]=useState()
   const [editModal, setEditModal] = useState(false);
   const [showComment, setShowComment] = useState(false);
   const [clicked, setClicked] = useState(false);
@@ -57,10 +59,12 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
   const [star, setStar] = useState( val?.userLikeByStar );
   const [starcount,setStarcount]=useState(val?.totalLikeByStar)
   const [tagList, setTagList] = useState([]);
+  const[listtype,setlisttype]=useState()
   const [totalcomment,settotalcomment]=useState(+val?.totalCommments)
   
   const navigate =useNavigate()
- 
+  console.log(val,"vval")
+
 
 
   const colorchangeicons=(name)=>{
@@ -171,6 +175,8 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
   const closeLikeModal = () => {
     setLikeModal(false);
   };
+
+ 
 
   const getTagsList = async (post_id) => {
     setTagLoader(true);
@@ -283,7 +289,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
   const content = (
     <PopContentCss>
       <div className="popContent">
-        {edit && <div
+        {val?.matchValue && <div
           className="popbtn"
           onClick={() => {
             setEditModal(true);
@@ -303,7 +309,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
         >
           Block
         </div>
-        {edit && <div
+        {val?.matchValue && <div
           className="popbtn"
           onClick={() => {
             setShowModal(true);
@@ -441,7 +447,11 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
                 <LikeFeedIcon val={like} />
               </span>
               <span  onClick={() => {
-                  setLikeModal(true);
+                  setlisttype(0)
+                  if(likecount>0){
+
+                    setLikeModal(true);
+                  }
                 }}>{likecount}</span>
            
             </div>
@@ -449,7 +459,12 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
               <span onClick={() => handlePostLikes("heart")}>
                 <HeartFeedIcon val={heart} />
               </span>
-              <span
+              <span onClick={()=>{
+                setlisttype(1)
+                if(heartcount>0){
+                  setLikeModal(true)
+                }
+              }}
                
               >
                 {heartcount}
@@ -459,7 +474,14 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
               <span>
                 <StarFeedIcon val={star} />
               </span>
-              <span>{starcount}</span>
+              <span
+              onClick={()=>{
+                setlisttype(2)
+                if(starcount>0){
+                  setLikeModal(true)
+                }
+              }}
+              >{starcount}</span>
             </div>
           </div>
 
@@ -533,6 +555,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
             prop={BlockData}
             closeModal={closeModal}
             handleAction={handleBlockUser}
+            getHomePageContent={getHomePageContent}
           />
         </Modal>
       )}
@@ -550,6 +573,8 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
             prop={DeleteData}
             closeModal={closeModal}
             handleAction={handleDeletePost}
+            postid={val?.post_id }
+
           />
         </Modal>
       )}
@@ -595,7 +620,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
           centered
           width="30%"
         >
-          <LikesViewModal closeLikeModal={closeLikeModal} />
+          <LikesViewModal postid={val?.post_id} listtype={listtype} closeLikeModal={closeLikeModal} />
         </Modal>
       )}
     </>

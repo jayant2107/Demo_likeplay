@@ -13,6 +13,7 @@ import { Artboard } from "Utils/icons-folder/Modalsicons";
 import { toast } from "react-toastify";
 import moment from "moment/moment";
 import { NoRecords } from "Style/comman_Css";
+import { useSelector } from "react-redux";
 
 const FeedPage = () => {
   // const [like, setLike] = useState(false);
@@ -23,6 +24,8 @@ const FeedPage = () => {
   const [loading, setLoading] = useState(true);
   const [UsersDetails,setUserDetails]=useState([])
   const [taglist,settaglist]=useState()
+  const loginuser_id=useSelector((e)=>e?.UserId?.id)
+  
 
   const closeInfoModal = () => {
     setInfoModal(false);
@@ -45,6 +48,8 @@ const FeedPage = () => {
   const parseHomeContent=(payload)=>{
     const parseData=payload?.map((list)=>({
       user_id:list?.user_id ,
+      matchValue:list?.user_id===loginuser_id,
+
       id:list?.id,
       profile_img:process.env.REACT_APP_BASEURL_IMAGE+list?.User?.user_images_while_signup[0]?.image_url,
       userName:list?.User?.user_name || "",
@@ -69,6 +74,7 @@ const FeedPage = () => {
     const res = await getHomePagePost();
     if(res?.status===200){
       const data=await parseHomeContent(res?.data)
+
       setUserDetails(data)
       setLoading(false)
     }else{
@@ -105,7 +111,8 @@ const FeedPage = () => {
 
     }
   }
-  console.log(taglist,"")
+ 
+  
 
   return (
     <>

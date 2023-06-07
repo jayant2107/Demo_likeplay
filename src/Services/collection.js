@@ -60,9 +60,13 @@ const updateusersQuestions = "/user/updateusersQuestions"
 
 const updatePartnersPhysicalQuestions = "/user/updatePartnersPhysicalQuestions"
 
-const createPosts='/post/createPosts'
+const createPosts='/post/createPost'
 
 const taglist ='/post/getAllUserForTag'
+
+const likedetails='/post/getsLikesDetail'
+
+const deleteshot="/post/deleteShot"
 
 export const getHomePagePost = () => {
   return getApi(`${HOME_PAGE_POSTS}`);
@@ -190,4 +194,12 @@ export const createNewPosts=(payload)=>{
 
 export const getTaglist=(payload)=>{
   return getApi(taglist,payload)
+}
+
+export const getLikedetails=(postid,type)=>{
+  return getApi(`${likedetails}?post_id=${postid}&type=${type}`)
+}
+
+export const getDeleteshot=(payload)=>{
+  return deleteApi(`${deleteshot}?post_id=${payload}`)
 }

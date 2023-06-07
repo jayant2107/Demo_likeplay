@@ -2,13 +2,15 @@ import styled from "styled-components";
 import { upload } from "../Utils/images/Modalsimg";
 import { exit } from "../Utils/icons-folder/Modalsicons";
 import StyledButton from "../Components/Button";
-import { Select, Space } from "antd";
+import { Button, Select, Space } from "antd";
 import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { createNewPosts } from "Services/collection";
+import { toast } from "react-toastify";
 
 export default function CreateShotsModal({ closeSnapModal, taglist }) {
   const { Option } = Select;
+  const[loading,setLoading]=useState(false)
   const[imgvidupload,setimgvidupload]=useState() 
   const [uploadnew,setuploadnew]=useState(false)
   const [filetype,setfiletype]=useState()
@@ -20,6 +22,7 @@ export default function CreateShotsModal({ closeSnapModal, taglist }) {
     settagto(value)
   };
   const handlesubmit=async()=>{
+    setLoading(true)
     const data= new FormData()
       data.append("media_url",imgvidupload?.[0],imgvidupload?.[0]?.name)
       data.append("caption",captionvalue)
@@ -27,14 +30,20 @@ export default function CreateShotsModal({ closeSnapModal, taglist }) {
       data.append("tag_to",tagto)
     const req= await createNewPosts(data)
     if(req?.status===200){
+      toast.success(req?.message)
+      setLoading(false)
+      
       
 
     }
     else{
+      toast.error(req?.message)
+      setLoading(false)
 
     }
 
   }
+  console.log(imgvidupload,"img")
   const video_extension=[
     "mpeg-2",
     "webm",
@@ -167,15 +176,26 @@ export default function CreateShotsModal({ closeSnapModal, taglist }) {
 
         <div className="modal-button">
           <div className="buttons-content">
-            <div className="submit-btn">
-              <StyledButton
+           
+              {/* <StyledButton
                 onClick={()=>handlesubmit()}
                 text="white"
                 bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
               >
                 Submit
-              </StyledButton>
-            </div>
+              </StyledButton> */}
+              <Button
+              className="submit"
+              size="large"
+              type="primary"
+              loading={loading}
+              onClick={handlesubmit}
+              
+              >
+                Submit
+              </Button>
+
+            
           </div>
         </div>
 
@@ -248,6 +268,12 @@ export const StyledCreateShortModal = styled.div`
       width:97%;
       height:97%;
       border-radius:5px;
+    }
+    video{
+      width:97%;
+      height:97%;
+      border-radius:5px;
+
     }
     .close-icon{
       position: absolute;
@@ -359,18 +385,29 @@ export const StyledCreateShortModal = styled.div`
   /******* MODAL BUTTON-SECTION STARTS *****/
 
   .modal-button {
-    margin-top: 18px;
+  display:flex;
+  align-items:center;
+  justify-content:end;
+  padding:15px 0px;
+
   }
 
-  .buttons-content {
-    display: flex;
-    justify-content: end;
-  }
+  
 
-  .submit-btn {
-    width: 31%;
-    display: flex;
-    justify-content: end;
+ 
+  .submit{
+    background:linear-gradient(#ff483c 100%, #ff2c5a 100%);
+    
+     border: 1px solid transparent;
+    border-radius: 10px;
+   font-size: 16px;
+   font-weight: 500;
+   line-height: 22px;
+    color:#fff;
+    letter-spacing:1px;
+
+    
+  
   }
 
   /******* MODAL BUTTON-SECTION ENDS *****/

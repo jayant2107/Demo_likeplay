@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import StyledButton from "../Components/Button";
+import { getDeleteshot } from "Services/collection";
+import { toast } from "react-toastify";
+import { useLocation } from "react-router-dom";
 // import { useLocation } from "react-router-dom";
 
 export const StyledDeleteModal = styled.div`
@@ -88,10 +91,27 @@ export const StyledDeleteModal = styled.div`
   /* MODAL BUTTON-SECTION ENDS  */
 `;
 
-export default function DeleteModal({ closeModal, prop , handleAction }) {
-  // const location = useLocation();
+export default function DeleteModal({ closeModal, prop , handleAction,postid, getHomePageContent }) {
+   const location = useLocation();
   // console.log(location);
   // const path = location?.pathname;
+const handlesubmit =async()=>{
+  
+  const res=await getDeleteshot(postid)
+  if(res?.status===200){
+    toast.success(res?.message || "Posts deleted successfully")
+    if(location.pathname==="Layout/MyProfile"){
+      getHomePageContent()
+    }
+
+
+  }
+  else{
+    toast.error(res?.message)
+
+  }
+
+}
 
   return (
     <>
@@ -141,6 +161,7 @@ export default function DeleteModal({ closeModal, prop , handleAction }) {
                 <StyledButton
                   text="white"
                   bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
+                  onClick={handlesubmit}
                 >
                   Yes
                 </StyledButton>

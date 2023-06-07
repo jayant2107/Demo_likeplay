@@ -7,15 +7,18 @@ import { getUploadedPosts } from "Services/collection";
 import { toast } from "react-toastify";
 import Loader from "Components/Loader";
 import moment from "moment";
+import { useSelector } from "react-redux";
 
 const FeedShots = () => {
   const [loading, setLoading] = useState(true);
   const [postList, setPostList] = useState([]);
+  const loginuser_id=useSelector((e)=>e?.UserId?.id)
 
   const parseHomeContent=(payload,image,name)=>{
     const parseData=payload?.map((list)=>({
       id:list?.user_id,
       userName:name || "",
+      matchValue:list?.user_id===loginuser_id,
       profile_img:process.env.REACT_APP_BASEURL_IMAGE+image,
       date:moment(list?.User?.createdAt).local().format('DD MMMM LT'),
       caption:list?.caption || "",
