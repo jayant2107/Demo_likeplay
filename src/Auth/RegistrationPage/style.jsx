@@ -230,6 +230,12 @@ export const RisgistationPage1 = styled.div`
     color: #242424;
     display: flex;
     justify-content: space-between;
+
+    .infocircle{
+      display : flex;
+      align-items : center;
+      cursor : pointer;
+    }
   }
   .gender_btn {
     text-align: center;

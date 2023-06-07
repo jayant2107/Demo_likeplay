@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ResHeaderComponent from "./ResHeader";
-import { Artboard12 } from "../../Utils/RegistrationImg/Registrationflie";
+import { Artboard12,infocircle } from "../../Utils/RegistrationImg/Registrationflie";
 
 import {
   ChoiceBtn,
@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { countAdd } from "../../Redux/SliceOfRedux/RegistrationSlice";
 import { toast } from "react-toastify";
 import { useNavigate, useLocation } from "react-router-dom";
+import Restpage14Modal from 'Modals/Rest_page14Modal'
 
 const data = [
   {
@@ -58,6 +59,12 @@ const ResgistPage12 = () => {
   const location = useLocation();
   const count = useSelector((state) => state?.RegistrationSlice?.count);
 
+  const [show,setShow] = useState(false)
+
+  const changeModal=()=>{
+    setShow(!show)
+  }
+
   const Next = () => {
     dispatch(countAdd(count + 1));
     if (location.pathname !== "/Registration") navigate("/Registration");
@@ -93,6 +100,9 @@ const ResgistPage12 = () => {
   };
   return (
     <>
+    {
+      show && <Restpage14Modal show={show} changeModal={changeModal}/>
+    }
       <RisgistionBgImg height="auto" imgUrl={Artboard12}>
         <ResHeaderComponent />
         <RisgistationPage1>
@@ -123,9 +133,9 @@ const ResgistPage12 = () => {
               </div>
               <div className="registation_form">
                 <div className="Welcome">
-                  <h5>
+                  <h5 className="infocircle">
                     <b>Cheracter Questions</b>
-                    <span>*</span>
+                    <img src={infocircle} alt='infocircle' onClick={changeModal}/>
                   </h5>
                 </div>
                 {data.map((el) => {

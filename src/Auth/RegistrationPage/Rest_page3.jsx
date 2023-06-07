@@ -17,47 +17,50 @@ import styled from "styled-components";
 
 import { RegisterFirstStep } from "Services/collection";
 
-import {useDispatch,useSelector} from 'react-redux';
-import { page3 } from '../../Redux/SliceOfRedux/FormDataSlice';
-import {countAdd,countMinus} from "../../Redux/SliceOfRedux/RegistrationSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { page3 } from "../../Redux/SliceOfRedux/FormDataSlice";
+import {
+  countAdd,
+  countMinus,
+} from "../../Redux/SliceOfRedux/RegistrationSlice";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const ResgistPage3 = ({interest }) => {
+const ResgistPage3 = () => {
   const { status, bodytypes, education, employment, height } = Page3Data;
   let percentage = "26%";
 
-   const count = useSelector((state)=>state?.RegistrationSlice?.count);
+  const count = useSelector((state) => state?.RegistrationSlice?.count);
   const dispatch = useDispatch();
-  const userData = useSelector((state)=>state?.FormData)
+  const userData = useSelector((state) => state?.FormData);
 
   const navigate = useNavigate();
   const location = useLocation();
-  
+
   const Next = () => {
-        dispatch(countAdd(count+1));
-        if(location.pathname !== '/Registration' ) navigate("/Registration")
-    }
-    const Back = () => {
-        dispatch(countMinus(count-1));
-    }
+    dispatch(countAdd(count + 1));
+    if (location.pathname !== "/Registration") navigate("/Registration");
+  };
+  const Back = () => {
+    dispatch(countMinus(count - 1));
+  };
 
   const initialObj = {
-    status : userData?.status,
-    bodytype : userData?.bodytype,
-    height:userData?.height,
-    education:userData?.education,
-    employment:userData?.employment,
-  }
+    status: userData?.status,
+    bodytype: userData?.bodytype,
+    height: userData?.height,
+    education: userData?.education,
+    employment: userData?.employment,
+  };
 
   const handleSubmit = async (values) => {
-    dispatch(page3(values))
+    dispatch(page3(values));
 
     const req = {
       name: userData?.name,
       age: userData?.age,
-      gender: `${interest === 'men' ? 1 : 0}`,
-      interested_in: `${interest === 'men' ? 0 : 1}`,
+      gender: userData?.gender,
+      interested_in: `${userData?.gender === "0" ? 1 : 2}`,
       status: values?.status,
       body_type: values?.bodytype,
       height: values?.height,
@@ -66,10 +69,10 @@ const ResgistPage3 = ({interest }) => {
       profile_status: 1,
     };
     const res = await RegisterFirstStep(req);
-    if(res.status === 200){
-      Next(); 
-    }else{
-      toast.error(res?.message  || "something went wrong")
+    if (res.status === 200) {
+      Next();
+    } else {
+      toast.error(res?.message || "something went wrong");
     }
   };
   return (
@@ -200,15 +203,14 @@ const ResgistPage3 = ({interest }) => {
                       <ButtonStyle
                         bgcolour="#e5e5e5"
                         color="black"
-                        onClick={()=>{Back()}}
+                        onClick={() => {
+                          Back();
+                        }}
                       >
                         {" "}
                         Back{" "}
                       </ButtonStyle>
-                      <ButtonStyle type="submit">
-                        {" "}
-                        Next{" "}
-                      </ButtonStyle>
+                      <ButtonStyle type="submit"> Next </ButtonStyle>
                     </div>
                   </Form>
                 </Formik>

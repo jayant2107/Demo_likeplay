@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { ButtonStyle } from "Auth/RegistrationPage/style";
 import arrowRight from "../Assets/Registration/arrowRight.png";
 
-const Rest_page14Modal = ({ show, changeModal, Next }) => {
+const Rest_page14Modal = ({ show, changeModal}) => {
   return (
     <Modal
       open={show}
@@ -31,7 +31,7 @@ const Rest_page14Modal = ({ show, changeModal, Next }) => {
           <span>No Way : </span>
           <span className="p">Never, Not me or at least not something i go for.</span>
         </div>
-        <ButtonStyle onClick={()=>{changeModal();Next()}} width='90%' height="3rem" padding="0">
+        <ButtonStyle onClick={changeModal} width='90%' height="3rem" padding="0">
           {" "}
           Submit{" "}
         </ButtonStyle>

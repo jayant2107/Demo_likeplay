@@ -14,18 +14,29 @@ import {
   ButtonStyle,
   RisgistationPage1,
 } from "./style";
-import data from "./dssdd";
 import { getProfileView } from "../../Services/collection";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { countAdd } from "../../Redux/SliceOfRedux/RegistrationSlice";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const chage = ["end", "start", "end", "start", "end"];
 const ResgistPage16 = () => {
   let percentage = "100%";
-
   const [userInfo, setUserInfo] = useState();
   const [swit, setSwit] = React.useState(0);
   const [switi, setSwiti] = React.useState(swit);
+  const userId = useSelector((state) => state.UserId.id);
+  const count = useSelector((state) => state?.RegistrationSlice?.count);
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const Next = () => {
+    dispatch(countAdd(count + 1));
+    if (location.pathname !== "/Registration") navigate("/Registration");
+  };
+
   function Switched() {
     setSwiti(chage[swit]);
     if (chage.length - 1 === swit) {
@@ -34,8 +45,6 @@ const ResgistPage16 = () => {
       setSwit(swit + 1);
     }
   }
-
-  const userId = useSelector((state) => state.UserId.id);
 
   useEffect(() => {
     getUserDataFun();
@@ -49,7 +58,6 @@ const ResgistPage16 = () => {
       toast.error(res.message || "something went wrong");
     }
   };
-  console.log("userInfo     ", userInfo);
 
   return (
     <RisgistionBgImg height="auto" imgUrl={AartboardDitals}>
@@ -59,9 +67,6 @@ const ResgistPage16 = () => {
         <div className="Risgistation_content2">
           <FromStyleDiv width="34rem">
             <ProgessStyleDiv>
-              <p>
-                <b>{percentage}</b> Complete
-              </p>
               <ProgessStyleDivline>
                 <ProgessStyleDivfilline
                   width={percentage}
@@ -83,7 +88,6 @@ const ResgistPage16 = () => {
             </div>
             <div className="registation_form">
               <FeedAboutMeCss>
-                {/* start */}
                 <div className="detailsBox">
                   <div className="boxDiv">
                     <div>
@@ -92,7 +96,7 @@ const ResgistPage16 = () => {
                         style={{ color: "#7b7f91" }}
                         className="vlauesDitals"
                       >
-                        'valuse'
+                        {userInfo?.name}
                       </span>
                     </div>
                     <div>
@@ -101,7 +105,7 @@ const ResgistPage16 = () => {
                         style={{ color: "#7b7f91" }}
                         className="vlauesDitals"
                       >
-                        'valuse'
+                        {userInfo?.age}
                       </span>
                     </div>
                     <div>
@@ -110,7 +114,7 @@ const ResgistPage16 = () => {
                         style={{ color: "#7b7f91" }}
                         className="vlauesDitals"
                       >
-                        'valuse'
+                        {userInfo?.gender === 0 ? "Male" : "Female"}
                       </span>
                     </div>
                     <div>
@@ -119,24 +123,160 @@ const ResgistPage16 = () => {
                         style={{ color: "#7b7f91" }}
                         className="vlauesDitals"
                       >
-                        'valuse'
+                        {userInfo?.interested_in === "0" ? "Female" : "Male"}
                       </span>
                     </div>
                   </div>
-
                   <img className="editImgIcon" src={Edit} alt="Edit" />
                 </div>
-                {/* end */}
                 <div className="detailsBox">
-                  <div className="imgsDitals">
-                    <img className="imgsDitalstag" src={"pic"} alt=""></img>
+                  <div className="boxDiv">
+                    <div>
+                      <lable className="nameDitals">Status</lable>
+                      <span
+                        style={{ color: "#7b7f91" }}
+                        className="vlauesDitals"
+                      >
+                        {userInfo?.status}
+                      </span>
+                    </div>
+                    <div>
+                      <lable className="nameDitals">Body Type</lable>
+                      <span
+                        style={{ color: "#7b7f91" }}
+                        className="vlauesDitals"
+                      >
+                        {userInfo?.body_type}
+                      </span>
+                    </div>
+                    <div>
+                      <lable className="nameDitals">Height</lable>
+                      <span
+                        style={{ color: "#7b7f91" }}
+                        className="vlauesDitals"
+                      >
+                        {userInfo?.height}
+                      </span>
+                    </div>
+                    <div>
+                      <lable className="nameDitals">Education</lable>
+                      <span
+                        style={{ color: "#7b7f91" }}
+                        className="vlauesDitals"
+                      >
+                        {userInfo?.education}
+                      </span>
+                    </div>
+                    <div>
+                      <lable className="nameDitals">Employment</lable>
+                      <span
+                        style={{ color: "#7b7f91" }}
+                        className="vlauesDitals"
+                      >
+                        {userInfo?.employment}
+                      </span>
+                    </div>
                   </div>
+                  <img className="editImgIcon" src={Edit} alt="Edit" />
                 </div>
-
+                <div className="detailsBox">
+                  <div className="boxDiv">
+                    <div>
+                      <lable className="nameDitals">Country of Residence</lable>
+                      <span
+                        style={{ color: "#7b7f91" }}
+                        className="vlauesDitals"
+                      >
+                        {userInfo?.country}
+                      </span>
+                    </div>
+                    <div>
+                      <lable className="nameDitals">State</lable>
+                      <span
+                        style={{ color: "#7b7f91" }}
+                        className="vlauesDitals"
+                      >
+                        {userInfo?.state}
+                      </span>
+                    </div>
+                    <div>
+                      <lable className="nameDitals">City</lable>
+                      <span
+                        style={{ color: "#7b7f91" }}
+                        className="vlauesDitals"
+                      >
+                        {userInfo?.city}
+                      </span>
+                    </div>
+                    <div>
+                      <lable className="nameDitals">Nationality</lable>
+                      <span
+                        style={{ color: "#7b7f91" }}
+                        className="vlauesDitals"
+                      >
+                        {userInfo?.nationality}
+                      </span>
+                    </div>
+                    <div>
+                      <lable className="nameDitals">Religion</lable>
+                      <span
+                        style={{ color: "#7b7f91" }}
+                        className="vlauesDitals"
+                      >
+                        {userInfo?.religion}
+                      </span>
+                    </div>
+                    <div>
+                      <lable className="nameDitals">Your Tribe</lable>
+                      <span
+                        style={{ color: "#7b7f91" }}
+                        className="vlauesDitals"
+                      >
+                        {userInfo?.your_tribe}
+                      </span>
+                    </div>
+                  </div>
+                  <img className="editImgIcon" src={Edit} alt="Edit" />
+                </div>
+                <div className="detailsBox">
+                  <div className="boxDiv">
+                    <div>
+                      <lable className="nameDitals">
+                        Age Range preferred to date
+                      </lable>
+                      <span
+                        style={{ color: "#7b7f91" }}
+                        className="vlauesDitals"
+                      >
+                        {userInfo?.age_range_for_date}
+                      </span>
+                    </div>
+                    <div>
+                      <lable className="nameDitals">Tribe to date</lable>
+                      <span
+                        style={{ color: "#7b7f91" }}
+                        className="vlauesDitals"
+                      >
+                        {userInfo?.tribe_to_date}
+                      </span>
+                    </div>
+                    <div>
+                      <lable className="nameDitals">Looking for</lable>
+                      <span
+                        style={{ color: "#7b7f91" }}
+                        className="vlauesDitals"
+                      >
+                        {userInfo?.looking_for}
+                      </span>
+                    </div>
+                  </div>
+                  <img className="editImgIcon" src={Edit} alt="Edit" />
+                </div>
                 <div className="detailsBox">
                   <div className="aboutMe">
                     <div className="edit-div">
-                      <p>About me</p> <img src={Edit} alt="editicon" />
+                      <lable className="nameDitals">About me</lable>{" "}
+                      <img className="editImgIcon" src={Edit} alt="editicon" />
                     </div>
                     <span style={{ color: "#7b7f91" }} className="vlauesDitals">
                       Lorem Ipsum is simply dummy text of the printing and
@@ -145,6 +285,23 @@ const ResgistPage16 = () => {
                       printer took a galley of type and scrambled.
                     </span>
                   </div>
+                </div>
+                <div className="detailsBox">
+                  <div className="imgsDitals">
+                    {userInfo?.user_images_while_signup?.map((val, index) => {
+                      return (
+                        <img
+                          key={index}
+                          className="imgsDitalstag"
+                          src={
+                            process.env.REACT_APP_BASEURL_IMAGE + val?.image_url
+                          }
+                          alt=""
+                        />
+                      );
+                    })}
+                  </div>
+                  <img className="editImgIcon" src={Edit} alt="Edit" />
                 </div>
                 <div className="switchDiv">
                   <p>Introduce me on the floor Page</p>
@@ -155,7 +312,7 @@ const ResgistPage16 = () => {
               </FeedAboutMeCss>
 
               <div className="btn">
-                <ButtonStyle onClick={""} height="3rem" padding="0">
+                <ButtonStyle onClick={Next} height="3rem" padding="0">
                   {" "}
                   Submit{" "}
                 </ButtonStyle>
@@ -275,5 +432,5 @@ const FeedAboutMeCss = styled.div`
     position: absolute;
     top: 0.8rem;
     right: 0.8rem;
-  }
+    cursor : pointer;
 `;

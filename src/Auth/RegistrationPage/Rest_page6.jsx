@@ -14,42 +14,46 @@ import {
 import { Field, Form, Formik } from "formik";
 import { RegisterFirstStep } from "Services/collection";
 
-import {useDispatch,useSelector} from 'react-redux';
-import { page6 } from '../../Redux/SliceOfRedux/FormDataSlice';
-import {countAdd,countMinus} from "../../Redux/SliceOfRedux/RegistrationSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { page6 } from "../../Redux/SliceOfRedux/FormDataSlice";
+import {
+  countAdd,
+  countMinus,
+} from "../../Redux/SliceOfRedux/RegistrationSlice";
 import { toast } from "react-toastify";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const ResgistPage6 = () => {
   let percentage = "48%";
 
-    const dispatch = useDispatch();
-  const userData = useSelector((state)=>state?.FormData)
-   const count = useSelector((state)=>state?.RegistrationSlice?.count);
-    
-   const navigate = useNavigate();
-   const location = useLocation();
-   
-   const Next = () => {
-         dispatch(countAdd(count+1));
-         if(location.pathname !== '/Registration' ) navigate("/Registration")
-     }
-    const Back = () => {
-        dispatch(countMinus(count-1));
-    }
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state?.FormData);
+  const count = useSelector((state) => state?.RegistrationSlice?.count);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const Next = () => {
+    dispatch(countAdd(count + 1));
+    if (location.pathname !== "/Registration") navigate("/Registration");
+  };
+  const Back = () => {
+    dispatch(countMinus(count - 1));
+    if (location.pathname !== "/Registration") navigate("/Registration");
+  };
 
   const handleSubmit = async (values) => {
-    dispatch(page6(values))
+    dispatch(page6(values));
     let req = {
       about_me: values.aboutme,
       profile_status: 3,
     };
 
     let res = await RegisterFirstStep(req);
-    if(res?.status === 200){
+    if (res?.status === 200) {
       Next();
-    }else{
-      toast.error(res?.message  || "something went wrong")
+    } else {
+      toast.error(res?.message || "something went wrong");
     }
   };
   return (
@@ -78,7 +82,10 @@ const ResgistPage6 = () => {
                     <span>Step /6</span>
                   </p>
                 </div>
-                <Formik initialValues={{ aboutme: userData?.aboutme }} onSubmit={handleSubmit}>
+                <Formik
+                  initialValues={{ aboutme: userData?.aboutme }}
+                  onSubmit={handleSubmit}
+                >
                   <Form>
                     <lable>
                       About me<span>*</span>
@@ -100,12 +107,7 @@ const ResgistPage6 = () => {
                         {" "}
                         Back{" "}
                       </ButtonStyle>
-                      <ButtonStyle
-                        type="submit"
-                      >
-                        {" "}
-                        Next{" "}
-                      </ButtonStyle>
+                      <ButtonStyle type="submit"> Next </ButtonStyle>
                     </div>
                   </Form>
                 </Formik>

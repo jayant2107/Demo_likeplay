@@ -4,7 +4,6 @@ const initialState = {
   name: null,
   age: null,
   gender: null,
-  interestedIn: null,
   status: null,
   bodytype: null,
   height: null,
@@ -32,7 +31,6 @@ export const FromDataSlice = createSlice({
         state.name = action.payload?.name;
         state.age = action.payload?.age;
         state.gender = action.payload?.gender;
-        state.interestedIn = action.payload?.interest;
       }
     },
     page3 : (state,action) =>{
