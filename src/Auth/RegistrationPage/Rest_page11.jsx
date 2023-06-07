@@ -28,7 +28,7 @@ const ResgistPage11 = () => {
   const dispatch = useDispatch();
   const count = useSelector((state) => state?.RegistrationSlice?.count);
   const navigate=useNavigate()
-  let location = useLocation()
+  const location = useLocation()
 
   const Next = () => {
     if(active === 2){
@@ -84,7 +84,6 @@ const ResgistPage11 = () => {
                 <ChoiceDiv className={active === 3 ? 'activeButton' : ''} onClick={()=>setActive(3)}>Both Physical & Character Attributes</ChoiceDiv>
                 <br></br>
                 <div className="btn">
-                  {/* <ButtonStyle onClick={() => { Back() }} bgcolour="#e5e5e5" color="black"> Back </ButtonStyle> */}
                   <ButtonStyle
                     onClick={handleSubmit}
                   >

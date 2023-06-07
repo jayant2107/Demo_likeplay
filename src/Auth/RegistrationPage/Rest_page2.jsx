@@ -27,12 +27,13 @@ const OffBtn = {
 
 const ResgistPage2 = () => {
   let percentage = "16%";
-  const [active, setActive] = useState(OffBtn);
-  const [active2, setActive2] = useState(OffBtn);
+  const userData = useSelector((state)=>state?.FormData)
+
+  const [active, setActive] = useState(userData?.interest === 'Men' ? OffBtn : OnBtn || OffBtn);
+  const [active2, setActive2] = useState(userData?.interest === 'Men' ? OnBtn : OffBtn || OffBtn);
   const [interest, setInterest] = useState("");
 
   const dispatch = useDispatch();
-  const userData = useSelector((state)=>state?.FormData)
    const count = useSelector((state)=>state?.RegistrationSlice?.count);
 
    const Next = () => {
@@ -55,7 +56,13 @@ const ResgistPage2 = () => {
     }
   };
   const handleSubmit = (values) => {
-    dispatch(page2(values))
+    let obj = {
+      name  : values.name,
+      age  : values.age,
+      gender : `${interest === 'Men' ? 1 :0}`,
+    }
+    console.log("page2 values :",obj)
+    dispatch(page2(obj))
     Next();
   };
 
@@ -145,7 +152,7 @@ const ResgistPage2 = () => {
                         type="text"
                         className="resgistation_input"
                         placeholder="willmith1234221"
-                        value = {interest}
+                        value = {interest ?  interest : userData?.gender === 'Men' ? "Women" : "Men"}
                       />
                       <div className="btn">
                         <SubmitButton>

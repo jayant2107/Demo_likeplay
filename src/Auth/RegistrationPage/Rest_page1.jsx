@@ -56,7 +56,7 @@ const ResgistPage1 = () => {
     console.log("res   ", res.message);
     console.log("res   ", res.status);
 
-    if (res.status === 200) {
+    if (res.status === 200){
       setLoading(false);
       setEmailVer(!emailVer);
       setPassEmail(values.email);

@@ -3,7 +3,6 @@ import ResHeaderComponent from './ResHeader'
 import { Artboard122 } from '../../Utils/RegistrationImg/Registrationflie'
 
 import { ChoiceBtn, RisgistionBgImg, FromStyleDiv, ProgessStyleDiv, ProgessStyleDivline, ProgessStyleDivfilline, ButtonStyle, RisgistationPage1 } from './style'
-import Restpage14Modal from 'Modals/Rest_page14Modal'
 
 import { updateusersQuestionsApi } from "../../Services/collection";
 

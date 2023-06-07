@@ -17,14 +17,16 @@ import {
 } from "./style";
 
 import { UpdateMediaApi, DeleteMediaApi } from "Services/collection";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { LoaderWrapper } from "Auth/LoginPage";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-import {countAdd,countMinus} from "../../Redux/SliceOfRedux/RegistrationSlice";
+import {
+  countAdd,
+  countMinus,
+} from "../../Redux/SliceOfRedux/RegistrationSlice";
 import { toast } from "react-toastify";
-import { useNavigate,useLocation } from "react-router-dom";
-
+import { useNavigate, useLocation } from "react-router-dom";
 
 const userImg = [
   {
@@ -52,19 +54,20 @@ const userImg = [
 const imageBaseUrl = process.env.REACT_APP_BASEURL_IMAGE;
 
 const ResgistPage7 = () => {
-    const dispatch = useDispatch();
-    const count = useSelector((state)=>state?.RegistrationSlice?.count);
+  const dispatch = useDispatch();
+  const count = useSelector((state) => state?.RegistrationSlice?.count);
 
-    const navigate = useNavigate();
-    const location = useLocation();
-    
-    const Next = () => {
-          dispatch(countAdd(count+1));
-          if(location.pathname !== '/Registration' ) navigate("/Registration")
-      }
-const Back = () => {
-    dispatch(countMinus(count-1));
-}
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const Next = () => {
+    dispatch(countAdd(count + 1));
+    if (location.pathname !== "/Registration") navigate("/Registration");
+  };
+  const Back = () => {
+    dispatch(countMinus(count - 1));
+    if (location.pathname !== "/Registration") navigate("/Registration");
+  };
 
   let percentage = "56%";
   const user_id = useSelector((state) => state.UserId.id);
@@ -86,30 +89,24 @@ const Back = () => {
 
     let res = await UpdateMediaApi(fromData);
 
-    if(res?.status === 200){
+    if (res?.status === 200) {
       setloading(false);
       setImgpre(imageBaseUrl + res?.data?.image_url);
-    }else{
-      toast.error(res?.message  || "something went wrong")
+    } else {
+      toast.error(res?.message || "something went wrong");
     }
   };
-  console.log(user_id)
+  console.log(user_id);
 
   const removeUpload = async () => {
     // let fromDelete = new FormData();
     // fromDelete.append("id", user_id);
-
-   
-   
-
     // let res = await DeleteMediaApi(fromDelete);
-
     // if(res?.status === 200){
     //   setImgpre(null);
     // }else{
     //   console.log('error :',res?.message)
     // }
-
   };
 
   const antIcon = (
@@ -171,20 +168,19 @@ const Back = () => {
                         </LoaderWrapper>
                       ) : (
                         <>
-                        {
-                          imgpre ?
-                          <img
-                          className='selectedImg2'
-                          src={imgpre}
-                          alt="upload"
-                          />
-                          :
+                          {imgpre ? (
                             <img
-                          className='selectedImg'
-                          src={PlusUpload}
-                          alt="upload"
-                          />
-                        }
+                              className="selectedImg2"
+                              src={imgpre}
+                              alt="upload"
+                            />
+                          ) : (
+                            <img
+                              className="selectedImg"
+                              src={PlusUpload}
+                              alt="upload"
+                            />
+                          )}
                         </>
                       )}
                     </label>
@@ -219,10 +215,7 @@ const Back = () => {
                     {" "}
                     Back{" "}
                   </ButtonStyle>
-                  <ButtonStyle onClick={Next}>
-                    {" "}
-                    Next{" "}
-                  </ButtonStyle>
+                  <ButtonStyle onClick={Next}> Next </ButtonStyle>
                 </div>
               </div>
             </FromStyleDiv>
