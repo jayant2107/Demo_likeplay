@@ -40,6 +40,7 @@ import { toast } from "react-toastify";
 import {type} from "Utils/constant"
 import { LoadingOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import EditPosts from "Modals/EditPosts";
 
 const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
   const [showModal, setShowModal] = useState(false);
@@ -61,10 +62,14 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
   const [tagList, setTagList] = useState([]);
   const[listtype,setlisttype]=useState()
   const [totalcomment,settotalcomment]=useState(+val?.totalCommments)
+  const [editpostmodal,setEditPostModal]=useState(false)
+  const [editpostdata,seteditpostdata]=useState()
   
   const navigate =useNavigate()
-  console.log(val,"vval")
-
+ 
+    const closeeditmodal=()=>{
+      setEditPostModal(false)
+    }
 
 
   const colorchangeicons=(name)=>{
@@ -285,6 +290,14 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
       toast.error(res?.message || "Something Went Wrong");
     }
   };
+  const editload=(e)=>{
+    console.log(e,"editvalue")
+ 
+  seteditpostdata(e)
+  
+    
+
+  }
 
   const content = (
     <PopContentCss>
@@ -292,13 +305,19 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
         {val?.matchValue && <div
           className="popbtn"
           onClick={() => {
-            setEditModal(true);
+            setEditPostModal(true);
             setClicked(false);
+            editload(val)
+            setShowModal(false);
+            setShowHideModal(false)
+
           }}
         >
           Edit
         </div>}
-        <div
+        {
+           !val?.matchValue && 
+          <div
           className="popbtn"
           onClick={() => {
             setshowBlockModal(true);
@@ -309,6 +328,9 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
         >
           Block
         </div>
+
+        }
+     
         {val?.matchValue && <div
           className="popbtn"
           onClick={() => {
@@ -539,6 +561,25 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
           <CreateShotsModal closeSnapModal={closeEditModal} image={val.Shots} />
         </Modal>
       )}
+      {
+        editpostmodal  && (
+          <Modal
+          open={editpostmodal}
+          close={closeeditmodal}
+          footer={null}
+          maskClosable={true}
+          centered
+          onCancel={closeeditmodal}
+          >
+            <EditPosts editpostdata={editpostdata}  close={closeeditmodal} tagListing={tagList}/>
+            
+
+
+          </Modal>
+        )
+      }
+
+
       {showBlockModal && (
         <Modal
           open={showBlockModal}
