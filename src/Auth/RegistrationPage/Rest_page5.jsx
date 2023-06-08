@@ -40,17 +40,18 @@ const ResgistPage5 = () => {
 
   const handleSubmit = async (values) => {
     dispatch(page5(values))
+
     const req = {
       residence_country: userData?.country,
-      state: userData?.state,
+      state: userData?.userState,
       city: userData?.city,
       religion: userData?.religion,
       your_tribe: userData?.tribe,
       age_range_for_date: values.ageRange,
-      tribe_to_date: values.tribeTodate,
+      tribe_to_date:`${values.irrelevant === true ? "" : values.tribeTodate}`,
       tribe_irrelevant: values.irrelevant,
       looking_for: values.lookingfor,
-      nationality: values.nationality,
+      nationality: userData?.nationality,
       profile_status: 2,
     };
 
@@ -109,7 +110,7 @@ const ResgistPage5 = () => {
                     </lable>
                     <SelectOptionsCss>
                       <Field as="select" className="field" name="ageRange">
-                        <option>Select Range</option>
+                        <option selected disabled>Select Range</option>
                         {agerange.map((val, index) => {
                           return (
                             <option value={val} key={index}>
@@ -132,7 +133,7 @@ const ResgistPage5 = () => {
                             name="tribeTodate"
                             disabled={values.irrelevant}
                           >
-                            <option>Select</option>
+                            <option selected disabled>Select</option>
                             {tribe.map((val, index) => {
                               return (
                                 <option value={val} key={index}>
@@ -153,7 +154,7 @@ const ResgistPage5 = () => {
                             className="field add"
                             name="lookingfor"
                           >
-                            <option>Select</option>
+                            <option selected disabled>Select</option>
                             {lookingfor.map((val, index) => {
                               return (
                                 <option value={val} key={index}>

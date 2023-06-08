@@ -10,7 +10,7 @@ const initialState = {
   education: null,
   employment: null,
   country: null,
-  state:null,
+  userState:null,
   city: null,
   nationality: null,
   religion: null,
@@ -45,7 +45,7 @@ export const FromDataSlice = createSlice({
     page4 : (state,action) =>{
         if(action?.payload){
             state.country = action.payload?.country;
-            state.state = action.payload?.state;
+            state.userState = action.payload?.stateName;
             state.city = action.payload?.city;
             state.nationality = action.payload?.nationality;
             state.religion = action.payload?.religion;

@@ -32,8 +32,14 @@ const ResgistPage4 = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const userData = useSelector((state) => state?.FormData);
-  const [countryvalue, setcountryvalue] = useState();
   const count = useSelector((state) => state?.RegistrationSlice?.count);
+  const countries = Country.getAllCountries();
+  const [countryCode, setCountryCode] = useState();
+  const [states, setStates] = useState();
+  const [city, setCity] = useState();
+  const [countryName,setCountryName] = useState();
+  const [stateName,setStateName] = useState();
+
   const Next = () => {
     dispatch(countAdd(count + 1));
     if (location.pathname !== "/Registration") navigate("/Registration");
@@ -44,30 +50,31 @@ const ResgistPage4 = () => {
   };
 
   const handleSubmit = (values) => {
-    console.log("handlesubmit   :", values)
-    dispatch(page4(values));
+    let req = {
+      country: `${countryName !==undefined ? countryName : userData?.country}`,
+      stateName: `${stateName !==undefined ? stateName : userData?.userState}`,
+      city: values.city,
+      nationality: values.nationality,
+      religion: values.religion,
+      tribe: values.tribe,
+    };
+    dispatch(page4(req));
     Next();
   };
 
-  // const  countries = Country.getAllCountries('IN').map(country => country.name)
-
-  const [state,setState] = useState()
-
-  const countries = Country.getAllCountries().map((country) => ({
-    value: country.name,
-    label: country.name,
-    countrycode:country.isoCode
-  }));
-  const getcity=(e)=>{
-    console.log('fucntion :' ,e)
-    const states = State.getStatesOfCountry(e?.target?.value);
-    setState(states);
-  }
- 
- 
-  // console.log(getcity(), "countryvlaue");
-  //  const countries =Country.getAllCountries()
-
+  const handleCountry = (e) => {
+    const code = countries?.find((val) => val.name === e?.target?.value);
+    setCountryCode(code.isoCode);
+    setCountryName(code.name);
+    const states = State.getStatesOfCountry(code.isoCode);
+    setStates(states);
+  };
+  const handleState = (e) => {
+    const code = states?.find((val) => val.name === e?.target?.value);
+    setStateName(code.name)
+    const city = City.getCitiesOfState(countryCode, code.isoCode);
+    setCity(city);
+  };
   return (
     <>
       <RisgistionBgImg height="auto" imgUrl={Artboard4}>
@@ -96,8 +103,8 @@ const ResgistPage4 = () => {
                 </div>
                 <Formik
                   initialValues={{
-                    country: userData.country,
-                    state: userData.state,
+                    country:countryName,
+                    state: stateName,
                     city: userData.city,
                     nationality: userData.nationality,
                     religion: userData.religion,
@@ -110,12 +117,21 @@ const ResgistPage4 = () => {
                       Country of Resisdence<span>*</span>
                     </lable>
                     <SelectOptionsCss>
-                      <Field as="select" className="field" name="country" onChange={(e)=>getcity(e)} >
-                        <option>Select Country</option>
-                        {countries.map((val, index) => {
+                      <Field
+                        as="select"
+                        className="field"
+                        name="country"
+                        id="country"
+                        onChange={handleCountry}
+                      >
+                        <option selected disabled>
+                          Select Country
+                        </option>
+                        {countries?.map((val, index) => {
                           return (
-                            <option value={val} key={index} >
-                              {val?.label}
+                            <option value={val.name} key={index}>
+                             
+                              {val.name} 
                             </option>
                           );
                         })}
@@ -128,9 +144,16 @@ const ResgistPage4 = () => {
                           State of Resisdence<span>*</span>
                         </lable>
                         <SelectOptionsCss>
-                          <Field as="select" className="field add" name="state">
-                            <option>Select State</option>
-                            {state?.map((val, index) => {
+                          <Field
+                            onChange={handleState}
+                            as="select"
+                            className="field add"
+                            name="state"
+                          >
+                            <option selected disabled>
+                              Select State
+                            </option>
+                            {states?.map((val, index) => {
                               return (
                                 <option value={val.name} key={index}>
                                   {val.name}
@@ -146,12 +169,14 @@ const ResgistPage4 = () => {
                         </lable>
 
                         <SelectOptionsCss>
-                          <Field as="select" className="field add" name="city">
-                            <option>Select City</option>
-                            {religionlist.map((val, index) => {
+                          <Field as="select" className="field add" name="city" autocomplete={false}>
+                            <option >
+                              Select City
+                            </option>
+                            {city?.map((val, index) => {
                               return (
-                                <option value={val} key={index}>
-                                  {val}
+                                <option value={val.name} key={index}>
+                                  {val.name}
                                 </option>
                               );
                             })}
@@ -164,11 +189,13 @@ const ResgistPage4 = () => {
                     </lable>
                     <SelectOptionsCss>
                       <Field as="select" className="field" name="nationality">
-                        <option>Select Nationality</option>
-                        {religionlist.map((val, index) => {
+                        <option selected disabled>
+                          Select Nationality
+                        </option>
+                        {countries?.map((val, index) => {
                           return (
-                            <option value={val} key={index}>
-                              {val}
+                            <option value={val.name} key={index}>
+                              {val.name}
                             </option>
                           );
                         })}
@@ -180,7 +207,9 @@ const ResgistPage4 = () => {
                     </lable>
                     <SelectOptionsCss>
                       <Field as="select" className="field" name="religion">
-                        <option>Select Religion</option>
+                        <option selected disabled>
+                          Select Religion
+                        </option>
                         {religionlist.map((val, index) => {
                           return (
                             <option value={val} key={index}>
@@ -197,7 +226,9 @@ const ResgistPage4 = () => {
                     </lable>
                     <SelectOptionsCss>
                       <Field as="select" className="field" name="tribe">
-                        <option>Select Your tribe</option>
+                        <option selected disabled>
+                          Select Your tribe
+                        </option>
                         {tribe.map((val, index) => {
                           return (
                             <option value={val} key={index}>
@@ -217,7 +248,7 @@ const ResgistPage4 = () => {
                         {" "}
                         Back{" "}
                       </ButtonStyle>
-                      <ButtonStyle onClick={Next}> Next </ButtonStyle>
+                      <ButtonStyle type="submit"> Next </ButtonStyle>
                     </div>
                   </Form>
                 </Formik>

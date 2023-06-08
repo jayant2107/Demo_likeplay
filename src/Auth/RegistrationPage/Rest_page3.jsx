@@ -112,7 +112,7 @@ const ResgistPage3 = () => {
                     </lable>
                     <SelectOptionsCss>
                       <Field className="field" as="select" name="status">
-                        <option>status</option>
+                        <option  selected disabled>status</option>
                         {status.map((val, index) => {
                           return (
                             <option value={val} key={index}>
@@ -124,17 +124,16 @@ const ResgistPage3 = () => {
                     </SelectOptionsCss>
                     <br></br>
                     <div className="body_heigth">
-                      <div>
+                        <SelectOptionsCss>
                         <lable>
                           Body Type<span>*</span>
                         </lable>
-                        <SelectOptionsCss>
                           <Field
                             className="field add"
                             as="select"
                             name="bodytype"
                           >
-                            <option>Select Body Type</option>
+                            <option  selected disabled>Select Body Type</option>
                             {bodytypes.map((val, index) => {
                               return (
                                 <option value={val} key={index}>
@@ -144,18 +143,16 @@ const ResgistPage3 = () => {
                             })}
                           </Field>
                         </SelectOptionsCss>
-                      </div>
-                      <div>
+                        <SelectOptionsCss>
                         <lable>
                           Height<span>*</span>
                         </lable>
-                        <SelectOptionsCss>
                           <Field
                             className="field add"
                             as="select"
                             name="height"
                           >
-                            <option>Select Height</option>
+                            <option  selected disabled>Select Height</option>
                             {height.map((val, index) => {
                               return (
                                 <option value={val} key={index}>
@@ -165,14 +162,13 @@ const ResgistPage3 = () => {
                             })}
                           </Field>
                         </SelectOptionsCss>
-                      </div>
                     </div>
                     <lable>
                       Education<span>*</span>
                     </lable>
                     <SelectOptionsCss>
                       <Field className="field" as="select" name="education">
-                        <option>Select Education</option>
+                        <option  selected disabled>Select Education</option>
                         {education.map((val, index) => {
                           return (
                             <option value={val} key={index}>
@@ -188,7 +184,7 @@ const ResgistPage3 = () => {
                     </lable>
                     <SelectOptionsCss>
                       <Field className="field" as="select" name="employment">
-                        <option>Select Employment</option>
+                        <option  selected disabled>Select Employment</option>
                         {employment.map((val, index) => {
                           return (
                             <option value={val} key={index}>
@@ -227,7 +223,8 @@ export default ResgistPage3;
 
 export const SelectOptionsCss = styled.div`
   .field {
-    width: 26rem;
+    // width: 26rem;
+    width: 100%;
     height: 3rem;
     margin: "0rem 0px 1rem 0px";
     padding-left: 1rem;
@@ -237,6 +234,12 @@ export const SelectOptionsCss = styled.div`
     border-radius: 10px;
   }
   .add {
-    width: 12rem;
+    // width: 12rem;
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    .field {
+      width  :100%;
+    }
   }
 `;
