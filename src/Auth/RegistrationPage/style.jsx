@@ -20,6 +20,7 @@ export const RisgistionBgImg = styled.div`
 export const FromStyleDiv = styled.div`
   color: white;
   width: ${(props) => props.width || "28rem"};
+  // width: ${(props) => props.width || "28rem"};
   margin: ${(props) => props.margin || ""};
   lable {
     font-family: "Poppins";
@@ -32,6 +33,10 @@ export const FromStyleDiv = styled.div`
     color: #242424;
   }
 
+  @media (min-width: 320px) and (max-width: 480px) {
+    width:100%
+  }
+
   //--------From----------------------------------//
 `;
 
@@ -39,7 +44,7 @@ export const FromStyleDiv = styled.div`
 export const ProgessStyleDiv = styled.div`
   width: ${(props) => props.width || "100%"};
   padding: 2px;
-  margin: 0.8rem 0;
+  margin: 0.8rem 0 0.4rem 0;;
 `;
 export const ProgessStyleDivline = styled.div`
   border: ${(props) => props.border || "2px white solid"};
@@ -119,6 +124,10 @@ export const RisgistationPage1 = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
+  
+  @media (min-width: 481px) and (max-width: 1200px) {
+    height:85vh
+  }
 
   .Risgistation_content {
     display: flex;
@@ -157,7 +166,7 @@ export const RisgistationPage1 = styled.div`
     outline: none;
     border-radius: 10px;
     padding-left: 10px;
-    margin: 0.5rem 0;
+    margin: 0.3rem 0;
     border: 1px #e2e2e2 solid;
   }
   .InputMethpassword {
@@ -184,7 +193,9 @@ export const RisgistationPage1 = styled.div`
     /* text-align: center; */
   }
   .btn {
-    text-align: center;
+    // text-align: center;
+    display: flex;
+    justify-content: center;
   }
   .password-div{
     position : relative;
@@ -212,12 +223,26 @@ export const RisgistationPage1 = styled.div`
   //----------------------------------------Ris-page2------------------------------//
   .Risgistation_content2 {
     display: flex;
-    width: 80%;
+    width: 90%;
     justify-content: space-around;
     /* height: 80vh; */
-    padding-bottom: 1rem;
+    // padding-bottom: 1rem;
     color: white;
     justify-content: right;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    .Risgistation_content2{
+      display : flex;
+      justify-content : center;
+    }
+  }
+  @media (min-width: 481px) and (max-width: 834px) {
+    .Risgistation_content2{
+      display : flex;
+      // justify-content : center;
+      height: 90vh;
+      align-items: center;
+    }
   }
   .Welcome {
     font-family: "Poppins";
@@ -238,7 +263,9 @@ export const RisgistationPage1 = styled.div`
     }
   }
   .gender_btn {
-    text-align: center;
+    // text-align: center;
+    display: flex;
+    justify-content: center;
   }
   .bottomtext {
     font-family: "Poppins";
@@ -253,9 +280,10 @@ export const RisgistationPage1 = styled.div`
   }
   /* -------Ris_page 3-------------------- */
   .body_heigth {
-    display: flex;
+    display: grid;
+    grid-template-columns: 48% 48%;
     justify-content: space-between;
-    margin-bottom : 1rem;
+    gap:5px
   }
   /* -------Ris_page 5-------------------- */
   .trib_irrelevant {
@@ -278,7 +306,8 @@ export const RisgistationPage1 = styled.div`
   }
   /* -------Ris_page 6-------------------- */
   .textareaa {
-    width: 26rem;
+    // width: 26rem;
+    width: 100%;
     height: 15rem;
     text-align: left;
     outline: none;
