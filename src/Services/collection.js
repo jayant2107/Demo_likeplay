@@ -74,6 +74,8 @@ const editpost='/post/editPost'
 
 const passwordchange='/user/changeUserPassword'
 
+const blockuser='/post/blockUser'
+
 export const getHomePagePost = () => {
   return getApi(`${HOME_PAGE_POSTS}`);
 };
@@ -220,4 +222,8 @@ export const EditUserPost=(payload)=>{
 
 export const changeUserPassword=(payload)=>{
   return putApi(passwordchange,payload)
+}
+
+export const blockuserlisting=(payload)=>{
+  return postApi(blockuser,payload)
 }

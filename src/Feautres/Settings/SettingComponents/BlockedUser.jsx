@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import {
   SecondUser,
@@ -9,6 +9,7 @@ import {
   fourthUser,
 } from "../../../Utils/SettingImgaes/SettingP";
 import BlockedUserComp from "../../../Components/BlockedUserComp";
+import { useSelector } from "react-redux";
 
 const BlockUser = [
   {
@@ -49,7 +50,14 @@ const BlockUser = [
   },
 ];
 
+
 const BlockedUser = () => {
+  const [blockuserlist,setblockuserlist]=useState()
+  const userid= useSelector(e=>e?.login)
+  const hanldesubmit=()=>{
+    const res=blockuserlist()
+    
+  }
   return (
     <>
       <Blocked>Blocked Users</Blocked>
