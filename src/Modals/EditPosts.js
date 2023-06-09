@@ -1,122 +1,139 @@
-import { LoadingOutlined } from '@ant-design/icons';
-import { getTagDetail, getTaglist } from 'Services/collection';
-import { exit } from 'Utils/icons-folder/Modalsicons';
-import { Button, Select, Space, Spin } from 'antd';
-import React, { useEffect, useState } from 'react'
-import { toast } from 'react-toastify';
-import styled from 'styled-components';
+import { LoadingOutlined } from "@ant-design/icons";
+import {
+  EditUserPost,
+  deleteTagwhileupdation,
+  getTagDetail,
+  getTaglist,
+} from "Services/collection";
+import { exit } from "Utils/icons-folder/Modalsicons";
+import { Button, Select, Space, Spin } from "antd";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import styled from "styled-components";
 
-export default function EditPosts({editpostdata,close,taglisting}) {
-    
-    const { Option } = Select;
-    const [filetype,setfiletype]=useState()
-    const [alltaglist,setalltaglist]=useState()
-    const [TagList,setTagList]=useState([])
-    const[loading,setLoading]=useState(false)
-    const [newselectedtag,setnewselectedtag]=useState([])
+export default function EditPosts({ editpostdata, close, taglisting }) {
+  const { Option } = Select;
+  const [filetype, setfiletype] = useState();
+  const [alltaglist, setalltaglist] = useState();
+  const [TagList, setTagList] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [newselectedtag, setnewselectedtag] = useState([]);
+  const [inputcaption, setinputcaption] = useState(editpostdata?.caption);
 
-    const defaultselected=TagList.map((item)=>item?.tag_to)
+  const defaultselected = TagList.map((item) => item?.tag_to);
 
-    const antIcon = (
-        <LoadingOutlined
-          style={{
-            fontSize: 30,
-            color:'red'
-          }}
-          spin
-        />
-      );
-     
-
-    
-    const [inputcaption,setinputcaption]=useState(editpostdata?.caption)
-    const video_extension=[
-        "mpeg-2",
-        "webm",
-        "html5",
-        "mkv",
-        "swf",
-        "f4v",
-        "flv",
-        "avchd",
-        "avi",
-        "wmv",
-        "mov",
-        "mp4",
-      ]
-      const handleChange = (value) => {
-        console.log(`selected ${value}`);
-        setnewselectedtag(value)
+  const antIcon = (
+    <LoadingOutlined
+      style={{
+        fontSize: 30,
+        color: "red",
+      }}
+      spin
+    />
+  );
+  const removetag = async() => {
+    const removeuser = defaultselected.filter(
+      (e) => !newselectedtag.includes(e)
+    );
+    if (removeuser.length > 0) {
+      const res = await  deleteTagwhileupdation(removeuser);
+      if (res?.status === 200) {
+        toast.success(res?.message)
         
-       
-      };
- const imgvideotag=()=>{
-
-     let imgvide=editpostdata?.shots.split('.')[1];
-     let type=video_extension.includes(imgvide)?1:0;
-     if(type===1){
-         setfiletype(1)
-     }
-     else{
-         setfiletype(0)
-     }
- }
-
- const taguserlist=(payload)=>{
-    const parseData=payload?.map((items,key)=>({
-      name:items?.user_name,
-      id:items?.id,
-      key:key
-
-
-    }))
-    return parseData;
-
-  }
-  const getAllUserForTag =async()=>{
-      const res= await getTaglist()
-      setLoading(true)
+      } else {
+        toast.error(res?.message);
+        console.log("heelllo")
+      }
+    }
+  };
+  const hanldesumbit = async() => {
+     removetag()
+    const req={
+      "post_id":editpostdata?.post_id,
+      "tag_to":newselectedtag,
+      "caption":inputcaption
+    }
+    const res =  await EditUserPost(req);
     if(res?.status===200){
-    const data= await taguserlist(res?.data)
-    setalltaglist(data)
-    setLoading(false)
-
+      toast.success(res?.message)
     }
     else{
-      toast.error(res?.message)
-      setLoading(false)
-
-    }
-  }
-  const getTagsList = async () => {
-      setLoading(true)
-      const res = await getTagDetail(editpostdata?.post_id);
-    if (res?.status === 200) {
-      setTagList(res?.data);
-      setLoading(false)
-      
-    } else {
-
-        setLoading(false)
+      toast.error(res?.message || "something went wrong")
     }
   };
 
- useEffect(()=>{
-    getAllUserForTag()
-    getTagsList()
-    
-    imgvideotag()
+  
+  const video_extension = [
+    "mpeg-2",
+    "webm",
+    "html5",
+    "mkv",
+    "swf",
+    "f4v",
+    "flv",
+    "avchd",
+    "avi",
+    "wmv",
+    "mov",
+    "mp4",
+  ];
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+    setnewselectedtag(value);
+  };
+  const imgvideotag = () => {
+    let imgvide = editpostdata?.shots.split(".")[1];
+    let type = video_extension.includes(imgvide) ? 1 : 0;
+    if (type === 1) {
+      setfiletype(1);
+    } else {
+      setfiletype(0);
+    }
+  };
 
- },[])
-   
+  const taguserlist = (payload) => {
+    const parseData = payload?.map((items, key) => ({
+      name: items?.user_name,
+      id: items?.id,
+      key: key,
+    }));
+    return parseData;
+  };
+  const getAllUserForTag = async () => {
+    const res = await getTaglist();
+    setLoading(true);
+    if (res?.status === 200) {
+      const data = await taguserlist(res?.data);
+      setalltaglist(data);
+      setLoading(false);
+    } else {
+      toast.error(res?.message);
+      setLoading(false);
+    }
+  };
+  const getTagsList = async () => {
+    setLoading(true);
+    const res = await getTagDetail(editpostdata?.post_id);
+    if (res?.status === 200) {
+      setTagList(res?.data);
+      setLoading(false);
+    } else {
+      setLoading(false);
+    }
+  };
 
-  return (    
+  useEffect(() => {
+    getAllUserForTag();
+    getTagsList();
+
+    imgvideotag();
+  }, []);
+
+  return (
     <>
-   
-        <StyledCreateShortModal>
-        <div className="delete-icon" onClick={close} >
-        <img src={exit} alt="exit" id="exit"  />
-         
+      <StyledCreateShortModal>
+        <div className="delete-icon" onClick={close}>
+          <img src={exit} alt="exit" id="exit" />
         </div>
 
         {/********* MODAL UPLOAD IMAGE-SECTION STARTS ********/}
@@ -126,22 +143,18 @@ export default function EditPosts({editpostdata,close,taglisting}) {
             <div className="heading">Take the Floor</div>
           </div>
           <div className="image-section">
-            <div className='image-prev'>
-
-            {
-                filetype===1?(
-                    <video src={editpostdata?.shots} alt='video'/>
-                ):(
-                    <img src={process.env.REACT_APP_BASEURL_IMAGE+editpostdata?.shots} alt="img"/>
-                )
-            }
+            <div className="image-prev">
+              {filetype === 1 ? (
+                <video src={editpostdata?.shots} alt="video" />
+              ) : (
+                <img
+                  src={
+                    process.env.REACT_APP_BASEURL_IMAGE + editpostdata?.shots
+                  }
+                  alt="img"
+                />
+              )}
             </div>
-            
-            
-        
-           
-
-         
           </div>
         </div>
 
@@ -154,7 +167,12 @@ export default function EditPosts({editpostdata,close,taglisting}) {
             <div className="heading">Take the Mic</div>
           </div>
           <div className="write-section">
-            <input type="text"  placeholder="Write Something..." value={inputcaption} onChange={(e)=>setinputcaption(e.target.value)}/>
+            <input
+              type="text"
+              placeholder="Write Something..."
+              value={inputcaption}
+              onChange={(e) => setinputcaption(e.target.value)}
+            />
             {/* <div className="write-section-content">
               <div className="head"> Write Something...</div>
             </div> */}
@@ -171,28 +189,29 @@ export default function EditPosts({editpostdata,close,taglisting}) {
           </div>
 
           <div className="add-tag-section">
-            {loading?( <LoaderWrapper>
-       <Spin indicator={antIcon} />
-    </LoaderWrapper>):( <Select
-              mode="multiple"
-              style={{
-                width: "100%",
-              }}
-              onChange={handleChange}
-            defaultValue={defaultselected}
-              optionLabelProp="label"
-            >
-              {alltaglist?.map((item) => {
-                return (
-                  <Option value={item?.id} label={item?.name}>
-                    <Space>{item?.name}</Space>
-                  </Option>
-                );
-              })}
-            </Select>)}
-         
-
-           
+            {loading ? (
+              <LoaderWrapper>
+                <Spin indicator={antIcon} />
+              </LoaderWrapper>
+            ) : (
+              <Select
+                mode="multiple"
+                style={{
+                  width: "100%",
+                }}
+                onChange={handleChange}
+                defaultValue={defaultselected}
+                optionLabelProp="label"
+              >
+                {alltaglist?.map((item) => {
+                  return (
+                    <Option value={item?.id} label={item?.name}>
+                      <Space>{item?.name}</Space>
+                    </Option>
+                  );
+                })}
+              </Select>
+            )}
           </div>
         </div>
 
@@ -202,37 +221,23 @@ export default function EditPosts({editpostdata,close,taglisting}) {
 
         <div className="modal-button">
           <div className="buttons-content">
-           
-              {/* <StyledButton
+            {/* <StyledButton
                 onClick={()=>handlesubmit()}
                 text="white"
                 bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
               >
                 Submit
               </StyledButton> */}
-              <Button
-              className="submit"
-              size="large"
-              type="primary"
-         
-              
-              >
-                Submit
-              </Button>
-
-            
+            <Button size="large" type="primary" onClick={()=>hanldesumbit()}>
+              Submit
+            </Button>
           </div>
         </div>
 
         {/****** MODAL BUTTON-SECTION-ENDS *******/}
       </StyledCreateShortModal>
-
-    
-      
-    
-
     </>
-  )
+  );
 }
 
 export const StyledCreateShortModal = styled.div`
@@ -438,7 +443,4 @@ const LoaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
- 
-  
 `;
-

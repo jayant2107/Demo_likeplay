@@ -265,9 +265,11 @@ export default function Publicnavbar() {
                 );
               })}
               <div className="btn_div">
-                <button className="btn1" onClick={() => navigate("/login")}>
+              <a href="https://delta.likeplaylikeplay.com/#/">
+                <button className="btn1" >
                   Login
                 </button>
+                </a>
 
                 <a href="https://delta.likeplaylikeplay.com/#/">
                   <button className="btn2">Join Now</button>

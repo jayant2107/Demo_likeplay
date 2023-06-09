@@ -1,9 +1,14 @@
-import React from "react";
-import { Space, Input } from "antd";
+import React, { useState } from "react";
+import { Space, Input, Spin } from "antd";
 import styled from "styled-components";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { changeUserPassword } from "Services/collection";
+import { toast } from "react-toastify";
+import { LoadingOutlined } from "@ant-design/icons";
+import { useSelector } from "react-redux";
 const ResetPassword = () => {
+  const [loading,setloading]=useState(false)
   const [passwordVisible, setPasswordVisible] = React.useState(false);
   const [confirmPassword, setConfirmPassword] = React.useState(false);
   const formik = useFormik({
@@ -21,9 +26,39 @@ const ResetPassword = () => {
       ),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    handlesubmit(values)
     },
   });
+
+  const handlesubmit =async(values)=>{
+    setloading(true)
+    const req={
+      "old_password":values.Password,
+      "new_password":values.NewPassword
+
+
+    }
+    const res= await changeUserPassword(req)
+    if(res?.status===200){
+      toast.success(res?.message)
+      setloading(false)
+
+    }
+    else{
+      toast.error(res?.message)
+      setloading(false)
+    }
+  }
+  const antIcon = (
+    <LoadingOutlined
+      style={{
+        fontSize: 24,
+        color:"#242424"
+      }}
+      spin
+    />
+  );
+  
   return (
     <>
       <ResetPass>
@@ -42,7 +77,7 @@ const ResetPassword = () => {
               />
             </div>
             {formik.touched.Password && formik.errors.Password ? (
-              <div>{formik.errors.Password}</div>
+              <p className="error">{formik.errors.Password}</p>
             ) : null}
             <div className="oldPass">
               <p>Enter New Password</p>
@@ -63,7 +98,7 @@ const ResetPassword = () => {
               </Space>
             </div>
             {formik.touched.NewPassword && formik.errors.NewPassword ? (
-              <div>{formik.errors.NewPassword}</div>
+              <p className="error">{formik.errors.NewPassword}</p>
             ) : null}
             <div className="oldPass">
               <p>Confirm New Password</p>
@@ -84,14 +119,17 @@ const ResetPassword = () => {
               </Space>
             </div>
             {formik.touched.ConfirmPassword && formik.errors.ConfirmPassword ? (
-              <div>{formik.errors.ConfirmPassword}</div>
+              <p className="error">{formik.errors.ConfirmPassword}</p>
             ) : null}
             <div className="btnPass">
-              <div className="ChangePass">
+              {loading?( <LoaderWrapper>
+                            <Spin indicator={antIcon} />
+                          </LoaderWrapper>):( <div className="ChangePass">
                 <button className="PassChan" type="submit">
                   Change New Pasword
                 </button>
-              </div>
+              </div>)}
+             
             </div>
           </div>
         </form>
@@ -107,6 +145,11 @@ const ResetPass = styled.div`
 
   .InnerResetPass > div:not(:first-child) {
     margin-top: 1.5rem;
+  }
+  .error{
+    color:red;
+    padding:5px;
+    font-size:14px;
   }
 
   .oldPass p {
@@ -162,3 +205,12 @@ const ResetPass = styled.div`
     }
   }
 `;
+export const LoaderWrapper = styled.div`
+  width: 100%;
+  padding: 10px 0px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
