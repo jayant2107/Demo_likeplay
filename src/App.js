@@ -16,5 +16,3 @@ function App() {
 }
 export default App;
 
-// Added a test comment
-//added icons
