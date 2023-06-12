@@ -63,6 +63,10 @@ export default function Publicfooter() {
         
 
         }
+        .social_logo{
+          display:flex;
+          gap:10px;
+        }
         .copyright {
           position: relative;
           bottom: -50px;
@@ -92,6 +96,10 @@ export default function Publicfooter() {
           img{
             width:100px;
             height:50px;
+          }
+          .social_logo{
+            display: flex;
+            gap:10px;
           }
           .copyright {
             bottom: 0px;
