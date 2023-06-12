@@ -4,23 +4,32 @@ import styled from "styled-components";
 
 export const RisgistionBgImg = styled.div`
   background: url(${(props) => props.imgUrl});
-
-  background-repeat:"no-repeat";
-
   width: 100%;
   min-height: 100vh;
   max-height: 100%;
-  // background-size: cover;
+
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: 100% 100%;
 
+  .wrapperDiv {
+    width: 80%;
+    margin: auto;
+    padding-bottom: ${(props) => props.padding || ""};
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    background-position: 30%;
+    background-size: cover;
+  }
 
   //--------backgournd_img----------------------------------//
 `;
+
 //--------From----------------------------------//
 export const FromStyleDiv = styled.div`
   color: white;
   width: ${(props) => props.width || "28rem"};
-  // width: ${(props) => props.width || "28rem"};
   margin: ${(props) => props.margin || ""};
   lable {
     font-family: "Poppins";
@@ -34,7 +43,8 @@ export const FromStyleDiv = styled.div`
   }
 
   @media (min-width: 320px) and (max-width: 480px) {
-    width:100%
+    width: 100%;
+    margin: auto;
   }
 
   //--------From----------------------------------//
@@ -44,7 +54,7 @@ export const FromStyleDiv = styled.div`
 export const ProgessStyleDiv = styled.div`
   width: ${(props) => props.width || "100%"};
   padding: 2px;
-  margin: 0.8rem 0 0.4rem 0;;
+  margin: 0.8rem 0 0.4rem 0;
 `;
 export const ProgessStyleDivline = styled.div`
   border: ${(props) => props.border || "2px white solid"};
@@ -67,9 +77,8 @@ export const ButtonStyle = styled.button`
   border-radius: 0.5rem;
   border: ${(props) => props.border || "none"};
   color: ${(props) => props.color || "white"};
-  background:
-    ${(props) => props.bgcolour || `linear-gradient( 268.55deg, #FF483C 0%, #FF2C5A 100%)`}
-  ;
+  background: ${(props) =>
+    props.bgcolour || `linear-gradient( 268.55deg, #FF483C 0%, #FF2C5A 100%)`};
   width: ${(props) => props.width || "8rem"};
   height: ${(props) => props.height || ""};
   padding: ${(props) => props.padding || "1rem"};
@@ -97,7 +106,7 @@ export const ChoiceDiv = styled.div`
   padding-left: ${(props) => props.paddingLeft || "11px"};
   background-color: ${(props) => props.backgroundColor || "#F0F0F0"};
   font-size: 1rem;
-  color: ${(props)=>props.backgroundColor||'#878784'};
+  color: ${(props) => props.backgroundColor || "#878784"};
   border-radius: 10px;
   border: 1px #878784 solid;
   text-align: left;
@@ -120,24 +129,44 @@ export const ChoiceBtn = styled.div`
 
 /// --------------------Pages---------------------------------------------------------//
 export const RisgistationPage1 = styled.div`
-  display: flex;
   width: 100%;
+  min-height: 100vh;
+  max-height: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
-  
-  @media (min-width: 481px) and (max-width: 1200px) {
-    height:85vh
+  padding-top: 5rem;
+
+  @media (min-width: 320px) and (max-width: 1200px) {
+    width: 100%;
+    height: 100%;
+    margin: auto;
   }
 
   .Risgistation_content {
-    display: flex;
-    gap: 11rem;
     width: 100%;
-    justify-content: center;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding-bottom: 1rem;
-    color: white;
-    margin-top: 5rem;
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    .Risgistation_content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+    .FormikForm {
+      width: 100%;
+    }
+  }
+  @media (min-width: 481px) and (max-width: 834px) {
+    .Risgistation_content {
+      width: 100%;
+    }
   }
   /*------------------------ login -------*/
   .Risgistation_contentlogin {
@@ -189,25 +218,33 @@ export const RisgistationPage1 = styled.div`
     }
   }
 
-  .risgistation_img_log {
-    /* text-align: center; */
+  @media (max-width: 480px) {
+    .risgistation_img_log {
+      text-align: center;
+      img {
+        width: 6rem;
+      }
+      h1 {
+        font-size: 20px;
+      }
+    }
   }
   .btn {
     // text-align: center;
     display: flex;
     justify-content: center;
   }
-  .password-div{
-    position : relative;
+  .password-div {
+    position: relative;
   }
-  .eyeLogo{
+  .eyeLogo {
     width: 20px;
     position: absolute;
     top: 22px;
     right: 20px;
-    cursor : pointer;
-    color : black;
-    font-size:20px;
+    cursor: pointer;
+    color: black;
+    font-size: 20px;
   }
   /* -------------?loginpage---------? */
   h2.loginHeading {
@@ -223,23 +260,21 @@ export const RisgistationPage1 = styled.div`
   //----------------------------------------Ris-page2------------------------------//
   .Risgistation_content2 {
     display: flex;
-    width: 90%;
-    justify-content: space-around;
-    /* height: 80vh; */
-    // padding-bottom: 1rem;
+    width: 100%;
     color: white;
     justify-content: right;
   }
   @media (min-width: 320px) and (max-width: 480px) {
-    .Risgistation_content2{
-      display : flex;
-      justify-content : center;
+    .Risgistation_content2 {
+      display: flex;
+      justify-content: center;
+      width: 100%;
     }
   }
   @media (min-width: 481px) and (max-width: 834px) {
-    .Risgistation_content2{
-      display : flex;
-      // justify-content : center;
+    .Risgistation_content2 {
+      display: flex;
+      // justify-content: center;
       height: 90vh;
       align-items: center;
     }
@@ -256,10 +291,10 @@ export const RisgistationPage1 = styled.div`
     display: flex;
     justify-content: space-between;
 
-    .infocircle{
-      display : flex;
-      align-items : center;
-      cursor : pointer;
+    .infocircle {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
     }
   }
   .gender_btn {
@@ -274,16 +309,16 @@ export const RisgistationPage1 = styled.div`
     font-size: 14px;
     line-height: 21px;
   }
-  .activeButton{
-    color : white;
-    background-color:#A8580F;
+  .activeButton {
+    color: white;
+    background-color: #a8580f;
   }
   /* -------Ris_page 3-------------------- */
   .body_heigth {
     display: grid;
     grid-template-columns: 48% 48%;
     justify-content: space-between;
-    gap:5px
+    gap: 5px;
   }
   /* -------Ris_page 5-------------------- */
   .trib_irrelevant {
@@ -315,9 +350,9 @@ export const RisgistationPage1 = styled.div`
     border: 1px #e2e2e2 solid;
     margin: 1rem 0;
     padding: 10px;
-  }textarea {
-      resize: none;
-    
+  }
+  textarea {
+    resize: none;
   }
   /* ------------Regis Page 7----------- */
   .imgUpload {
@@ -340,60 +375,59 @@ export const RisgistationPage1 = styled.div`
     top: -2.8rem;
     left: 5rem;
   }
-  .inputFile{
-    display : none;
+  .inputFile {
+    display: none;
   }
-  .frame{
-    position : relative;
+  .frame {
+    position: relative;
   }
-  .fileLable{
+  .fileLable {
     width: 8rem;
     height: 8rem;
     border-radius: 1rem;
-    background-color : #F0F0F0;
+    background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
-    position : relative;
+    position: relative;
   }
-  .removeUpload{
+  .removeUpload {
     position: absolute;
     right: 0;
     bottom: 0;
-    cursor : pointer;
+    cursor: pointer;
   }
-  .selectedImg{
+  .selectedImg {
     border-radius: 1rem;
   }
-  .selectedImg2{
-    width:100%;
-    height : 100%;
+  .selectedImg2 {
+    width: 100%;
+    height: 100%;
     border-radius: 1rem;
   }
 
   /* ----------Rist Page8---------------- */
   .Risgistation_content8 {
-    width: 80%;
+    width: 100%;
     padding-bottom: 1rem;
     color: white;
     margin: auto;
-    text-align : center;
+    text-align: center;
   }
   .progessdiv {
-    width: 50%;
+    width: 100%;
     margin: auto;
     margin-bottom: 1rem;
   }
 
-  .h1{
+  .h1 {
     font-style: normal;
-font-weight: 500;
-font-size: 30px;
-line-height: 52px;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 52px;
   }
 
   .cartReg {
-    width: 14rem;
     height: 18rem;
     border: 1px #d9dddd solid;
     margin: 1rem;
@@ -405,7 +439,7 @@ line-height: 52px;
 
   .cartIcon {
     width: 4rem;
-    border: 1px black solid;
+    border: 1px solid transparent;
     height: 4rem;
     margin: auto;
     border-radius: 100%;
@@ -423,11 +457,60 @@ line-height: 52px;
     transform: translate(-50%, -3%);
   }
   .registation_form8 {
-    display: flex;
-    justify-content : space-around;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
     font-size: small;
-    background-color : white;
-    border-radius : 22px;
+    background-color: white;
+    border-radius: 22px;
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    .Risgistation_content8 {
+      width: 100%;
+    }
+    .progessdiv {
+      width: 100%;
+    }
+    .h1 {
+      font-size: 14px;
+      line-height: 15px;
+    }
+    .registation_form8 {
+      display: block;
+      height: 450px;
+      overflow: scroll;
+      ::-webkit-scrollbar {
+        display: none;
+    }
+    }
+    .cartReg {
+      width: auto;
+      margin: 1rem 1rem;
+    }
+  }
+  @media (min-width: 481px) and (max-width: 1080px) {
+    .Risgistation_content8 {
+      width: 100%;
+    }
+    .progessdiv {
+      width: 100%;
+    }
+    .h1 {
+      font-size: 20px;
+    }
+    .registation_form8 {
+      display: block;
+      height: 750px;
+      overflow: scroll;
+      ::-webkit-scrollbar {
+        display: none;
+    }
+    }
+
+    .cartReg {
+      width: auto;
+      margin: 1rem 1rem;
+    }
   }
 
   /* /------------Regis page9---------- */
@@ -441,6 +524,7 @@ line-height: 52px;
     margin: 1rem 0;
   }
   p.paarapag9 {
+    font-size: 14px;
     width: 21rem;
     color: #424141;
     font-family: fangsong;
@@ -472,6 +556,30 @@ line-height: 52px;
     outline: none;
   }
 
+  @media (min-width: 320px) and (max-width: 480px) {
+    .verificationdiv {
+      display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+    } 
+    p.paarapag9{
+      width : auto;
+    }
+    textarea.textarea9{
+      width:100%;
+    }
+    input.checkboxsN {
+      width:auto;
+    }
+    .checkboxs {
+      display: grid;
+    grid-template-columns: auto auto;
+    justify-content: end;
+    }
+  }
+
+
   ////-res Page10------------------
 
   .btnchosediv {
@@ -484,10 +592,9 @@ line-height: 52px;
     color: #4a4848;
   }
 
-  .activeButton{
-    color : white;
-    background-color:#A8580F;
-
+  .activeButton {
+    color: white;
+    background-color: #a8580f;
   }
 
   .text10 p {

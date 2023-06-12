@@ -120,26 +120,28 @@ const ResgistPage8 = () => {
         </Modal>
       )}
       <RisgistionBgImg height="100vh" imgUrl={Artboard8}>
+        <div className="wrapperDiv">
         <ResHeaderComponent />
         <RisgistationPage1>
           <div className="Risgistation_content8">
             <div className="progessdiv">
-              <ProgessStyleDiv>
+              <ProgessStyleDiv style={{ display: 'grid',
+  justifyItems: 'center'}}>
                 <p>
                   <b>{percentage}</b> Complete
                 </p>
-                <ProgessStyleDivline>
+                <ProgessStyleDivline width={'50%'}>
                   <ProgessStyleDivfilline
                     width={percentage}
                   ></ProgessStyleDivfilline>
                 </ProgessStyleDivline>
               </ProgessStyleDiv>
-              <h1  className="h1">
+              <span  className="h1">
                 Use any one or more to verify yourself
                 <span style={{ color: "#ff3f45", margin: "1rem" }}>*</span>
-              </h1>
+              </span>
             </div>
-            <FromStyleDiv width="100%" margin="auto">
+            {/* <FromStyleDiv width="100%" margin="auto"> */}
               {/* <div className="registation_form"> */}
                 <div className="registation_form8">
                   {data.map((el) => {
@@ -153,7 +155,7 @@ const ResgistPage8 = () => {
                           <ButtonStyle
                             onClick={() => OpenModal(el.id)}
                             height="2rem"
-                            width="10rem"
+                            width="70%"
                             margin="0"
                             padding="0"
                             className="btn_buttom"
@@ -166,9 +168,10 @@ const ResgistPage8 = () => {
                   })}
                 </div>
               {/* </div> */}
-            </FromStyleDiv>
+            {/* </FromStyleDiv> */}
           </div>
         </RisgistationPage1>
+        </div>
       </RisgistionBgImg>
     </>
   );

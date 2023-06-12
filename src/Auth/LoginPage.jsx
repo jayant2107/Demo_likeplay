@@ -116,6 +116,7 @@ const LoginPage = () => {
         <ForgetPage />
       ) : (
         <RisgistionBgImg height="100vh" imgUrl={LoginBg}>
+          <div className="wrapperDiv">
           <ResHeaderComponent />
           <RisgistationPage1>
             <div className="Risgistation_content">
@@ -131,7 +132,7 @@ const LoginPage = () => {
                 onSubmit={handleSubmit}
                 validationSchema={loginvalidation}
               >
-                <Form>
+                <Form className="FormikForm">
                   <FromStyleDiv>
                     <div className="registation_form">
                       <h2 className="loginHeading">Login</h2>
@@ -180,20 +181,20 @@ const LoginPage = () => {
                             Login
                           </ButtonStyle>
                         )}
-
-                        <p style={{ cursor: "pointer" }}>
+                      </div>
+                      <p style={{ cursor: "pointer",textAlign:'center'}}>
                           Don't have a account{" "}
                           <span onClick={() => navigate("/Register")}>
                             Register
                           </span>
                         </p>
-                      </div>
                     </div>
                   </FromStyleDiv>
                 </Form>
               </Formik>
             </div>
           </RisgistationPage1>
+          </div>
         </RisgistionBgImg>
       )}
     </>
