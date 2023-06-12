@@ -33,6 +33,7 @@ import hashimg, {
   LikePlayJbklutselogo,
   LikePlayTechNovalogo,
 } from "../Utils/images/Publichomeimg";
+import { appstore, playstore } from "Utils/Images";
 
 export default function Publichome() {
   const navigate = useNavigate();
@@ -110,6 +111,30 @@ export default function Publichome() {
             background: transparent;
             border: 1px solid #ff2c5a;
           }
+        }
+      }
+    }
+
+    .download-box{
+      padding:30px 0px;
+      p{
+        letter-spacing:2px;
+        font-size:16px;
+        font-weight:500;
+
+      }
+      .downlaod-btn{
+        display:flex;
+        gap:10px;
+
+        img{
+          width:170px;
+          height:50px;
+        }
+        @media(max-width:400px){
+         img{
+          width:150px;
+         }
         }
       }
     }
@@ -1201,6 +1226,25 @@ export default function Publichome() {
             </div>
             <h1 className="nigeria">in Nigeria</h1>
             <button>Start Dating</button>
+          </section>
+          <section>
+            <div className="download-box">
+              <p>Download the official LIKEPLAY-LIKEPLAY App</p>
+              <div className="downlaod-btn">
+                <a href="https://play.google.com/store/apps/details?id=com.sfs.likeplay">
+
+                <img src={playstore} alt=""/>
+                </a>
+                <a href="https://apps.apple.com/us/app/like-play-like-play/id6443514088">
+
+                <img src={appstore} alt=""/>
+                </a>
+                
+                </div> 
+
+
+            </div>
+          
           </section>
         </main>
       </MainWrapper>

@@ -6,6 +6,7 @@ import { StyledDeleteModal } from "../Modals/DeleteModal";
 import StyledButton from "./Button";
 
 const BlockedUserComp = ({ ele }) => {
+ 
   const [unblock, setUnblock] = useState(false);
   const Unblock = () => {
     setUnblock(true);
@@ -13,14 +14,15 @@ const BlockedUserComp = ({ ele }) => {
   const closeUnblock = () => {
     setUnblock(false);
   };
+  console.log(ele,"ele")
   return (
     <>
       <FlexUpgrade Content="space-between" className="InerMargin">
         <FlexUpgrade align="center" className="SecondFlex">
           <div className="blockdiv">
-            <img src={ele.img} alt="Something Wrong" className="imgBlock" />
+            <img src={process.env.REACT_APP_BASEURL_IMAGE +ele?.blockTo?.photos_for_verification} alt="" className="imgBlock" />
           </div>
-          <div className="name">{ele.name}</div>
+          <div className="name">{ele?.blockTo?.name}</div>
         </FlexUpgrade>
         <div className="Unblockdiv" onClick={Unblock}>
           <button className="UnBlock">Unblock</button>

@@ -9,6 +9,7 @@ import {
 } from "../../Utils/images/Publichomeimg";
 import footerdata from "../../Data/footerdata";
 import { useNavigate } from "react-router-dom";
+import { appstore, playstore } from "Utils/Images";
 export default function Publicfooter() {
   const navigate = useNavigate();
   const MatchesDetailPage = (name) => {
@@ -54,9 +55,13 @@ export default function Publicfooter() {
         flex-direction: column;
         margin-top: -2rem;
         gap: 4rem;
-        img {
-          margin: 2px;
-          cursor: pointer;
+        .download-icons{
+          display:flex;
+          gap:10px;
+        }
+       
+        
+
         }
         .copyright {
           position: relative;
@@ -84,9 +89,14 @@ export default function Publicfooter() {
         .list5 {
           margin-top: 3rem;
           width: 100%;
+          img{
+            width:100px;
+            height:50px;
+          }
           .copyright {
             bottom: 0px;
           }
+         
         }
       }
     }
@@ -232,6 +242,18 @@ export default function Publicfooter() {
                 <img src={instagram} alt="" />
                 <img src={twitter} alt="" />
                 <img src={youtube} alt="" />
+              </div>
+            </div>
+            <div className="storeicons">
+              <h2>Download App</h2>
+              <div className="download-icons" >
+                <a href='https://play.google.com/store/apps/details?id=com.sfs.likeplay'> 
+              <img src={playstore} alt='' style={{width:'120px'}}/>
+                </a>
+              <a href="https://apps.apple.com/us/app/like-play-like-play/id6443514088">
+
+              <img src={appstore} alt='' style={{width:'120px'}}/>
+              </a>
               </div>
             </div>
             <div className="copyright">

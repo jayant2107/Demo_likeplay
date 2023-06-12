@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   SecondUser,
@@ -10,6 +10,8 @@ import {
 } from "../../../Utils/SettingImgaes/SettingP";
 import BlockedUserComp from "../../../Components/BlockedUserComp";
 import { useSelector } from "react-redux";
+import { blockUser, blockeduserlisting, blockuser} from "Services/collection";
+import { toast } from "react-toastify";
 
 const BlockUser = [
   {
@@ -52,24 +54,36 @@ const BlockUser = [
 
 
 const BlockedUser = () => {
-  const [blockuserlist,setblockuserlist]=useState()
-  const userid= useSelector(e=>e?.login)
-  const hanldesubmit=()=>{
-    const res=blockuserlist()
-    
+  const [blockuserlist,setblockuserlist]=useState([])
+  const listing=async()=>{
+    let req= await blockeduserlisting()
+    if(req?.status===200){
+      setblockuserlist(req?.data)
+
+    }
+    else{
+
+    }
   }
+  useEffect(()=>{
+    listing()
+  },[])
+  console.log(blockuserlist,"bb")
+
   return (
     <>
       <Blocked>Blocked Users</Blocked>
       <WrapperBlock>
-        {BlockUser &&
-          BlockUser.map((ele) => {
+     {
+
+          blockuserlist?.map((ele) => {
             return (
-              <>
+             
                 <BlockedUserComp ele={ele} />
-              </>
+             
             );
-          })}
+          })
+     }
       </WrapperBlock>
     </>
   );
