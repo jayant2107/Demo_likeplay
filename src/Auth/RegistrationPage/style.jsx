@@ -13,6 +13,11 @@ export const RisgistionBgImg = styled.div`
   // background-size: cover;
   background-size: 100% 100%;
 
+  @media (min-width: 320px) and (max-width: 480px) {
+    background-position: 30%;
+    background-size: cover;
+  }
+
 
   //--------backgournd_img----------------------------------//
 `;
@@ -20,7 +25,6 @@ export const RisgistionBgImg = styled.div`
 export const FromStyleDiv = styled.div`
   color: white;
   width: ${(props) => props.width || "28rem"};
-  // width: ${(props) => props.width || "28rem"};
   margin: ${(props) => props.margin || ""};
   lable {
     font-family: "Poppins";
@@ -34,7 +38,8 @@ export const FromStyleDiv = styled.div`
   }
 
   @media (min-width: 320px) and (max-width: 480px) {
-    width:100%
+    width: 70%;
+    margin: auto;
   }
 
   //--------From----------------------------------//
@@ -124,20 +129,37 @@ export const RisgistationPage1 = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
-  
-  @media (min-width: 481px) and (max-width: 1200px) {
-    height:85vh
+
+  @media (min-width: 320px) and (max-width: 1200px) {
+    width: 90%; 
+    height: 100%; 
+    margin: auto; 
+    border: 1px solid red;
   }
 
   .Risgistation_content {
     display: flex;
-    gap: 11rem;
-    width: 100%;
-    justify-content: center;
+    width: 90%;
+    justify-content: space-between;
     align-items: center;
     padding-bottom: 1rem;
     color: white;
     margin-top: 5rem;
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    .Risgistation_content{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+  }
+  @media (min-width: 481px) and (max-width: 834px) {
+    .Risgistation_content{
+      width : 90%;
+      gap: 0;
+    }
   }
   /*------------------------ login -------*/
   .Risgistation_contentlogin {
@@ -189,9 +211,17 @@ export const RisgistationPage1 = styled.div`
     }
   }
 
+  @media (max-width: 480px) {
   .risgistation_img_log {
-    /* text-align: center; */
+    text-align: center;
+    img{
+      width : 6rem;
+    }
+    h1{
+      font-size:20px;
+    }
   }
+}
   .btn {
     // text-align: center;
     display: flex;
@@ -224,9 +254,6 @@ export const RisgistationPage1 = styled.div`
   .Risgistation_content2 {
     display: flex;
     width: 90%;
-    justify-content: space-around;
-    /* height: 80vh; */
-    // padding-bottom: 1rem;
     color: white;
     justify-content: right;
   }

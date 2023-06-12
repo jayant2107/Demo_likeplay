@@ -180,14 +180,13 @@ const LoginPage = () => {
                             Login
                           </ButtonStyle>
                         )}
-
-                        <p style={{ cursor: "pointer" }}>
+                      </div>
+                      <p style={{ cursor: "pointer",textAlign:'center'}}>
                           Don't have a account{" "}
                           <span onClick={() => navigate("/Register")}>
                             Register
                           </span>
                         </p>
-                      </div>
                     </div>
                   </FromStyleDiv>
                 </Form>

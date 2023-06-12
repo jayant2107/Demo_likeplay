@@ -56,7 +56,7 @@ const ResgistPage1 = () => {
     console.log("res   ", res.message);
     console.log("res   ", res.status);
 
-    if (res.status === 200){
+    if (res.status === 200) {
       setLoading(false);
       setEmailVer(!emailVer);
       setPassEmail(values.email);
@@ -81,27 +81,28 @@ const ResgistPage1 = () => {
                 <img src={Logimg} className="rig_img_log" alt="empty" />
                 <h1>The #Dating Site in Nigeria</h1>
               </div>
-              <FromStyleDiv>
-                <ProgessStyleDiv>
-                  <p>
-                    <b>{percentage}</b> Complete
-                  </p>
-                  <ProgessStyleDivline>
-                    <ProgessStyleDivfilline
-                      width={percentage}
-                    ></ProgessStyleDivfilline>
-                  </ProgessStyleDivline>
-                </ProgessStyleDiv>
-                <Formik
-                  initialValues={{
-                    username: "",
-                    email: "",
-                    password: "",
-                  }}
-                  onSubmit={handlesubmit}
-                  validationSchema={validationschema}
-                >
-                  <Form>
+              {/* <Formik
+                initialValues={{
+                  username: "",
+                  email: "",
+                  password: "",
+                }}
+                onSubmit={handlesubmit}
+                validationSchema={validationschema}
+              >
+                <Form>
+                  <FromStyleDiv>
+                    <ProgessStyleDiv>
+                      <p>
+                        <b>{percentage}</b> Complete
+                      </p>
+                      <ProgessStyleDivline>
+                        <ProgessStyleDivfilline
+                          width={percentage}
+                        ></ProgessStyleDivfilline>
+                      </ProgessStyleDivline>
+                    </ProgessStyleDiv>
+
                     <div className="registation_form">
                       <div className="Welcome">
                         <h3>
@@ -169,17 +170,17 @@ const ResgistPage1 = () => {
                         ) : (
                           <ButtonStyle type="submit"> Next </ButtonStyle>
                         )}
-                        <p>
-                          <span>Terms and Conditions</span>
-                        </p>
-                        <p>
-                          How it works <span>www.likeplaylikeplay.com</span>
-                        </p>
                       </div>
+                      <p style={{ cursor: "pointer", textAlign: "center" }}>
+                        <span>Terms and Conditions</span>
+                      </p>
+                      <p style={{ cursor: "pointer", textAlign: "center" }}>
+                        How it works <span>www.likeplaylikeplay.com</span>
+                      </p>
                     </div>
-                  </Form>
-                </Formik>
-              </FromStyleDiv>
+                  </FromStyleDiv>
+                </Form>
+              </Formik> */}
             </div>
           </RisgistationPage1>
         </RisgistionBgImg>
@@ -191,34 +192,3 @@ const ResgistPage1 = () => {
 };
 
 export default ResgistPage1;
-
-// <div className='Regisration_1_stap'>
-//         <div>
-//           <img src='' alt='empty'></img>
-//           <h1>The #Dating Site in Nigeria</h1>
-//         </div>
-//       </div>
-
-// <FromStyleDiv>
-//   <ProgessStyleDiv>
-//     <p> <b>{percentage}</b> Complete</p>
-//     <ProgessStyleDivline>
-//       <ProgessStyleDivfilline width={percentage}>
-//       </ProgessStyleDivfilline>
-//     </ProgessStyleDivline>
-//   </ProgessStyleDiv>
-//   <div className='registation_form'>
-//     <lable>Username<span>*</span></lable>
-//     <input type="text" className='resgistation_input' placeholder='Username' />
-//     <br></br>
-//     <lable>Username<span>*</span></lable>
-//     <input type="text" className='resgistation_input' placeholder='Username' />
-//     <br></br>
-//     <lable>Username<span>*</span></lable>
-//     <input type="text" className='resgistation_input' placeholder='Username' />
-//     <br></br>
-//     <lable>Username<span>*</span></lable>
-//     <input type="text" className='resgistation_input' placeholder='Username' />
-//   </div>
-
-// </FromStyleDiv>
