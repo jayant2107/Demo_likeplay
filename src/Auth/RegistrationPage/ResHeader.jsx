@@ -37,6 +37,7 @@ export default ResHeaderComponent;
 
 const ResHeader = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
+  width : 100%; 
 
   // .Navber_header {
   //   width: 80%;

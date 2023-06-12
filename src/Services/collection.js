@@ -68,6 +68,14 @@ const likedetails='/post/getsLikesDetail'
 
 const deleteshot="/post/deleteShot"
 
+const deletetag='/post/deleteTagWhileUpdation'
+
+const editpost='/post/editPost'
+
+const passwordchange='/user/changeUserPassword'
+
+const blockuser='/post/blockUser'
+
 export const getHomePagePost = () => {
   return getApi(`${HOME_PAGE_POSTS}`);
 };
@@ -202,4 +210,20 @@ export const getLikedetails=(postid,type)=>{
 
 export const getDeleteshot=(payload)=>{
   return deleteApi(`${deleteshot}?post_id=${payload}`)
+}
+
+export const deleteTagwhileupdation=(payload)=>{
+  return deleteApi(`${deletetag}?id=${payload}`)
+}
+
+export const EditUserPost=(payload)=>{
+  return putApi(editpost,payload)
+}
+
+export const changeUserPassword=(payload)=>{
+  return putApi(passwordchange,payload)
+}
+
+export const blockuserlisting=(payload)=>{
+  return postApi(blockuser,payload)
 }

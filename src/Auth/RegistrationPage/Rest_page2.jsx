@@ -70,6 +70,7 @@ const ResgistPage2 = () => {
   return (
     <>
         <RisgistionBgImg height="auto" imgUrl={Artboard2}>
+          <div className="wrapperDiv">
           <ResHeaderComponent />
           <RisgistationPage1>
             <div className="Risgistation_content2">
@@ -165,6 +166,7 @@ const ResgistPage2 = () => {
               </FromStyleDiv>
             </div>
           </RisgistationPage1>
+          </div>
         </RisgistionBgImg>
     </>
   );

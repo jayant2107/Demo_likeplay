@@ -711,10 +711,12 @@ export default function Publichome() {
     /* Media quary for Smart Phone responsive  */
 
     @media (min-width: 320px) and (max-width: 480px) {
+      
       section {
+        grid-template-columns: 100%;
         padding: 0;
         .left {
-          padding: 10rem 9rem;
+         
         }
         .right {
           .head {
@@ -732,8 +734,9 @@ export default function Publichome() {
     @media (min-width: 481px) and (max-width: 768px) {
       section {
         padding: 3rem 0;
+        grid-template-columns: 100%;
         .left {
-          padding: 10rem 10rem;
+         
         }
         .right {
           padding: 1rem;

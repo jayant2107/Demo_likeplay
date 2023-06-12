@@ -1,6 +1,6 @@
 import React from "react";
 import ResHeaderComponent from "./ResHeader";
-import { Artboard6 } from "../../Utils/RegistrationImg/Registrationflie";
+import { Artboard9 } from "../../Utils/RegistrationImg/Registrationflie";
 
 import {
   RisgistionBgImg,
@@ -55,7 +55,8 @@ const ResgistPage9 = () => {
   };
   return (
     <>
-      <RisgistionBgImg height="auto" imgUrl={Artboard6}>
+      <RisgistionBgImg height="auto" padding='2rem' imgUrl={Artboard9}>
+        <div className="wrapperDiv">
         <ResHeaderComponent />
         <RisgistationPage1>
           <div className="Risgistation_content2">
@@ -310,6 +311,7 @@ const ResgistPage9 = () => {
             </FromStyleDiv>
           </div>
         </RisgistationPage1>
+        </div>
       </RisgistionBgImg>
     </>
   );

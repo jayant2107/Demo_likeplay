@@ -2,7 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { Refer } from "../../../Utils/SettingImgaes/SettingP";
 import { copy, insta, twitter, whatsapp } from "../../../Utils/IconsP";
+import { useSelector } from "react-redux";
 const ReferFriend = () => {
+  const refercode=useSelector(e=>e?.LoginSlice?.data?.refer_code )
+  console.log(refercode,"rr")
   return (
     <>
       <ReferWrapper>
@@ -12,7 +15,7 @@ const ReferFriend = () => {
         <div className="willsmith">
           <div className="InnerWillSmith">
             <div>
-              <input type="text" className="ReferFrnd" />
+              <input type="text" className="ReferFrnd"  value={refercode}/>
             </div>
 
             <div>

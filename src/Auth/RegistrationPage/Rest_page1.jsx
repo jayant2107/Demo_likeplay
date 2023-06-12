@@ -74,6 +74,7 @@ const ResgistPage1 = () => {
     <>
       {emailVer === false ? (
         <RisgistionBgImg height="auto" imgUrl={Artboard1}>
+          <div className="wrapperDiv">
           <ResHeaderComponent />
           <RisgistationPage1>
             <div className="Risgistation_content">
@@ -81,7 +82,7 @@ const ResgistPage1 = () => {
                 <img src={Logimg} className="rig_img_log" alt="empty" />
                 <h1>The #Dating Site in Nigeria</h1>
               </div>
-              {/* <Formik
+              <Formik
                 initialValues={{
                   username: "",
                   email: "",
@@ -180,9 +181,10 @@ const ResgistPage1 = () => {
                     </div>
                   </FromStyleDiv>
                 </Form>
-              </Formik> */}
+              </Formik>
             </div>
           </RisgistationPage1>
+          </div>
         </RisgistionBgImg>
       ) : (
         <RestEmailPage passEmail={passEmail} />
