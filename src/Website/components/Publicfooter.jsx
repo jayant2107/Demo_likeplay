@@ -164,6 +164,7 @@ export default function Publicfooter() {
   `;
   return (
     <>
+   
       <Footer>
         <section>
           <div className="list1">
@@ -256,6 +257,7 @@ export default function Publicfooter() {
               </a>
               </div>
             </div>
+            
             <div className="copyright">
               <h5>WhatGodcannotdodoesnotexist</h5>
               <h5>copyright@likeplaylikeplay</h5>
