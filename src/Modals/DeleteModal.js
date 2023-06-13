@@ -91,7 +91,7 @@ export const StyledDeleteModal = styled.div`
   /* MODAL BUTTON-SECTION ENDS  */
 `;
 
-export default function DeleteModal({ closeModal, prop ,postid, getHomePageContent,userid }) {
+export default function DeleteModal({ closeModal, prop ,postid, getHomePageContent,userid,loadingbtn }) {
    const location = useLocation();
   // console.log(location);
   // const path = location?.pathname;

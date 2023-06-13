@@ -142,26 +142,25 @@ export default function Publichome() {
     main {
       @media (min-width: 320px) and (max-width: 480px) {
         section {
-          top: 40%;
+       
         }
       }
     }
     /* media quary for Tablats responsive  */
     @media (min-width: 481px) and (max-width: 768px) {
       section {
-        top: 42% !important;
+        
       }
     }
     /* media quary for laptop responsive  */
     @media (min-width: 769px) and (max-width: 1024px) {
       section {
-        top: 54% !important;
-      }
+        
     }
     /* media quary for large laptop responsive  */
     @media (min-width: 1025px) and (max-width: 1200px) {
       section {
-        top: 44% !important;
+        
         h3 {
           font-size: 3rem;
         }
