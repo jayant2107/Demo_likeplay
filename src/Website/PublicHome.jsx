@@ -1408,7 +1408,7 @@ export default function Publichome() {
               <div className="paragraph">
                 <div className="single_heart">
                   <img src={whylikeheart} alt="" />
-                  <h4>Our Mission is simple.</h4>
+                  <h4>Our Vision is clear.</h4>
                 </div>
                 <div className="para">
                   <p>
