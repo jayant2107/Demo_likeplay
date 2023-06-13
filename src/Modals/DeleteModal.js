@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import StyledButton from "../Components/Button";
-import { getDeleteshot } from "Services/collection";
+import { blockUser, getDeleteshot } from "Services/collection";
 import { toast } from "react-toastify";
 import { useLocation } from "react-router-dom";
 // import { useLocation } from "react-router-dom";
@@ -91,15 +91,17 @@ export const StyledDeleteModal = styled.div`
   /* MODAL BUTTON-SECTION ENDS  */
 `;
 
-export default function DeleteModal({ closeModal, prop , handleAction,postid, getHomePageContent }) {
+export default function DeleteModal({ closeModal, prop ,postid, getHomePageContent,userid }) {
    const location = useLocation();
   // console.log(location);
   // const path = location?.pathname;
+  console.log(prop,"prop")
 const handlesubmit =async()=>{
-  
-  const res=await getDeleteshot(postid)
+  if(prop.name==="Delete Shot"){
+    const res=await getDeleteshot(postid)
   if(res?.status===200){
     toast.success(res?.message || "Posts deleted successfully")
+    closeModal()
     if(location.pathname==="Layout/MyProfile"){
       getHomePageContent()
     }
@@ -108,9 +110,36 @@ const handlesubmit =async()=>{
   }
   else{
     toast.error(res?.message)
+    closeModal()
 
   }
 
+
+  }
+else if(prop.name==="Block User"){
+  const req={
+    status:false,
+    user_id:userid
+  }
+  const res=await blockUser(req)
+  if(res?.status===200){
+    toast.success(res?.message || "Block successfully")
+    closeModal()
+
+  }
+  else{
+    toast.error(res?.message)
+    closeModal()
+
+  }
+
+}
+
+ else{
+
+ }
+  
+  
 }
 
   return (
@@ -150,13 +179,13 @@ const handlesubmit =async()=>{
               </div>
               <div
                 className="yes-btn"
-                onClick={() => {
-                  // if (path === "/Layout/FeedPage") {
-                    handleAction();
-                  // } else if (path === "/Layout/Settings") {
-                  //   closeDelete();
-                  // }
-                }}
+                // onClick={() => {
+                //   // if (path === "/Layout/FeedPage") {
+                //     handleAction();
+                //   // } else if (path === "/Layout/Settings") {
+                //   //   closeDelete();
+                //   // }
+                // }}
               >
                 <StyledButton
                   text="white"

@@ -43,13 +43,13 @@ const Layoutdesign = styled.div`
   display: flex;
   width: 100%;
   .left-sidebar {
-    width: 20%;
+    width: 18%;
     position: fixed;
     border-right: 1px solid #e2e2e2;
   }
   .center-content {
     width: 100%;
-    margin-left: calc(100% - 80%);
+    margin-left: calc(100% - 82%);
     margin-right: ${({ isRightNav }) => isRightNav && "calc(100% - 80%)"};
     height:100vh;
   }

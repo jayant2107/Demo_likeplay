@@ -5,7 +5,7 @@ import { BlockUserdata } from "../Modals/ModalData/DeleteAccount";
 import { StyledDeleteModal } from "../Modals/DeleteModal";
 import StyledButton from "./Button";
 
-const BlockedUserComp = ({ ele }) => {
+const BlockedUserComp = ({ ele ,blockUser }) => {
  
   const [unblock, setUnblock] = useState(false);
   const Unblock = () => {
@@ -49,10 +49,14 @@ const BlockedUserComp = ({ ele }) => {
                       Cancel
                     </StyledButton>
                   </div>
-                  <div className="yes-btn" onClick={closeUnblock}>
+                  <div className="yes-btn" >
                     <StyledButton
                       text="white"
                       bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
+                     onClick={()=>{
+                      blockUser(ele?.blockTo?.id)
+                      closeUnblock()
+                    }}
                     >
                       Yes
                     </StyledButton>

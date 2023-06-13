@@ -13,44 +13,7 @@ import { useSelector } from "react-redux";
 import { blockUser, blockeduserlisting, blockuser} from "Services/collection";
 import { toast } from "react-toastify";
 
-const BlockUser = [
-  {
-    img: UserBlock,
-    name: "Kiran",
-  },
-  {
-    img: SecondUser,
-    name: "Jasmeen",
-  },
-  {
-    img: ThirdUser,
-    name: "Simrela",
-  },
-  {
-    img: fourthUser,
-    name: "Julia",
-  },
-  {
-    img: fifthUser,
-    name: "Sneha",
-  },
-  {
-    img: SixUser,
-    name: "Simrela",
-  },
-  {
-    img: UserBlock,
-    name: "Kriti",
-  },
-  {
-    img: SixUser,
-    name: "Simrela",
-  },
-  {
-    img: ThirdUser,
-    name: "Simrela",
-  },
-];
+
 
 
 const BlockedUser = () => {
@@ -68,22 +31,45 @@ const BlockedUser = () => {
   useEffect(()=>{
     listing()
   },[])
-  console.log(blockuserlist,"bb")
+  const unblockuser=async(userid)=>{
+    const req={
+      status:true,
+      user_id:userid
+
+    }
+    const res= await blockUser(req)
+    if(res?.status===200){
+      toast.success(res?.message || "Unblock user successfully") 
+      console.log("helo")
+     
+      
+    }
+    else{
+      toast.error(res?.message)
+      console.log(res)
+
+    }
+  }
 
   return (
     <>
       <Blocked>Blocked Users</Blocked>
       <WrapperBlock>
-     {
+        {blockuserlist.length>0?(    
 
-          blockuserlist?.map((ele) => {
-            return (
-             
-                <BlockedUserComp ele={ele} />
-             
-            );
-          })
-     }
+blockuserlist?.map((ele) => {
+  return (
+   
+   
+      <BlockedUserComp ele={ele}  blockUser={unblockuser} />
+   
+  );
+})
+):(<div>
+  <p>No data found
+  </p>
+</div>)}
+ 
       </WrapperBlock>
     </>
   );

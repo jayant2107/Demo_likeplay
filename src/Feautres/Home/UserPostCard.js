@@ -336,7 +336,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
           onClick={() => {
             setShowModal(true);
             setShowHideModal(false);
-            setshowBlockModal(false);
+           
             setClicked(false);
           }}
         >
@@ -596,6 +596,8 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
             prop={BlockData}
             closeModal={closeModal}
             handleAction={handleBlockUser}
+            userid={val?.user_id}
+
             getHomePageContent={getHomePageContent}
           />
         </Modal>
@@ -613,7 +615,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
           <DeleteModal
             prop={DeleteData}
             closeModal={closeModal}
-            handleAction={handleDeletePost}
+       
             postid={val?.post_id }
 
           />

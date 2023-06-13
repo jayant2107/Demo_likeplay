@@ -782,6 +782,7 @@ export default function Publichome() {
     @media (min-width: 769px) and (max-width: 1024px) {
       section {
         padding: 3rem 0;
+        grid-template-columns: 100%;
         .left {
           padding: 10rem 18rem;
         }
