@@ -1402,7 +1402,7 @@ export default function Publichome() {
             <div className="vision">
               <div className="head">
                 <h1>
-                  <span>Our</span>Vission
+                  <span>Our</span>Vision
                 </h1>
                 <img src={hearticonPA} alt="" />
               </div>
