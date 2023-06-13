@@ -23,7 +23,7 @@ export default function Footercontent() {
     section {
       position: relative;
       z-index: -2;
-      margin-top: -92px;
+      // margin-top: -92px;
       width: 100%;
       height: 100vh;
       background-image: url(${footerbg});
@@ -50,7 +50,7 @@ export default function Footercontent() {
         z-index: -1;
       }
       .head {
-        margin-top: 5rem;
+        margin-top: 4rem;
         font-family: "Oregano", cursive;
         letter-spacing:0.05em;
         line-height:45px;
