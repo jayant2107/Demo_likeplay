@@ -1,103 +1,115 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
+import FeedAboutUserProfile from "./UserAbout";
+import { getProfileView } from "Services/collection";
+import { useLocation } from "react-router-dom";
+import UserPostCard from "./UserPostCard";
+import UserPosts from "./UserPosts";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { info } from "Redux/SliceOfRedux/Userinfo";
+import Loader from "Components/Loader";
 
-import FeedAboutUserProfile from './UserAbout';
-import { getProfileView } from 'Services/collection';
-import { useLocation } from 'react-router-dom';
-import UserPostCard from './UserPostCard';
-import UserPosts from './UserPosts';
-import { toast } from 'react-toastify';
-import { useDispatch } from 'react-redux';
-import  { info } from 'Redux/SliceOfRedux/Userinfo';
-
- let userProfile_tabs = [
-    {
-      name: "shots",
-      label: "Shots",
-    },
-    {
-      name: "aboutme",
-      label: "About me",
-    },
-  ];
+let userProfile_tabs = [
+  {
+    name: "shots",
+    label: "Shots",
+  },
+  {
+    name: "aboutme",
+    label: "About me",
+  },
+];
 
 export default function Userdetails() {
-    const [active, setActive] = useState("aboutme");
-    const [Data,setData]=useState([])
-    const location =useLocation();
-    const user_id=location.state
-    const dispatch =useDispatch()
+  const [active, setActive] = useState("aboutme");
+  const [Data, setData] = useState([]);
+  const location = useLocation();
+  const user_id = location.state;
+  const dispatch = useDispatch();
+  const [loading, setloading] = useState();
 
+  let profile_image = process.env.REACT_APP_BASEURL_IMAGE;
 
-  let profile_image = process.env.REACT_APP_BASEURL_IMAGE 
- 
   let tabScreen = {
-    shots: <UserPosts data={Data?.Posts} profileimg={Data?.user_images_while_signup} name={Data?.name} />,
-    aboutme: <FeedAboutUserProfile  data={Data}/>, 
+    shots: (
+      <UserPosts
+        data={Data?.Posts}
+        profileimg={Data?.user_images_while_signup}
+        name={Data?.name}
+      />
+    ),
+    aboutme: <FeedAboutUserProfile data={Data} />,
   };
-  const getprofiledetails=async()=>{
-
-    const req =await getProfileView(user_id)
-    if(req?.status===200){
-        setData(req?.data)
-        dispatch(info(req?.data))
-
-
+  const getprofiledetails = async () => {
+    setloading(true)
+  
+    const req = await getProfileView(user_id);
+    if (req?.status === 200) {
+      setData(req?.data);
+      dispatch(info(req?.data));
+      setloading(false)
+    } else {
+      toast.error(req?.message || "Couldn't get profile");
+      setloading(false)
     }
-    else{
-      toast.error(req?.message || "Couldn't get profile")
-
-    }
-
-  }
-  useEffect(()=>{
-    getprofiledetails()
-  },[])
-  console.log(Data,"dataa")
+  };
+  useEffect(() => {
+    getprofiledetails();
+  }, []);
+  console.log(Data, "dataa");
 
   return (
     <>
-  
-    <LoginProfileCss>
-           <div className="imgDiv">
-          {Data?.user_images_while_signup?.length > 0 && <img src={profile_image+Data?.user_images_while_signup[0]?.image_url} alt="pic" /> }
-        </div>
-        <div className="detailsDiv">
-          <div className="username">{Data?.user_name}</div>
-          <div className="userdata">
-            <span>{Data?.age}</span>
-            <span className="spanDot"></span>
-            <span>{Data?.gender === "0" ? "Male" : "Female"}</span>
-            <span className="spanDot"></span>
-            <span>{Data?.looking_for}</span>
-          </div>
-          <div className="userdata">{Data?.city}</div>
-     
-        </div>
-
-    </LoginProfileCss>
-    <FeedMyProfileCss>
-        <div className="navDiv">
-            {userProfile_tabs?.map((list,index)=>(
-                 <span
-                 key={index}
-                 className={`${active === list?.name ? "active" : "navButton"}`}
-                 onClick={() => setActive(list?.name)}
-               >
-                 {list?.label}
-               </span>
-
-            ))}
-        </div>
-        {tabScreen[active]}
-
-    </FeedMyProfileCss>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <LoginProfileCss>
+            <div className="imgDiv">
+              {Data?.user_images_while_signup?.length > 0 && (
+                <img
+                  src={
+                    profile_image + Data?.user_images_while_signup[0]?.image_url
+                  }
+                  alt="pic"
+                />
+              )}
+            </div>
+            <div className="detailsDiv">
+              <div className="username">{Data?.user_name}</div>
+              <div className="userdata">
+                <span>{Data?.age}</span>
+                <span className="spanDot"></span>
+                <span>{Data?.gender === "0" ? "Male" : "Female"}</span>
+                <span className="spanDot"></span>
+                <span>{Data?.looking_for}</span>
+              </div>
+              <div className="userdata">{Data?.city}</div>
+            </div>
+          </LoginProfileCss>
+          <FeedMyProfileCss>
+            <div className="navDiv">
+              {userProfile_tabs?.map((list, index) => (
+                <span
+                  key={index}
+                  className={`${
+                    active === list?.name ? "active" : "navButton"
+                  }`}
+                  onClick={() => setActive(list?.name)}
+                >
+                  {list?.label}
+                </span>
+              ))}
+            </div>
+            {tabScreen[active]}
+          </FeedMyProfileCss>
+        </>
+      )}
     </>
-    
- 
-  )
+  );
 }
 
 export const LoginProfileCss = styled.div`

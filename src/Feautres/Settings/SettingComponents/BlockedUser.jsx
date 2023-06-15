@@ -28,6 +28,7 @@ const BlockedUser = () => {
 
     }
   }
+
   useEffect(()=>{
     listing()
   },[])
@@ -39,8 +40,8 @@ const BlockedUser = () => {
     }
     const res= await blockUser(req)
     if(res?.status===200){
-      toast.success(res?.message || "Unblock user successfully") 
-      console.log("helo")
+      listing()
+      toast.success(res?.message || "Unblock user successfully")
      
       
     }
@@ -50,6 +51,7 @@ const BlockedUser = () => {
 
     }
   }
+  console.log(blockuserlist,"bbbbb")
 
   return (
     <>

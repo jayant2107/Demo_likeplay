@@ -34,6 +34,9 @@ import hashimg, {
   LikePlayTechNovalogo,
 } from "../Utils/images/Publichomeimg";
 import { appstore, playstore } from "Utils/Images";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function Publichome() {
   const navigate = useNavigate();
@@ -44,6 +47,46 @@ export default function Publichome() {
 
   // video logic
   const videoRef = useRef(null);
+  var settings = {
+    dots: false,
+    infinite: true,
+    speed: 600,
+    slidesToShow: 7,
+    slidesToScroll: 1,
+    autoplay:true,
+    touchMove:true,
+    nextArrow:<SampleNextArrow/>,
+    responsive:[
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1
+        }
+      }
+      
+    ]
+  
+  
+  };
+  
   const [isPlaying, setIsPlaying] = useState(false);
   const videoplay = useRef(null);
   const [playvideo, setplayvideo] = useState(true);
@@ -55,6 +98,17 @@ export default function Publichome() {
     }
     setplayvideo(!playvideo);
   };
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "none", background: "red" }}
+        onClick={onClick}
+      />
+    );
+  }
+  
 
   const togglePlay = () => {
     if (videoRef.current.paused) {
@@ -765,7 +819,7 @@ export default function Publichome() {
         .right {
           padding: 1rem;
           .head {
-            width: 640px;
+            
             margin: 1rem;
             img {
               top: -30px;
@@ -783,7 +837,7 @@ export default function Publichome() {
         padding: 3rem 0;
         grid-template-columns: 100%;
         .left {
-          padding: 10rem 18rem;
+         // padding: 10rem 18rem;
         }
         .right {
           padding: 1rem;
@@ -1020,6 +1074,9 @@ export default function Publichome() {
     section {
       padding: 2rem 4rem 3rem;
       background: linear-gradient(268.55deg, #ffdbac 0%, #ffcebb 100%);
+      @keyframes scrol {
+        100% { top: -100%; }
+      }
       .top {
         display: flex;
         flex-direction: column;
@@ -1092,121 +1149,27 @@ export default function Publichome() {
 
   /* -------------------------As featured In CSS START-----------------------------  */
   const Featured = styled.section`
-    section {
-      padding: 4rem;
-      h1 {
-        font-family: Poppins;
-        font-size: 2rem;
-        text-align: center;
-      }
-      .feature_imgs {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1.5rem;
-        img {
-          width: 110px;
-        }
-      }
+  padding:10px;
+  h1 {
+    font-family: Poppins;
+    font-size: 16px;
+    color:#181818;
+    text-align: center;
+    padding:10px;
+  }
+ 
+   .slider-box{
+    padding:10px 0px;
+    
+    img{
+    width:120px;
+    height:100px;
     }
-    /* Media quary for Smart Phone responsive  */
+   }
+    
 
-    @media (min-width: 320px) and (max-width: 480px) {
-      section {
-        overflow: hidden;
-        width: 100%;
-        .feature_imgs {
-          /* width: 100%; */
-          white-space: nowrap;
-          animation-play-state: running;
-          animation: marquee 5s linear infinite;
-          @keyframes marquee {
-            0% {
-              transform: translateX(0%);
-            }
-            100% {
-              transform: translateX(100%);
-            }
-          }
-          &:hover {
-            animation-play-state: paused;
-          }
-        }
-      }
-    }
-    /* media quary for Tablats responsive  */
-    @media (min-width: 481px) and (max-width: 768px) {
-      section {
-        overflow: hidden;
-        width: 100%;
-        .feature_imgs {
-          /* width: 100%; */
-          white-space: nowrap;
-          animation-play-state: running;
-          animation: marquee 5s linear infinite;
-          @keyframes marquee {
-            0% {
-              transform: translateX(0%);
-            }
-            100% {
-              transform: translateX(100%);
-            }
-          }
-          &:hover {
-            animation-play-state: paused;
-          }
-        }
-      }
-    }
-    /* media quary for laptop responsive  */
-    @media (min-width: 769px) and (max-width: 1024px) {
-      section {
-        width: 100%;
-        .feature_imgs {
-          /* width: 100%; */
-          white-space: nowrap;
-          overflow: hidden;
-          animation-play-state: running;
-          animation: marquee 5s linear infinite;
-          @keyframes marquee {
-            0% {
-              transform: translateX(0%);
-            }
-            100% {
-              transform: translateX(100%);
-            }
-          }
-          &:hover {
-            animation-play-state: paused;
-          }
-        }
-      }
-    }
-    /* media quary for large laptop responsive  */
-    @media (min-width: 1025px) and (max-width: 1200px) {
-      section {
-        overflow: hidden;
-        width: 100%;
-        .feature_imgs {
-          /* width: 100%; */
-          white-space: nowrap;
-          overflow: hidden;
-          animation-play-state: running;
-          animation: marquee 5s linear infinite;
-          @keyframes marquee {
-            0% {
-              transform: translateX(0%);
-            }
-            100% {
-              transform: translateX(100%);
-            }
-          }
-          &:hover {
-            animation-play-state: paused;
-          }
-        }
-      }
-    }
+   
+   
   `;
 
   /* -------------------------As featured In CSS END-----------------------------  */
@@ -1469,36 +1432,70 @@ export default function Publichome() {
 
       {/* -------------------------As featured In START-----------------------------  */}
       <Featured>
-        <section>
+  
           <h1>As featured In</h1>
-          <div className="feature_imgs">
+         
+
+          <Slider  {...settings}>
+          
+            <div className="slider-box">
+
             <a href="https://techpoint.africa/2023/03/06/likeplay-likeplay-com-1-dating-site-in-nigeria/">
               <img src={techpoint} alt="" />
             </a>
+            </div>
+            <div className="slider-box">
+              
             <a href="https://www.thisdaylive.com/index.php/2023/03/04/likeplaylikeplay-com-dating-platform-set-to-launch-in-nigeria/">
               <img src={thisday} alt="" />
             </a>
+            </div>
+            <div className="slider-box">
+              
             <a href="https://sunnewsonline.com/likeplay-likeplay-com-1-dating-site-in-nigeria/">
               <img src={thesun} alt="" />
             </a>
+            </div>
+            <div className="slider-box">
+              
             <a>
               <img src={thetimes} alt="" />
             </a>
+            </div>
+            <div className="slider-box">
+              
             <a href=" https://www.vanguardngr.com/2023/03/likeplay-likeplay-com-1-dating-site-in-nigeria-4/">
               <img src={live} alt="" />
             </a>
-            <img src={thegurdian} alt="" />
+            </div>
+            <div className="slider-box">
+              
             <a href="https://punchng.com/why-you-should-try-online-dating-on-likeplaylikeplay-com/">
               <img src={punch} alt="" />
             </a>
+            </div>
+            <div className="slider-box">
+              
+            <img src={thegurdian} alt="" />
+              </div>
+
+            <div className="slider-box">
+              
             <a href="https://www.jbklutse.com/likeplaylikeplay-com-1-dating-site-ghana/">
               <img src={LikePlayJbklutselogo} alt="" />
             </a>
+            </div>
+            <div className="slider-box">
+              
             <a href=" https://technovagh.com/likeplaylikeplay-wants-to-be-a-dating-site-for-africans/">
               <img src={LikePlayTechNovalogo} alt="" />
             </a>
-          </div>
-        </section>
+            </div>
+            </Slider>
+         
+        
+
+      
       </Featured>
       {/* -------------------------As featured In END-----------------------------  */}
 

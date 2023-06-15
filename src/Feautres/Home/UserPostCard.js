@@ -42,7 +42,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import EditPosts from "Modals/EditPosts";
 
-const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
+const UserPostCard = ({ val,edit=false,getHomePageContent,handleUploadedPosts}) => {
   const [showModal, setShowModal] = useState(false);
   const [showHideModal, setShowHideModal] = useState(false);
   const [showBlockModal, setshowBlockModal] = useState(false);
@@ -64,6 +64,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
   const [totalcomment,settotalcomment]=useState(+val?.totalCommments)
   const [editpostmodal,setEditPostModal]=useState(false)
   const [editpostdata,seteditpostdata]=useState()
+  const [loadingbtn,setloadingbtn]=useState(false)
   
   const navigate =useNavigate()
  
@@ -238,12 +239,15 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
   };
 
   const handleBlockUser = async () => {
+    setloadingbtn(true)
     const res = await blockUser({ user_id: val.id });
     if (res?.status === 200) {
       setshowBlockModal(false);
+      setloadingbtn(false)
     } else {
       toast.error(res?.message || "Something Went Wrong");
       setshowBlockModal(false);
+      setloadingbtn(false)
     }
   };
 
@@ -571,7 +575,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
           centered
           onCancel={closeeditmodal}
           >
-            <EditPosts editpostdata={editpostdata}  close={closeeditmodal} tagListing={tagList}/>
+            <EditPosts editpostdata={editpostdata}  close={closeeditmodal} tagListing={tagList} handleUploadedPosts={handleUploadedPosts}/>
             
 
 
@@ -585,7 +589,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
           open={showBlockModal}
           onOk={closeModal}
           onCancel={closeModal}
-          maskClosable={true}
+          maskClosable={loadingbtn}
           // cancelText="naa"
           centered
           className="modalDesign"
@@ -597,6 +601,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
             closeModal={closeModal}
             handleAction={handleBlockUser}
             userid={val?.user_id}
+            loadingbtn={loadingbtn}
 
             getHomePageContent={getHomePageContent}
           />
@@ -615,6 +620,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent}) => {
           <DeleteModal
             prop={DeleteData}
             closeModal={closeModal}
+            loadingbtn={true}
        
             postid={val?.post_id }
 

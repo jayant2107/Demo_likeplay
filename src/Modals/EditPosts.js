@@ -11,7 +11,12 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import styled from "styled-components";
 
-export default function EditPosts({ editpostdata, close, taglisting }) {
+export default function EditPosts({
+  editpostdata,
+  close,
+  taglisting,
+  handleUploadedPosts,
+}) {
   const { Option } = Select;
   const [filetype, setfiletype] = useState();
   const [alltaglist, setalltaglist] = useState();
@@ -19,6 +24,7 @@ export default function EditPosts({ editpostdata, close, taglisting }) {
   const [loading, setLoading] = useState(false);
   const [newselectedtag, setnewselectedtag] = useState([]);
   const [inputcaption, setinputcaption] = useState(editpostdata?.caption);
+  const [submitloading, setsubmitloading] = useState(false);
 
   const defaultselected = TagList.map((item) => item?.tag_to);
 
@@ -31,38 +37,40 @@ export default function EditPosts({ editpostdata, close, taglisting }) {
       spin
     />
   );
-  const removetag = async() => {
+  const removetag = async () => {
     const removeuser = defaultselected.filter(
       (e) => !newselectedtag.includes(e)
     );
     if (removeuser.length > 0) {
-      const res = await  deleteTagwhileupdation(removeuser);
+      const res = await deleteTagwhileupdation(removeuser);
       if (res?.status === 200) {
-        toast.success(res?.message)
-        
+        toast.success(res?.message);
       } else {
         toast.error(res?.message);
-        console.log("heelllo")
+        console.log("heelllo");
       }
     }
   };
-  const hanldesumbit = async() => {
-     removetag()
-    const req={
-      "post_id":editpostdata?.post_id,
-      "tag_to":newselectedtag,
-      "caption":inputcaption
-    }
-    const res =  await EditUserPost(req);
-    if(res?.status===200){
-      toast.success(res?.message)
-    }
-    else{
-      toast.error(res?.message || "something went wrong")
+  const hanldesumbit = async () => {
+    setsubmitloading(true)
+    removetag();
+    const req = {
+      post_id: editpostdata?.post_id,
+      tag_to: newselectedtag,
+      caption: inputcaption,
+    };
+    const res = await EditUserPost(req);
+    
+    if (res?.status === 200) {
+      setsubmitloading(false)
+      toast.success(res?.message);
+      handleUploadedPosts();
+    } else {
+      setsubmitloading(false)
+      toast.error(res?.message || "something went wrong");
     }
   };
 
-  
   const video_extension = [
     "mpeg-2",
     "webm",
@@ -228,9 +236,19 @@ export default function EditPosts({ editpostdata, close, taglisting }) {
               >
                 Submit
               </StyledButton> */}
-            <Button size="large" type="primary" onClick={()=>hanldesumbit()}>
-              Submit
-            </Button>
+            {submitloading ? (
+              <LoaderWrapper>
+                <Spin indicator={antIcon} />
+              </LoaderWrapper>
+            ) : (
+              <Button
+                size="large"
+                type="primary"
+                onClick={() => hanldesumbit()}
+              >
+                Submit
+              </Button>
+            )}
           </div>
         </div>
 

@@ -66,7 +66,7 @@ const FeedShots = () => {
         <Loader />
       ) : (
         postList.map((val, index) => {
-          return <UserPostCard val={val} key={index} />;
+          return <UserPostCard val={val} key={index} handleUploadedPosts={handleUploadedPosts}/>;
         })
       )}
     </>

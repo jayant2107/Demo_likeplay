@@ -3,6 +3,9 @@ import StyledButton from "../Components/Button";
 import { blockUser, getDeleteshot } from "Services/collection";
 import { toast } from "react-toastify";
 import { useLocation } from "react-router-dom";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
+import { useState } from "react";
 // import { useLocation } from "react-router-dom";
 
 export const StyledDeleteModal = styled.div`
@@ -90,57 +93,72 @@ export const StyledDeleteModal = styled.div`
 
   /* MODAL BUTTON-SECTION ENDS  */
 `;
+const LoaderWrapper = styled.div`
+ 
+  width: 100%;
+  padding: 10px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+`;
 
-export default function DeleteModal({ closeModal, prop ,postid, getHomePageContent,userid,loadingbtn }) {
-   const location = useLocation();
+export default function DeleteModal({
+  closeModal,
+  prop,
+  postid,
+  getHomePageContent,
+  userid,
+  
+}) {
+  const location = useLocation();
   // console.log(location);
   // const path = location?.pathname;
-  console.log(prop,"prop")
-const handlesubmit =async()=>{
-  if(prop.name==="Delete Shot"){
-    const res=await getDeleteshot(postid)
-  if(res?.status===200){
-    toast.success(res?.message || "Posts deleted successfully")
-    closeModal()
-    if(location.pathname==="Layout/MyProfile"){
-      getHomePageContent()
+ const[loadingbtn,setloadingbtn]=useState(false)
+  const antIcon = (
+    <LoadingOutlined
+      style={{
+        fontSize: 30,
+        color: "red",
+      }}
+      spin
+    />
+  );
+  const handlesubmit = async () => {
+    if (prop.name === "Delete Shot") {
+      setloadingbtn(true)
+      const res = await getDeleteshot(postid);
+      if (res?.status === 200) {
+        toast.success(res?.message || "Posts deleted successfully");
+        closeModal();
+        setloadingbtn(false)
+        if (location.pathname === "Layout/MyProfile") {
+          getHomePageContent();
+        }
+      } else {
+        toast.error(res?.message);
+        closeModal();
+        setloadingbtn(false)
+      }
+    } else if (prop.name === "Block User") {
+      setloadingbtn(true)
+      const req = {
+        status: false,
+        user_id: userid,
+      };
+      const res = await blockUser(req);
+      if (res?.status === 200) {
+        toast.success(res?.message || "Block successfully");
+        closeModal();
+        setloadingbtn(false)
+      } else {
+        toast.error(res?.message);
+        closeModal();
+        setloadingbtn(false)
+      }
+    } else {
     }
-
-
-  }
-  else{
-    toast.error(res?.message)
-    closeModal()
-
-  }
-
-
-  }
-else if(prop.name==="Block User"){
-  const req={
-    status:false,
-    user_id:userid
-  }
-  const res=await blockUser(req)
-  if(res?.status===200){
-    toast.success(res?.message || "Block successfully")
-    closeModal()
-
-  }
-  else{
-    toast.error(res?.message)
-    closeModal()
-
-  }
-
-}
-
- else{
-
- }
-  
-  
-}
+  };
 
   return (
     <>
@@ -167,7 +185,7 @@ else if(prop.name==="Block User"){
                 className="cancel-btn"
                 onClick={() => {
                   // if (path === "/Layout/FeedPage") {
-                    closeModal();
+                  closeModal();
                   // } else if (path === "/Layout/Settings") {
                   //   closeDelete();
                   // }
@@ -177,23 +195,20 @@ else if(prop.name==="Block User"){
                   Cancel
                 </StyledButton>
               </div>
-              <div
-                className="yes-btn"
-                // onClick={() => {
-                //   // if (path === "/Layout/FeedPage") {
-                //     handleAction();
-                //   // } else if (path === "/Layout/Settings") {
-                //   //   closeDelete();
-                //   // }
-                // }}
-              >
-                <StyledButton
-                  text="white"
-                  bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
-                  onClick={handlesubmit}
-                >
-                  Yes
-                </StyledButton>
+              <div className="yes-btn">
+                {loadingbtn ? (
+                  <LoaderWrapper>
+                    <Spin indicator={antIcon} />
+                  </LoaderWrapper>
+                ) : (
+                  <StyledButton
+                    text="white"
+                    bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
+                    onClick={handlesubmit}
+                  >
+                    Yes
+                  </StyledButton>
+                )}
               </div>
             </div>
           </div>

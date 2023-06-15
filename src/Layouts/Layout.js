@@ -48,10 +48,10 @@ const Layoutdesign = styled.div`
     border-right: 1px solid #e2e2e2;
   }
   .center-content {
-    width: 100%;
+   width:${({isRightNav})=>isRightNav?"62%":"100%"};
     margin-left: calc(100% - 82%);
     margin-right: ${({ isRightNav }) => isRightNav && "calc(100% - 80%)"};
-    height:100vh;
+    
   }
 
   .right-sidebar {
@@ -60,5 +60,19 @@ const Layoutdesign = styled.div`
     left: 80%;
     min-height: 100vh;
     border-left: 1px solid #e2e2e2;
+  }
+  @media(max-width:768px){
+    .left-sidebar{
+      display:none;
+    }
+    .right-sidebar{
+      display:none;
+    }
+    .center-content{
+      width:100%;
+      margin-left:0%;
+      margin-right:0%;
+    }
+
   }
 `;

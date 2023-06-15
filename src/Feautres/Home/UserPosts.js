@@ -33,7 +33,7 @@ export default function UserPosts({data,profileimg,name}) {
     <>
     {
         val?.length>0?(val?.map((val,index)=>{
-            return <UserPostCard val={val} ley={index}/>
+            return <UserPostCard val={val} key={index}/>
         })):(" Data Not Found")
     }
 

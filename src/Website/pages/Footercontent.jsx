@@ -25,10 +25,11 @@ export default function Footercontent() {
       z-index: -2;
       // margin-top: -92px;
       width: 100%;
-      height: 100vh;
+      // height: 100vh;
       background-image: url(${footerbg});
       background-repeat: no-repeat;
       color: white;
+     
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -50,7 +51,7 @@ export default function Footercontent() {
         z-index: -1;
       }
       .head {
-        margin-top: 4rem;
+        margin-top: 5rem;
         font-family: "Oregano", cursive;
         letter-spacing:0.05em;
         line-height:45px;
@@ -71,10 +72,11 @@ export default function Footercontent() {
         position: relative;
         display: flex;
         justify-content: center;
-        align-items: start;
+        align-items: center;
         width: 70%;
+        padding:10px 0px;
         text-align: center;
-        margin-bottom: 1rem;
+     
         gap: 5px;
         z-index: 1;
         img {
@@ -87,6 +89,7 @@ export default function Footercontent() {
           font-weight: 300;
           color: white;
         }
+        
       }
     }
   `;

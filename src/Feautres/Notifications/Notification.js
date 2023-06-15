@@ -11,7 +11,7 @@ import { AiOutlineWarning } from "react-icons/ai";
 
 
 export default function Notification() {
-  const[loading,setloading]=useState(false)
+  const[loading,setloading]=useState()
   const [notificationlist,setnotificationlist]=useState([]);
   const [openmodal,setopenmodal]=useState(false)
   const getdate=(time)=>{
@@ -37,8 +37,8 @@ export default function Notification() {
 
 
   const notificationsListing=async()=>{
-    const req=await getnotificationList()
     setloading(true)
+    const req=await getnotificationList()
     if(req?.status===200){
       setnotificationlist(req?.data)
       setloading(false)

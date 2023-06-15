@@ -15,6 +15,10 @@ import sendPic from "../../Assets/Images/chatScreenSend.png";
 import { Button, Popover } from "antd";
 import { useLocation } from "react-router-dom";
 import logo5 from "../../Assets/Images/Matches Image/logo1 (2).png";
+import { db } from '../../Firebase/FirebaseConfig';
+import { ref, set } from "firebase/database";
+
+
 
 const ChatScreen = () => {
 
@@ -36,7 +40,12 @@ const ChatScreen = () => {
   
   let location = useLocation();
   let data1 = location.state;
-  // console.log(data1);
+
+
+const sendmessage=async()=>{
+  console.log("testing")
+
+}
 
   const data = data1;
   const content = (
@@ -256,7 +265,7 @@ const ChatScreen = () => {
                 multiline={true}
               />
               <img className="input-icon" src={smilePic} alt="smilePic" />
-              <img className="input-icon2" src={sendPic} alt="sendPic" />
+              <img className="input-icon2" src={sendPic} alt="sendPic" onClick={sendmessage} />
             </div>
           </div>}
         

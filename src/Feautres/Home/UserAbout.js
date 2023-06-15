@@ -12,7 +12,10 @@ export default function FeedAboutUserProfile({data}) {
           <p>About me</p>
           
         </div>
-        <span>{profile_data?.about_me}</span>
+        <div>
+
+        <p className='aboutmetext'>{profile_data?.about_me}</p>
+        </div>
       </div>
 
       <div className="imagesDiv">
@@ -172,13 +175,23 @@ const FeedAboutMeCss = styled.div`
   }
 
   .aboutMe {
-    height: auto;
+  
   }
 
   .edit-div {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  .aboutmetext{
+    color:#7b7f91;
+    overflow-wrap: break-word;
+    line-height:22px;
+    font-size:16px;
+    font-weight:400;
+   
+    letter-spacing:1px;
+    
   }
   .imagesDiv {
     margin: 1rem 0;
