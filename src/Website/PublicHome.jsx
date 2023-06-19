@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Publicnavbar from "../Website/components/Publicnavbar";
@@ -32,6 +32,8 @@ import hashimg, {
   punch,
   LikePlayJbklutselogo,
   LikePlayTechNovalogo,
+  mainimage2,
+  mainimage3,
 } from "../Utils/images/Publichomeimg";
 import { appstore, playstore } from "Utils/Images";
 import Slider from "react-slick";
@@ -86,9 +88,21 @@ export default function Publichome() {
   
   
   };
+  const mainwrappersetting={
+    dots: true,
+    infinite: true,
+    speed: 600,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay:true,
+    touchMove:true,
+    nextArrow:<SampleNextArrow/>,
+
+  }
   
   const [isPlaying, setIsPlaying] = useState(false);
   const videoplay = useRef(null);
+  const [countryname,setcountryname]=useState()
   const [playvideo, setplayvideo] = useState(true);
   const playing = () => {
     if (playvideo) {
@@ -119,6 +133,34 @@ export default function Publichome() {
       setIsPlaying(false);
     }
   };
+  const fetchdata=async()=>{
+    const res=  await fetch('https://api.ipregistry.co/?key=r14is3u9jadrvzrg')
+    if(res?.status===200){
+      if(res?.country?.name.toLowerCase()==='nigeria' ||
+      res?.country?.name.toLowerCase()==='ghana' ||
+      res?.country?.name.toLowerCase()==='south africa' ||
+      res?.country?.name.toLowerCase()==="cote d'ivoire" ||
+      res?.country?.name.toLowerCase()==='congo' 
+      
+      
+      ){
+        setcountryname(res?.country?.name)
+
+
+      }
+      else{
+        setcountryname('Nigeria')
+      }
+
+    }
+    else{
+
+    }
+
+  }
+  useEffect(()=>{
+    fetchdata()
+  },[])
   // -----------------------MainWrapper CSS START-------------------------------
   const MainWrapper = styled.main`
     main {
@@ -235,6 +277,242 @@ export default function Publichome() {
         }
       }
     }
+  `;
+  const MainWrapper1=styled.main`
+  main {
+    background: url(${mainimage3});
+    background-size: cover;
+    line-height: 3rem;
+    height: 100vh;
+    color: white;
+    section {
+      position: relative;
+      top: 23%;
+      margin-left: 11%;
+
+      h3 {
+        letter-spacing: 3px;
+        font-weight: 400;
+      }
+      .hash {
+        display: flex;
+        align-items: center;
+        img {
+          width: 50px;
+          margin-right: 5px;
+        }
+      }
+      h1 {
+        letter-spacing: 2px;
+        font-size: 3rem;
+      }
+      .nigeria {
+        letter-spacing: 0px !important;
+      }
+      button {
+        margin-top: 1.5rem;
+        width: 127px;
+        height: 49.2px;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
+        &:hover {
+          background: transparent;
+          border: 1px solid #ff2c5a;
+        }
+      }
+    }
+  }
+
+  .download-box{
+    padding:30px 0px;
+    p{
+      letter-spacing:2px;
+      font-size:16px;
+      font-weight:500;
+
+    }
+    .downlaod-btn{
+      display:flex;
+      gap:10px;
+
+      img{
+        width:170px;
+        height:50px;
+      }
+      @media(max-width:400px){
+       img{
+        width:150px;
+       }
+      }
+    }
+  }
+  /* Media quary for Smart Phone responsive  */
+  main {
+    @media (min-width: 320px) and (max-width: 480px) {
+      section {
+     
+      }
+    }
+  }
+  /* media quary for Tablats responsive  */
+  @media (min-width: 481px) and (max-width: 768px) {
+    section {
+      
+    }
+  }
+  /* media quary for laptop responsive  */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    section {
+      
+  }
+  /* media quary for large laptop responsive  */
+  @media (min-width: 1025px) and (max-width: 1200px) {
+    section {
+      
+      h3 {
+        font-size: 3rem;
+      }
+      .hash {
+        img {
+          width: 100px !important;
+        }
+      }
+      h1 {
+        font-size: 6rem !important;
+        line-height: 6.5rem;
+      }
+      button {
+        font-size: 2rem;
+        font-weight: 100;
+        width: 300px !important;
+        height: 70px !important;
+      }
+    }
+  }
+ 
+
+
+  `;
+  const MainWrapper2=styled.main`
+  main {
+    background: url(${mainimage2});
+    background-size: cover;
+    line-height: 3rem;
+    height: 100vh;
+    color: white;
+    section {
+      position: relative;
+      top: 23%;
+      margin-left: 11%;
+
+      h3 {
+        letter-spacing: 3px;
+        font-weight: 400;
+      }
+      .hash {
+        display: flex;
+        align-items: center;
+        img {
+          width: 50px;
+          margin-right: 5px;
+        }
+      }
+      h1 {
+        letter-spacing: 2px;
+        font-size: 3rem;
+      }
+      .nigeria {
+        letter-spacing: 0px !important;
+      }
+      button {
+        margin-top: 1.5rem;
+        width: 127px;
+        height: 49.2px;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
+        &:hover {
+          background: transparent;
+          border: 1px solid #ff2c5a;
+        }
+      }
+    }
+  }
+
+  .download-box{
+    padding:30px 0px;
+    p{
+      letter-spacing:2px;
+      font-size:16px;
+      font-weight:500;
+
+    }
+    .downlaod-btn{
+      display:flex;
+      gap:10px;
+
+      img{
+        width:170px;
+        height:50px;
+      }
+      @media(max-width:400px){
+       img{
+        width:150px;
+       }
+      }
+    }
+  }
+  /* Media quary for Smart Phone responsive  */
+  main {
+    @media (min-width: 320px) and (max-width: 480px) {
+      section {
+     
+      }
+    }
+  }
+  /* media quary for Tablats responsive  */
+  @media (min-width: 481px) and (max-width: 768px) {
+    section {
+      
+    }
+  }
+  /* media quary for laptop responsive  */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    section {
+      
+  }
+  /* media quary for large laptop responsive  */
+  @media (min-width: 1025px) and (max-width: 1200px) {
+    section {
+      
+      h3 {
+        font-size: 3rem;
+      }
+      .hash {
+        img {
+          width: 100px !important;
+        }
+      }
+      h1 {
+        font-size: 6rem !important;
+        line-height: 6.5rem;
+      }
+      button {
+        font-size: 2rem;
+        font-weight: 100;
+        width: 300px !important;
+        height: 70px !important;
+      }
+    }
+  }
+
   `;
   // -----------------------MainWrapper CSS END-------------------------------
 
@@ -408,14 +686,16 @@ export default function Publichome() {
       // position: relative;
       // top: -3rem;
       background: url(${Publicvideobg});
-      background-size: cover;
-      background-repeat: no-repeat;
+      background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
       /* height: 100vh; */
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 0 0 3rem 0;
+    
       margin-bottom: 30px 0px;
 
       .video {
@@ -424,19 +704,9 @@ export default function Publichome() {
         justify-content: center;
         /* height: 80%; */
         width: 80%;
+        padding:40px 0;
         cursor: pointer;
-        &::before {
-          content: "";
-          background-image: url(${LikePlaylogo});
-          background-repeat: no-repeat;
-          background-position: center;
-          position: absolute;
-          top: 12%;
-          left: 8%;
-          width: 250px;
-          height: 150px;
-          z-index: 2;
-        }
+       
         img {
           position: relative;
           top: 23rem;
@@ -485,11 +755,7 @@ export default function Publichome() {
           video {
             width: 100%;
           }
-          &::before {
-            top: 8%;
-            left: 2%;
-            background-size: 50px;
-          }
+         
           img {
             position: relative;
             top: 12rem;
@@ -555,6 +821,7 @@ export default function Publichome() {
   // -----------------------WORK CSS START-------------------------------
 
   const Workwrappper = styled.section`
+  padding:40px;
     section {
       .head {
         display: flex;
@@ -752,6 +1019,9 @@ export default function Publichome() {
       align-items: center;
       .left {
         border-radius: 9px;
+        video{
+          border-radius:10px;
+        }
       }
       .right {
         display: flex;
@@ -883,6 +1153,12 @@ export default function Publichome() {
         gap: 2px;
         margin: 0.7rem 0 0.5rem -0.9rem;
       }
+      p {
+        color: #484848;
+        font-size:13px;
+        font-family:poppins;
+        line-height:25px;
+      }
 
       .left {
         width: 30%;
@@ -922,7 +1198,9 @@ export default function Publichome() {
           .paragraph {
             .para {
               p {
-                color: #484848;
+             
+
+                
               }
             }
           }
@@ -963,6 +1241,8 @@ export default function Publichome() {
             .para {
               p {
                 color: #484848;
+                font-size:13px;
+                font-family:poppins;
               }
             }
           }
@@ -1172,13 +1452,16 @@ export default function Publichome() {
    
   `;
 
+
   /* -------------------------As featured In CSS END-----------------------------  */
 
   return (
     <>
       {/* -----------------------MainWrapper START------------------------------- */}
+      <Slider {...mainwrappersetting}>
 
-      <MainWrapper>
+     <div>
+     <MainWrapper>
         <main>
           <Publicnavbar />
           <section>
@@ -1187,8 +1470,8 @@ export default function Publichome() {
               <img src={hashimg} alt="icon" />
               <h1>Dating site</h1>
             </div>
-            <h1 className="nigeria">in Nigeria</h1>
-            <button>Start Dating</button>
+            <h1 className="nigeria">in {countryname}</h1>
+           
           </section>
           <section>
             <div className="download-box">
@@ -1211,6 +1494,92 @@ export default function Publichome() {
           </section>
         </main>
       </MainWrapper>
+
+     </div>
+     <div>
+     <MainWrapper1>
+        <main>
+        <Publicnavbar />
+        <section>
+            <h3>Find Your Love on the</h3>
+            <div className="hash">
+              <img src={hashimg} alt="icon" />
+              <h1>Dating site</h1>
+            </div>
+            <h1 className="nigeria">in {countryname}</h1>
+           
+          </section>
+          <section>
+            <div className="download-box">
+              <p>Download the official LIKEPLAY-LIKEPLAY App</p>
+              <div className="downlaod-btn">
+                <a href="https://play.google.com/store/apps/details?id=com.sfs.likeplay">
+
+                <img src={playstore} alt=""/>
+                </a>
+                <a href="https://apps.apple.com/us/app/like-play-like-play/id6443514088">
+
+                <img src={appstore} alt=""/>
+                </a>
+                
+                </div> 
+
+
+            </div>
+          
+          </section>
+          
+
+        </main>
+
+      </MainWrapper1>
+
+     </div>
+     <div>
+     <MainWrapper2>
+      <main>
+        <Publicnavbar />
+        <section>
+            <h3>Find Your Love on the</h3>
+            <div className="hash">
+              <img src={hashimg} alt="icon" />
+              <h1>Dating site</h1>
+            </div>
+            <h1 className="nigeria">in {countryname}</h1>
+            {/* <button>Start Dating</button> */}
+          </section>
+          <section>
+            <div className="download-box">
+              <p>Download the official LIKEPLAY-LIKEPLAY App</p>
+              <div className="downlaod-btn">
+                <a href="https://play.google.com/store/apps/details?id=com.sfs.likeplay">
+
+                <img src={playstore} alt=""/>
+                </a>
+                <a href="https://apps.apple.com/us/app/like-play-like-play/id6443514088">
+
+                <img src={appstore} alt=""/>
+                </a>
+                
+                </div> 
+
+
+            </div>
+          
+          </section>
+          
+
+        </main>
+
+      </MainWrapper2>
+
+     </div>
+      
+     
+    
+      </Slider>
+
+
 
       {/* -----------------------MainWrapper END------------------------------- */}
 
@@ -1297,6 +1666,7 @@ export default function Publichome() {
             <div className="video">
               <video
                 width="100%"
+                
                 controls
                 autoplay
                 ref={videoRef}

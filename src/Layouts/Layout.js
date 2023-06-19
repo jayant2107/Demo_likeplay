@@ -5,6 +5,7 @@ import styled from "styled-components";
 import FeedPage from "../Feautres/Home/FeedPage";
 import Settings from "../Feautres/Settings/Settings";
 import { Outlet, useLocation } from "react-router-dom";
+import Navbar from "Components/Navbar";
 
 export default function Layout() {
   const location = useLocation();
@@ -22,7 +23,11 @@ export default function Layout() {
   }, [location]);
 
   return (
-    <>
+    <Mainwrapper>
+      <div className="topnavbar">
+
+    <Navbar />
+      </div>
       <Layoutdesign isRightNav={!rightnav}>
         <div className="left-sidebar">
           <Sidebar />
@@ -36,9 +41,21 @@ export default function Layout() {
           </div>
         )}
       </Layoutdesign>
-    </>
+    </Mainwrapper>
   );
 }
+const Mainwrapper=styled.div`
+.topnavbar{
+  display:none;
+
+}
+@media(max-width:786px){
+  .topnavbar{
+    display:block;
+  }
+}
+
+`
 const Layoutdesign = styled.div`
   display: flex;
   width: 100%;
@@ -63,7 +80,10 @@ const Layoutdesign = styled.div`
   }
   @media(max-width:768px){
     .left-sidebar{
-      display:none;
+      display:absolute;
+      top:8%;
+      width:150px;
+      z-index:2;
     }
     .right-sidebar{
       display:none;
