@@ -103,9 +103,13 @@ import footerbg from "../../Assets/Images/PublicfooterbgPA.svg";
 // hamburger
 import hamburgericon from "../../Assets/Icons/Publichamburger.png";
 import crossicon from "../../Assets/Icons/PubliccrossPA.gif";
+import mainimage2 from '../../Assets/mainwrapper/mainimage2.jpg'
+import mainimage3 from '../../Assets/mainwrapper/mainimage3.jpg'
 
 export default hashimg;
 export {
+  mainimage2,
+  mainimage3,
   footerheart,
   LikePlaylogo,
   hamburgericon,

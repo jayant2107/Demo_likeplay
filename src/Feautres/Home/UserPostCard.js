@@ -450,12 +450,16 @@ const UserPostCard = ({ val,edit=false,getHomePageContent,handleUploadedPosts}) 
         )}
         {/* USER SHOTS / POSTS */}
         {val.shots && postUrl[postUrl.length - 1] === "mp4" ? (
-          <video width="750" height="500" controls>
+          <div className="userPostvideo">
+            <video  controls>
             <source
               src={process.env.REACT_APP_BASEURL_IMAGE + val.shots}
               type="video/mp4"
             />
           </video>
+
+          </div>
+          
         ) : (
           <div className="userPostImg">
             <img
@@ -684,6 +688,9 @@ export const UserPostCardCss = styled.div`
   border-bottom: 1px solid #e2e2e2;
   font-family: "Poppins", sans-serif;
   font-style: normal;
+  @media(max-width:768px){
+    padding:2px;
+  }
 
   .userProfile {
     display: grid;
@@ -740,6 +747,14 @@ export const UserPostCardCss = styled.div`
     span {
       font-weight: 300;
     }
+  }
+  .userPostvideo{
+    height:40rem;
+    video{
+      height:100%;
+      width:100%;
+    }
+    
   }
   .userPostImg {
     margin: 0.6rem 0 0.4rem 0;
