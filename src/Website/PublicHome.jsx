@@ -1268,7 +1268,7 @@ line-height:40px;
                   className="main-image"
                   src={Homecouple}
                   alt=""
-                  style={{width:"100%", height:"100vh"}}
+                  style={{width:"100%", height:"100vh", objectFit:"cover"}}
                
                 />
               </div>
@@ -1280,11 +1280,7 @@ line-height:40px;
                   className="main-image"
                   src={mainimage2}
                   alt=""
-                  style={{
-                    width: "100%",
-                    height: "100vh",
-                    display: "block",
-                  }}
+                  style={{width:"100%", height:"100vh", objectFit:"cover"}}
                 />
               </div>
          
@@ -1295,11 +1291,7 @@ line-height:40px;
                   className="main-image"
                   src={mainimage3}
                   alt=""
-                  style={{
-                    width: "100%",
-                    height: "100vh",
-                    display: "block",
-                  }}
+                  style={{width:"100%", height:"100vh", objectFit:"cover"}}
                 />
               </div>
        
