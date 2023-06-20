@@ -86,7 +86,7 @@ export default function Publichome() {
     ],
   };
   const mainwrappersetting = {
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 1200,
     slidesToShow: 1,
