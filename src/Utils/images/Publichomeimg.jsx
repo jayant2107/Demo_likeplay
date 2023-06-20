@@ -104,10 +104,16 @@ import footerbg from "../../Assets/Images/PublicfooterbgPA.svg";
 import hamburgericon from "../../Assets/Icons/Publichamburger.png";
 import crossicon from "../../Assets/Icons/PubliccrossPA.gif";
 import mainimage2 from '../../Assets/mainwrapper/mainimage2.jpg'
-import mainimage3 from '../../Assets/mainwrapper/mainimage3.jpg'
+import mainimage3 from '../../Assets/mainwrapper/mainimage3.jpg';
+import smmainimage1 from '../../Assets/mainwrapper/smmainimage1.jpeg'
+import smmainimage2 from '../../Assets/mainwrapper/smmainimage2.jpg'
+import smmainimage3 from '../../Assets/mainwrapper/smmainimage3.jpg'
 
 export default hashimg;
 export {
+  smmainimage1,
+  smmainimage2,
+  smmainimage3,
   mainimage2,
   mainimage3,
   footerheart,

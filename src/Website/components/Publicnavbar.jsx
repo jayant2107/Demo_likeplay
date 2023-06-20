@@ -17,7 +17,7 @@ const Navbar = styled.nav`
     left: 0px;
     width: 100%;
     height: 100vh;
-    z-index: 6;
+    z-index: 99;
     overflow: hidden;
     background-color: white;
     scroll-behavior: none;
@@ -79,7 +79,7 @@ const Navbar = styled.nav`
     left: 400;
     width: 100%;
     height: 100vh;
-    z-index: 6;
+    z-index: 99;
     overflow: hidden;
     background-color: white;
     scroll-behavior: none;
@@ -243,14 +243,10 @@ export default function Publicnavbar() {
               })}
               <div className="btn_div">
                 <a href="https://delta.likeplaylikeplay.com/#/">
-                  
-                <button className="btn1" >
-                  Login
-                </button>
+                  <button className="btn1">Login</button>
                 </a>
                 <a href="https://delta.likeplaylikeplay.com/#/">
-
-                <button className="btn2">Join Now</button>
+                  <button className="btn2">Join Now</button>
                 </a>
               </div>
             </ul>
@@ -271,10 +267,8 @@ export default function Publicnavbar() {
                 );
               })}
               <div className="btn_div">
-              <a href="https://delta.likeplaylikeplay.com/#/">
-                <button className="btn1" >
-                  Login
-                </button>
+                <a href="https://delta.likeplaylikeplay.com/#/">
+                  <button className="btn1">Login</button>
                 </a>
 
                 <a href="https://delta.likeplaylikeplay.com/#/">

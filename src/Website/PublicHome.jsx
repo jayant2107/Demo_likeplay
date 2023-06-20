@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Publicnavbar from "../Website/components/Publicnavbar";
@@ -34,6 +34,9 @@ import hashimg, {
   LikePlayTechNovalogo,
   mainimage2,
   mainimage3,
+  smmainimage1,
+  smmainimage2,
+  smmainimage3,
 } from "../Utils/images/Publichomeimg";
 import { appstore, playstore } from "Utils/Images";
 import Slider from "react-slick";
@@ -96,19 +99,15 @@ export default function Publichome() {
     nextArrow: <SampleNextArrow />,
 
   };
+  
 
   const [isPlaying, setIsPlaying] = useState(false);
-  const videoplay = useRef(null);
+ 
   const [countryname, setcountryname] = useState();
-  const [playvideo, setplayvideo] = useState(true);
-  const playing = () => {
-    if (playvideo) {
-      videoplay.current.pause();
-    } else {
-      videoplay.current.play();
-    }
-    setplayvideo(!playvideo);
-  };
+  const [width,setwidth]=useState(window.innerWidth)
+  const ref=useRef()
+  console.log(width);
+
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -119,6 +118,19 @@ export default function Publichome() {
       />
     );
   }
+  useEffect(() => {
+    const handleResize = () => {
+      setwidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  console.log(width,"wwwwwww")
 
   const togglePlay = () => {
     if (videoRef.current.paused) {
@@ -162,7 +174,7 @@ export default function Publichome() {
   top: 33%;
   margin-left: 11%;
   color:white;
-  z-index:99;
+  z-index:1;
 
  .find-love{
   font-size:24px;
@@ -189,6 +201,17 @@ line-height:40px;
    font-weight:600;
    Font family: Poppins;
   }
+  @media(max-width:500px){
+    p{
+
+      font-size:35px;
+      line-height:40px;
+    }
+  }
+
+ 
+ 
+
   .nigeria {
     letter-spacing: 0px !important;
   }
@@ -226,9 +249,19 @@ line-height:40px;
     Font style: Regular;
     margin-block-start: 0em;
     margin-block-end: 0em;
+    line-height:40px;
 
-   
+  }
+  @media(max-width:500px){
+  p{
+    font-size:14px;
+    
+  }
 
+  }
+  @media(max-width:786){
+    font-size:16px;
+    line-height:40px;
   }
   .downlaod-btn{
     display:flex;
@@ -254,49 +287,7 @@ line-height:40px;
       color: white;
      
     }
-    /* Media quary for Smart Phone responsive  */
-    main {
-      @media (min-width: 320px) and (max-width: 480px) {
-        section {
-       
-        }
-      }
-    }
-    /* media quary for Tablats responsive  */
-    @media (min-width: 481px) and (max-width: 768px) {
-      section {
-        
-      }
-    }
-    /* media quary for laptop responsive  */
-    @media (min-width: 769px) and (max-width: 1024px) {
-      section {
-        
-    }
-    /* media quary for large laptop responsive  */
-    @media (min-width: 1025px) and (max-width: 1200px) {
-      section {
-        
-        p{
-          font-size: 3rem;
-        }
-        .hash {
-          img {
-            width: 100px !important;
-          }
-        }
-        p {
-          font-size: 6rem !important;
-          line-height: 6.5rem;
-        }
-        button {
-          font-size: 2rem;
-          font-weight: 100;
-          width: 300px !important;
-          height: 70px !important;
-        }
-      }
-    }
+
   `;
 
   // -----------------------MainWrapper CSS END-------------------------------
@@ -1235,7 +1226,7 @@ line-height:40px;
       {/* -----------------------MainWrapper START------------------------------- */}
 
       <div>
-        <MainWrapper>
+        <MainWrapper ref={ref}>
           <div className="navbar">
             <Publicnavbar />
           </div>
@@ -1264,6 +1255,7 @@ line-height:40px;
           <Slider {...mainwrappersetting}>
          
               <div>
+                {width>500?( 
                 <img
                   className="main-image"
                   src={Homecouple}
@@ -1271,25 +1263,46 @@ line-height:40px;
                   style={{width:"100%", height:"100vh", objectFit:"cover"}}
                
                 />
+                ):(
+                  <img
+                  className="main-image"
+                  src={smmainimage1}
+                  alt=""
+                  style={{width:"100%", height:"100vh", objectFit:"cover"}}
+               
+                />
+
+                )}
+               
               </div>
        
 
        
               <div>
-                <img
+                {width>500?(  <img
                   className="main-image"
                   src={mainimage2}
                   alt=""
                   style={{width:"100%", height:"100vh", objectFit:"cover"}}
                 />
-              </div>
+              ):(  <img
+                className="main-image"
+                src={smmainimage2}
+                alt=""
+                style={{width:"100%", height:"100vh", objectFit:"cover"}}
+              />
+            
+            )
+              }
+            </div>
+              
          
 
        
               <div>
                 <img
                   className="main-image"
-                  src={mainimage3}
+                  src={width>500?mainimage3:smmainimage3}
                   alt=""
                   style={{width:"100%", height:"100vh", objectFit:"cover"}}
                 />
