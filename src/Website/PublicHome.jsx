@@ -277,7 +277,7 @@ line-height:40px;
     @media (min-width: 1025px) and (max-width: 1200px) {
       section {
         
-        h3 {
+        p{
           font-size: 3rem;
         }
         .hash {
@@ -285,7 +285,7 @@ line-height:40px;
             width: 100px !important;
           }
         }
-        h1 {
+        p {
           font-size: 6rem !important;
           line-height: 6.5rem;
         }
