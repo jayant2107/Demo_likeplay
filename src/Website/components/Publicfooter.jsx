@@ -13,10 +13,32 @@ import { appstore, playstore } from "Utils/Images";
 export default function Publicfooter() {
   const navigate = useNavigate();
   const MatchesDetailPage = (name) => {
-    navigate("/Safety", { state: { id: name } });
+    console.log(name, "nameeeee");
+    if (name == "Contact Us") {
+      window.location.href = "mailto:hello@likeplaylikeplay.com";
+    }
+    else if (name =="Press & Media"){
+      window.location.href="mailto: press@likeplaylikeplay.com";
+
+    }
+    else if(name=="Support"){
+      window.location.href="mailto:support@likeplaylikeplay.com";
+
+    }
+    else {
+      navigate("/Safety", {
+        state: {
+          id: name,
+        },
+      });
+    }
   };
   const Country = (name) => {
-    navigate("/Nigeria", { state: { id: name } });
+    navigate("/Nigeria", {
+      state: {
+        id: name,
+      },
+    });
   };
 
   const Footer = styled.footer`
@@ -172,7 +194,6 @@ export default function Publicfooter() {
   `;
   return (
     <>
-   
       <Footer>
         <section>
           <div className="list1">
@@ -186,46 +207,52 @@ export default function Publicfooter() {
           <div className="list">
             <h2>Our Company</h2>
             <ul>
+              {" "}
               {footerdata.map((ele) => {
                 return (
                   <>
+                    {" "}
                     {ele.company &&
                       ele.company.map((e) => {
                         return (
                           <li onClick={() => MatchesDetailPage(e.page)}>
-                            {e.page}
+                            {e.page}{" "}
                           </li>
                         );
-                      })}
+                      })}{" "}
                   </>
                 );
-              })}
+              })}{" "}
             </ul>
           </div>
           <div className="list">
             <ul>
+              {" "}
               {footerdata.map((ele) => {
                 return (
                   <>
+                    {" "}
                     {ele.terms &&
                       ele.terms.map((e) => {
                         return (
                           <li onClick={() => MatchesDetailPage(e.page)}>
-                            {e.page}
+                            {e.page}{" "}
                           </li>
                         );
-                      })}
+                      })}{" "}
                   </>
                 );
-              })}
+              })}{" "}
             </ul>
           </div>
           <div className="list">
             <h2>Countries</h2>
             <ul>
+              {" "}
               {footerdata.map((ele) => {
                 return (
                   <>
+                    {" "}
                     {ele.coutry &&
                       ele.coutry.map((ele) => {
                         return (
@@ -233,14 +260,14 @@ export default function Publicfooter() {
                             <li
                               onClick={() => Country(ele.conturyimageheading)}
                             >
-                              {ele.conturyimageheading}
+                              {ele.conturyimageheading}{" "}
                             </li>
                           </>
                         );
-                      })}
+                      })}{" "}
                   </>
                 );
-              })}
+              })}{" "}
             </ul>
           </div>
           <div className="list5">
@@ -255,17 +282,16 @@ export default function Publicfooter() {
             </div>
             <div className="storeicons">
               <h2>Download App</h2>
-              <div className="download-icons" >
-                <a href='https://play.google.com/store/apps/details?id=com.sfs.likeplay'> 
-              <img src={playstore} alt='' style={{width:'120px'}}/>
+              <div className="download-icons">
+                <a href="https://play.google.com/store/apps/details?id=com.sfs.likeplay">
+                  <img src={playstore} alt="" style={{ width: "120px" }} />
                 </a>
-              <a href="https://apps.apple.com/us/app/like-play-like-play/id6443514088">
-
-              <img src={appstore} alt='' style={{width:'120px'}}/>
-              </a>
+                <a href="https://apps.apple.com/us/app/like-play-like-play/id6443514088">
+                  <img src={appstore} alt="" style={{ width: "120px" }} />
+                </a>
               </div>
             </div>
-            
+
             <div className="copyright">
               <h5>WhatGodcannotdodoesnotexist</h5>
               <h5>copyright@likeplaylikeplay</h5>

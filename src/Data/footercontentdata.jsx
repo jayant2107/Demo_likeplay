@@ -69,7 +69,7 @@ const footercontentdata = [
   },
 
   {
-    page: "Anti-sex trafficking",
+    page: "Anti-Sex Trafficking",
     heading: "LikePlay-LikePlay",
     paragraph: [
       "LikePlay-LikePlay is a platform focused on decency and respect to all persons, and have a zero tolerance for abuse, or exploitation of women and children. You must be above 25 years old to be a user on our platform. ",
@@ -103,10 +103,11 @@ const footercontentdata = [
     page: "Our Refund policy",
     heading: "LikePlay-LikePlay",
     paragraph: [
-      "Many waves of the feminist movement, the fight for female equality is not over yet. In many parts of our continent, underage marriage, Issues like sexual freedom, equal pay, bullying on the internet and harassment still affect women today — and they shouldn’t. At LikePlaylikeplay.com, we believe it’s time to stand behind female empowerment. That’s why we created a dating platform that makes sexism a thing of the past.",
-      "We’re proud to put relationship choice at the core of the love experience. As a company, we create a safe space for women to make decisions about their own bodies. We advocate for their right to choose. As consenting adults, women have the power to choose who they date, when they see them, and what type of relationship they establish, and if they wish to have aa career or run a business that is ok.",
-      "Through our platform, we do more than support empowered dating choices for our users. We challenge the conventional ideas that continue to repress women. Our goal is to protect everyone’s right to establish relationships in their own terms. The best way to champion all women’s rights is to stop judgement over a woman’s lifestyle.",
-      "Simply stated: a woman’s sexual choices are not open to discussion. We reject slut shaming as much as we say no to prude shaming. From social posts to blog entries and links to resources, we’re here to spark an honest conversation on Women’s Rights. Join us on all our channels and share your favorite posts! It’s time to be unapologetic and take a stance against sexism.",
+      "LIKEPLAY NETWORK INC. & AFRICA LIKEPLAY ONLINE PLATFORMS LIMITED does not issue refunds.",
+      "The above is our simple refund policy, and it is done so clearly, so that it may be easy and clearly understood by our users, guests, and visitors.",
+      "Our sole purpose is to use our best efforts on this platform using the tools available to LikePlay to help you find friendship and love. ",
+      "By agreeing to our Terms and Conditions you accept that there is no obligation on our part to go beyond these guideline. ",
+      "We wish all our users love and happiness, LikePlay-LikePlay",
     ],
   },
   {
@@ -119,16 +120,16 @@ const footercontentdata = [
       "Simply stated: a woman’s sexual choices are not open to discussion. We reject slut shaming as much as we say no to prude shaming. From social posts to blog entries and links to resources, we’re here to spark an honest conversation on Women’s Rights. Join us on all our channels and share your favorite posts! It’s time to be unapologetic and take a stance against sexism.",
     ],
   },
-  {
-    page: "Anti-Sex Trafficking",
-    heading: "LikePlay-LikePlay",
-    paragraph: [
-      "Many waves of the feminist movement, the fight for female equality is not over yet. In many parts of our continent, underage marriage, Issues like sexual freedom, equal pay, bullying on the internet and harassment still affect women today — and they shouldn’t. At LikePlaylikeplay.com, we believe it’s time to stand behind female empowerment. That’s why we created a dating platform that makes sexism a thing of the past.",
-      "We’re proud to put relationship choice at the core of the love experience. As a company, we create a safe space for women to make decisions about their own bodies. We advocate for their right to choose. As consenting adults, women have the power to choose who they date, when they see them, and what type of relationship they establish, and if they wish to have aa career or run a business that is ok.",
-      "Through our platform, we do more than support empowered dating choices for our users. We challenge the conventional ideas that continue to repress women. Our goal is to protect everyone’s right to establish relationships in their own terms. The best way to champion all women’s rights is to stop judgement over a woman’s lifestyle.",
-      "Simply stated: a woman’s sexual choices are not open to discussion. We reject slut shaming as much as we say no to prude shaming. From social posts to blog entries and links to resources, we’re here to spark an honest conversation on Women’s Rights. Join us on all our channels and share your favorite posts! It’s time to be unapologetic and take a stance against sexism.",
-    ],
-  },
+  // {
+  //   page: "Anti-Sex Trafficking",
+  //   heading: "LikePlay-LikePlay",
+  //   paragraph: [
+  //     "Many waves of the feminist movement, the fight for female equality is not over yet. In many parts of our continent, underage marriage, Issues like sexual freedom, equal pay, bullying on the internet and harassment still affect women today — and they shouldn’t. At LikePlaylikeplay.com, we believe it’s time to stand behind female empowerment. That’s why we created a dating platform that makes sexism a thing of the past.",
+  //     "We’re proud to put relationship choice at the core of the love experience. As a company, we create a safe space for women to make decisions about their own bodies. We advocate for their right to choose. As consenting adults, women have the power to choose who they date, when they see them, and what type of relationship they establish, and if they wish to have aa career or run a business that is ok.",
+  //     "Through our platform, we do more than support empowered dating choices for our users. We challenge the conventional ideas that continue to repress women. Our goal is to protect everyone’s right to establish relationships in their own terms. The best way to champion all women’s rights is to stop judgement over a woman’s lifestyle.",
+  //     "Simply stated: a woman’s sexual choices are not open to discussion. We reject slut shaming as much as we say no to prude shaming. From social posts to blog entries and links to resources, we’re here to spark an honest conversation on Women’s Rights. Join us on all our channels and share your favorite posts! It’s time to be unapologetic and take a stance against sexism.",
+  //   ],
+  // },
   {
     page: "Help",
     heading: "LikePlay-LikePlay",
@@ -139,16 +140,16 @@ const footercontentdata = [
       "Simply stated: a woman’s sexual choices are not open to discussion. We reject slut shaming as much as we say no to prude shaming. From social posts to blog entries and links to resources, we’re here to spark an honest conversation on Women’s Rights. Join us on all our channels and share your favorite posts! It’s time to be unapologetic and take a stance against sexism.",
     ],
   },
-  {
-    page: "Contact us",
-    heading: "LikePlay-LikePlay",
-    paragraph: [
-      "Many waves of the feminist movement, the fight for female equality is not over yet. In many parts of our continent, underage marriage, Issues like sexual freedom, equal pay, bullying on the internet and harassment still affect women today — and they shouldn’t. At LikePlaylikeplay.com, we believe it’s time to stand behind female empowerment. That’s why we created a dating platform that makes sexism a thing of the past.",
-      "We’re proud to put relationship choice at the core of the love experience. As a company, we create a safe space for women to make decisions about their own bodies. We advocate for their right to choose. As consenting adults, women have the power to choose who they date, when they see them, and what type of relationship they establish, and if they wish to have aa career or run a business that is ok.",
-      "Through our platform, we do more than support empowered dating choices for our users. We challenge the conventional ideas that continue to repress women. Our goal is to protect everyone’s right to establish relationships in their own terms. The best way to champion all women’s rights is to stop judgement over a woman’s lifestyle.",
-      "Simply stated: a woman’s sexual choices are not open to discussion. We reject slut shaming as much as we say no to prude shaming. From social posts to blog entries and links to resources, we’re here to spark an honest conversation on Women’s Rights. Join us on all our channels and share your favorite posts! It’s time to be unapologetic and take a stance against sexism.",
-    ],
-  },
+  // {
+  //   page: "Contact us",
+  //   heading: "LikePlay-LikePlay",
+  //   paragraph: [
+  //     "Many waves of the feminist movement, the fight for female equality is not over yet. In many parts of our continent, underage marriage, Issues like sexual freedom, equal pay, bullying on the internet and harassment still affect women today — and they shouldn’t. At LikePlaylikeplay.com, we believe it’s time to stand behind female empowerment. That’s why we created a dating platform that makes sexism a thing of the past.",
+  //     "We’re proud to put relationship choice at the core of the love experience. As a company, we create a safe space for women to make decisions about their own bodies. We advocate for their right to choose. As consenting adults, women have the power to choose who they date, when they see them, and what type of relationship they establish, and if they wish to have aa career or run a business that is ok.",
+  //     "Through our platform, we do more than support empowered dating choices for our users. We challenge the conventional ideas that continue to repress women. Our goal is to protect everyone’s right to establish relationships in their own terms. The best way to champion all women’s rights is to stop judgement over a woman’s lifestyle.",
+  //     "Simply stated: a woman’s sexual choices are not open to discussion. We reject slut shaming as much as we say no to prude shaming. From social posts to blog entries and links to resources, we’re here to spark an honest conversation on Women’s Rights. Join us on all our channels and share your favorite posts! It’s time to be unapologetic and take a stance against sexism.",
+  //   ],
+  // },
 ];
 
 export default footercontentdata;

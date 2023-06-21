@@ -74,7 +74,7 @@ export default function Publichome() {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
           slidesToScroll: 2,
           initialSlide: 2,
         },
@@ -82,7 +82,7 @@ export default function Publichome() {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -130,7 +130,7 @@ export default function Publichome() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-  console.log(width,"wwwwwww")
+ 
 
   const togglePlay = () => {
     if (videoRef.current.paused) {
@@ -795,6 +795,7 @@ line-height:40px;
       align-items: center;
       .left {
         border-radius: 9px;
+        padding:10px;
         video {
           border-radius: 10px;
         }

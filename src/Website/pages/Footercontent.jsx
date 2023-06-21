@@ -8,7 +8,8 @@ import ResHeaderComponent from "../../Auth/RegistrationPage/ResHeader";
 
 export default function Footercontent() {
   let location = useLocation();
-  console.log(location,"lll");
+  console.log(location.state.id, "iii");
+
   let footerContent = footercontentdata.filter(
     (ele) => ele.page === location.state.id
   );
@@ -25,16 +26,17 @@ export default function Footercontent() {
       z-index: -2;
       // margin-top: -92px;
       width: 100%;
+      min-height: 100vh;
       // height: 100vh;
       background-image: url(${footerbg});
       background-repeat: no-repeat;
       color: white;
-     
+
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-size:cover;
+      background-size: cover;
       &::before {
         content: "";
         position: absolute;
@@ -53,43 +55,41 @@ export default function Footercontent() {
       .head {
         margin-top: 5rem;
         font-family: "Oregano", cursive;
-        letter-spacing:0.05em;
-        line-height:45px;
+        letter-spacing: 0.05em;
+        line-height: 45px;
         margin-bottom: 1rem;
         text-align: center;
-        .heading2{
-          font-size:30px;
-          font-family:"Poppins"
+        .heading2 {
+          font-size: 30px;
+          font-family: "Poppins";
         }
-        .heading1{
-          font-size:40px;
-          font-weight:500;
-          font-family:"Poppins";
-          padding:10px 0px;
+        .heading1 {
+          font-size: 40px;
+
+          font-family: "Josefin Sans", sans-serif;
+          padding: 10px 0px;
         }
       }
       .content {
         position: relative;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: start;
         width: 70%;
-        padding:10px 0px;
+        padding: 10px 0px;
         text-align: center;
-     
+
         gap: 5px;
         z-index: 1;
         img {
-          position: relative;
-          top: 2px;
+          padding: 8px 0px;
         }
         p {
-          font-size: 13px;
+          font-size: 16px;
           font-family: poppins;
           font-weight: 300;
           color: white;
         }
-        
       }
     }
   `;

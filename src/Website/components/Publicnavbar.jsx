@@ -214,6 +214,7 @@ export default function Publicnavbar() {
   // navigate to another page with id match
   const navigate = useNavigate();
   const MatchesDetailPage = (name) => {
+    console.log(name,"name")
     navigate("/Safety", {
       state: {
         id: name,
