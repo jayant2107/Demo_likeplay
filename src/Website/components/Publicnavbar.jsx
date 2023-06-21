@@ -203,7 +203,7 @@ const Navbar = styled.nav`
   }
 `;
 
-export default function Publicnavbar() {
+export default function Publicnavbar({scroll}) {
   // hamburger logic
   const [isOpen, setIsOpen] = useState(false);
 
@@ -215,11 +215,32 @@ export default function Publicnavbar() {
   const navigate = useNavigate();
   const MatchesDetailPage = (name) => {
     console.log(name,"name")
+    if(name=="Features"){
+      scroll("section1")
+
+
+    }
+  else if(name=="How it Works"){
+    scroll("section2")
+  }
+  else if(name=="Help"){
+    window.location.href="mailto:service@likeplaylikeplay.com"
+
+  }
+  else if(name=="Contact us"){
+    window.location.href="mailto:hello@likeplaylikeplay.com"
+
+  }
+  else{
+
     navigate("/Safety", {
       state: {
         id: name,
       },
-    });
+    }
+    );
+  }
+
   };
   return (
     <>

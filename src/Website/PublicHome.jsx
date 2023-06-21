@@ -141,6 +141,18 @@ export default function Publichome() {
       setIsPlaying(false);
     }
   };
+  const sectionref={
+    section1:useRef(null),
+    section2:useRef(null)
+
+  }
+  const scrolldown=(section)=>{
+    sectionref[section]?.current.scrollIntoView({
+      behavior:'smooth'
+    })
+
+
+  }
   const fetchdata = async () => {
     const res = await fetch("https://api.ipregistry.co/?key=r14is3u9jadrvzrg");
     if (res?.status === 200) {
@@ -632,7 +644,7 @@ line-height:40px;
             position: relative;
             top: -20px;
           }
-          &:nth-child(6n + 4) {
+          &:hover {
             background: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
             color: white;
             p {
@@ -1229,7 +1241,7 @@ line-height:40px;
       <div>
         <MainWrapper ref={ref}>
           <div className="navbar">
-            <Publicnavbar />
+            <Publicnavbar  scroll={scrolldown}/>
           </div>
           <section>
             <p className="find-love">Find Your Love on the</p>
@@ -1317,7 +1329,7 @@ line-height:40px;
 
       {/* -------------------------Our Features START-----------------------------  */}
       <Featurewrapper>
-        <section>
+        <section ref={sectionref.section1}>
           <div className="head">
             <h1>Our Features</h1>
             <img src={hearticonPA} alt="" />
@@ -1364,8 +1376,8 @@ line-height:40px;
 
       {/* -------------------------WORK START-----------------------------  */}
 
-      <Workwrappper>
-        <section>
+      <Workwrappper ref={sectionref.section2}>
+        <section >
           <div className="head">
             <h1>How It Works</h1>
             <img src={hearticonPA} alt="" />

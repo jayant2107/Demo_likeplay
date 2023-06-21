@@ -25,6 +25,13 @@ export default function Publicfooter() {
       window.location.href="mailto:support@likeplaylikeplay.com";
 
     }
+    else if(name=="Terms"){
+      navigate("/Privacy")
+    }
+    else if(name=="Help"){
+      window.location.href="mailto:support@likeplaylikeplay.com";
+
+    }
     else {
       navigate("/Safety", {
         state: {
@@ -274,10 +281,22 @@ export default function Publicfooter() {
             <div>
               <h2>Follow us on</h2>
               <div className="social_logo">
+                <a href="https://www.facebook.com/likeplaylikeplaydating/">
+
                 <img src={facebook} alt="" />
+                </a>
+                  <a href="https://www.instagram.com/likeplaylikeplaydating_/"> 
+
                 <img src={instagram} alt="" />
+                  </a>
+                <a href="https://twitter.com/LikePlaydating_">
+
                 <img src={twitter} alt="" />
-                <img src={youtube} alt="" />
+                </a>
+                <a>
+
+                <img src={youtube} alt="https://www.youtube.com/channel/UC4MLcFox6aZ8pDt7BrICJSQ" />
+                </a>
               </div>
             </div>
             <div className="storeicons">

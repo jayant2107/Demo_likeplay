@@ -38,7 +38,7 @@ export default function Publicnavbar2() {
           </div>
           <div className="right">
             <ul>
-              <li>Home</li>
+              <li>Home000</li>
               <li>About us</li>
               <li>Help</li>
               <li>Contect us</li>

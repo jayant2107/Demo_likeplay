@@ -8,7 +8,7 @@ import ResHeaderComponent from "../../Auth/RegistrationPage/ResHeader";
 
 export default function Footercontent() {
   let location = useLocation();
-  console.log(location.state.id, "iii");
+  
 
   let footerContent = footercontentdata.filter(
     (ele) => ele.page === location.state.id

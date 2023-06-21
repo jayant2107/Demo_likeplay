@@ -6,7 +6,19 @@ import secoundnavbar from "../../Data/Publicsecondnavbardata";
 const RightNav = ({ open, handleChange }) => {
   const navigate = useNavigate();
   const MatchesDetailPage = (name) => {
-    navigate("/Safety", { state: { id: name } });
+    console.log(name)
+    if(name=="Help"){
+      window.location.href="mailto:support@likeplaylikeplay.com"
+
+    }
+    else if(name=="Contact us"){
+      window.location.href="mailto:hello@likeplaylikeplay.com"
+
+    }
+    else{
+
+      navigate("/Safety", { state: { id: name } });
+    }
   };
 
   return (

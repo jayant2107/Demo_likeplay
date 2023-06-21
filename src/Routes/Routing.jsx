@@ -39,6 +39,7 @@ import ResgistPage10 from "Auth/RegistrationPage/Rest_page10";
 import ResgistPage15 from "../Auth/RegistrationPage/Rest_page15";
 import ResgistPage13 from "../Auth/RegistrationPage/Rest_page13";
 import ResgistPage16 from "../Auth/RegistrationPage/Rest_page16";
+import PrivacyPolicy from "Data/PrivacyPolicy";
 
 const Routing = () => {
   const value = useSelector((e) => e.LoginSlice.data);
@@ -77,6 +78,7 @@ const Routing = () => {
             <Route path="/ResgistPage13" element={<ResgistPage13 />} />
             <Route path="/ResgistPage15" element={<ResgistPage15 />} />
             <Route path="/ResgistPage16" element={<ResgistPage16 />} />
+            <Route path="/Privacy" element={<PrivacyPolicy/>}/>
 
             <Route path="/Safety" element={<Footercontent />} />
             <Route path="/Nigeria" element={<Country />} />
