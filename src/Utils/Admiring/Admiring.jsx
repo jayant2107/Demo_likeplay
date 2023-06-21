@@ -6,4 +6,4 @@ import  iconchat from '../../Assets/Admirers/messages.png'
 
 
 export default doteicon;
-export {juli,natai,markg, iconchat}
+export {juli,natai,markg,iconchat}
