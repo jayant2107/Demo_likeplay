@@ -26,7 +26,7 @@ export default function Publicfooter() {
 
     }
     else if(name=="Terms"){
-      navigate("/Privacy")
+      navigate("/Terms")
     }
     else if(name=="Help"){
       window.location.href="mailto:support@likeplaylikeplay.com";
@@ -123,12 +123,12 @@ export default function Publicfooter() {
           margin-top: 3rem;
           width: 100%;
           img{
-            width:100px;
+            width:50px;
             height:50px;
           }
           .social_logo{
             display: flex;
-            gap:10px;
+            gap:5px;
           }
           .copyright {
             bottom: 0px;

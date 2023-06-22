@@ -97,15 +97,13 @@ export default function Publichome() {
     autoplay: true,
     touchMove: true,
     nextArrow: <SampleNextArrow />,
-
   };
-  
 
   const [isPlaying, setIsPlaying] = useState(false);
- 
+
   const [countryname, setcountryname] = useState();
-  const [width,setwidth]=useState(window.innerWidth)
-  const ref=useRef()
+  const [width, setwidth] = useState(window.innerWidth);
+  const ref = useRef();
   console.log(width);
 
   function SampleNextArrow(props) {
@@ -123,14 +121,13 @@ export default function Publichome() {
       setwidth(window.innerWidth);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Clean up the event listener
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
- 
 
   const togglePlay = () => {
     if (videoRef.current.paused) {
@@ -141,33 +138,36 @@ export default function Publichome() {
       setIsPlaying(false);
     }
   };
-  const sectionref={
-    section1:useRef(null),
-    section2:useRef(null)
-
-  }
-  const scrolldown=(section)=>{
+  const sectionref = {
+    section1: useRef(null),
+    section2: useRef(null),
+  };
+  const scrolldown = (section) => {
     sectionref[section]?.current.scrollIntoView({
-      behavior:'smooth'
-    })
-
-
-  }
+      behavior: "smooth",
+    });
+  };
   const fetchdata = async () => {
-    const res = await fetch("https://api.ipregistry.co/?key=r14is3u9jadrvzrg");
-    if (res?.status === 200) {
-      if (
-        res?.country?.name.toLowerCase() === "nigeria" ||
-        res?.country?.name.toLowerCase() === "ghana" ||
-        res?.country?.name.toLowerCase() === "south africa" ||
-        res?.country?.name.toLowerCase() === "cote d'ivoire" ||
-        res?.country?.name.toLowerCase() === "congo"
-      ) {
-        setcountryname(res?.country?.name);
+    try {
+      const res = await fetch(
+        "https://api.ipregistry.co/?key=r14is3u9jadrvzrg"
+      );
+      if (res?.status === 200) {
+        if (
+          res?.country?.name.toLowerCase() === "nigeria" ||
+          res?.country?.name.toLowerCase() === "ghana" ||
+          res?.country?.name.toLowerCase() === "south africa" ||
+          res?.country?.name.toLowerCase() === "cote d'ivoire" ||
+          res?.country?.name.toLowerCase() === "congo"
+        ) {
+          setcountryname(res?.country?.name);
+        } else {
+          setcountryname("Nigeria");
+        }
       } else {
-        setcountryname("Nigeria");
       }
-    } else {
+    } catch (e) {
+      console.log(e);
     }
   };
   useEffect(() => {
@@ -807,7 +807,7 @@ line-height:40px;
       align-items: center;
       .left {
         border-radius: 9px;
-        padding:10px;
+        padding: 10px;
         video {
           border-radius: 10px;
         }
@@ -1224,6 +1224,11 @@ line-height:40px;
 
     .slider-box {
       padding: 10px 0px;
+      a{
+        &:focus{
+          outline:none;
+        }
+      }
 
       img {
         width: 120px;
@@ -1241,7 +1246,7 @@ line-height:40px;
       <div>
         <MainWrapper ref={ref}>
           <div className="navbar">
-            <Publicnavbar  scroll={scrolldown}/>
+            <Publicnavbar scroll={scrolldown} />
           </div>
           <section>
             <p className="find-love">Find Your Love on the</p>
@@ -1266,61 +1271,50 @@ line-height:40px;
           </section>
 
           <Slider {...mainwrappersetting}>
-         
-              <div>
-                {width>500?( 
+            <div>
+              {width > 500 ? (
                 <img
                   className="main-image"
                   src={Homecouple}
                   alt=""
-                  style={{width:"100%", height:"100vh", objectFit:"cover"}}
-               
+                  style={{ width: "100%", height: "100vh", objectFit: "cover" }}
                 />
-                ):(
-                  <img
+              ) : (
+                <img
                   className="main-image"
                   src={smmainimage1}
                   alt=""
-                  style={{width:"100%", height:"100vh", objectFit:"cover"}}
-               
+                  style={{ width: "100%", height: "100vh", objectFit: "cover" }}
                 />
+              )}
+            </div>
 
-                )}
-               
-              </div>
-       
-
-       
-              <div>
-                {width>500?(  <img
+            <div>
+              {width > 500 ? (
+                <img
                   className="main-image"
                   src={mainimage2}
                   alt=""
-                  style={{width:"100%", height:"100vh", objectFit:"cover"}}
+                  style={{ width: "100%", height: "100vh", objectFit: "cover" }}
                 />
-              ):(  <img
-                className="main-image"
-                src={smmainimage2}
-                alt=""
-                style={{width:"100%", height:"100vh", objectFit:"cover"}}
-              />
-            
-            )
-              }
-            </div>
-              
-         
-
-       
-              <div>
+              ) : (
                 <img
                   className="main-image"
-                  src={width>500?mainimage3:smmainimage3}
+                  src={smmainimage2}
                   alt=""
-                  style={{width:"100%", height:"100vh", objectFit:"cover"}}
+                  style={{ width: "100%", height: "100vh", objectFit: "cover" }}
                 />
-              </div>
-       
+              )}
+            </div>
+
+            <div>
+              <img
+                className="main-image"
+                src={width > 500 ? mainimage3 : smmainimage3}
+                alt=""
+                style={{ width: "100%", height: "100vh", objectFit: "cover" }}
+              />
+            </div>
           </Slider>
         </MainWrapper>
       </div>
@@ -1377,7 +1371,7 @@ line-height:40px;
       {/* -------------------------WORK START-----------------------------  */}
 
       <Workwrappper ref={sectionref.section2}>
-        <section >
+        <section>
           <div className="head">
             <h1>How It Works</h1>
             <img src={hearticonPA} alt="" />
@@ -1563,11 +1557,11 @@ line-height:40px;
               <img src={thesun} alt="" />
             </a>
           </div>
-          <div className="slider-box">
+          {/* <div className="slider-box">
             <a>
               <img src={thetimes} alt="" />
             </a>
-          </div>
+          </div> */}
           <div className="slider-box">
             <a href=" https://www.vanguardngr.com/2023/03/likeplay-likeplay-com-1-dating-site-in-nigeria-4/">
               <img src={live} alt="" />
@@ -1579,7 +1573,11 @@ line-height:40px;
             </a>
           </div>
           <div className="slider-box">
-            <img src={thegurdian} alt="" />
+            <a
+              href="https://guardian.ng/apo-press-releases/likeplay-likeplay-com-1-dating-site-in-nigeria-offers-you-great-options/"
+            >
+              <img src={thegurdian} alt="" />
+            </a>
           </div>
 
           <div className="slider-box">
