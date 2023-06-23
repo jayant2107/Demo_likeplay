@@ -293,9 +293,9 @@ export default function Publicfooter() {
 
                 <img src={twitter} alt="" />
                 </a>
-                <a>
+                <a href="https://www.youtube.com/channel/UC4MLcFox6aZ8pDt7BrICJSQ">
 
-                <img src={youtube} alt="https://www.youtube.com/channel/UC4MLcFox6aZ8pDt7BrICJSQ" />
+                <img src={youtube} alt="" />
                 </a>
               </div>
             </div>
