@@ -105,7 +105,7 @@ import hamburgericon from "../../Assets/Icons/Publichamburger.png";
 import crossicon from "../../Assets/Icons/PubliccrossPA.gif";
 import mainimage2 from '../../Assets/mainwrapper/mainimage2.jpg'
 import mainimage3 from '../../Assets/mainwrapper/mainimage3.jpg';
-import smmainimage1 from '../../Assets/mainwrapper/smmainimage1.jpeg'
+import smmainimage1 from '../../Assets/mainwrapper/smmainimage1.jpg'
 import smmainimage2 from '../../Assets/mainwrapper/smmainimage2.jpg'
 import smmainimage3 from '../../Assets/mainwrapper/smmainimage3.jpg'
 
