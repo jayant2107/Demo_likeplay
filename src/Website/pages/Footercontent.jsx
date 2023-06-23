@@ -9,16 +9,18 @@ import ResHeaderComponent from "../../Auth/RegistrationPage/ResHeader";
 export default function Footercontent() {
   let location = useLocation();
   
+  
 
   let footerContent = footercontentdata.filter(
-    (ele) => ele.page === location.state.id
+    (ele) => ele.page === location?.state?.id
   );
   console.log(footerContent);
 
   // page start on the top
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
+    window.scrollTo(0, 0)
+  }, [])
+
   // ----------------------------styleing--------------------------
   const Footercontent = styled.section`
     section {

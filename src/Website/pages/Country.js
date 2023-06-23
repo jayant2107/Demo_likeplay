@@ -7,13 +7,15 @@ import Publicfooter from "../components/Publicfooter";
 
 export default function Country() {
   let location = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
-  console.log(location);
+  const id=location?.state?.id
+  useEffect(()=>{
+    window.scroll(0,0)
+  },[id])
+ 
+  
 
   const newArray = Nigeria.filter(
-    (ele) => ele.conturyimageheading === location.state.id
+    (ele) => ele.conturyimageheading === location.state?.id
   );
   console.log(newArray);
   const Contorywrapper = styled.section`
@@ -26,20 +28,43 @@ export default function Country() {
         padding: 1rem 0 0rem;
         font-size: 1.5rem;
         text-align: center;
+        font-family:poppins;
+        font-weight:400;
       }
       .top-img {
         display: flex;
         flex-direction: column;
         align-items: center;
+        letter-spacing:2px;
+        position: relative;
+        padding:10px 0px;
         h1 {
           font-size: 3rem;
           color: white;
-          position: relative;
+          position: absolute;
+          z-index:99;
           top: 10rem;
-          font-weight: bolder;
+          font-weight: 500;
+          font-family:poppins;
+
         }
         img {
-          width: 80%;
+          width: 90%;
+          height:100%;
+          position: relative;
+        }
+        @media(max-width:500px){
+          h1{
+            top:40%;
+            font-size:1.5rem;
+          }
+        
+        }
+        @media(max-width:1000px){
+          h1{
+            top:40%;
+            font-size:2rem;
+          }
         }
       }
       .paragraph {
@@ -53,6 +78,7 @@ export default function Country() {
           align-items: start;
           gap: 10px;
           color: #484848;
+          font-family:poppins;
           width: 77%;
           img {
             position: relative;

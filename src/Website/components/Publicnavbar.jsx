@@ -217,11 +217,13 @@ export default function Publicnavbar({scroll}) {
     console.log(name,"name")
     if(name=="Features"){
       scroll("section1")
+      hamburger()
 
 
     }
   else if(name=="How it Works"){
     scroll("section2")
+    hamburger()
   }
   else if(name=="Help"){
     window.location.href="mailto:service@likeplaylikeplay.com"

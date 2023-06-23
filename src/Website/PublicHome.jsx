@@ -47,7 +47,7 @@ export default function Publichome() {
   const navigate = useNavigate();
   const Country = (name) => {
     console.log(name);
-    navigate("/Nigeria", { state: { id: name } });
+    navigate("/country", { state: { id: name } });
   };
 
   // video logic
@@ -819,6 +819,7 @@ line-height:40px;
         width: 100%;
         .head {
           display: flex;
+          padding:0px 10px;
           h1 {
             font-size: 2.4rem;
           }
@@ -875,6 +876,7 @@ line-height:40px;
         .right {
           padding: 1rem;
           .head {
+           
             margin: 1rem;
             img {
               top: -30px;

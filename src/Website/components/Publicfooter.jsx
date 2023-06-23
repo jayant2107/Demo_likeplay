@@ -41,7 +41,7 @@ export default function Publicfooter() {
     }
   };
   const Country = (name) => {
-    navigate("/Nigeria", {
+    navigate("/country", {
       state: {
         id: name,
       },

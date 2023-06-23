@@ -83,7 +83,7 @@ const Routing = () => {
             <Route path="/Terms" element={<TermsCond/>}/>
 
             <Route path="/Safety" element={<Footercontent />} />
-            <Route path="/Nigeria" element={<Country />} />
+            <Route path="/country" element={<Country />} />
           </Route>
           <Route element={<PrivateRouter isAuth={prop} />}>
             <Route path="/MyProfileEdit" element={<EditPofileDetails />} />
