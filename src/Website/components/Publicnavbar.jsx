@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import navbarlist from "../../Data/navbardata";
 // import { LikePlaylogo } from "../Utils/images/Publichomeimg";
@@ -213,17 +213,37 @@ export default function Publicnavbar({scroll}) {
 
   // navigate to another page with id match
   const navigate = useNavigate();
+  const [width,setwidth]=useState(window.innerWidth)
+  console.log(width,"www")
+  useEffect(() => {
+    const handleResize = () => {
+      setwidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   const MatchesDetailPage = (name) => {
     console.log(name,"name")
     if(name=="Features"){
       scroll("section1")
-      hamburger()
+      if(width<1020){
+
+        hamburger()
+      }
 
 
     }
   else if(name=="How it Works"){
     scroll("section2")
-    hamburger()
+    if(width<1020){
+
+      hamburger()
+    }
   }
   else if(name=="Help"){
     window.location.href="mailto:service@likeplaylikeplay.com"
