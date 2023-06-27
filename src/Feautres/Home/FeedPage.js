@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 import moment from "moment/moment";
 import { NoRecords } from "Style/comman_Css";
 import { useSelector } from "react-redux";
+import { Nodata } from "Components/Nodata";
 
 const FeedPage = () => {
   // const [like, setLike] = useState(false);
@@ -185,7 +186,7 @@ const FeedPage = () => {
               </>
             );
           }):
-          <NoRecords>No Record Found</NoRecords>
+          <Nodata>No Record Found</Nodata>
         )}
       </Feedpagewrapper>
     </>

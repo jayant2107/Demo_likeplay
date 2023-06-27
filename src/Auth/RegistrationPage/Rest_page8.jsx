@@ -101,7 +101,7 @@ const ResgistPage8 = () => {
           style={{ top: 65 }}
           width="40%"
         >
-          <GovtIDVerifyModal closeModal={closeModal}/>
+          <GovtIDVerifyModal closeModal={closeModal} Next={Next}/>
         </Modal>
       )}
       {mobileModal === "pass" && (

@@ -2,19 +2,50 @@ import styled from "styled-components";
 import StyledButton from "../Components/Button";
 import { add } from "../Utils/images/Modalsimg";
 import React, { useState } from "react";
+import { govtidverification } from "Services/collection";
+import { toast } from "react-toastify";
 
-export default function GovtIDVerifyModal({ closeModal }) {
+export default function GovtIDVerifyModal({ closeModal ,Next}) {
   const [doc,setDoc] = useState();
+  const [frontimageprev,setfrontimageprev]=useState()
+  const [backimageprev,setbackimageprev]=useState()
   const [docBack,setDocBack] = useState();
   
   
   const handleGovtDoc = (e) => {
       setDoc(URL.createObjectURL(e.target.files[0])) 
+      setfrontimageprev(e.target.files)
   };  
   const handleGovtDoc2 = (e) => {
     setDocBack(URL.createObjectURL(e.target.files[0]))
+    setbackimageprev(e.target.files)
 };  
-  console.log(doc);
+  console.log(frontimageprev,"dfghgfdfd");
+
+  const handlesumbit=async()=>{
+    let formdata= new FormData();
+    formdata.append("government_id_front_side",frontimageprev?.[0],frontimageprev?.[0]?.name)
+    formdata.append("government_id_back_side",backimageprev?.[0],backimageprev?.[0]?.name)
+    formdata.append("isUserVerified",true)
+
+    
+
+    const res=await govtidverification(formdata)
+    if(res?.status==200){
+      
+     
+      toast.success(res?.message)
+   Next()
+
+    }
+    else{
+      closeModal()
+      console.log(res)
+      toast.error(res?.message)
+
+    }
+
+  }
 
   return (
     <>
@@ -79,7 +110,7 @@ export default function GovtIDVerifyModal({ closeModal }) {
             <StyledButton
               text="white"
               bg="linear-gradient(#ff483c 100%, #ff2c5a 100%)"
-              onClick={closeModal}
+              onClick={handlesumbit}
             >
               Submit
             </StyledButton>

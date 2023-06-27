@@ -7,6 +7,7 @@ import Loader from "Components/Loader";
 import moment from "moment";
 import {  Modal } from 'antd';
 import { AiOutlineWarning } from "react-icons/ai";
+import { Nodata } from "Components/Nodata";
 
 
 
@@ -87,9 +88,7 @@ export default function Notification() {
       <NotificationContainer>
         {loading?(
           <Loader/>
-        ):(<>
-        
-        {notificationlist?.map((el)=>{
+        ):(<>{notificationlist.length>0?( notificationlist?.map((el)=>{
           const image=process.env.REACT_APP_BASEURL_IMAGE +el?.send_by?.user_images_while_signup[0]?.image_url
           
 
@@ -111,8 +110,10 @@ export default function Notification() {
           </section>
           )
 
-        })}
+        })
+        ):(<Nodata>No Data Found</Nodata>)}
         
+       
         </>
         )}
        
