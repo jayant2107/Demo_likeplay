@@ -118,7 +118,7 @@ export const FeedMyProfileCss = styled.div`
 
 export const LoginProfileCss = styled.div`
   width: 100%;
-  height: 125px;
+ 
   display: grid;
   grid-template-columns: 86px auto;
   border-bottom: 1px solid #e2e2e2;
@@ -135,7 +135,7 @@ export const LoginProfileCss = styled.div`
     }
   }
   .detailsDiv {
-    height: 86px;
+    
     position: relative;
     font-family: "Poppins";
     font-style: normal;
@@ -151,6 +151,9 @@ export const LoginProfileCss = styled.div`
     line-height: 35px;
     letter-spacing: 0.05em;
     color: #242424;
+    @media(max-width:768px){
+      font-size:18px;
+    }
   }
   .userdata {
     font-size: 13px;

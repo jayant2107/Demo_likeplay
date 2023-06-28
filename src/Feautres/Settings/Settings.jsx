@@ -26,7 +26,47 @@ const Settings = () => {
         <div className="Header">
           <div className="Setting">Settings</div>
         </div>
+        <div className="topbar">
+            <div>
+              <button onClick={()=>setBtn("Reset")}>
+                Reset Password
+              </button>
+
+            </div>
+            <div>
+              <button>
+               Refer Friends
+              </button>
+
+            </div>
+            <div>
+              <button>
+                Reset Password
+              </button>
+
+            </div>
+            <div>
+              <button>
+               Upgrade my Subscription
+              </button>
+
+            </div>
+            <div>
+              <button>
+               Blocked Users
+              </button>
+
+            </div>
+            <div>
+              <button>
+               Cancel Subscription
+              </button>
+
+            </div>
+
+          </div>
         <div className="mainContainer">
+        
           <div className="SetLeft">
             <div className="Setfir">
               <div>
@@ -171,8 +211,12 @@ const Wrapper = styled.div`
   .deleteac {
     margin-left: 0.5rem;
   }
+  .topbar{
+    display:flex;
+    gap:5px;
+  }
   .DivDele {
-    width: 228px;
+    width: 100%;
     height: 58px;
   }
   .Header {
@@ -205,7 +249,7 @@ const Wrapper = styled.div`
   }
   .Header .Setting {
     height: 100%;
-    width: 30%;
+    width: 20%;
     display: flex;
     align-items: center;
     padding-left: 22px;
@@ -221,7 +265,7 @@ const Wrapper = styled.div`
     padding: 3rem 0rem;
   }
   .SetLeft {
-    width: 30%;
+    width: 20%;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -230,7 +274,7 @@ const Wrapper = styled.div`
     border-right: 1px solid #e2e2e2;
   }
   .NormalBtn {
-    width: 228px;
+    width: 100%;
     height: 58px;
     padding: 3% 5%;
     border: none;
@@ -240,7 +284,7 @@ const Wrapper = styled.div`
     border: 10px solid;
     border-image-slice: 1;
     border-width: 5px;
-    width: 228px;
+    width: 100%;
     height: 58px;
     padding: 3% 5%;
     font-weight: 600;
@@ -251,7 +295,7 @@ const Wrapper = styled.div`
     border-image-source: linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
   }
   .SetRight {
-    width: 65%;
+    width: 80%;
   }
 
   .left {

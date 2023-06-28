@@ -198,10 +198,10 @@ const FeedAboutMeCss = styled.div`
   }
   .pics {
     display: grid;
-    grid-template-columns: 18.5% 18.5% 18.5% 18.5% 18.5%;
+    grid-template-columns: repeat(auto-fill, 150px);
     justify-content: space-between;
     width: 100%;
-    height: 10rem;
+    
   }
   .picsDiv {
     width: 100%;

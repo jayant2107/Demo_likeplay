@@ -41,6 +41,7 @@ import ResgistPage13 from "../Auth/RegistrationPage/Rest_page13";
 import ResgistPage16 from "../Auth/RegistrationPage/Rest_page16";
 import PrivacyPolicy from "Data/PrivacyPolicy";
 import TermsCond from "Data/TermsCond";
+import Navbar from "Components/Navbar";
 
 const Routing = () => {
   const value = useSelector((e) => e.LoginSlice.data);
@@ -88,6 +89,7 @@ const Routing = () => {
           <Route element={<PrivateRouter isAuth={prop} />}>
             <Route path="/MyProfileEdit" element={<EditPofileDetails />} />
             <Route path="/Layout" element={<Layout />}>
+              <Route path="/Layout/navbar" element={<Navbar/>}/>
               <Route path="/Layout/FeedPage" element={<FeedPage />} />
               <Route path="/Layout/MyProfile" element={<FeedMyProfile />} />
               <Route path="/Layout/Matches" element={<Matches />} />

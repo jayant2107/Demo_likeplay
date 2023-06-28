@@ -60,6 +60,7 @@ const Mainwrapper=styled.div`
     width: 100%;
     background: white;
     display:block;
+    border-bottom:1px solid #E2E2E2;
   }
 }
 
@@ -89,7 +90,7 @@ const Layoutdesign = styled.div`
   @media(max-width:768px){
     .left-sidebar{
       display:${({open})=>open?"absolute":"none"};
-      top:5%;
+      top:8%;
       width:150px;
       z-index:2;
     }
@@ -100,6 +101,7 @@ const Layoutdesign = styled.div`
       width:100%;
       margin-left:0%;
       margin-right:0%;
+      margin-top:50px;
     }
 
   }

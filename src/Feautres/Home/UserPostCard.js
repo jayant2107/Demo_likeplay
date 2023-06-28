@@ -780,6 +780,9 @@ export const UserPostCardCss = styled.div`
       line-height: 18px;
       letter-spacing: 0.05em;
       color: #7b7f91;
+      @media(max-width:768px){
+        font-size:10px;
+      }
     }
   }
 
@@ -809,7 +812,7 @@ export const UserPostCardCss = styled.div`
       align-items: center;
     }
     .arrow {
-      margin-left: 2rem;
+     
     }
   }
 `;
