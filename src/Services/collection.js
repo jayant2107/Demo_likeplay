@@ -76,6 +76,8 @@ const passwordchange='/user/changeUserPassword'
 
 const blocklisting='/user/blockUsersListing'
 
+const govtid='/user/governmentIdVerification'
+
 
 export const getHomePagePost = () => {
   return getApi(`${HOME_PAGE_POSTS}`);
@@ -228,4 +230,8 @@ export const changeUserPassword=(payload)=>{
 
 export const blockeduserlisting=(payload)=>{
   return getApi(blocklisting,payload)
+}
+
+export const govtidverification=(payload)=>{
+  return postApi(govtid,payload)
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Modal } from "antd";
 import styled from "styled-components";
 import { ButtonStyle } from "Auth/RegistrationPage/style";
-import arrowRight from "../Assets/Registration/arrowRight.png";
+import {arrowRight} from '../Utils/icons-folder/Modalsicons'
 
 const Rest_page14Modal = ({ show, changeModal}) => {
   return (

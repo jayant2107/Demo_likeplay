@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import bgimg from "../Assets/Registration/forgetEmailBg.png";
+// import bgimg from "../Assets/Registration/forgetEmailBg.png";
 import ResHeaderComponent from "./RegistrationPage/ResHeader";
 import { RisgistionBgImg } from "./RegistrationPage/style";
 
 const ForgetPageMessage = () => {
   return (
     <>
-      <RisgistionBgImg height="100vh" imgUrl={bgimg}>
+      <RisgistionBgImg height="100vh" >
         <ResHeaderComponent />
         <ForgetrPageMessageCss>
           <div>

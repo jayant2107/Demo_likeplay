@@ -1,37 +1,37 @@
-import Artboard1 from "../../Assets/Images/Artboard1.png";
-import Artboard2 from "../../Assets/Images/Artboard2.png";
-import Artboard3 from "../../Assets/Registration/Artboard3.png";
-import Artboard4 from "../../Assets/Registration/Artboard4.png";
-import Artboard5 from "../../Assets/Images/Artboard5.png";
-import Artboard6 from "../../Assets/Images/Artboard6.png";
-import Artboard7 from "../../Assets/Registration/Artboard7.png";
-import Artboard8 from "../../Assets/Registration/Artboard8.png";
-import Artboard9 from "../../Assets/Registration/Artboard9.png";
-import Artboard10 from "../../Assets/Registration/Artboard10.png";
-import Artboard11 from "../../Assets/Registration/Artboard11.png";
-import Artboard12 from "../../Assets/Registration/Artboard12.png";
-import Artboard121 from "../../Assets/Registration/Artboard121.png";
-import Artboard122 from "../../Assets/Registration/Artboard122.png";
-import Artboard13 from "../../Assets/Registration/Artboard13.png";
-import Artboard14Completefrom from "../../Assets/Registration/Artboard14Completefrom.png";
-import AartboardDitals from "../../Assets/Registration/ArtboardDetials.png";
-import img1_7 from "../../Assets/Registration/Art7.png";
-import img2_7 from "../../Assets/Registration/Arti7.png";
-import img3_7 from "../../Assets/Registration/Group7.png";
-import LoginBg from "../../Assets/Registration/LoginBg.png";
-import forgotbg from "../../Assets/Registration/fogotpassword.png";
-import infocircle from "../../Assets/Images/infocircle.png";
-// import loginComplited from '../../Assets/Registration/loginCompleted.png'
+const Artboard1 = "/Assets/Images/Artboard1.png";
+const Artboard2 = "/Assets/Images/Artboard2.png";
+const Artboard3 = "/Assets/Registration/Artboard3.png";
+const Artboard4 = "/Assets/Registration/Artboard4.png";
+const Artboard5 = "/Assets/Images/Artboard5.png";
+const Artboard6 = "/Assets/Images/Artboard6.png";
+const Artboard7 = "/Assets/Registration/Artboard7.png";
+const Artboard8 = "/Assets/Registration/Artboard8.png";
+const Artboard9 = "/Assets/Registration/Artboard9.png";
+const Artboard10 = "/Assets/Registration/Artboard10.png";
+const Artboard11 = "/Assets/Registration/Artboard11.png";
+const Artboard12 = "/Assets/Registration/Artboard12.png";
+const Artboard121 = "/Assets/Registration/Artboard121.png";
+const Artboard122 = "/Assets/Registration/Artboard122.png";
+const Artboard13 = "/Assets/Registration/Artboard13.png";
+const Artboard14Completefrom = "/Assets/Registration/Artboard14Complete=.png";
+const AartboardDitals = "/Assets/Registration/ArtboardDetials.png";
+const img1_7 = "/Assets/Registration/Art7.png";
+const img2_7 = "/Assets/Registration/Arti7.png";
+const img3_7 = "/Assets/Registration/Group7.png";
+const LoginBg = "/Assets/Registration/LoginBg.png";
+const forgotbg = "/Assets/Registration/fogotpassword.png";
+const infocircle = "/Assets/Images/infocircle.png";
+// import loginComplited = '/Assets/Registration/loginCompleted.png'
 
 //------------Icon---------//
 
-import Logimg from "../../Assets/Registration/RestisationIcon/Groupicon.png";
-import heartIcon from "../../Assets/Registration/RestisationIcon/heartIcon.png";
-import facebook from "../../Assets/Registration/RestisationIcon/Groupfackbook.png";
-import email from "../../Assets/Registration/RestisationIcon/GroupEmail.png";
-import pass from "../../Assets/Registration/RestisationIcon/Grouppass.png";
-import photo from "../../Assets/Registration/RestisationIcon/photo.png";
-import Edit from "../../Assets/Registration/RestisationIcon/edit.png";
+const  Logimg = "/Assets/Registration/RestisationIcon/Groupicon.png";
+const  heartIcon = "/Assets/Registration/RestisationIcon/heartIcon.png";
+const  facebook = "/Assets/Registration/RestisationIcon/Groupfackbook.png";
+const  email = "/Assets/Registration/RestisationIcon/GroupEmail.png";
+const  pass = "/Assets/Registration/RestisationIcon/Grouppass.png";
+const  photo = "/Assets/Registration/RestisationIcon/photo.png";
+const  Edit = "/Assets/Registration/RestisationIcon/edit.png";
 
 export default Artboard1;
 export {

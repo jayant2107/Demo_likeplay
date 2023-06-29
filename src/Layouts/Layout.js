@@ -6,10 +6,14 @@ import FeedPage from "../Feautres/Home/FeedPage";
 import Settings from "../Feautres/Settings/Settings";
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "Components/Navbar";
+import { useSelector } from "react-redux";
+
 
 export default function Layout() {
   const location = useLocation();
   const [rightnav, setrightnav] = useState();
+  const open=useSelector(e=>e?.Sidebar?.sidebarstate  )
+ 
 
   useEffect(() => {
     if (
@@ -28,7 +32,7 @@ export default function Layout() {
 
     <Navbar />
       </div>
-      <Layoutdesign isRightNav={!rightnav}>
+      <Layoutdesign isRightNav={!rightnav} open={open}>
         <div className="left-sidebar">
           <Sidebar />
         </div>
@@ -51,7 +55,12 @@ const Mainwrapper=styled.div`
 }
 @media(max-width:786px){
   .topnavbar{
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    background: white;
     display:block;
+    border-bottom:1px solid #E2E2E2;
   }
 }
 
@@ -80,7 +89,7 @@ const Layoutdesign = styled.div`
   }
   @media(max-width:768px){
     .left-sidebar{
-      display:absolute;
+      display:${({open})=>open?"absolute":"none"};
       top:8%;
       width:150px;
       z-index:2;
@@ -92,6 +101,7 @@ const Layoutdesign = styled.div`
       width:100%;
       margin-left:0%;
       margin-right:0%;
+      margin-top:50px;
     }
 
   }

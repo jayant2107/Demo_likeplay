@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 //Image
-import editIcon from "../../Assets/Images/editIcon.png";
+// import editIcon from "../../Assets/Images/editIcon.png";
 
 //FakeData
 import { Images, AboutUser } from "./DataPage";
@@ -22,14 +22,14 @@ const FeedAboutMe = () => {
       <div className="aboutMe">
         <div className="edit-div">
           <p>About me</p>
-          <img src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(6)); navigate('/MyProfileEdit')}} />
+          {/* <img src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(6)); navigate('/MyProfileEdit')}} /> */}
         </div>
         <span>{profile_data?.about_me}</span>
       </div>
 
       <div className="imagesDiv">
         <div className="edit-div">
-          <p>Images</p> <img src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(1)); navigate('/MyProfileEdit')}} />
+          {/* <p>Images</p> <img src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(1)); navigate('/MyProfileEdit')}} /> */}
         </div>
         <div className="pics">
           {profile_data?.user_images_while_signup.map((val, index) => {
@@ -65,7 +65,7 @@ const FeedAboutMe = () => {
               <span>{profile_data.interested_in==="1"?"Female":"Male"}</span>
             </div>
           </div>
-          <img className="editImgIcon" src={editIcon} alt="editicon" />
+          {/* <img className="editImgIcon" src={editIcon} alt="editicon" /> */}
         </div>
       {/* )} */}
       {/* UserDetails */}
@@ -96,7 +96,7 @@ const FeedAboutMe = () => {
             <span>{profile_data?.employment}</span>
           </div>
         </div>
-        <img className="editImgIcon" src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(3)); navigate('/MyProfileEdit')}}  />
+        {/* <img className="editImgIcon" src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(3)); navigate('/MyProfileEdit')}}  /> */}
       </div>
 
       {/* residence */}
@@ -131,7 +131,7 @@ const FeedAboutMe = () => {
             <span>{profile_data?.tribe_to_date}</span>
           </div>
         </div>
-        <img className="editImgIcon" src={editIcon} alt="editicon"  onClick={() =>{dispatch(Countvalue(4)); navigate('/MyProfileEdit')}} />
+        {/* <img className="editImgIcon" src={editIcon} alt="editicon"  onClick={() =>{dispatch(Countvalue(4)); navigate('/MyProfileEdit')}} /> */}
       </div>
 
       {/* age */}
@@ -162,7 +162,7 @@ const FeedAboutMe = () => {
             <span>{profile_data?.employment}</span>
           </div>
         </div>
-        <img className="editImgIcon" src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(5)); navigate('/MyProfileEdit')}}  />
+        {/* <img className="editImgIcon" src={editIcon} alt="editicon" onClick={() =>{dispatch(Countvalue(5)); navigate('/MyProfileEdit')}}  /> */}
       </div>
     </FeedAboutMeCss>
   );
@@ -198,10 +198,10 @@ const FeedAboutMeCss = styled.div`
   }
   .pics {
     display: grid;
-    grid-template-columns: 18.5% 18.5% 18.5% 18.5% 18.5%;
+    grid-template-columns: repeat(auto-fill, 150px);
     justify-content: space-between;
     width: 100%;
-    height: 10rem;
+    
   }
   .picsDiv {
     width: 100%;

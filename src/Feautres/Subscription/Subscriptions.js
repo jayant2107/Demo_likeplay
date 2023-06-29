@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import rectangle from "../../Assets/Images/Akshay/Rect.svg";
+// import rectangle from "../../Assets/Images/Akshay/Rect.svg";
 import ModalLayout from "../../Modals/ModalLayout";
 import { SubscriptionFooter } from "./SubscriptionFooter";
 const Subscription = () => {
@@ -8,7 +8,7 @@ const Subscription = () => {
     <>
       <StyledSubcription>
         <div className="images">
-          <img src={rectangle} alt="" className="backgrnd" />
+          {/* <img src={rectangle} alt="" className="backgrnd" /> */}
         </div>
 
 

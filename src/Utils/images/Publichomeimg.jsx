@@ -1,113 +1,113 @@
 // images
-import LikePlaylogo from "../../Assets/Images/LikePlaylogoPA.svg";
-import Homecouple from "../../Assets/Images/homecouplePA.png";
-import Publicvideobg from "../../Assets/Images/Publicvideobg.svg";
-import hashimg from "../../Assets/Images/hash.svg";
-import vidoedemobg from "../../Assets/Images/PublicvideoDemobg.svg";
-import footerheart from "../../Assets/Icons/PublicFooterHeartPA.svg";
+const LikePlaylogo ="/Assets/Images/LikePlaylogoPA.svg";
+const Homecouple ="/Assets/Images/homecouplePA.png";
+const Publicvideobg ="/Assets/Images/Publicvideobg.svg";
+const hashimg ="/Assets/Images/hash.svg";
+const vidoedemobg ="/Assets/Images/PublicvideoDemobg.svg";
+const footerheart ="/Assets/Icons/PublicFooterHeartPA.svg";
 
 // logo
-import category1 from "../../Assets/Icons/PubliccategoryPA1.svg";
-import category2 from "../../Assets/Icons/PubliccategoryPA2.svg";
-import category3 from "../../Assets/Icons/PubliccategoryPA3.svg";
-import category4 from "../../Assets/Icons/PubliccategoryPA4.svg";
-import category5 from "../../Assets/Icons/PubliccategoryPA5.svg";
-import category6 from "../../Assets/Icons/PubliccategoryPA6.svg";
-import category7 from "../../Assets/Icons/PubliccategoryPA7.svg";
-import category8 from "../../Assets/Icons/PubliccategoryPA8.svg";
-import category9 from "../../Assets/Icons/PubliccategoryPA9.svg";
-import videocall from "../../Assets/Icons/PublicvidoecallPA.svg";
-import category10 from "../../Assets/Icons/PubliccategoryPA10.svg";
-import category11 from "../../Assets/Icons/PubliccategoryPA11.svg";
-// import category12 from "../../Assets/Icons/PubliccategoryPA12.svg";
-import Videoplaybtn from "../../Assets/Icons/PublicvideoplaybtnPA.svg";
-import hearticonPA from "../../Assets/Icons/PublicheartPA.svg";
-import iphone1 from "../../Assets/Images/Publiciphone1PA.svg";
-import iphone2 from "../../Assets/Images/Publiciphone2PA.svg";
-import heartborder from "../../Assets/Images/PublicheartborderPA.svg";
-import likeglow from "../../Assets/Icons/PublicilikeplayglowlogoPA.svg";
-import iphonebg from "../../Assets/Images/PubliciphonebgPA.svg";
+const category1 ="/Assets/Icons/PubliccategoryPA1.svg";
+const category2 ="/Assets/Icons/PubliccategoryPA2.svg";
+const category3 ="/Assets/Icons/PubliccategoryPA3.svg";
+const category4 ="/Assets/Icons/PubliccategoryPA4.svg";
+const category5 ="/Assets/Icons/PubliccategoryPA5.svg";
+const category6 ="/Assets/Icons/PubliccategoryPA6.svg";
+const category7 ="/Assets/Icons/PubliccategoryPA7.svg";
+const category8 ="/Assets/Icons/PubliccategoryPA8.svg";
+const category9 ="/Assets/Icons/PubliccategoryPA9.svg";
+const videocall ="/Assets/Icons/PublicvidoecallPA.svg";
+const category10 ="/Assets/Icons/PubliccategoryPA10.svg";
+const category11 ="/Assets/Icons/PubliccategoryPA11.svg";
+// const category12 ="/Assets/Icons/PubliccategoryPA12.svg";
+const Videoplaybtn ="/Assets/Icons/PublicvideoplaybtnPA.svg";
+const hearticonPA ="/Assets/Icons/PublicheartPA.svg";
+const iphone1 ="/Assets/Images/Publiciphone1PA.svg";
+const iphone2 ="/Assets/Images/Publiciphone2PA.svg";
+const heartborder ="/Assets/Images/PublicheartborderPA.svg";
+const likeglow ="/Assets/Icons/PublicilikeplayglowlogoPA.svg";
+const iphonebg ="/Assets/Images/PubliciphonebgPA.svg";
 // contory images
-import contory1 from "../../Assets/Images/Publiccountry1.svg";
-import part1img1 from "../../Assets/Images/Publicpart1img1PA.svg";
-import part1img2 from "../../Assets/Images/Publicpart1img2PA.svg";
-import part1img3 from "../../Assets/Images/Publicpart1img3PA.svg";
-import part2img1 from "../../Assets/Images/Publicpart2img1.svg";
-import part2img2 from "../../Assets/Images/Publicpart2img2.svg";
-import part2img3 from "../../Assets/Images/Publicpart2img3.svg";
-import part3img1 from "../../Assets/Images/Publicpart3img1.svg";
-import part3img2 from "../../Assets/Images/Publicpart3img2.svg";
-import part3img3 from "../../Assets/Images/Publicpart3img3.svg";
-import contory2 from "../../Assets/Images/Publiccontory2.svg";
-import congopart1img1 from "../../Assets/Images/Publiccongopart1img1PA.svg";
-import congopart1img2 from "../../Assets/Images/Publiccongopart1img2PA.svg";
-import congopart1img3 from "../../Assets/Images/Publiccongopart1img3PA.svg";
-import congopart2img1 from "../../Assets/Images/Publiccongopart2img1PA.svg";
-import congopart2img2 from "../../Assets/Images/Publiccongopart2img2PA.svg";
-import congopart2img3 from "../../Assets/Images/Publiccongopart2img3PA.svg";
-import congopart2img4 from "../../Assets/Images/Publiccongopart2img4PA.svg";
-import congopart2img5 from "../../Assets/Images/Publiccongopart2img5PA.svg";
-import contory3 from "../../Assets/Images/Publiccontory3.svg";
-import ghanapart1img1 from "../../Assets/Images/Publicghanapart1img1PA.svg";
-import ghanapart1img2 from "../../Assets/Images/Publicghanapart1img2PA.svg";
-import ghanapart1img3 from "../../Assets/Images/Publicghanapart1img3PA.svg";
-import ghanapart2img1 from "../../Assets/Images/Publicghanapart2img1PA.svg";
-import ghanapart2img2 from "../../Assets/Images/Publicghanapart2img2PA.svg";
-import ghanapart2img3 from "../../Assets/Images/Publicghanapart2img3PA.svg";
-import ghanapart2img4 from "../../Assets/Images/Publicghanapart2img4PA.svg";
-import ghanapart2img5 from "../../Assets/Images/Publicghanapart2img5PA.svg";
-import contory4 from "../../Assets/Images/Publiccontory4.svg";
-import southpart1img1 from "../../Assets/Images/Publicsouthpart1img1PA.svg";
-import southpart1img2 from "../../Assets/Images/Publicsouthpart1img2PA.svg";
-import southpart1img3 from "../../Assets/Images/Publicsouthpart1img3PA.svg";
-import contory5 from "../../Assets/Images/Publiccontory5.svg";
-import cotepart1img1 from "../../Assets/Images/Publiccotepart1img1PA.svg";
-import cotepart1img2 from "../../Assets/Images/Publiccotepart1img2PA.svg";
-import cotepart1img3 from "../../Assets/Images/Publiccotepart1img3PA.svg";
-import cotepart1img4 from "../../Assets/Images/Publiccotepart1img4PA.svg";
-import cotepart1img5 from "../../Assets/Images/Publiccotepart1img5PA.svg";
+const contory1 ="/Assets/Images/Publiccountry1.svg";
+const part1img1 ="/Assets/Images/Publicpart1img1PA.svg";
+const part1img2 ="/Assets/Images/Publicpart1img2PA.svg";
+const part1img3 ="/Assets/Images/Publicpart1img3PA.svg";
+const part2img1 ="/Assets/Images/Publicpart2img1.svg";
+const part2img2 ="/Assets/Images/Publicpart2img2.svg";
+const part2img3 ="/Assets/Images/Publicpart2img3.svg";
+const part3img1 ="/Assets/Images/Publicpart3img1.svg";
+const part3img2 ="/Assets/Images/Publicpart3img2.svg";
+const part3img3 ="/Assets/Images/Publicpart3img3.svg";
+const contory2 ="/Assets/Images/Publiccontory2.svg";
+const congopart1img1 ="/Assets/Images/Publiccongopart1img1PA.svg";
+const congopart1img2 ="/Assets/Images/Publiccongopart1img2PA.svg";
+const congopart1img3 ="/Assets/Images/Publiccongopart1img3PA.svg";
+const congopart2img1 ="/Assets/Images/Publiccongopart2img1PA.svg";
+const congopart2img2 ="/Assets/Images/Publiccongopart2img2PA.svg";
+const congopart2img3 ="/Assets/Images/Publiccongopart2img3PA.svg";
+const congopart2img4 ="/Assets/Images/Publiccongopart2img4PA.svg";
+const congopart2img5 ="/Assets/Images/Publiccongopart2img5PA.svg";
+const contory3 ="/Assets/Images/Publiccontory3.svg";
+const ghanapart1img1 ="/Assets/Images/Publicghanapart1img1PA.svg";
+const ghanapart1img2 ="/Assets/Images/Publicghanapart1img2PA.svg";
+const ghanapart1img3 ="/Assets/Images/Publicghanapart1img3PA.svg";
+const ghanapart2img1 ="/Assets/Images/Publicghanapart2img1PA.svg";
+const ghanapart2img2 ="/Assets/Images/Publicghanapart2img2PA.svg";
+const ghanapart2img3 ="/Assets/Images/Publicghanapart2img3PA.svg";
+const ghanapart2img4 ="/Assets/Images/Publicghanapart2img4PA.svg";
+const ghanapart2img5 ="/Assets/Images/Publicghanapart2img5PA.svg";
+const contory4 ="/Assets/Images/Publiccontory4.svg";
+const southpart1img1 ="/Assets/Images/Publicsouthpart1img1PA.svg";
+const southpart1img2 ="/Assets/Images/Publicsouthpart1img2PA.svg";
+const southpart1img3 ="/Assets/Images/Publicsouthpart1img3PA.svg";
+const contory5 ="/Assets/Images/Publiccontory5.svg";
+const cotepart1img1 ="/Assets/Images/Publiccotepart1img1PA.svg";
+const cotepart1img2 ="/Assets/Images/Publiccotepart1img2PA.svg";
+const cotepart1img3 ="/Assets/Images/Publiccotepart1img3PA.svg";
+const cotepart1img4 ="/Assets/Images/Publiccotepart1img4PA.svg";
+const cotepart1img5 ="/Assets/Images/Publiccotepart1img5PA.svg";
 
 // contory big img
 
-import publicNigeriaPA from "../../Assets/Images/PublicNigeriaPA.svg";
-import publicCongoPA from "../../Assets/Images/publicCongoPA.svg";
-import publicghanaPA from "../../Assets/Images/publicghanaPA.svg";
-import publicSouthafricaPA from "../../Assets/Images/publicSouthafricaPA.svg";
-import publicCotedIvoirePA from "../../Assets/Images/publicCotedIvoirePA.svg";
+const publicNigeriaPA ="/Assets/Images/PublicNigeriaPA.svg";
+const publicCongoPA ="/Assets/Images/publicCongoPA.svg";
+const publicghanaPA ="/Assets/Images/publicghanaPA.svg";
+const publicSouthafricaPA ="/Assets/Images/publicSouthafricaPA.svg";
+const publicCotedIvoirePA ="/Assets/Images/publicCotedIvoirePA.svg";
 
-import work1 from "../../Assets/Icons/Publicworklogo1PA.svg";
-import work2 from "../../Assets/Icons/Publicworklogo2PA.svg";
-import work3 from "../../Assets/Icons/Publicworklogo3PA.svg";
-import work4 from "../../Assets/Icons/Publicworklogo4PA.svg";
-import work5 from "../../Assets/Icons/Publicworklogo5PA.svg";
-import work6 from "../../Assets/Icons/Publicworklogo6PA.svg";
-import whylikeheart from "../../Assets/Icons/PublicsingleheartPA.svg";
-import linkedin from "../../Assets/Icons/PubliclinkedinPA.svg";
-import facebook from "../../Assets/Icons/PublicfacebookPA.svg";
-import instagram from "../../Assets/Icons/PublicinstagramPA.svg";
-import twitter from "../../Assets/Icons/PublictwitterPA.svg";
-import youtube from "../../Assets/Icons/Publicyoutube.svg";
-import techpoint from "../../Assets/Icons/PublictechpintPA.svg";
-import thisday from "../../Assets/Icons/PublicthisdayPA.svg";
-import thesun from "../../Assets/Icons/PublicthesunPA.svg";
-import thetimes from "../../Assets/Icons/PublictimesPA.svg";
-import live from "../../Assets/Icons/PubliclivePA.svg";
-import thegurdian from "../../Assets/Icons/PublicthegurdianPA.svg";
-import punch from "../../Assets/Icons/PublicpunchPA.svg";
-import LikePlayJbklutselogo from 'Assets/Images/LikePlayJbklutselogo.png'
-import LikePlayTechNovalogo from 'Assets/Images/LikePlayTechNovalogo.jpeg'
+const work1 ="/Assets/Icons/Publicworklogo1PA.svg";
+const work2 ="/Assets/Icons/Publicworklogo2PA.svg";
+const work3 ="/Assets/Icons/Publicworklogo3PA.svg";
+const work4 ="/Assets/Icons/Publicworklogo4PA.svg";
+const work5 ="/Assets/Icons/Publicworklogo5PA.svg";
+const work6 ="/Assets/Icons/Publicworklogo6PA.svg";
+const whylikeheart ="/Assets/Icons/PublicsingleheartPA.svg";
+const linkedin ="/Assets/Icons/PubliclinkedinPA.svg";
+const facebook ="/Assets/Icons/PublicfacebookPA.svg";
+const instagram ="/Assets/Icons/PublicinstagramPA.svg";
+const twitter ="/Assets/Icons/PublictwitterPA.svg";
+const youtube ="/Assets/Icons/Publicyoutube.svg";
+const techpoint ="/Assets/Icons/PublictechpintPA.svg";
+const thisday ="/Assets/Icons/PublicthisdayPA.svg";
+const thesun ="/Assets/Icons/PublicthesunPA.svg";
+const thetimes ="/Assets/Icons/PublictimesPA.svg";
+const live ="/Assets/Icons/PubliclivePA.svg";
+const thegurdian ="/Assets/Icons/PublicthegurdianPA.svg";
+const punch ="/Assets/Icons/PublicpunchPA.svg";
+const LikePlayJbklutselogo = '/Assets/Images/LikePlayJbklutselogo.png'
+const LikePlayTechNovalogo = '/Assets/Images/LikePlayTechNovalogo.jpeg'
 
 //footer and navbar content background image
-import footerbg from "../../Assets/Images/PublicfooterbgPA.svg";
+const footerbg ="/Assets/Images/PublicfooterbgPA.svg";
 
 // hamburger
-import hamburgericon from "../../Assets/Icons/Publichamburger.png";
-import crossicon from "../../Assets/Icons/PubliccrossPA.gif";
-import mainimage2 from '../../Assets/mainwrapper/mainimage2.jpg'
-import mainimage3 from '../../Assets/mainwrapper/mainimage3.jpg';
-import smmainimage1 from '../../Assets/mainwrapper/smmainimage1.jpg'
-import smmainimage2 from '../../Assets/mainwrapper/smmainimage2.jpg'
-import smmainimage3 from '../../Assets/mainwrapper/smmainimage3.jpg'
+const hamburgericon ="/Assets/Icons/Publichamburger.png";
+const crossicon ="/Assets/Icons/PubliccrossPA.gif";
+const mainimage2 = '/Assets/mainwrapper/mainimage2.jpg'
+const  mainimage3 ='/Assets/mainwrapper/mainimage3.jpg';
+const  smmainimage1 = 'Assets/mainwrapper/smmainimage1.jpeg'
+const  smmainimage2 ='/Assets/mainwrapper/smmainimage2.jpg'
+const smmainimage3='/Assets/mainwrapper/smmainimage3.jpg'
 
 export default hashimg;
 export {

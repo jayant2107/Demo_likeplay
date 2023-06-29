@@ -1,8 +1,8 @@
 import axios from "axios";
 import store from "../Store/Store";
 
-const BaseUrl = "https://devapi.likeplaylikeplay.com/"; // process.env.REACT_APP_BASEURL;
-// const BaseUrl ="http://192.168.1.74:8000"
+//const BaseUrl = "https://devapi.likeplaylikeplay.com/"; // process.env.REACT_APP_BASEURL;
+const BaseUrl ="http://192.168.1.132:8000"
 const Api = axios.create({
   timeout: 1000000,
   baseURL: BaseUrl,

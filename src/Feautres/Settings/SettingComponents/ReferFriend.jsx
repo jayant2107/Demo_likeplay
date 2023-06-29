@@ -14,7 +14,7 @@ const ReferFriend = () => {
         </div>
         <div className="willsmith">
           <div className="InnerWillSmith">
-            <div>
+            <div className="refercode">
               <input type="text" className="ReferFrnd"  value={refercode}/>
             </div>
 
@@ -104,7 +104,7 @@ const ReferWrapper = styled.div`
 
   .willsmith {
     border: 1px dotted;
-    width: 335px;
+    
     border: 1px dashed #c8c8c8;
     border-radius: 12px;
     margin-top: 1rem;
@@ -112,6 +112,9 @@ const ReferWrapper = styled.div`
     align-items: flex-start;
     justify-content: center;
     padding: 4px 0px;
+    @media(max-width:550px){
+      width:100%;
+    }
   }
   .InnerWillSmith {
     width: 95%;
@@ -120,8 +123,11 @@ const ReferWrapper = styled.div`
     align-items: center;
     justify-content: center;
   }
+  .refercode{
+    width:100%;
+  }
   .ReferImage {
-    width: 318px;
+    width: 100%;
     height: 296.51px;
     display: flex;
     align-items: center;
@@ -142,26 +148,45 @@ const ReferWrapper = styled.div`
   }
   .BtnFlex {
     display: flex;
+    justify-content: space-around;
+  
+    gap:10px;
   }
   .BtnFlex > div:not(:first-child) {
-    margin-left: 12px;
+  
+    @media(max-width:550px){
+      margin-left:0px;
+    
+    }
   }
   .ReferFrnd {
-    width: 300px;
+    width: 100%;
     height: 56px;
     background: #f0f0f0;
     border-radius: 10px;
     padding-left: 17px;
     font-size: 16px;
     border: none;
+    @media(max-width:550px){
+      width:100%;
+
+    }
   }
   .Commonbtn {
     width: 51px;
     height: 51px;
+    @media(max-width:550px){
+      width:40px;
+      height:40px;
+    }
   }
   .btnSkip {
     width: 142px;
     height: 48px;
+    @media(max-width:550px){
+      width:100%;
+
+    }
   }
 `;
 const Button = styled.button`
@@ -190,4 +215,7 @@ const ButtonSubmit = styled.button`
   border: none;
   color: white;
   font-size: 18px;
+  @media(max-width:550px){
+    padding:10px 30px;
+  }
 `;

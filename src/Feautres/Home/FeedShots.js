@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import Loader from "Components/Loader";
 import moment from "moment";
 import { useSelector } from "react-redux";
+import { Nodata } from "Components/Nodata";
 
 const FeedShots = () => {
   const [loading, setLoading] = useState(true);
@@ -64,11 +65,12 @@ const FeedShots = () => {
     <>
       {loading ? (
         <Loader />
-      ) : (
-        postList.map((val, index) => {
-          return <UserPostCard val={val} key={index} handleUploadedPosts={handleUploadedPosts}/>;
-        })
-      )}
+      ) : (postList?.length>0?(postList.map((val, index) => {
+        return <UserPostCard val={val} key={index} handleUploadedPosts={handleUploadedPosts}/>;
+      })):(<Nodata>No Data Found</Nodata>)
+        
+      )
+      }
     </>
   );
 };

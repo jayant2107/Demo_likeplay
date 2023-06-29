@@ -2,8 +2,8 @@ import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import {Modal} from "antd";
 import MatchesCard from "../../Components/MatchesCard";
-import data from "../../Feautres/Matches/Matches_JSON";
-import search from "../../Assets/Images/Matches Image/search.png";
+// import data from "../../Feautres/Matches/Matches_JSON";
+// import search from "../../Assets/Images/Matches Image/search.png";
 import DatingDetailModal from "../../Modals/DatingDetailModal";
 import {getMatchedUsers} from "Services/collection";
 import Loader from "Components/Loader";
@@ -81,12 +81,12 @@ const Matches = () => {
                     ) : (
                         <div className="Match">
                             <p className="Matches">Matches</p>
-                            <img src={search}
+                            {/* <img src={search}
                                 onClick={
                                     () => setSearchbar(true)
                                 }
                                 alt=""
-                                className="SLogo"/>
+                                className="SLogo"/> */}
                         </div>
                     )
                 } </div>

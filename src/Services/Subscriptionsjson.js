@@ -1,5 +1,5 @@
-import tick from '../Assets/Images/Akshay/Fill 4.png'
-import cross from '../Assets/Icons/Vector (6).svg'
+import {tick }from '../Utils/icons-folder/Modalsicons'
+import {cross }from '../Utils/icons-folder/Modalsicons'
 
 export const subitems = [
     {

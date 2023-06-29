@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { CommentHeartIcon } from "../../Utils/HomeIconsFun";
-import smile from "../../Assets/Images/commentsmile.png";
-import emoji from "../../Assets/Images/emoji.png";
+// import smile from "../../Assets/Images/commentsmile.png";
+// import emoji from "../../Assets/Images/emoji.png";
 
 const CommentCards = ({ details,handleHeartLike }) => {
   const [activeIcon, setActiveIcon] = useState(false);
@@ -24,7 +24,7 @@ const CommentCards = ({ details,handleHeartLike }) => {
             <img src={emoji} alt="smile" />
           </span> */}
           {details?.likeCount>0 && <span className="likes_count">{details.likeCount+1}{" "}Likes</span>}&nbsp;
-          <img src={smile} alt="smile" />
+          {/* <img src={smile} alt="smile" /> */}
         </div>
       </div>
       <div className="heartDiv">

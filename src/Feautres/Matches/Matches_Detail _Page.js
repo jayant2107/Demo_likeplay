@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components';
 import MatchesCard2 from '../../Components/MatchesCard2';
-import search from "../../Assets/Images/Matches Image/search.png"
+// import search from "../../Assets/Images/Matches Image/search.png"
 import { useLocation } from 'react-router-dom';
 import { getMatchedUsers } from 'Services/collection';
 
@@ -19,7 +19,7 @@ const MatchesDetailPage = () => {
       <div className="Header">
         <div className="HDiv">
           <p className="Matches">Matches</p>
-          <img src={search} alt="" className="SLogo" />
+          {/* <img src={search} alt="" className="SLogo" /> */}
         </div>
       </div>
       <div className='Card'>

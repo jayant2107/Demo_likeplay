@@ -9,7 +9,7 @@ import featuresData, {
   homecontory,
 } from "../Data/PublicfeatureData.jsx";
 // video
-import video from "../Assets/Video/Romantic.mp4";
+import {Video }from "../Utils/Video/Video";
 // images
 import hashimg, {
   Homecouple,
@@ -1361,7 +1361,7 @@ line-height:40px;
           <div className="video">
             {/* <img src={Videoplaybtn} alt="" /> */}
             <video controls autoplay ref={videoRef} onClick={() => togglePlay}>
-              <source src={video} type="video/mp4" />
+              <source src={Video} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -1411,7 +1411,7 @@ line-height:40px;
                 ref={videoRef}
                 onClick={() => togglePlay}
               >
-                <source src={video} type="video/mp4" />
+                <source src={Video} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>

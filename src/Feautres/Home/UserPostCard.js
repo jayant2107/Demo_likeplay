@@ -8,9 +8,9 @@ import DeleteData from "../../Modals/ModalData/DeleteShotData";
 import HideData from "../../Modals/ModalData/HideShotData";
 import { Popover } from "antd";
 // images
-import HeartTickImg from "../../Assets/Images/heartTickFeed.png";
-import ThreeDotsImg from "../../Assets/Images/OptionsDotsFeed.png";
-import DownArrowImg from "../../Assets/Images/downArrow.png";
+// import HeartTickImg from "../../Assets/Images/heartTickFeed.png";
+// import ThreeDotsImg from "../../Assets/Images/OptionsDotsFeed.png";
+// import DownArrowImg from "../../Assets/Images/downArrow.png";
 import ReportUserModal from "../../Modals/ReportUserModal";
 //IconsFunctions
 import {
@@ -436,7 +436,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent,handleUploadedPosts}) 
                 open={clicked}
                 onOpenChange={handleClickChange}
               >
-                <img src={ThreeDotsImg} alt="HeartTickImg" />
+                {/* <img src={ThreeDotsImg} alt="HeartTickImg" /> */}
               </Popover>
             </div>
           </div>
@@ -541,7 +541,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent,handleUploadedPosts}) 
               </span>
               <span>{val.totalTags} tags</span>
               <div onClick={() => getTagsList(val.post_id)}>
-                <img className="arrow" src={DownArrowImg} alt="DownArror" />
+                {/* <img className="arrow" src={DownArrowImg} alt="DownArror" /> */}
               </div>
             </Popover>
           </div>
@@ -780,6 +780,9 @@ export const UserPostCardCss = styled.div`
       line-height: 18px;
       letter-spacing: 0.05em;
       color: #7b7f91;
+      @media(max-width:768px){
+        font-size:10px;
+      }
     }
   }
 
@@ -809,7 +812,7 @@ export const UserPostCardCss = styled.div`
       align-items: center;
     }
     .arrow {
-      margin-left: 2rem;
+     
     }
   }
 `;

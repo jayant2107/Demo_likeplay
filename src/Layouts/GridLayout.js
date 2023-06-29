@@ -1,7 +1,4 @@
-import vector from '../Assets/Images/BlackAk.png'
-import vector1 from '../Assets/Icons/VectorAk.svg';
-import vector2 from '../Assets/Icons/VectorAk1.svg';
-import vector3 from '../Assets/Icons/VectorAk2.svg';
+import { vector,vector1,vector2,vector3 } from "Utils/icons-folder/Modalsicons";
 import styled from "styled-components";   
 import { subitems } from "../Services/Subscriptionsjson";
 const GridType = () =>{
