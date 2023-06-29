@@ -1,6 +1,6 @@
 // images
 const LikePlaylogo ="/Assets/Images/LikePlaylogoPA.svg";
-const Homecouple ="/Assets/Images/homecouplePA-min.jpeg";
+const Homecouple ="/Assets/Images/homecouplePA-min.jpg";
 const Publicvideobg ="/Assets/Images/Publicvideobg.svg";
 const hashimg ="/Assets/Images/hash.svg";
 const vidoedemobg ="/Assets/Images/PublicvideoDemobg.svg";
@@ -47,7 +47,7 @@ const congopart2img2 ="/Assets/Images/Publiccongopart2img2PA.svg";
 const congopart2img3 ="/Assets/Images/Publiccongopart2img3PA.svg";
 const congopart2img4 ="/Assets/Images/Publiccongopart2img4PA.svg";
 const congopart2img5 ="/Assets/Images/Publiccongopart2img5PA.svg";
-const contory3 ="/Assets/Images/Publiccontory3.png";
+const contory3 ="/Assets/Images/publicghanaPA.jpg";
 const ghanapart1img1 ="/Assets/Images/Publicghanapart1img1PA.svg";
 const ghanapart1img2 ="/Assets/Images/Publicghanapart1img2PA.svg";
 const ghanapart1img3 ="/Assets/Images/Publicghanapart1img3PA.svg";
@@ -71,7 +71,7 @@ const cotepart1img5 ="/Assets/Images/Publiccotepart1img5PA.svg";
 
 const publicNigeriaPA ="/Assets/Images/PublicNigeriaPA.svg";
 const publicCongoPA ="/Assets/Images/publicCongoPA.svg";
-const publicghanaPA ="/Assets/Images/publicghanaPA.svg";
+const publicghanaPA ="/Assets/Images/publicghanaPA.jpg";
 const publicSouthafricaPA ="/Assets/Images/publicSouthafricaPA.svg";
 const publicCotedIvoirePA ="/Assets/Images/publicCotedIvoirePA.svg";
 
