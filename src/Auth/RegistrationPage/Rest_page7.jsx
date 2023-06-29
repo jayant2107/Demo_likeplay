@@ -3,8 +3,8 @@ import ResHeaderComponent from "./ResHeader";
 
 import { Artboard7 } from "../../Utils/RegistrationImg/Registrationflie";
 import { heartIcon } from "../../Utils/RegistrationImg/Registrationflie";
-import PlusUpload from "Assets/Images/PlusUpload.png";
-import removeImg from "Assets/Images/removeUpload.png";
+// import PlusUpload from "Assets/Images/PlusUpload.png";
+// import removeImg from "Assets/Images/removeUpload.png";
 
 import {
   RisgistionBgImg,
@@ -169,7 +169,7 @@ const ResgistPage7 = () => {
                         </LoaderWrapper>
                       ) : (
                         <>
-                          {imgpre ? (
+                          {/* {imgpre ? (
                             <img
                               className="selectedImg2"
                               src={imgpre}
@@ -181,18 +181,18 @@ const ResgistPage7 = () => {
                               src={PlusUpload}
                               alt="upload"
                             />
-                          )}
+                          )} */}
                         </>
                       )}
                     </label>
-                    {imgpre && (
+                    {/* {imgpre && (
                       <img
                         className="removeUpload"
                         src={removeImg}
                         alt="cross btn"
                         onClick={removeUpload}
                       />
-                    )}
+                    )} */}
                   </div>
 
                   <input

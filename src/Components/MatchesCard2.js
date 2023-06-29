@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import img1 from "../Assets/Images/Matches Image/logo1 (2).png";
+// import { img1 } from "Utils/icons-folder/Modalsicons";
 import { Button } from "antd";
 import { sendRequest } from "Services/collection";
 import { toast } from "react-toastify";
@@ -62,7 +62,7 @@ const MatchesCard2 = ({ props }) => {
             <Button className="button" loading={loading[2]} onClick={()=>handlesubmit(value.id,2,1)}>Entering my eye</Button>
             <Button className="button1" loading={loading[1]}  onClick={()=>handlesubmit(value.id,1,0)} >
               {" "}
-              <img src={img1} alt="" className="img" /> Waive
+              {/* <img src={img1} alt="" className="img" /> Waive */}
             </Button>
           </div>
         </div>

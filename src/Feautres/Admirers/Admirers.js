@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { searchIcon } from "../../Utils/Images";
-import data from "../Matches/Matches_JSON";
+// import data from "../Matches/Matches_JSON";
 import MatchesCard from "../../Components/MatchesCard";
 import AdmirerCards from "./AdmirerCards";
 import { AiOutlineClose, AiOutlineSearch } from "react-icons/ai";

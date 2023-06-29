@@ -4,7 +4,7 @@ import FeedAboutMe from "./FeedAboutMe";
 import FeedShots from "./FeedShots";
 
 // Image
-import editIcon from "../../Assets/Images/editIcon.png";
+// import editIcon from "../../Assets/Images/editIcon.png";
 import { useSelector } from "react-redux";
 import { userProfile_tabs } from "Utils/constant";
 import LikedPosts from "./LikedPosts";

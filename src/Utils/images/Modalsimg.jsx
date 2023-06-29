@@ -1,11 +1,11 @@
-import upload from "../../Assets/Images/uploadAR.png";
-import likesView from "../../Assets/Images/likedview1AR.png";
-import likesView2 from "../../Assets/Images/likedview2AR.png";
-import likesView3 from "../../Assets/Images/likedview3AR.png"
-import add from "../../Assets/Images/add-circleAR.png";
-import comment from "../../Assets/Images/commentAR.png";
-import bullet from "../../Assets/Images/bulletAR.png";
-import likep from "../../Assets/Images/likeAR.png";
+const  upload ="/Assets/Images/uploadAR.png";
+const  likesView ="/Assets/Images/likedview1AR.png";
+const  likesView2 ="/Assets/Images/likedview2AR.png";
+const  likesView3 ="/Assets/Images/likedview3AR.png"
+const  add ="/Assets/Images/add-circleAR.png";
+const  comment ="/Assets/Images/commentAR.png";
+const  bullet ="/Assets/Images/bulletAR.png";
+const  likep ="/Assets/Images/likeAR.png";
 
 export {upload, likesView, likesView2, likesView3,add, comment, bullet, likep};
 

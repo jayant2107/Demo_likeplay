@@ -81,12 +81,13 @@ const ResetPassword = () => {
             ) : null}
             <div className="oldPass">
               <p>Enter New Password</p>
-              <Space direction="vertical">
+              <Space direction="vertical" style={{width:"100%"}}>
                 <Input.Password
                   placeholder="input password"
                   className="InputMeth"
                   id="NewPassword"
                   name="NewPassword"
+                 
                   visibilityToggle={{
                     visible: passwordVisible,
                     onVisibleChange: setPasswordVisible,
@@ -102,7 +103,7 @@ const ResetPassword = () => {
             ) : null}
             <div className="oldPass">
               <p>Confirm New Password</p>
-              <Space direction="vertical">
+              <Space direction="vertical" style={{width:"100%"}}>
                 <Input.Password
                   placeholder="input password"
                   className="InputMeth"
@@ -152,10 +153,15 @@ const ResetPass = styled.div`
     font-size:14px;
   }
 
-  .oldPass p {
-    font-size: 15px;
-    font-weight: 500;
-    color: #242424;
+  .oldPass {
+
+    p {
+      font-size: 15px;
+      font-weight: 500;
+      color: #242424;
+     
+    }
+    
   }
   .InputMeth {
     width: 440px;
@@ -183,6 +189,10 @@ const ResetPass = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    @media(max-width:550px){
+      width:100%;
+    }
+   
   }
   @media (max-width: 1026px) {
     .InputMeth {
@@ -200,8 +210,9 @@ const ResetPass = styled.div`
     }
   }
   @media (max-width: 593px) {
+   
     .InputMeth {
-      width: 190px;
+      width: 100%;
     }
   }
 `;

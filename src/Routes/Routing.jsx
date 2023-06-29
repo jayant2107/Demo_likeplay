@@ -1,4 +1,4 @@
-import React from "react";
+import React,{lazy,Suspense} from "react";
 import {
   BrowserRouter,
   Navigate,
@@ -6,6 +6,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+
 import Settings from "../Feautres/Settings/Settings";
 import Matches from "../Feautres/Matches/Matches";
 import MatchesDetailPage from "../Feautres/Matches/Matches_Detail _Page";
@@ -42,6 +43,8 @@ import ResgistPage16 from "../Auth/RegistrationPage/Rest_page16";
 import PrivacyPolicy from "Data/PrivacyPolicy";
 import TermsCond from "Data/TermsCond";
 import Navbar from "Components/Navbar";
+
+
 
 const Routing = () => {
   const value = useSelector((e) => e.LoginSlice.data);

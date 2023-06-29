@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import exit from "../Assets/Images/Matches Image/exit.png";
+import { exitmodal } from "Utils/icons-folder/Modalsicons";
 
 const CommentModal = ({ show, close, props }) => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const CommentModal = ({ show, close, props }) => {
           {/* <div className="modal-content"> */}
           <div className="ExitButton">
             {" "}
-            <img src={exit} alt="" className="Exit" onClick={close} />{" "}
+            <img src={exitmodal} alt="" className="Exit" onClick={close} />{" "}
           </div>
           <div className="content-container">
             <div className="MainDiv">
