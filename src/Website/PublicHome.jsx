@@ -9,7 +9,7 @@ import featuresData, {
   homecontory,
 } from "../Data/PublicfeatureData.jsx";
 // video
-import {Video }from "../Utils/Video/Video";
+import { Video } from "../Utils/Video/Video";
 // images
 import hashimg, {
   Homecouple,
@@ -819,7 +819,7 @@ line-height:40px;
         width: 100%;
         .head {
           display: flex;
-          padding:0px 10px;
+          padding: 0px 10px;
           h1 {
             font-size: 2.4rem;
           }
@@ -876,7 +876,6 @@ line-height:40px;
         .right {
           padding: 1rem;
           .head {
-           
             margin: 1rem;
             img {
               top: -30px;
@@ -1057,15 +1056,15 @@ line-height:40px;
             content: url(${likeglow});
             position: relative;
             z-index: -2;
-            margin-right: -6rem;
-            top: -3.5rem;
+            margin-right: -7rem;
+            top: -5.5rem;
             left: 10px;
           }
           &:after {
             content: url(${heartborder});
             position: relative;
             z-index: -1;
-            margin-left: -3rem;
+            margin-left: -6px;
           }
         }
       }
@@ -1226,9 +1225,9 @@ line-height:40px;
 
     .slider-box {
       padding: 10px 0px;
-      a{
-        &:focus{
-          outline:none;
+      a {
+        &:focus {
+          outline: none;
         }
       }
 
@@ -1526,6 +1525,7 @@ line-height:40px;
                       backgroundImage: `url(${ele.background})`,
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
                     }}
                   >
                     <h1>{ele.conturyimageheading}</h1>
@@ -1575,9 +1575,7 @@ line-height:40px;
             </a>
           </div>
           <div className="slider-box">
-            <a
-              href="https://guardian.ng/apo-press-releases/likeplay-likeplay-com-1-dating-site-in-nigeria-offers-you-great-options/"
-            >
+            <a href="https://guardian.ng/apo-press-releases/likeplay-likeplay-com-1-dating-site-in-nigeria-offers-you-great-options/">
               <img src={thegurdian} alt="" />
             </a>
           </div>

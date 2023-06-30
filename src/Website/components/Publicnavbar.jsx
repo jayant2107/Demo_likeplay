@@ -30,6 +30,7 @@ const Navbar = styled.nav`
         width: 40px;
       }
     }
+  
     .right_content {
       /* align-items: center !important; */
       /* position: absolute;
@@ -109,6 +110,17 @@ const Navbar = styled.nav`
       height: 60px;
     }
     .right_content {
+      .Join-now{
+        display:none;
+        border-radius:5px;
+        color:white;
+        padding:8px 10px;
+        
+        letter-spacing:1px;
+        border:none;
+        background:linear-gradient(268.55deg, #ff483c 0%, #ff2c5a 100%);
+        
+       }
       ul {
         display: flex;
         align-items: center;
@@ -158,7 +170,17 @@ const Navbar = styled.nav`
       img {
         width: 50px;
       }
+      .right-icons{
+        display:flex;
+        gap:5px;
+        align-items:center;
+
+      }
       .right_content {
+         .Join-now{
+          display:block;
+          font-size:12px;
+         }
         ul {
           display: none;
         }
@@ -172,10 +194,20 @@ const Navbar = styled.nav`
   /* media quary for Tablats responsive  */
   @media (min-width: 481px) and (max-width: 768px) {
     .nav {
+      .right-icons{
+        display:flex;
+        gap:5px;
+        align-items:center;
+
+      }
       img {
         width: 50px;
       }
       .right_content {
+        .Join-now{
+          display:block;
+          font-size:14px;
+         }
         ul {
           display: none;
         }
@@ -191,7 +223,17 @@ const Navbar = styled.nav`
       img {
         width: 50px;
       }
+      .right-icons{
+        display:flex;
+        gap:5px;
+        align-items:center;
+
+      }
       .right_content {
+        .Join-now{
+          display:block;
+          font-size:16px;
+         }
         ul {
           display: none;
         }
@@ -269,8 +311,10 @@ export default function Publicnavbar({scroll}) {
       <Navbar>
         {" "}
         {/* hamburger */}
+      
         <div className={`hamburger ${isOpen ? "open" : ""}`}>
           <div className="cross">
+            
             <img src={crossicon} alt="" onClick={hamburger} />
           </div>
           <div className="right_content">
@@ -320,7 +364,12 @@ export default function Publicnavbar({scroll}) {
                 </a>
               </div>
             </ul>
+            <div className="right-icons">
+
+            <button className="Join-now">Join Now</button>
+            
             <img src={hamburgericon} alt="" onClick={hamburger} />
+            </div>
           </div>
         </div>
       </Navbar>

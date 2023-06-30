@@ -26,10 +26,12 @@ const hearticonPA ="/Assets/Icons/PublicheartPA.svg";
 const iphone1 ="/Assets/Images/Publiciphone1PA.jpg";
 const iphone2 ="/Assets/Images/Publiciphone1PA.jpg";
 const heartborder ="/Assets/Images/PublicheartborderPA.svg";
-const likeglow ="/Assets/Icons/PublicilikeplayglowlogoPA.svg";
+//const likeglow ="/Assets/Icons/PublicilikeplayglowlogoPA.svg";
+const likeglow='/Assets/likeplaylogo/likeplayicon2.png';
 const iphonebg ="/Assets/Images/PubliciphonebgPA.svg";
 // contory images
-const contory1 ="/Assets/Images/Publiccountry1.svg";
+//const contory1 ="/Assets/Images/Publiccountry1.svg";
+const contory1="/Assets/Images/Nigeria.jpg"
 const part1img1 ="/Assets/Images/Publicpart1img1PA.svg";
 const part1img2 ="/Assets/Images/Publicpart1img2PA.svg";
 const part1img3 ="/Assets/Images/Publicpart1img3PA.svg";
@@ -57,11 +59,13 @@ const ghanapart2img2 ="/Assets/Images/Publicghanapart2img2PA.svg";
 const ghanapart2img3 ="/Assets/Images/Publicghanapart2img3PA.svg";
 const ghanapart2img4 ="/Assets/Images/Publicghanapart2img4PA.svg";
 const ghanapart2img5 ="/Assets/Images/Publicghanapart2img5PA.svg";
-const contory4 ="/Assets/Images/Publiccontory4.svg";
+//const contory4 ="/Assets/Images/Publiccontory4.svg";
+const contory4="/Assets/Images/Southafrica.jpg";
 const southpart1img1 ="/Assets/Images/Publicsouthpart1img1PA.svg";
 const southpart1img2 ="/Assets/Images/Publicsouthpart1img2PA.svg";
 const southpart1img3 ="/Assets/Images/Publicsouthpart1img3PA.svg";
-const contory5 ="/Assets/Images/Publiccontory5.svg";
+//const contory5 ="/Assets/Images/Publiccontory5.svg";
+const contory5="/Assets/Images/Cote.jpg"
 const cotepart1img1 ="/Assets/Images/Publiccotepart1img1PA.svg";
 const cotepart1img2 ="/Assets/Images/Publiccotepart1img2PA.svg";
 const cotepart1img3 ="/Assets/Images/Publiccotepart1img3PA.svg";
@@ -96,7 +100,8 @@ const live ="/Assets/Icons/PubliclivePA.svg";
 const thegurdian ="/Assets/Icons/PublicthegurdianPA.svg";
 const punch ="/Assets/Icons/PublicpunchPA.svg";
 const LikePlayJbklutselogo = '/Assets/Images/LikePlayJbklutselogo.png'
-const LikePlayTechNovalogo = '/Assets/Images/LikePlayTechNovalogo.jpeg'
+const LikePlayTechNovalogo = '/Assets/Images/LikePlayTechNovalogo.jpg'
+
 
 //footer and navbar content background image
 const footerbg ="/Assets/Images/PublicfooterbgPA.svg";
