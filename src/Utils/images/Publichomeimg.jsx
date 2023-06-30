@@ -1,5 +1,6 @@
 // images
-const LikePlaylogo ="/Assets/Images/LikePlaylogoPA.svg";
+//const LikePlaylogo ="/Assets/Images/LikePlaylogoPA.svg";
+const LikePlaylogo="/Assets/likeplaylogo/likeplayicon.png";
 const Homecouple ="/Assets/Images/homecouplePA-min.jpg";
 const Publicvideobg ="/Assets/Images/Publicvideobg.svg";
 const hashimg ="/Assets/Images/hash.svg";
