@@ -16,7 +16,7 @@ const PrivacyPolicy = lazy(() => import("Data/PrivacyPolicy"));
 const TermsCond = lazy(() => import("Data/TermsCond"));
 
 const RoutesPage = () => {
-  const value = useSelector((e) => e.LoginSlice.data);
+  const value = useSelector((e) => e?.LoginSlice?.data);
 
   let PublicRouter = ({ isAuth }) => {
     if (isAuth?.token !== undefined) {
