@@ -26,6 +26,7 @@ const RoutesPage = () => {
   };
 
   let prop = value;
+  console.log(prop,"prop")
 
   return (
     <BrowserRouter>

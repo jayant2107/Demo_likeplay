@@ -158,6 +158,7 @@ const Navbar = styled.nav`
         display: none;
         width: 40px;
         height: 40px;
+        
       }
     }
   }
@@ -169,6 +170,8 @@ const Navbar = styled.nav`
       gap: 8rem;
       img {
         width: 50px;
+        height:50px;
+        padding:6px 0px;
       }
       .right-icons{
         display:flex;
@@ -202,6 +205,8 @@ const Navbar = styled.nav`
       }
       img {
         width: 50px;
+        height:50px;
+        padding:6px 0px;
       }
       .right_content {
         .Join-now{
@@ -222,6 +227,8 @@ const Navbar = styled.nav`
     .nav {
       img {
         width: 50px;
+        height:50px;
+        padding:6px 0px;
       }
       .right-icons{
         display:flex;
@@ -259,7 +266,7 @@ export default function Publicnavbar({scroll}) {
   // navigate to another page with id match
   const navigate = useNavigate();
   const [width,setwidth]=useState(window.innerWidth)
-  console.log(width,"www")
+  
   useEffect(() => {
     const handleResize = () => {
       setwidth(window.innerWidth);

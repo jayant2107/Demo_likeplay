@@ -104,7 +104,7 @@ export default function Publichome() {
   const [countryname, setcountryname] = useState();
   const [width, setwidth] = useState(window.innerWidth);
   const ref = useRef();
-  console.log(width);
+  
 
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
