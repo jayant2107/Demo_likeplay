@@ -227,6 +227,9 @@ const Navbar = styled.nav`
         display:flex;
         gap:5px;
         align-items:center;
+        a{
+          text-decoration:none;
+        }
 
       }
       .right_content {
@@ -365,8 +368,10 @@ export default function Publicnavbar({scroll}) {
               </div>
             </ul>
             <div className="right-icons">
+              <a href="https://delta.likeplaylikeplay.com/#/" style={{textDecoration:"none"}}>
 
             <button className="Join-now">Join Now</button>
+              </a>
             
             <img src={hamburgericon} alt="" onClick={hamburger} />
             </div>
