@@ -106,7 +106,7 @@ const hamburgericon ="/Assets/Icons/Publichamburger.png";
 const crossicon ="/Assets/Icons/PubliccrossPA.gif";
 const mainimage2 = '/Assets/mainwrapper/mainimage2.jpg'
 const  mainimage3 ='/Assets/mainwrapper/mainimage3.jpg';
-const  smmainimage1 = 'Assets/mainwrapper/smmainimage1.jpeg'
+const  smmainimage1 = 'Assets/mainwrapper/smmainimage1.jpg'
 const  smmainimage2 ='/Assets/mainwrapper/smmainimage2.jpg'
 const smmainimage3='/Assets/mainwrapper/smmainimage3.jpg'
 
