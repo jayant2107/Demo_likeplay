@@ -77,7 +77,7 @@ const buttonss3 = [ "1 month - 5,000", "1 month - 1,500", "1 month - 2,200", "1 
             )
         })}
         </div>
-        <div className="btn">
+        {/* <div className="btn">
         <div className="Options_but">
             <select className='btn-1'>
                {
@@ -124,7 +124,7 @@ const buttonss3 = [ "1 month - 5,000", "1 month - 1,500", "1 month - 2,200", "1 
                }
             </select>
             </div>
-               </div>
+               </div> */}
         <div className="Button1">
         <div className="Button"><h2 className="BUY-1">Buy</h2></div>
         <div className="Button"><h2 className="BUY-1">Buy</h2></div>
@@ -143,6 +143,7 @@ export default GridType;
 const Wrapper = styled.div`
   width: 100%;
   padding: 1%;
+  min-width:770px;
 
   .hr1 {
     z-index: 100;

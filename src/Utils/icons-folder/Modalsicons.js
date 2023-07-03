@@ -8,7 +8,7 @@ const vector = "/Assets/Images/BlackAk.png";
 const vector1 = "/Assets/Icons/VectorAk.svg";
 const vector2 = "/Assets/Icons/VectorAk1.svg";
 const vector3 = "/Assets/Icons/VectorAk2.svg";
-// const img1 = "/Assets/Images/Matches Image/logo1 (2).png";
+ const img1 = "/Assets/Images/Matches Image/logo1 (2).png";
 const pImg = "/Assets/Images/Chat/profileImg.png";
 const Img1 = "/Assets/Images/Chat/call-calling.png";
 const img2 = "Assets/Images/Chat/video.png";
@@ -32,7 +32,7 @@ export {
   vector1,
   vector2,
   vector3,
-  // img1,
+  img1,
   pImg,
   Img1,
   img2,

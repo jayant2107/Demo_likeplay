@@ -1,150 +1,143 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import {Modal} from "antd";
+import { Modal } from "antd";
 import MatchesCard from "../../Components/MatchesCard";
-// import data from "../../Feautres/Matches/Matches_JSON";
-// import search from "../../Assets/Images/Matches Image/search.png";
+
+ 
 import DatingDetailModal from "../../Modals/DatingDetailModal";
-import {getMatchedUsers} from "Services/collection";
+import { getMatchedUsers } from "Services/collection";
 import Loader from "Components/Loader";
-import {AiOutlineClose} from "react-icons/ai";
-import {object} from "yup";
+import { AiOutlineClose ,} from "react-icons/ai";
+import { BiSearch} from "react-icons/bi";
+import { object } from "yup";
 
 const Matches = () => {
-    const [detailModal, setDetailModal] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [Data, setdata] = useState([]);
-  const [itemArray,setitemArray]=useState([])
-    
-    const [Searchbar, setSearchbar] = useState(false);
-    const [Searchtext, setsearchtext] = useState()
+  const [detailModal, setDetailModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [Data, setdata] = useState([]);
+  const [itemArray, setitemArray] = useState([]);
 
-    const closeDetailModal = () => {
-        setDetailModal(false);
-    };
+  const [Searchbar, setSearchbar] = useState(false);
+  const [Searchtext, setsearchtext] = useState();
 
-    const searchdata = (e) => {
-        setsearchtext(e.target.value) 
-       
-        const FilterData = itemArray?.filter((val) =>val?.partner_data?.name.toLowerCase().includes(e?.target.value.toLowerCase()))
-    
+  const closeDetailModal = () => {
+    setDetailModal(false);
+  };
 
-        if(e.target.value.length>0){
-          setdata(FilterData)}
-        else{
-          matcheduser()
-        } 
+  const searchdata = (e) => {
+    setsearchtext(e.target.value);
+
+    const FilterData = itemArray?.filter((val) =>
+      val?.partner_data?.name
+        .toLowerCase()
+        .includes(e?.target?.value.toLowerCase())
+    );
+
+    if (e.target.value.length > 0) {
+      setdata(FilterData);
+    } else {
+      matcheduser();
     }
+  };
 
+  let matcheduser = async () => {
+    setLoading(true);
 
-    let matcheduser = async () => {
-        setLoading(true);
+    let attributeStatus = 3;
+    let req = await getMatchedUsers(attributeStatus);
+    if (req?.status === 200) {
+      if (req?.data == null) {
+        setLoading(false);
+      } else {
+        setdata(req?.data?.user_data);
+        setitemArray(req?.data?.user_data);
 
-        let attributeStatus = 3;
-        let req = await getMatchedUsers(attributeStatus);
-        if (req?.status === 200) {
-            if (req?.data == null) {
-                setLoading(false);
-             
-            } else {
-                setdata(req?.data?.user_data);
-                setitemArray(req?.data?.user_data)
-                
-                setLoading(false);
-            }
-        } else {
-            setLoading(false);
-          
-        }
-    };
-    useEffect(() => {
-        matcheduser();
-    }, []);
+        setLoading(false);
+      }
+    } else {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    matcheduser()
+  }, []);
 
-
-    return (
-        <MatchesStyle>
-            <div className="Header">
-                <div className="HDiv">
-                    {
-                    Searchbar ? (
-                        <div className="search">
-                            <input className="search-input" placeholder="Search..."
-                                onChange={searchdata}></input>
-                            <AiOutlineClose style={
-                                    {fontSize: '20px'}
-                                }
-                                onClick={
-                                    () => setSearchbar(false)
-                                }/>
-                        </div>
-                    ) : (
-                        <div className="Match">
-                            <p className="Matches">Matches</p>
-                            {/* <img src={search}
+  return (
+    <MatchesStyle>
+      <div className="Header">
+        <div className="HDiv">
+          {Searchbar ? (
+            <div className="search">
+              <input
+                className="search-input"
+                placeholder="Search..."
+                onChange={searchdata}
+              ></input>
+              <AiOutlineClose
+                style={{ fontSize: "20px" }}
+                onClick={() => setSearchbar(false)}
+              />
+            </div>
+          ) : (
+            <div className="Match">
+              <p className="Matches">Matches</p>
+              <BiSearch
                                 onClick={
                                     () => setSearchbar(true)
                                 }
                                 alt=""
-                                className="SLogo"/> */}
-                        </div>
-                    )
-                } </div>
+                                className="SLogo"/>
             </div>
-            {
-            loading ? (
-                <Loader/>) : (
-                <div className="Main">
-                    <div className="Tips">
-                        <p onClick={
-                            () => {
-                                setDetailModal(true);
-                            }
-                        }>
-                            Online dating Tips?
-                        </p>
-                        {
-                        detailModal && (
-                            <Modal open={detailModal}
-                                onCancel={closeDetailModal}
-                                close={closeDetailModal}
-                                maskClosable={true}
-                                footer={null}
-                                width="80%"
-                                style={
-                                    {top: 20}
-                                }
-                                prefixCls="matcheduser-modal">
-                                <DatingDetailModal/>
-                            </Modal>
-                        )
-                    } </div>
-                    {
-                    Data?.length===0 ? (
-                        <Nodata className="No Data">
-                            <p>No Data Found
-                            </p>
-                        </Nodata>
-                    ) : (
-                        <div className="Cards">
-                            {
-                            Data?.map((value) => (
-                                <MatchesCard key={
-                                        value.id
-                                    }
-                                    props={value}/>
-                            ))
-                        } </div>
-                    )
-                } </div>
-            )
-        } </MatchesStyle>
-    );
+          )}{" "}
+        </div>
+      </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="Main">
+          <div className="Tips">
+            <p
+              onClick={() => {
+                setDetailModal(true);
+              }}
+            >
+              Online dating Tips?
+            </p>
+            {detailModal && (
+              <Modal
+                open={detailModal}
+                onCancel={closeDetailModal}
+                close={closeDetailModal}
+                maskClosable={true}
+                footer={null}
+                width="80%"
+                style={{ top: 20 }}
+                prefixCls="matcheduser-modal"
+              >
+                <DatingDetailModal />
+              </Modal>
+            )}{" "}
+          </div>
+          {Data?.length === 0 ? (
+            <Nodata className="No Data">
+              <p>No Data Found</p>
+            </Nodata>
+          ) : (
+            <div className="Cards">
+              {Data?.map((value) => (
+                <MatchesCard key={value.id} props={value} />
+              ))}{" "}
+            </div>
+          )}{" "}
+        </div>
+      )}{" "}
+    </MatchesStyle>
+  );
 };
 
 export default Matches;
 
-const MatchesStyle = styled.div `
+const MatchesStyle = styled.div`
   width: 100%;
   height: 100%;
   .Main {
@@ -195,7 +188,7 @@ const MatchesStyle = styled.div `
     text-transform: capitalize;
     color: #ff384d;
     padding: 0 20px;
-    cursor:pointer;
+    cursor: pointer;
   }
   .HDiv {
     width: 100%;
@@ -208,27 +201,26 @@ const MatchesStyle = styled.div `
     align-items: end;
     padding: 20px;
   }
-  .Match{
-    display:flex;
-    align-items:end;
+  .Match {
+    display: flex;
+    align-items: end;
     justify-content: space-between;
-    width:100%;
-
+    width: 100%;
   }
-  .search{
-    display:flex;
-    align-items:end;
+  .search {
+    display: flex;
+    align-items: end;
     justify-content: space-between;
-    width:100%;
+    width: 100%;
   }
-  .search-input{
-    width:60%;
-    border-radius:10px;
-    border:none;
-    padding:10px;
-    outline:none;
-    &:focus{
-      outline:none;
+  .search-input {
+    width: 60%;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    outline: none;
+    &:focus {
+      outline: none;
     }
   }
 
@@ -246,7 +238,7 @@ const MatchesStyle = styled.div `
     width: 17.49px;
   }
 `;
-const Nodata = styled.div `
+const Nodata = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

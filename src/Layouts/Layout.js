@@ -93,6 +93,7 @@ const Layoutdesign = styled.div`
       top:8%;
       width:150px;
       z-index:2;
+      height:92vh;
     }
     .right-sidebar{
       display:none;

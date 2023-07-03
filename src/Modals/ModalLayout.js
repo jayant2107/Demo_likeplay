@@ -13,7 +13,7 @@ const ModalLayout = ({ open, handleClose }) => {
         onCancel={handleClose}
         width={1100}
         footer={null}
-        style={{ top: 40 }}
+        style={{  minWidth:"850px"}}
       >
         <GridType />
         <StyledLayout>

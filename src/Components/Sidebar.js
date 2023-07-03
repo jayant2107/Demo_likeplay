@@ -321,6 +321,9 @@ const Sidebarwrapper = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+  @media(max-width:786px){
+    height:92vh;
+  }
 `;
 const Mainlogo = styled.div`
   display: flex;
