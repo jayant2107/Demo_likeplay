@@ -48,7 +48,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent,handleUploadedPosts}) 
   const [showBlockModal, setshowBlockModal] = useState(false);
   const [reportUserModal, setReportUserModal] = useState(false);
   const [likeModal, setLikeModal] = useState(false);
-  const [likepostdata,setlikepostdata]=useState()
+  const [postloading,setpostloading]=useState(false);
   const [editModal, setEditModal] = useState(false);
   const [showComment, setShowComment] = useState(false);
   const [clicked, setClicked] = useState(false);
@@ -65,6 +65,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent,handleUploadedPosts}) 
   const [editpostmodal,setEditPostModal]=useState(false)
   const [editpostdata,seteditpostdata]=useState()
   const [loadingbtn,setloadingbtn]=useState(false)
+
   
   const navigate =useNavigate()
  
@@ -252,18 +253,21 @@ const UserPostCard = ({ val,edit=false,getHomePageContent,handleUploadedPosts}) 
   };
 
   const handleCommentPost = async (content) => {
-    console.log(content,"ccc")
+    setpostloading(true)
+   
     const res = await commentPost({
       post_id: val.post_id,
       comment: content,
     });
     if (res?.status === 200) {
       setShowComment(false);
-      settotalcomment(+1)
+      settotalcomment(totalcomment+1)
+      setpostloading(false)
      
     } else {
       toast.error(res?.message || "Something Went Wrong");
       setShowComment(false);
+      setpostloading(false)
     }
   };
 
@@ -552,6 +556,7 @@ const UserPostCard = ({ val,edit=false,getHomePageContent,handleUploadedPosts}) 
             showComment={showComment}
             changeModalComment={changeModalComment}
             handleCommentPost={handleCommentPost}
+            postloading={postloading}
           />
         )}
       </UserPostCardCss>

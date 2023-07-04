@@ -115,19 +115,23 @@ export default function Userdetails() {
 export const LoginProfileCss = styled.div`
   width: 100%;
   height: 125px;
-  display: grid;
-  grid-template-columns: 86px auto;
+display:flex;
   border-bottom: 1px solid #e2e2e2;
   gap: 15px;
   padding: 20px;
 
   .imgDiv {
     height: 86px;
+    width:86px;
     border-radius: 50%;
     overflow: hidden;
     img {
       width: 100%;
       height: 100%;
+    }
+    @media(max-width:420px){
+      height:50px;
+      width:50px;
     }
   }
   .detailsDiv {
@@ -147,6 +151,9 @@ export const LoginProfileCss = styled.div`
     line-height: 35px;
     letter-spacing: 0.05em;
     color: #242424;
+    @media(max-width:500px){
+      font-size:16px;
+    }
   }
   .userdata {
     font-size: 13px;

@@ -1,9 +1,9 @@
-const exit = "Assets/Icons/exitAR.svg";
+const exit = "/Assets/Icons/exitAR.svg";
 const Artboard = "/Assets/Icons/Artboard.svg";
 const tick = "/Assets/Images/Akshay/Fill 4.png";
 const cross = "/Assets/Icons/Vector (6).svg";
 const arrowRight = "/Assets/Registration/arrowRight.png";
-const exitmodal = "//Assets/Images/Matches Image/exit.png";
+const exitmodal = "/Assets/Images/Matches Image/exit.png";
 const vector = "/Assets/Images/BlackAk.png";
 const vector1 = "/Assets/Icons/VectorAk.svg";
 const vector2 = "/Assets/Icons/VectorAk1.svg";

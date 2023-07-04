@@ -48,6 +48,10 @@ export const CommentCardsCss = styled.div`
   grid-template-columns: 65px auto 45px;
   width: 100%;
   margin-top: 1rem;
+  @media(max-width:550px){
+    grid-template-columns: 25% 50% 25%;
+
+  }
 
   .profileImg {
     border: 1px solid transparent;
@@ -58,6 +62,10 @@ export const CommentCardsCss = styled.div`
     img {
       width: 100%;
       height: 100%;
+    }
+    @media(max-width:550px){
+      height:2.5rem;
+      width:2.5rem;
     }
   }
   .ProfileInfo {
@@ -76,6 +84,9 @@ export const CommentCardsCss = styled.div`
     font-weight: 400;
     font-size: 14px;
     line-height: 21px;
+    @media(max-width:550px){
+      font-size:12px;
+    }
   }
   .postCap {
     color: #7b7f91;
