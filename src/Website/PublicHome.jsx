@@ -1360,7 +1360,7 @@ line-height:40px;
           <div className="video">
             {/* <img src={Videoplaybtn} alt="" /> */}
             <video controls autoplay ref={videoRef} onClick={() => togglePlay}>
-              <source src={Video} type="video/mp4" />
+              <source src={"https://firebasestorage.googleapis.com/v0/b/likeplay-likeplay.appspot.com/o/pexels-polina-tankilevitch-7741783%20(1080p).mp4?alt=media&token=e3cca505-0f85-4255-bed6-61cdabcffc50"} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -1410,7 +1410,7 @@ line-height:40px;
                 ref={videoRef}
                 onClick={() => togglePlay}
               >
-                <source src={Video} type="video/mp4" />
+                <source src={"https://firebasestorage.googleapis.com/v0/b/likeplay-likeplay.appspot.com/o/pexels-polina-tankilevitch-7741779%20(1080p).mp4?alt=media&token=e98b0874-3525-4b0d-abb7-7f69b96185a6"} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
